@@ -1,0 +1,2703 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Network::Handler::FileServer::Mount
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Network.html" title="Puppet::Network (module)">Network</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Handler.html" title="Puppet::Network::Handler (class)">Handler</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../FileServer.html" title="Puppet::Network::Handler::FileServer (class)">FileServer</a></span></span>
+     &raquo; 
+    <span class="title">Mount</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Network::Handler::FileServer::Mount
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../AuthStore.html" title="Puppet::Network::AuthStore (class)">AuthStore</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../../AuthStore.html" title="Puppet::Network::AuthStore (class)">AuthStore</a></span></li>
+          
+            <li class="next">Puppet::Network::Handler::FileServer::Mount</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/puppet/network/handler/fileserver.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A simple class for wrapping mount points.  Instances of this class
+don&#8217;t know about the enclosing object; they&#8217;re mainly just used
+for authorization.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="PluginMount.html" title="Puppet::Network::Handler::FileServer::PluginMount (class)">PluginMount</a></span></p>
+</div>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="syncs-classvariable" class="">@@syncs =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span><span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="files-classvariable" class="">@@files =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span><span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute name.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clientmap-instance_method" title="#clientmap (instance method)">- (Object) <strong>clientmap</strong>(client) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a map for a specific client.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#copy-instance_method" title="#copy (instance method)">- (Object) <strong>copy</strong>(name, path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return a new mount with the same properties as <tt>self</tt>, except with a
+different name and path.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#expand-instance_method" title="#expand (instance method)">- (Object) <strong>expand</strong>(path, client = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Replace % patterns as appropriate.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#expandable%3F-instance_method" title="#expandable? (instance method)">- (Boolean) <strong>expandable?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Do we have any patterns in our path, yo?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#file_path-instance_method" title="#file_path (instance method)">- (Object) <strong>file_path</strong>(relative_path, node = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return a fully qualified path, given a short path and possibly a client
+name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fileobj-instance_method" title="#fileobj (instance method)">- (Object) <strong>fileobj</strong>(path, links, client) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Mount) <strong>initialize</strong>(name, path = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create out object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list-instance_method" title="#list (instance method)">- (Object) <strong>list</strong>(relpath, recurse, ignore, client = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+List the contents of the relative path <tt>relpath</tt> of this mount.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#localmap-instance_method" title="#localmap (instance method)">- (Object) <strong>localmap</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Cache this manufactured map, since if it&#8217;s used it&#8217;s likely to
+get used a lot.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path-instance_method" title="#path (instance method)">- (Object) <strong>path</strong>(client = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return the path as appropriate, expanding as necessary.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path%3D-instance_method" title="#path= (instance method)">- (Object) <strong>path=</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Set the path.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path_exists%3F-instance_method" title="#path_exists? (instance method)">- (Boolean) <strong>path_exists?</strong>(relpath, client = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Verify that the path given exists within this mount&#8217;s subtree.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#properties-instance_method" title="#properties (instance method)">- (Object) <strong>properties</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return the current values for the object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_file-instance_method" title="#read_file (instance method)">- (Object) <strong>read_file</strong>(relpath, client) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Read the contents of the file at the relative path given.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reclist-instance_method" title="#reclist (instance method)">- (Object) <strong>reclist</strong>(abspath, recurse, ignore) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subdir-instance_method" title="#subdir (instance method)">- (Object) <strong>subdir</strong>(dir = nil, client = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve a specific directory relative to a mount point.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sync-instance_method" title="#sync (instance method)">- (Object) <strong>sync</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid%3F-instance_method" title="#valid? (instance method)">- (Boolean) <strong>valid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Verify our configuration is valid.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../../AuthStore.html" title="Puppet::Network::AuthStore (class)">AuthStore</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../AuthStore.html#allow-instance_method" title="Puppet::Network::AuthStore#allow (method)">#allow</a></span>, <span class='object_link'><a href="../../AuthStore.html#allowed%3F-instance_method" title="Puppet::Network::AuthStore#allowed? (method)">#allowed?</a></span>, <span class='object_link'><a href="../../AuthStore.html#deny-instance_method" title="Puppet::Network::AuthStore#deny (method)">#deny</a></span>, <span class='object_link'><a href="../../AuthStore.html#empty%3F-instance_method" title="Puppet::Network::AuthStore#empty? (method)">#empty?</a></span>, <span class='object_link'><a href="../../AuthStore.html#globalallow%3F-instance_method" title="Puppet::Network::AuthStore#globalallow? (method)">#globalallow?</a></span>, <span class='object_link'><a href="../../AuthStore.html#interpolate-instance_method" title="Puppet::Network::AuthStore#interpolate (method)">#interpolate</a></span>, <span class='object_link'><a href="../../AuthStore.html#reset_interpolation-instance_method" title="Puppet::Network::AuthStore#reset_interpolation (method)">#reset_interpolation</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../../Util/Logging.html" title="Puppet::Util::Logging (module)">Util::Logging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../../Util/Logging.html#send_log-instance_method" title="Puppet::Util::Logging#send_log (method)">#send_log</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Network::Handler::FileServer::Mount (class)">Mount</a></span></tt>) <strong>initialize</strong>(name, path = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create out object.  It must have a name.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 468</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^[-\w]+$</span><span class='regexp_end'>}</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileServerError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid name format '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@path</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@files</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 468</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^[-\w]+$</span><span class='regexp_end'>}</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileServerError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid name format '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@path</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@files</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="name-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="name-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>name</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+403
+404
+405</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 403</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 403</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">403
+404
+405
+406</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="clientmap-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>clientmap</strong>(client) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a map for a specific client.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+412
+413
+414
+415
+416
+417
+418</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 412</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clientmap'>clientmap</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>h</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\..*$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>H</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>d</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^.]+\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># domain name
+</span>  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 412</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">412
+413
+414
+415
+416
+417
+418
+419</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_clientmap'>clientmap</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>h</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\..*$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>H</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>d</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^.]+\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># domain name
+</span>  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="copy-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>copy</strong>(name, path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return a new mount with the same properties as <tt>self</tt>, except with a
+different name and path.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+604
+605
+606
+607
+608
+609</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 604</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 604</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">604
+605
+606
+607
+608
+609
+610</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="expand-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>expand</strong>(path, client = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Replace % patterns as appropriate.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 421</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_expand'>expand</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='comment'># This map should probably be moved into a method.
+</span>  <span class='id identifier rubyid_map'>map</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_client'>client</span>
+    <span class='id identifier rubyid_map'>map</span> <span class='op'>=</span> <span class='id identifier rubyid_clientmap'>clientmap</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_notice'>notice</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No client; expanding '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'>' with local host</span><span class='tstring_end'>&quot;</span></span>
+    <span class='comment'># Else, use the local information
+</span>    <span class='id identifier rubyid_map'>map</span> <span class='op'>=</span> <span class='id identifier rubyid_localmap'>localmap</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>%(.)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='backref'>$1</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%</span><span class='tstring_end'>&quot;</span></span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_map'>map</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_v'>v</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 421</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">421
+422</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def expand(path, client = nil)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This map should probably be moved into a method.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">423
+424
+425
+426
+427
+428
+429</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  map = nil
+
+  if client
+    map = clientmap(client)
+  else
+    Puppet.notice &quot;No client; expanding '#{path}' with local host&quot;</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Else, use the local information
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    map = localmap
+  end
+  path.gsub(/%(.)/) do |v|
+    key = $1
+    if key == &quot;%&quot;
+      &quot;%&quot;
+    else
+      map[key] || v
+    end
+  end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="expandable?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>expandable?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Do we have any patterns in our path, yo?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+443
+444
+445
+446
+447
+448
+449</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 443</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_expandable?'>expandable?</span>
+  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@expandable</span><span class='rparen'>)</span>
+    <span class='ivar'>@expandable</span>
+  <span class='kw'>else</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 443</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">443
+444
+445
+446
+447
+448
+449
+450</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_expandable?'>expandable?</span>
+  <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@expandable</span><span class='rparen'>)</span>
+    <span class='ivar'>@expandable</span>
+  <span class='kw'>else</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="file_path-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>file_path</strong>(relative_path, node = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return a fully qualified path, given a short path and possibly a client
+name.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 453</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relative_path'>relative_path</span><span class='comma'>,</span> <span class='id identifier rubyid_node'>node</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_full_path'>full_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_full_path'>full_path</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='kw'>self</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mounts without paths are not usable</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_full_path'>full_path</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># If there's no relative path name, then we're serving the mount itself.
+</span>  <span class='kw'>return</span> <span class='id identifier rubyid_full_path'>full_path</span> <span class='kw'>unless</span> <span class='id identifier rubyid_relative_path'>relative_path</span> <span class='kw'>and</span> <span class='id identifier rubyid_relative_path'>relative_path</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_full_path'>full_path</span><span class='comma'>,</span> <span class='id identifier rubyid_relative_path'>relative_path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 453</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">453
+454
+455
+456
+457
+458
+459
+460
+461</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def file_path(relative_path, node = nil)
+  full_path = path(node)
+
+  unless full_path
+    p self
+    raise ArgumentError.new(&quot;Mounts without paths are not usable&quot;) unless full_path
+  end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If there&#8217;s no relative path name, then we&#8217;re serving the mount
+itself.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">462
+463
+464
+465
+466</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  return full_path unless relative_path and relative_path != &quot;/&quot;
+
+  File.join(full_path, relative_path)
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="fileobj-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>fileobj</strong>(path, links, client) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 485</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fileobj'>fileobj</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_links'>links</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='ivar'>@files</span><span class='lbracket'>[</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+    <span class='comment'># This can only happen in local fileserving, but it's an
+</span>    <span class='comment'># important one.  It'd be nice if we didn't just set
+</span>    <span class='comment'># the check params every time, but I'm not sure it's worth
+</span>    <span class='comment'># the effort.
+</span>    <span class='id identifier rubyid_obj'>obj</span><span class='lbracket'>[</span><span class='symbol'>:audit</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>CHECKPARAMS</span>
+  <span class='kw'>else</span>
+
+    <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='symbol'>:file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+
+      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+      <span class='symbol'>:audit</span> <span class='op'>=&gt;</span> <span class='const'>CHECKPARAMS</span>
+    <span class='rparen'>)</span>
+    <span class='ivar'>@files</span><span class='lbracket'>[</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_obj'>obj</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_links'>links</span> <span class='op'>==</span> <span class='symbol'>:manage</span>
+    <span class='id identifier rubyid_links'>links</span> <span class='op'>=</span> <span class='symbol'>:follow</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># This, ah, might be completely redundant
+</span>  <span class='id identifier rubyid_obj'>obj</span><span class='lbracket'>[</span><span class='symbol'>:links</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_links'>links</span> <span class='kw'>unless</span> <span class='id identifier rubyid_obj'>obj</span><span class='lbracket'>[</span><span class='symbol'>:links</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_links'>links</span>
+
+  <span class='id identifier rubyid_obj'>obj</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 485</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">485
+486
+487
+488</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def fileobj(path, links, client)
+  obj = nil
+  if obj = @files[file_path(path, client)]</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This can only happen in local fileserving, but it&#8217;s an important one.
+It&#8217;d be nice if we didn&#8217;t just set the check params every time,
+but I&#8217;m not sure it&#8217;s worth the effort.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    obj[:audit] = CHECKPARAMS
+  else
+
+    obj = Puppet::Type.type(:file).new(
+
+      :name =&gt; file_path(path, client),
+
+      :audit =&gt; CHECKPARAMS
+    )
+    @files[file_path(path, client)] = obj
+  end
+
+  if links == :manage
+    links = :follow
+  end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This, ah, might be completely redundant
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">509
+510
+511
+512
+513</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  obj[:links] = links unless obj[:links] == links
+
+  obj
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="list-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>list</strong>(relpath, recurse, ignore, client = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+List the contents of the relative path <tt>relpath</tt> of this mount.
+</p>
+<p>
+<tt>recurse</tt> is the number of levels to recurse into the tree, or false
+to provide no recursion or true if you just want to go for broke.
+</p>
+<p>
+<tt>ignore</tt> is an array of filenames to ignore when traversing the
+list.
+</p>
+<p>
+The return value of this method is a complex nest of arrays, which
+describes a directory tree.  Each file or directory is represented by an
+array, where the first element is the path of the file (relative to the
+root of the mount), and the second element is the type.  A directory is
+represented by an array as well, where the first element is a
+&#8220;directory&#8221; array, while the remaining elements are other file
+or directory arrays.  Confusing?  Hell yes.  As an added bonus, all names
+must start with a slash, because&#8230; well, I&#8217;m fairly certain a
+complete explanation would involve the words &#8220;crack pipe&#8221; and
+&#8220;bad batch&#8221;.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 632</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_abspath'>abspath</span> <span class='op'>=</span> <span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_recurse'>recurse</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_reclist'>reclist</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 632</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_abspath'>abspath</span> <span class='op'>=</span> <span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_recurse'>recurse</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_reclist'>reclist</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="localmap-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>localmap</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Cache this manufactured map, since if it&#8217;s used it&#8217;s likely to
+get used a lot.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 521</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_localmap'>localmap</span>
+  <span class='kw'>unless</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='cvar'>@@localmap</span><span class='rparen'>)</span>
+    <span class='cvar'>@@localmap</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>h</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span>  <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hostname</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>H</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hostname</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+        <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>domain</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>d</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span>  <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>domain</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='cvar'>@@localmap</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 521</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_localmap'>localmap</span>
+  <span class='kw'>unless</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='cvar'>@@localmap</span><span class='rparen'>)</span>
+    <span class='cvar'>@@localmap</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>h</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span>  <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hostname</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>H</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hostname</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+        <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>domain</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>d</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span>  <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>domain</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='cvar'>@@localmap</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="path-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>path</strong>(client = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return the path as appropriate, expanding as necessary.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+534
+535
+536
+537
+538
+539
+540</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 534</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_expandable?'>expandable?</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_expand'>expand</span><span class='lparen'>(</span><span class='ivar'>@path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='ivar'>@path</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 534</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">534
+535
+536
+537
+538
+539
+540
+541</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_expandable?'>expandable?</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_expand'>expand</span><span class='lparen'>(</span><span class='ivar'>@path</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='ivar'>@path</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="path=-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>path=</strong>(path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Set the path.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 543</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_path='>path=</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='comment'># FIXME: For now, just don't validate paths with replacement
+</span>  <span class='comment'># patterns in them.
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>%.</span><span class='regexp_end'>/</span></span>
+    <span class='comment'># Mark that we're expandable.
+</span>    <span class='ivar'>@expandable</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileServerError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> does not exist</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileServerError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> is not a directory</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>FileServerError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> is not readable</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_readable?'>readable?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+    <span class='ivar'>@expandable</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 543</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">543
+544</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def path=(path)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+FIXME: For now, just don&#8217;t validate paths with replacement patterns
+in them.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">546
+547</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  if path =~ /%./</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Mark that we&#8217;re expandable.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">548
+549
+550
+551
+552
+553
+554
+555
+556
+557</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @expandable = true
+  else
+    raise FileServerError, &quot;#{path} does not exist&quot; unless FileTest.exists?(path)
+    raise FileServerError, &quot;#{path} is not a directory&quot; unless FileTest.directory?(path)
+    raise FileServerError, &quot;#{path} is not readable&quot; unless FileTest.readable?(path)
+    @expandable = false
+  end
+  @path = path
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="path_exists?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>path_exists?</strong>(relpath, client = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Verify that the path given exists within this mount&#8217;s subtree.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+560
+561
+562</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 560</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_path_exists?'>path_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 560</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">560
+561
+562
+563</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_path_exists?'>path_exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="properties-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>properties</strong>(obj) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return the current values for the object.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+565
+566
+567</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 565</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_properties'>properties</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_props'>props</span><span class='comma'>,</span> <span class='id identifier rubyid_ary'>ary</span><span class='op'>|</span> <span class='id identifier rubyid_props'>props</span><span class='lbracket'>[</span><span class='id identifier rubyid_ary'>ary</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ary'>ary</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='semicolon'>;</span> <span class='id identifier rubyid_props'>props</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 565</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">565
+566
+567
+568</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_properties'>properties</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_props'>props</span><span class='comma'>,</span> <span class='id identifier rubyid_ary'>ary</span><span class='op'>|</span> <span class='id identifier rubyid_props'>props</span><span class='lbracket'>[</span><span class='id identifier rubyid_ary'>ary</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ary'>ary</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='semicolon'>;</span> <span class='id identifier rubyid_props'>props</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="read_file-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>read_file</strong>(relpath, client) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Read the contents of the file at the relative path given.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+515
+516
+517</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 515</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read_file'>read_file</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 515</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">515
+516
+517
+518</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_read_file'>read_file</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_relpath'>relpath</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="reclist-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>reclist</strong>(abspath, recurse, ignore) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 644</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reclist'>reclist</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/file_serving</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/file_serving/fileset</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Fixnum</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:recurse</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:recurselimit</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='symbol'>:links</span> <span class='op'>=&gt;</span> <span class='symbol'>:follow</span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:recurse</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='symbol'>:links</span> <span class='op'>=&gt;</span> <span class='symbol'>:follow</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:ignore</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ignore'>ignore</span> <span class='kw'>if</span> <span class='id identifier rubyid_ignore'>ignore</span>
+  <span class='id identifier rubyid_fs'>fs</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>FileServing</span><span class='op'>::</span><span class='const'>Fileset</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ary'>ary</span> <span class='op'>=</span> <span class='id identifier rubyid_fs'>fs</span><span class='period'>.</span><span class='id identifier rubyid_files'>files</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span> <span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_stat'>stat</span> <span class='op'>=</span> <span class='id identifier rubyid_fs'>fs</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_stat'>stat</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_stat'>stat</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span> <span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_ary'>ary</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 644</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_reclist'>reclist</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='id identifier rubyid_ignore'>ignore</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/file_serving</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/file_serving/fileset</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Fixnum</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:recurse</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:recurselimit</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='symbol'>:links</span> <span class='op'>=&gt;</span> <span class='symbol'>:follow</span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:recurse</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_recurse'>recurse</span><span class='comma'>,</span> <span class='symbol'>:links</span> <span class='op'>=&gt;</span> <span class='symbol'>:follow</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:ignore</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ignore'>ignore</span> <span class='kw'>if</span> <span class='id identifier rubyid_ignore'>ignore</span>
+  <span class='id identifier rubyid_fs'>fs</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>FileServing</span><span class='op'>::</span><span class='const'>Fileset</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ary'>ary</span> <span class='op'>=</span> <span class='id identifier rubyid_fs'>fs</span><span class='period'>.</span><span class='id identifier rubyid_files'>files</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span> <span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_stat'>stat</span> <span class='op'>=</span> <span class='id identifier rubyid_fs'>fs</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_abspath'>abspath</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_stat'>stat</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_stat'>stat</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span> <span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_ary'>ary</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="subdir-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>subdir</strong>(dir = nil, client = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve a specific directory relative to a mount point. If they pass in a
+client, then expand as necessary.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 571</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subdir'>subdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_basedir'>basedir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_dirname'>dirname</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_dir'>dir</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_basedir'>basedir</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_dir'>dir</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_basedir'>basedir</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_dirname'>dirname</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 571</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_subdir'>subdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_basedir'>basedir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_dirname'>dirname</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_dir'>dir</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_basedir'>basedir</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_dir'>dir</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_basedir'>basedir</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_dirname'>dirname</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="sync-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sync</strong>(path) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+583
+584
+585
+586</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 583</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='cvar'>@@syncs</span><span class='lbracket'>[</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Sync</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='cvar'>@@syncs</span><span class='lbracket'>[</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 583</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">583
+584
+585
+586
+587</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='cvar'>@@syncs</span><span class='lbracket'>[</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Sync</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='cvar'>@@syncs</span><span class='lbracket'>[</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_s-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_s</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+588
+589
+590</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 588</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mount[</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 588</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">588
+589
+590
+591</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mount[</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="valid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Verify our configuration is valid.  This should really check to make sure
+at least someone will be allowed, but, eh.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+594
+595
+596
+597
+598
+599
+600</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 594</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'>MODULES</span>
+    <span class='kw'>return</span> <span class='ivar'>@path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='op'>!</span> <span class='ivar'>@path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/fileserver.rb', line 594</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">594
+595
+596
+597
+598
+599
+600
+601</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'>MODULES</span>
+    <span class='kw'>return</span> <span class='ivar'>@path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='op'>!</span> <span class='ivar'>@path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:30 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

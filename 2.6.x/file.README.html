@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Puppet</h1>
+
+<p>Puppet, an automated administrative engine for your Linux and Unix systems, performs
+administrative tasks (such as adding users, installing packages, and updating server
+configurations) based on a centralized specification.</p>
+
+<p>Documentation (and detailed installation instructions) can be found online at the
+<a href="http://docs.puppetlabs.com">Puppet Docs site</a>.</p>
+
+<h2>Installation</h2>
+
+<p>Generally, you need the following things installed:</p>
+
+<ul>
+<li><p>A supported Ruby version. Ruby 1.8.5 and 1.8.7 are fully supported; Ruby 1.8.1
+is supported on a best-effort basis for agent use only. Other versions of Ruby
+are used at your own risk, and Ruby 1.8.6 is not recommended for compatibility
+reasons.</p></li>
+<li><p>The Ruby OpenSSL library.  For some reason, this often isn&#39;t included
+in the main ruby distributions.  You can test for it by running
+&#39;ruby -ropenssl -e &quot;puts :yep&quot;&#39;.  If that errors out, you&#39;re missing the
+library.</p></li>
+</ul>
+
+<p>If your distribution doesn&#39;t come with the necessary library (e.g., on Debian
+  and Ubuntu you need to install libopenssl-ruby), then you&#39;ll probably have to
+  compile Ruby yourself, since it&#39;s part of the standard library and not
+  available separately.  You could probably just compile and install that one
+  library, though.</p>
+
+<ul>
+<li><p>The Ruby XMLRPC client and server libraries.  For some reason, this often
+isn&#39;t included in the main ruby distributions.  You can test for it by
+running &#39;ruby -rxmlrpc/client -e &quot;puts :yep&quot;&#39;.  If that errors out, you&#39;re missing
+the library.</p></li>
+<li><p>Facter =&gt; 1.5.1 (available via your package manager or from the <a href="http://puppetlabs.com/projects/facter">Facter site</a>.</p></li>
+</ul>
+
+<h2>License</h2>
+
+<p>See LICENSE file.</p>
+
+<h2>Support</h2>
+
+<p>Please log tickets and issues at our <a href="http://projects.puppetlabs.com">Projects site</a></p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:13:59 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

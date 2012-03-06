@@ -1,0 +1,990 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Parser::TypeLoader
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (T)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Parser.html" title="Puppet::Parser (module)">Parser</a></span></span>
+     &raquo; 
+    <span class="title">TypeLoader</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Parser::TypeLoader
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Puppet::Parser::TypeLoader</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Node/Environment/Helper.html" title="Puppet::Node::Environment::Helper (module)">Node::Environment::Helper</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/parser/type_loader.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="TypeLoader/Helper.html" title="Puppet::Parser::TypeLoader::Helper (class)">Helper</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import-instance_method" title="#import (instance method)">- (Object) <strong>import</strong>(file, current_file = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Import our files.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (TypeLoader) <strong>initialize</strong>(env) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of TypeLoader.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#known_resource_types-instance_method" title="#known_resource_types (instance method)">- (Object) <strong>known_resource_types</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_until-instance_method" title="#load_until (instance method)">- (Object) <strong>load_until</strong>(namespaces, name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name2files-instance_method" title="#name2files (instance method)">- (Object) <strong>name2files</strong>(namespaces, name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_file-instance_method" title="#parse_file (instance method)">- (Object) <strong>parse_file</strong>(file) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Node/Environment/Helper.html" title="Puppet::Node::Environment::Helper (module)">Node::Environment::Helper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Node/Environment/Helper.html#environment-instance_method" title="Puppet::Node::Environment::Helper#environment (method)">#environment</a></span>, <span class='object_link'><a href="../Node/Environment/Helper.html#environment%3D-instance_method" title="Puppet::Node::Environment::Helper#environment= (method)">#environment=</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Parser::TypeLoader (class)">TypeLoader</a></span></tt>) <strong>initialize</strong>(env) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of TypeLoader
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span>
+  <span class='ivar'>@loading_helper</span> <span class='op'>=</span> <span class='const'>Helper</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 97</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">97
+98
+99
+100
+101</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span>
+  <span class='ivar'>@loading_helper</span> <span class='op'>=</span> <span class='const'>Helper</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="import-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>import</strong>(file, current_file = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Import our files.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_current_file'>current_file</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:ignoreimport</span><span class='rbracket'>]</span>
+
+  <span class='comment'># use a path relative to the file doing the importing
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_current_file'>current_file</span>
+    <span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='id identifier rubyid_current_file'>current_file</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>[^/]+$</span><span class='regexp_end'>}</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\/$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_dir'>dir</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_pat'>pat</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='id identifier rubyid_modname'>modname</span><span class='comma'>,</span> <span class='id identifier rubyid_files'>files</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Parser</span><span class='op'>::</span><span class='const'>Files</span><span class='period'>.</span><span class='id identifier rubyid_find_manifests'>find_manifests</span><span class='lparen'>(</span><span class='id identifier rubyid_pat'>pat</span><span class='comma'>,</span> <span class='symbol'>:cwd</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span> <span class='symbol'>:environment</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_files'>files</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>ImportError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No file(s) found for import of '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pat'>pat</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_files'>files</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^</span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rbrace'>}</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@loading_helper</span><span class='period'>.</span><span class='id identifier rubyid_do_once'>do_once</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_parse_file'>parse_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_modname'>modname</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 62</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">62
+63
+64
+65</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def import(file, current_file = nil)
+  return if Puppet[:ignoreimport]
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+use a path relative to the file doing the importing
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  if current_file
+    dir = current_file.sub(%r{[^/]+$},'').sub(/\/$/, '')
+  else
+    dir = &quot;.&quot;
+  end
+  if dir == &quot;&quot;
+    dir = &quot;.&quot;
+  end
+
+  pat = file
+  modname, files = Puppet::Parser::Files.find_manifests(pat, :cwd =&gt; dir, :environment =&gt; environment)
+  if files.size == 0
+    raise Puppet::ImportError.new(&quot;No file(s) found for import of '#{pat}'&quot;)
+  end
+
+  files.each do |file|
+    unless file =~ /^#{File::SEPARATOR}/
+      file = File.join(dir, file)
+    end
+    @loading_helper.do_once(file) do
+      parse_file(file)
+    end
+  end
+
+  modname
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="known_resource_types-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>known_resource_types</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_known_resource_types'>known_resource_types</span>
+  <span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_known_resource_types'>known_resource_types</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 93</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">93
+94
+95
+96</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_known_resource_types'>known_resource_types</span>
+  <span class='id identifier rubyid_environment'>environment</span><span class='period'>.</span><span class='id identifier rubyid_known_resource_types'>known_resource_types</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="load_until-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>load_until</strong>(namespaces, name) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 102</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_until'>load_until</span><span class='lparen'>(</span><span class='id identifier rubyid_namespaces'>namespaces</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># special-case main.
+</span>  <span class='id identifier rubyid_name2files'>name2files</span><span class='lparen'>(</span><span class='id identifier rubyid_namespaces'>namespaces</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_filename'>filename</span><span class='op'>|</span>
+    <span class='id identifier rubyid_modname'>modname</span> <span class='op'>=</span> <span class='kw'>begin</span>
+      <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>ImportError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+      <span class='comment'># We couldn't load the item
+</span>      <span class='comment'># I'm not convienced we should just drop these errors, but this
+</span>      <span class='comment'># preserves existing behaviours.
+</span>      <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+      <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Automatically imported </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> from </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='rbrace'>}</span><span class='tstring_content'> into </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_environment'>environment</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_module_name'>module_name</span> <span class='op'>=</span> <span class='id identifier rubyid_modname'>modname</span> <span class='kw'>if</span> <span class='id identifier rubyid_modname'>modname</span> <span class='kw'>and</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:module_name=</span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 102</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">102
+103
+104
+105
+106
+107
+108</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def load_until(namespaces, name)
+  return nil if name == &quot;&quot; # special-case main.
+  name2files(namespaces, name).each do |filename|
+    modname = begin
+      import(filename)
+    rescue Puppet::ImportError =&gt; detail</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We couldn&#8217;t load the item I&#8217;m not convienced we should just
+drop these errors, but this preserves existing behaviours.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">      nil
+    end
+    if result = yield(filename)
+      Puppet.debug &quot;Automatically imported #{name} from #{filename} into #{environment}&quot;
+      result.module_name = modname if modname and result.respond_to?(:module_name=)
+      return result
+    end
+  end
+  nil
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="name2files-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>name2files</strong>(namespaces, name) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name2files'>name2files</span><span class='lparen'>(</span><span class='id identifier rubyid_namespaces'>namespaces</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^::</span><span class='regexp_end'>/</span></span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_namespaces'>namespaces</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_names_to_try'>names_to_try</span><span class='comma'>,</span> <span class='id identifier rubyid_namespace'>namespace</span><span class='op'>|</span>
+    <span class='id identifier rubyid_fullname'>fullname</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_namespace'>namespace</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+    <span class='comment'># Try to load the module init file if we're a qualified name
+</span>    <span class='id identifier rubyid_names_to_try'>names_to_try</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_fullname'>fullname</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_fullname'>fullname</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+    <span class='comment'># Then the fully qualified name
+</span>    <span class='id identifier rubyid_names_to_try'>names_to_try</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_fullname'>fullname</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Otherwise try to load the bare name on its own.  This
+</span>  <span class='comment'># is appropriate if the class we're looking for is in a
+</span>  <span class='comment'># module that's different from our namespace.
+</span>  <span class='id identifier rubyid_result'>result</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 122</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">122
+123
+124
+125
+126
+127
+128</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def name2files(namespaces, name)
+  return [name.sub(/^::/, '').gsub(&quot;::&quot;, File::SEPARATOR)] if name =~ /^::/
+
+  result = namespaces.inject([]) do |names_to_try, namespace|
+    fullname = (namespace + &quot;::#{name}&quot;).sub(/^::/, '')
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Try to load the module init file if we&#8217;re a qualified name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">129
+130
+131</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='id identifier rubyid_names_to_try'>names_to_try</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_fullname'>fullname</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_fullname'>fullname</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Then the fully qualified name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">132
+133
+134
+135</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    names_to_try &lt;&lt; fullname
+  end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Otherwise try to load the bare name on its own.  This is appropriate if the
+class we&#8217;re looking for is in a module that&#8217;s different from
+our namespace.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">138
+139
+140
+141</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  result &lt;&lt; name
+  result.uniq.collect { |f| f.gsub(&quot;::&quot;, File::SEPARATOR) }
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_file-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>parse_file</strong>(file) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_file'>parse_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>importing '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'>' in environment </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_environment'>environment</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Parser</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 142</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">142
+143
+144
+145
+146
+147
+148</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_parse_file'>parse_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>importing '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'>' in environment </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_environment'>environment</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Parser</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:18 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

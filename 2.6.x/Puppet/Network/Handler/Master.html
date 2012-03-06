@@ -1,0 +1,1037 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Network::Handler::Master
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Network.html" title="Puppet::Network (module)">Network</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Handler.html" title="Puppet::Network::Handler (class)">Handler</a></span></span>
+     &raquo; 
+    <span class="title">Master</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Network::Handler::Master
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Handler.html#Handler-constant" title="Puppet::Network::Handler::Handler (constant)">Handler</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Puppet::Network::Handler::Master</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../../Util.html" title="Puppet::Util (module)">Util</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/network/handler/master.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ast-instance_method" title="#ast (instance method)">- (Object) <strong>ast</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute ast.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca-instance_method" title="#ca (instance method)">- (Object) <strong>ca</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute ca.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decode_facts-instance_method" title="#decode_facts (instance method)">- (Object) <strong>decode_facts</strong>(facts) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#freshness-instance_method" title="#freshness (instance method)">- (Object) <strong>freshness</strong>(client = nil, clientip = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Tell a client whether there&#8217;s a fresh config for it.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getconfig-instance_method" title="#getconfig (instance method)">- (Object) <strong>getconfig</strong>(facts, format = &quot;marshal&quot;, client = nil, clientip = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Call our various handlers; this handler is getting deprecated.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Master) <strong>initialize</strong>(hash = {}) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Master.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#translate-instance_method" title="#translate (instance method)">- (Object) <strong>translate</strong>(config) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Translate our configuration appropriately for sending back to a client.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Util.html" title="Puppet::Util (module)">Util</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Util.html#activerecord_version-class_method" title="Puppet::Util.activerecord_version (method)">activerecord_version</a></span>, <span class='object_link'><a href="../../Util.html#benchmark-instance_method" title="Puppet::Util#benchmark (method)">#benchmark</a></span>, <span class='object_link'><a href="../../Util.html#chuser-class_method" title="Puppet::Util.chuser (method)">chuser</a></span>, <span class='object_link'><a href="../../Util.html#classproxy-class_method" title="Puppet::Util.classproxy (method)">classproxy</a></span>, <span class='object_link'><a href="../../Util.html#execfail-instance_method" title="Puppet::Util#execfail (method)">#execfail</a></span>, <span class='object_link'><a href="../../Util.html#execpipe-instance_method" title="Puppet::Util#execpipe (method)">#execpipe</a></span>, <span class='object_link'><a href="../../Util.html#execute-instance_method" title="Puppet::Util#execute (method)">#execute</a></span>, <span class='object_link'><a href="../../Util.html#logmethods-class_method" title="Puppet::Util.logmethods (method)">logmethods</a></span>, <span class='object_link'><a href="../../Util.html#memory-instance_method" title="Puppet::Util#memory (method)">#memory</a></span>, <span class='object_link'><a href="../../Util.html#proxy-class_method" title="Puppet::Util.proxy (method)">proxy</a></span>, <span class='object_link'><a href="../../Util.html#recmkdir-class_method" title="Puppet::Util.recmkdir (method)">recmkdir</a></span>, <span class='object_link'><a href="../../Util.html#replace_file-instance_method" title="Puppet::Util#replace_file (method)">#replace_file</a></span>, <span class='object_link'><a href="../../Util.html#symbolize-instance_method" title="Puppet::Util#symbolize (method)">#symbolize</a></span>, <span class='object_link'><a href="../../Util.html#symbolizehash-instance_method" title="Puppet::Util#symbolizehash (method)">#symbolizehash</a></span>, <span class='object_link'><a href="../../Util.html#symbolizehash%21-instance_method" title="Puppet::Util#symbolizehash! (method)">#symbolizehash!</a></span>, <span class='object_link'><a href="../../Util.html#synchronize_on-class_method" title="Puppet::Util.synchronize_on (method)">synchronize_on</a></span>, <span class='object_link'><a href="../../Util.html#thinmark-instance_method" title="Puppet::Util#thinmark (method)">#thinmark</a></span>, <span class='object_link'><a href="../../Util.html#threadlock-instance_method" title="Puppet::Util#threadlock (method)">#threadlock</a></span>, <span class='object_link'><a href="../../Util.html#which-instance_method" title="Puppet::Util#which (method)">#which</a></span>, <span class='object_link'><a href="../../Util.html#withumask-class_method" title="Puppet::Util.withumask (method)">withumask</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Util/POSIX.html" title="Puppet::Util::POSIX (module)">Util::POSIX</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Util/POSIX.html#get_posix_field-instance_method" title="Puppet::Util::POSIX#get_posix_field (method)">#get_posix_field</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#gid-instance_method" title="Puppet::Util::POSIX#gid (method)">#gid</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#idfield-instance_method" title="Puppet::Util::POSIX#idfield (method)">#idfield</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#methodbyid-instance_method" title="Puppet::Util::POSIX#methodbyid (method)">#methodbyid</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#methodbyname-instance_method" title="Puppet::Util::POSIX#methodbyname (method)">#methodbyname</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#search_posix_field-instance_method" title="Puppet::Util::POSIX#search_posix_field (method)">#search_posix_field</a></span>, <span class='object_link'><a href="../../Util/POSIX.html#uid-instance_method" title="Puppet::Util::POSIX#uid (method)">#uid</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Network::Handler::Master (class)">Master</a></span></tt>) <strong>initialize</strong>(hash = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Master
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='ivar'>@local</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:Local</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:Local</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+  <span class='comment'># This is only used by the cfengine module, or if --loadclasses was
+</span>  <span class='comment'># specified in +puppet+.
+</span>  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:Classes</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:Classes</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:Classes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 29</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">29
+30
+31
+32
+33
+34
+35
+36</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def initialize(hash = {})
+  args = {}
+
+  @local = hash[:Local]
+
+  args[:Local] = true
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This is only used by the cfengine module, or if --loadclasses was
+specified in <tt>puppet</tt>.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">38
+39
+40</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  args[:Classes] = hash[:Classes] if hash.include?(:Classes)
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="ast=-instance_method"></span>
+      <span id="ast-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="ast-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ast</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute ast
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ast'>ast</span>
+  <span class='ivar'>@ast</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 15</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">15
+16
+17
+18</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_ast'>ast</span>
+  <span class='ivar'>@ast</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id=""></span>
+      <span id="ca-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="ca-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ca</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute ca
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca'>ca</span>
+  <span class='ivar'>@ca</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 16</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">16
+17
+18
+19</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_ca'>ca</span>
+  <span class='ivar'>@ca</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="decode_facts-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>decode_facts</strong>(facts) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_decode_facts'>decode_facts</span><span class='lparen'>(</span><span class='id identifier rubyid_facts'>facts</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@local</span>
+    <span class='comment'># we don't need to do anything, since we should already
+</span>    <span class='comment'># have raw objects
+</span>    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Our client is local</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Our client is remote</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='kw'>begin</span>
+      <span class='id identifier rubyid_facts'>facts</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='const'>CGI</span><span class='period'>.</span><span class='id identifier rubyid_unescape'>unescape</span><span class='lparen'>(</span><span class='id identifier rubyid_facts'>facts</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>XMLRPC</span><span class='op'>::</span><span class='const'>FaultException</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+        <span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not rebuild facts</span><span class='tstring_end'>&quot;</span></span>
+      <span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_facts'>facts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 63</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">63
+64
+65</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def decode_facts(facts)
+  if @local</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+we don&#8217;t need to do anything, since we should already have raw
+objects
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    Puppet.debug &quot;Our client is local&quot;
+  else
+    Puppet.debug &quot;Our client is remote&quot;
+
+    begin
+      facts = YAML.load(CGI.unescape(facts))
+    rescue =&gt; detail
+      raise XMLRPC::FaultException.new(
+        1, &quot;Could not rebuild facts&quot;
+      )
+    end
+  end
+
+  facts
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="freshness-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>freshness</strong>(client = nil, clientip = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Tell a client whether there&#8217;s a fresh config for it
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_freshness'>freshness</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_clientip'>clientip</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='comment'># Always force a recompile.  Newer clients shouldn't do this (as of April 2008).
+</span>  <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 24</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">24
+25</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def freshness(client = nil, clientip = nil)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Always force a recompile.  Newer clients shouldn&#8217;t do this (as of
+April 2008).
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">26
+27
+28</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  Time.now.to_i
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="getconfig-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>getconfig</strong>(facts, format = &quot;marshal&quot;, client = nil, clientip = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Call our various handlers; this handler is getting deprecated.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getconfig'>getconfig</span><span class='lparen'>(</span><span class='id identifier rubyid_facts'>facts</span><span class='comma'>,</span> <span class='id identifier rubyid_format'>format</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marshal</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_clientip'>clientip</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_facts'>facts</span> <span class='op'>=</span> <span class='id identifier rubyid_decode_facts'>decode_facts</span><span class='lparen'>(</span><span class='id identifier rubyid_facts'>facts</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_client'>client</span> <span class='op'>||=</span> <span class='id identifier rubyid_facts'>facts</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hostname</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+
+  <span class='comment'># Pass the facts to the fact handler
+</span>  <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Node</span><span class='op'>::</span><span class='const'>Facts</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_facts'>facts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='kw'>unless</span> <span class='id identifier rubyid_local?'>local?</span>
+
+  <span class='id identifier rubyid_catalog'>catalog</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>Catalog</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_format'>format</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>yaml</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>return</span> <span class='const'>CGI</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_catalog'>catalog</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='period'>.</span><span class='id identifier rubyid_to_yaml'>to_yaml</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>marshal</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>return</span> <span class='const'>CGI</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='const'>Marshal</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_catalog'>catalog</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid markup format '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format'>format</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 42</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">42
+43
+44
+45
+46
+47</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def getconfig(facts, format = &quot;marshal&quot;, client = nil, clientip = nil)
+  facts = decode_facts(facts)
+
+  client ||= facts[&quot;hostname&quot;]
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Pass the facts to the fact handler
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  Puppet::Node::Facts.new(client, facts).save unless local?
+
+  catalog = Puppet::Resource::Catalog.find(client)
+
+  case format
+  when &quot;yaml&quot;
+    return CGI.escape(catalog.extract.to_yaml)
+  when &quot;marshal&quot;
+    return CGI.escape(Marshal.dump(catalog.extract))
+  else
+    raise &quot;Invalid markup format '#{format}'&quot;
+  end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="translate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>translate</strong>(config) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Translate our configuration appropriately for sending back to a client.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/handler/master.rb', line 84</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">84
+85
+86</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:26 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

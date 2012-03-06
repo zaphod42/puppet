@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Parser::TypeLoader::Helper
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (H)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Parser.html" title="Puppet::Parser (module)">Parser</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TypeLoader.html" title="Puppet::Parser::TypeLoader (class)">TypeLoader</a></span></span>
+     &raquo; 
+    <span class="title">Helper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Parser::TypeLoader::Helper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Puppet::Parser::TypeLoader::Helper</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">MonitorMixin</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/parser/type_loader.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Helper class that makes sure we don&#8217;t try to import the same file
+more than once from either the same thread or different threads.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#do_once-instance_method" title="#do_once (instance method)">- (Object) <strong>do_once</strong>(file) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Execute the supplied block exactly once per file, no matter how many
+threads have asked for it to run.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Helper) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Helper.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Parser::TypeLoader::Helper (class)">Helper</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Helper
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='kw'>super</span>
+  <span class='comment'># These hashes are indexed by filename
+</span>  <span class='ivar'>@state</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='comment'># :doing or :done
+</span>  <span class='ivar'>@thread</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='comment'># if :doing, thread that's doing the parsing
+</span>  <span class='ivar'>@cond_var</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='comment'># if :doing, condition var that will be signaled when done.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 10</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">10
+11
+12</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def initialize
+  super</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+These hashes are indexed by filename
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">13
+14
+15
+16
+17</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  @state = {} # :doing or :done
+  @thread = {} # if :doing, thread that's doing the parsing
+  @cond_var = {} # if :doing, condition var that will be signaled when done.
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="do_once-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>do_once</strong>(file) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute the supplied block exactly once per file, no matter how many
+threads have asked for it to run.  If another thread is already executing
+it, wait for it to finish.  If this thread is already executing it, return
+immediately without executing the block.
+</p>
+<p>
+Note: the reason for returning immediately if this thread is already
+executing the block is to handle the case of a circular import--when
+this happens, we attempt to recursively re-parse a file that we are already
+in the process of parsing.  To prevent an infinite regress we need to
+simply do nothing when the recursive import is attempted.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_do_once'>do_once</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_need_to_execute'>need_to_execute</span> <span class='op'>=</span> <span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='kw'>case</span> <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:doing</span>
+      <span class='kw'>if</span> <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+        <span class='ivar'>@cond_var</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span>
+      <span class='kw'>end</span>
+      <span class='kw'>false</span>
+    <span class='kw'>when</span> <span class='symbol'>:done</span>
+      <span class='kw'>false</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:doing</span>
+      <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+      <span class='ivar'>@cond_var</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_cond'>new_cond</span>
+      <span class='kw'>true</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_need_to_execute'>need_to_execute</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+        <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:done</span>
+        <span class='ivar'>@thread</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='ivar'>@cond_var</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_broadcast'>broadcast</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/type_loader.rb', line 30</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_do_once'>do_once</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_need_to_execute'>need_to_execute</span> <span class='op'>=</span> <span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+    <span class='kw'>case</span> <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:doing</span>
+      <span class='kw'>if</span> <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+        <span class='ivar'>@cond_var</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_wait'>wait</span>
+      <span class='kw'>end</span>
+      <span class='kw'>false</span>
+    <span class='kw'>when</span> <span class='symbol'>:done</span>
+      <span class='kw'>false</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:doing</span>
+      <span class='ivar'>@thread</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Thread</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
+      <span class='ivar'>@cond_var</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_cond'>new_cond</span>
+      <span class='kw'>true</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_need_to_execute'>need_to_execute</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+        <span class='ivar'>@state</span><span class='lbracket'>[</span><span class='id identifier rubyid_file'>file</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:done</span>
+        <span class='ivar'>@thread</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='ivar'>@cond_var</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_broadcast'>broadcast</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:19 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

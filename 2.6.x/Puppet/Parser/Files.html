@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Puppet::Parser::Files
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Parser.html" title="Puppet::Parser (module)">Parser</a></span></span>
+     &raquo; 
+    <span class="title">Files</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Puppet::Parser::Files
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/parser/files.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+This is a silly central module for finding different kinds of files while
+parsing.  This code doesn&#8217;t really belong in the Puppet::Module
+class, but it doesn&#8217;t really belong anywhere else, either.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_manifests-instance_method" title="#find_manifests (instance method)">- (Object) <strong>find_manifests</strong>(start, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return a list of manifests (as absolute filenames) that match <tt>pat</tt>
+with the current directory set to <tt>cwd</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_template-instance_method" title="#find_template (instance method)">- (Object) <strong>find_template</strong>(template, environment = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Find the concrete file denoted by <tt>file</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_template_in_module-instance_method" title="#find_template_in_module (instance method)">- (Object) <strong>find_template_in_module</strong>(template, environment = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#split_file_path-instance_method" title="#split_file_path (instance method)">- (Object) <strong>split_file_path</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Split the path into the module and the rest of the path, or return nil if
+the path is empty or absolute (starts with a /).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#templatepath-instance_method" title="#templatepath (instance method)">- (Object) <strong>templatepath</strong>(environment = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return an array of paths by splitting the <tt>templatedir</tt> config
+parameter.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="find_manifests-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>find_manifests</strong>(start, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return a list of manifests (as absolute filenames) that match <tt>pat</tt>
+with the current directory set to <tt>cwd</tt>. If the first component of
+<tt>pat</tt> does not contain any wildcards and is an existing module,
+return a list of manifests in that module matching the rest of <tt>pat</tt>
+Otherwise, try to find manifests matching <tt>pat</tt> relative to
+<tt>cwd</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find_manifests'>find_manifests</span><span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cwd'>cwd</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:cwd</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_getwd'>getwd</span>
+  <span class='id identifier rubyid_module_name'>module_name</span><span class='comma'>,</span> <span class='id identifier rubyid_pattern'>pattern</span> <span class='op'>=</span> <span class='id identifier rubyid_split_file_path'>split_file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_mod'>mod</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Module</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_module_name'>module_name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:environment</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_match_manifests'>match_manifests</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>rescue</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Module</span><span class='op'>::</span><span class='const'>InvalidName</span>
+    <span class='comment'># Than that would be a &quot;no.&quot;
+</span>  <span class='kw'>end</span>
+  <span class='id identifier rubyid_abspat'>abspat</span> <span class='op'>=</span> <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_cwd'>cwd</span><span class='rparen'>)</span>
+  <span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='id identifier rubyid_abspat'>abspat</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_abspat'>abspat</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>{.pp,.rb}</span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 16</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">16
+17
+18
+19
+20
+21
+22
+23
+24</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def find_manifests(start, options = {})
+  cwd = options[:cwd] || Dir.getwd
+  module_name, pattern = split_file_path(start)
+  begin
+    if mod = Puppet::Module.find(module_name, options[:environment])
+      return [mod.name, mod.match_manifests(pattern)]
+    end
+  rescue Puppet::Module::InvalidName</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Than that would be a &#8220;no.&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">25
+26
+27
+28
+29</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  end
+  abspat = File::expand_path(start, cwd)
+  [nil, Dir.glob(abspat + (File.extname(abspat).empty? ? '{.pp,.rb}' : '' )).uniq.reject { |f| FileTest.directory?(f) }]
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_template-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>find_template</strong>(template, environment = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Find the concrete file denoted by <tt>file</tt>. If <tt>file</tt> is
+absolute, return it directly. Otherwise try to find it as a template in a
+module. If that fails, return it relative to the <tt>templatedir</tt>
+config param. In all cases, an absolute path is returned, which does not
+necessarily refer to an existing file
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find_template'>find_template</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_template'>template</span> <span class='op'>==</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_template'>template</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_template_paths'>template_paths</span> <span class='op'>=</span> <span class='id identifier rubyid_templatepath'>templatepath</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+    <span class='comment'># If we can find the template in :templatedir, we return that.
+</span>    <span class='id identifier rubyid_template_paths'>template_paths</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_template'>template</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_f'>f</span> <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># check in the default template dir, if there is one
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_td_file'>td_file</span> <span class='op'>=</span> <span class='id identifier rubyid_find_template_in_module'>find_template_in_module</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_td_file'>td_file</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 36</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">36
+37
+38
+39
+40
+41
+42</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def find_template(template, environment = nil)
+  if template == File.expand_path(template)
+    return template
+  end
+
+  if template_paths = templatepath(environment)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If we can find the template in :templatedir, we return that.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">43
+44
+45
+46
+47
+48
+49
+50</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    template_paths.collect { |path|
+      File::join(path, template)
+    }.each do |f|
+      return f if FileTest.exist?(f)
+    end
+  end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+check in the default template dir, if there is one
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">51
+52
+53
+54
+55
+56
+57</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  if td_file = find_template_in_module(template, environment)
+    return td_file
+  end
+
+  nil
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_template_in_module-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>find_template_in_module</strong>(template, environment = nil) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find_template_in_module'>find_template_in_module</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_split_file_path'>split_file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='rparen'>)</span>
+
+  <span class='comment'># Because templates don't have an assumed template name, like manifests do,
+</span>  <span class='comment'># we treat templates with no name as being templates in the main template
+</span>  <span class='comment'># directory.
+</span>  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_file'>file</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_mod'>mod</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Module</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_template'>template</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_t'>t</span>
+  <span class='kw'>end</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 58</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">58
+59
+60
+61</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def find_template_in_module(template, environment = nil)
+  path, file = split_file_path(template)
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Because templates don&#8217;t have an assumed template name, like manifests
+do, we treat templates with no name as being templates in the main template
+directory.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">64
+65
+66
+67
+68
+69
+70
+71</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  return nil unless file
+
+  if mod = Puppet::Module.find(path, environment) and t = mod.template(file)
+    return t
+  end
+  nil
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="split_file_path-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>split_file_path</strong>(path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Split the path into the module and the rest of the path, or return nil if
+the path is empty or absolute (starts with a /). This method can return nil
+&amp; anyone calling it needs to handle that.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_split_file_path'>split_file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>or</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>==</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 84</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">84
+85
+86
+87</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_split_file_path'>split_file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>or</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>==</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="templatepath-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>templatepath</strong>(environment = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return an array of paths by splitting the <tt>templatedir</tt> config
+parameter.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_templatepath'>templatepath</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dirs'>dirs</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='symbol'>:templatedir</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>PATH_SEPARATOR</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dirs'>dirs</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+    <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/parser/files.rb', line 74</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">74
+75
+76
+77
+78
+79
+80</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_templatepath'>templatepath</span><span class='lparen'>(</span><span class='id identifier rubyid_environment'>environment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dirs'>dirs</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='symbol'>:templatedir</span><span class='comma'>,</span> <span class='id identifier rubyid_environment'>environment</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>PATH_SEPARATOR</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dirs'>dirs</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+    <span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:07 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,3815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Application
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (A)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Puppet.html" title="Puppet (module)">Puppet</a></span></span>
+     &raquo; 
+    <span class="title">Application</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Application
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Puppet::Application</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2"><span class='object_link'><a href="Util.html" title="Puppet::Util (module)">Util</a></span></dd>
+      
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="Util.html" title="Puppet::Util (module)">Util</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/puppet/application.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Application/Agent.html" title="Puppet::Application::Agent (class)">Agent</a></span>, <span class='object_link'><a href="Application/Apply.html" title="Puppet::Application::Apply (class)">Apply</a></span>, <span class='object_link'><a href="Application/Cert.html" title="Puppet::Application::Cert (class)">Cert</a></span>, <span class='object_link'><a href="Application/Describe.html" title="Puppet::Application::Describe (class)">Describe</a></span>, <span class='object_link'><a href="Application/Doc.html" title="Puppet::Application::Doc (class)">Doc</a></span>, <span class='object_link'><a href="Application/Filebucket.html" title="Puppet::Application::Filebucket (class)">Filebucket</a></span>, <span class='object_link'><a href="Application/Inspect.html" title="Puppet::Application::Inspect (class)">Inspect</a></span>, <span class='object_link'><a href="Application/Kick.html" title="Puppet::Application::Kick (class)">Kick</a></span>, <span class='object_link'><a href="Application/Master.html" title="Puppet::Application::Master (class)">Master</a></span>, <span class='object_link'><a href="Application/Queue.html" title="Puppet::Application::Queue (class)">Queue</a></span>, <span class='object_link'><a href="Application/Resource.html" title="Puppet::Application::Resource (class)">Resource</a></span></p>
+</div>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Application/Agent.html" title="Puppet::Application::Agent (class)">Agent</a></span>, <span class='object_link'><a href="Application/Apply.html" title="Puppet::Application::Apply (class)">Apply</a></span>, <span class='object_link'><a href="Application/Cert.html" title="Puppet::Application::Cert (class)">Cert</a></span>, <span class='object_link'><a href="Application/Describe.html" title="Puppet::Application::Describe (class)">Describe</a></span>, <span class='object_link'><a href="Application/Doc.html" title="Puppet::Application::Doc (class)">Doc</a></span>, <span class='object_link'><a href="Application/Filebucket.html" title="Puppet::Application::Filebucket (class)">Filebucket</a></span>, <span class='object_link'><a href="Application/Inspect.html" title="Puppet::Application::Inspect (class)">Inspect</a></span>, <span class='object_link'><a href="Application/Kick.html" title="Puppet::Application::Kick (class)">Kick</a></span>, <span class='object_link'><a href="Application/Master.html" title="Puppet::Application::Master (class)">Master</a></span>, <span class='object_link'><a href="Application/Queue.html" title="Puppet::Application::Queue (class)">Queue</a></span>, <span class='object_link'><a href="Application/Resource.html" title="Puppet::Application::Resource (class)">Resource</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DOCPATTERN-constant" class="">DOCPATTERN =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/util/command_line/*</span><span class='tstring_end'>&quot;</span></span> <span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run_status-class_method" title="run_status (class method)">+ (Object) <strong>run_status</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute run_status.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#command_line-instance_method" title="#command_line (instance method)">- (Object) <strong>command_line</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute command_line.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">- (Object) <strong>options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute options.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Object) <strong>[]</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#banner-class_method" title="banner (class method)">+ (Object) <strong>banner</strong>(banner = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear%21-class_method" title="clear! (class method)">+ (Object) <strong>clear!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear%3F-class_method" title="clear? (class method)">+ (Boolean) <strong>clear?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Indicates that Puppet::Application believes that it&#8217;s in usual
+running run_mode (no stop/restart request currently active).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#controlled_run-class_method" title="controlled_run (class method)">+ (Object) <strong>controlled_run</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Only executes the given block if the run status of Puppet::Application is
+clear (no restarts, stops, etc. requested).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exit-class_method" title="exit (class method)">+ (Object) <strong>exit</strong>(code) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+this is used for testing.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-class_method" title="find (class method)">+ (Object) <strong>find</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#interrupted%3F-class_method" title="interrupted? (class method)">+ (Boolean) <strong>interrupted?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Indicates that one of stop! or start! was invoked on Puppet::Application,
+and some kind of process shutdown/short-circuit may be necessary.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#option-class_method" title="option (class method)">+ (Object) <strong>option</strong>(*options, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used to declare code that handle an option.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#option_parser_commands-class_method" title="option_parser_commands (class method)">+ (Object) <strong>option_parser_commands</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#restart%21-class_method" title="restart! (class method)">+ (Object) <strong>restart!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#restart_requested%3F-class_method" title="restart_requested? (class method)">+ (Boolean) <strong>restart_requested?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Indicates that Puppet::Application.restart! has been invoked and components
+should do what is necessary to facilitate a restart.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run_mode-class_method" title="run_mode (class method)">+ (Object) <strong>run_mode</strong>(mode_name = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Sets or gets the run_mode name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_not_parse_config-class_method" title="should_not_parse_config (class method)">+ (Object) <strong>should_not_parse_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_parse_config-class_method" title="should_parse_config (class method)">+ (Object) <strong>should_parse_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_parse_config%3F-class_method" title="should_parse_config? (class method)">+ (Boolean) <strong>should_parse_config?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop%21-class_method" title="stop! (class method)">+ (Object) <strong>stop!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop_requested%3F-class_method" title="stop_requested? (class method)">+ (Boolean) <strong>stop_requested?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Indicates that Puppet::Application.stop! has been invoked and components
+should do what is necessary for a clean stop.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handlearg-instance_method" title="#handlearg (instance method)">- (Object) <strong>handlearg</strong>(opt, arg) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#help-instance_method" title="#help (instance method)">- (Object) <strong>help</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Application) <strong>initialize</strong>(command_line = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Application.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#main-instance_method" title="#main (instance method)">- (Object) <strong>main</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_options-instance_method" title="#parse_options (instance method)">- (Object) <strong>parse_options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#preinit-instance_method" title="#preinit (instance method)">- (Object) <strong>preinit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+override to execute code before running anything else.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">- (Object) <strong>run</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is the main application entry point.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run_command-instance_method" title="#run_command (instance method)">- (Object) <strong>run_command</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_run_mode-instance_method" title="#set_run_mode (instance method)">- (Object) <strong>set_run_mode</strong>(mode) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+WARNING: This is a totally scary, frightening, and nasty internal API.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup-instance_method" title="#setup (instance method)">- (Object) <strong>setup</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_parse_config%3F-instance_method" title="#should_parse_config? (instance method)">- (Boolean) <strong>should_parse_config?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Util.html" title="Puppet::Util (module)">Util</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Util.html#activerecord_version-class_method" title="Puppet::Util.activerecord_version (method)">activerecord_version</a></span>, <span class='object_link'><a href="Util.html#benchmark-instance_method" title="Puppet::Util#benchmark (method)">benchmark</a></span>, <span class='object_link'><a href="Util.html#chuser-class_method" title="Puppet::Util.chuser (method)">chuser</a></span>, <span class='object_link'><a href="Util.html#classproxy-class_method" title="Puppet::Util.classproxy (method)">classproxy</a></span>, <span class='object_link'><a href="Util.html#execfail-instance_method" title="Puppet::Util#execfail (method)">execfail</a></span>, <span class='object_link'><a href="Util.html#execpipe-instance_method" title="Puppet::Util#execpipe (method)">execpipe</a></span>, <span class='object_link'><a href="Util.html#execute-instance_method" title="Puppet::Util#execute (method)">execute</a></span>, <span class='object_link'><a href="Util.html#logmethods-class_method" title="Puppet::Util.logmethods (method)">logmethods</a></span>, <span class='object_link'><a href="Util.html#memory-instance_method" title="Puppet::Util#memory (method)">memory</a></span>, <span class='object_link'><a href="Util.html#proxy-class_method" title="Puppet::Util.proxy (method)">proxy</a></span>, <span class='object_link'><a href="Util.html#recmkdir-class_method" title="Puppet::Util.recmkdir (method)">recmkdir</a></span>, <span class='object_link'><a href="Util.html#replace_file-instance_method" title="Puppet::Util#replace_file (method)">replace_file</a></span>, <span class='object_link'><a href="Util.html#symbolize-instance_method" title="Puppet::Util#symbolize (method)">symbolize</a></span>, <span class='object_link'><a href="Util.html#symbolizehash-instance_method" title="Puppet::Util#symbolizehash (method)">symbolizehash</a></span>, <span class='object_link'><a href="Util.html#symbolizehash%21-instance_method" title="Puppet::Util#symbolizehash! (method)">symbolizehash!</a></span>, <span class='object_link'><a href="Util.html#synchronize_on-class_method" title="Puppet::Util.synchronize_on (method)">synchronize_on</a></span>, <span class='object_link'><a href="Util.html#thinmark-instance_method" title="Puppet::Util#thinmark (method)">thinmark</a></span>, <span class='object_link'><a href="Util.html#threadlock-instance_method" title="Puppet::Util#threadlock (method)">threadlock</a></span>, <span class='object_link'><a href="Util.html#which-instance_method" title="Puppet::Util#which (method)">which</a></span>, <span class='object_link'><a href="Util.html#withumask-class_method" title="Puppet::Util.withumask (method)">withumask</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Util/POSIX.html" title="Puppet::Util::POSIX (module)">Util::POSIX</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Util/POSIX.html#get_posix_field-instance_method" title="Puppet::Util::POSIX#get_posix_field (method)">#get_posix_field</a></span>, <span class='object_link'><a href="Util/POSIX.html#gid-instance_method" title="Puppet::Util::POSIX#gid (method)">#gid</a></span>, <span class='object_link'><a href="Util/POSIX.html#idfield-instance_method" title="Puppet::Util::POSIX#idfield (method)">#idfield</a></span>, <span class='object_link'><a href="Util/POSIX.html#methodbyid-instance_method" title="Puppet::Util::POSIX#methodbyid (method)">#methodbyid</a></span>, <span class='object_link'><a href="Util/POSIX.html#methodbyname-instance_method" title="Puppet::Util::POSIX#methodbyname (method)">#methodbyname</a></span>, <span class='object_link'><a href="Util/POSIX.html#search_posix_field-instance_method" title="Puppet::Util::POSIX#search_posix_field (method)">#search_posix_field</a></span>, <span class='object_link'><a href="Util/POSIX.html#uid-instance_method" title="Puppet::Util::POSIX#uid (method)">#uid</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Application (class)">Application</a></span></tt>) <strong>initialize</strong>(command_line = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Application
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+265
+266
+267
+268
+269
+270
+271
+272</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 265</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_command_line'>command_line</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/util/command_line</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@command_line</span> <span class='op'>=</span> <span class='id identifier rubyid_command_line'>command_line</span> <span class='op'>||</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>CommandLine</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_set_run_mode'>set_run_mode</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 265</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">265
+266
+267
+268
+269
+270
+271
+272
+273</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_command_line'>command_line</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/util/command_line</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@command_line</span> <span class='op'>=</span> <span class='id identifier rubyid_command_line'>command_line</span> <span class='op'>||</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>CommandLine</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_set_run_mode'>set_run_mode</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="run_status=-class_method"></span>
+      <span id="run_status-class_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="run_status-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run_status</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute run_status
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run_status'>run_status</span>
+  <span class='ivar'>@run_status</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 127</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">127
+128
+129
+130</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_run_status'>run_status</span>
+  <span class='ivar'>@run_status</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="command_line-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="command_line-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>command_line</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute command_line
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_command_line'>command_line</span>
+  <span class='ivar'>@command_line</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 244</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">244
+245
+246
+247</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_command_line'>command_line</span>
+  <span class='ivar'>@command_line</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id=""></span>
+      <span id="options-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="options-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>options</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute options
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 244</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">244
+245
+246
+247</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@options</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>[]</strong>(name) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 229</span>
+
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 229</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">229
+230
+231
+232</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="banner-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>banner</strong>(banner = nil) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 204</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@banner</span> <span class='op'>||=</span> <span class='id identifier rubyid_banner'>banner</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 204</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">204
+205
+206
+207</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@banner</span> <span class='op'>||=</span> <span class='id identifier rubyid_banner'>banner</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="clear!-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>clear!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear!'>clear!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 129</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">129
+130
+131
+132</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_clear!'>clear!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="clear?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>clear?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Indicates that Puppet::Application believes that it&#8217;s in usual
+running run_mode (no stop/restart request currently active).
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear?'>clear?</span>
+  <span class='id identifier rubyid_run_status'>run_status</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 161</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">161
+162
+163
+164</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_clear?'>clear?</span>
+  <span class='id identifier rubyid_run_status'>run_status</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="controlled_run-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>controlled_run</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Only executes the given block if the run status of Puppet::Application is
+clear (no restarts, stops, etc. requested). Upon block execution, checks
+the run status again; if a restart has been requested during the
+block&#8217;s execution, then controlled_run will send a new HUP signal to
+the current process. Thus, long-running background processes can
+potentially finish their work before a restart.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173
+174
+175</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_controlled_run'>controlled_run</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_clear?'>clear?</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+  <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='symbol'>:HUP</span><span class='comma'>,</span> <span class='gvar'>$PID</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_restart_requested?'>restart_requested?</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 170</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">170
+171
+172
+173
+174
+175
+176</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_controlled_run'>controlled_run</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_clear?'>clear?</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+  <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='symbol'>:HUP</span><span class='comma'>,</span> <span class='gvar'>$PID</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_restart_requested?'>restart_requested?</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="exit-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>exit</strong>(code) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+this is used for testing
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+380
+381
+382</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 380</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 380</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">380
+381
+382
+383</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="find-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>find</strong>(name) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
+
+  <span class='comment'># const_defined? is used before const_get since const_defined? will only
+</span>  <span class='comment'># check within our namespace, whereas const_get will check ancestor
+</span>  <span class='comment'># trees as well, resulting in unexpected behaviour.
+</span>  <span class='kw'>if</span> <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_defined?'>const_defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unable to find application '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>'.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 215</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">215
+216
+217
+218</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def find(name)
+  klass = name.to_s.capitalize
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+const_defined? is used before const_get since const_defined? will only
+check within our namespace, whereas const_get will check ancestor trees as
+well, resulting in unexpected behaviour.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">221
+222
+223
+224
+225
+226
+227
+228</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  if !self.const_defined?(klass)
+    puts &quot;Unable to find application '#{name.to_s}'.&quot;
+    Kernel::exit(1)
+  end
+
+  self.const_get(klass)
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="interrupted?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>interrupted?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Indicates that one of stop! or start! was invoked on Puppet::Application,
+and some kind of process shutdown/short-circuit may be necessary.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155
+156
+157</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 155</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_interrupted?'>interrupted?</span>
+  <span class='lbracket'>[</span><span class='symbol'>:restart_requested</span><span class='comma'>,</span> <span class='symbol'>:stop_requested</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 155</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">155
+156
+157
+158</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_interrupted?'>interrupted?</span>
+  <span class='lbracket'>[</span><span class='symbol'>:restart_requested</span><span class='comma'>,</span> <span class='symbol'>:stop_requested</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="option-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>option</strong>(*options, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used to declare code that handle an option
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_option'>option</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_long'>long</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_opt'>opt</span><span class='op'>|</span> <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^--</span><span class='regexp_end'>/</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^--(?:\[no-\])?([^ =]+).*$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>\1</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fname'>fname</span> <span class='op'>=</span> <span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>handle_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_long'>long</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_block_given?'>block_given?</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_fname'>fname</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_fname'>fname</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_long'>long</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span> <span class='op'>&lt;&lt;</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_fname'>fname</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 191</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_option'>option</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_long'>long</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_opt'>opt</span><span class='op'>|</span> <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^--</span><span class='regexp_end'>/</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^--(?:\[no-\])?([^ =]+).*$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>\1</span><span class='tstring_end'>'</span></span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fname'>fname</span> <span class='op'>=</span> <span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>handle_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_long'>long</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_block_given?'>block_given?</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_fname'>fname</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_fname'>fname</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_long'>long</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span> <span class='op'>&lt;&lt;</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_fname'>fname</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="option_parser_commands-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>option_parser_commands</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span>
+  <span class='ivar'>@option_parser_commands</span> <span class='op'>||=</span> <span class='lparen'>(</span>
+    <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:option_parser_commands</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='rparen'>)</span>
+  <span class='ivar'>@option_parser_commands</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 208</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">208
+209
+210
+211
+212
+213
+214</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span>
+  <span class='ivar'>@option_parser_commands</span> <span class='op'>||=</span> <span class='lparen'>(</span>
+    <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:option_parser_commands</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='rparen'>)</span>
+  <span class='ivar'>@option_parser_commands</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="restart!-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>restart!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restart!'>restart!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='symbol'>:restart_requested</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 137</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">137
+138
+139
+140</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_restart!'>restart!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='symbol'>:restart_requested</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="restart_requested?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>restart_requested?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Indicates that Puppet::Application.restart! has been invoked and components
+should do what is necessary to facilitate a restart.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restart_requested?'>restart_requested?</span>
+  <span class='symbol'>:restart_requested</span> <span class='op'>==</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 143</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">143
+144
+145
+146</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_restart_requested?'>restart_requested?</span>
+  <span class='symbol'>:restart_requested</span> <span class='op'>==</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="run_mode-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run_mode</strong>(mode_name = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Sets or gets the run_mode name. Sets the run_mode name if a mode_name is
+passed. Otherwise, gets the run_mode or a default run_mode
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 236</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run_mode'>run_mode</span><span class='lparen'>(</span> <span class='id identifier rubyid_mode_name'>mode_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='ivar'>@run_mode</span> <span class='kw'>if</span> <span class='ivar'>@run_mode</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_mode_name'>mode_name</span>
+
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/util/run_mode</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@run_mode</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>RunMode</span><span class='lbracket'>[</span> <span class='id identifier rubyid_mode_name'>mode_name</span> <span class='op'>||</span> <span class='symbol'>:user</span> <span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 236</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">236
+237
+238
+239
+240
+241
+242</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_run_mode'>run_mode</span><span class='lparen'>(</span> <span class='id identifier rubyid_mode_name'>mode_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='ivar'>@run_mode</span> <span class='kw'>if</span> <span class='ivar'>@run_mode</span> <span class='kw'>and</span> <span class='kw'>not</span> <span class='id identifier rubyid_mode_name'>mode_name</span>
+
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>puppet/util/run_mode</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@run_mode</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>RunMode</span><span class='lbracket'>[</span> <span class='id identifier rubyid_mode_name'>mode_name</span> <span class='op'>||</span> <span class='symbol'>:user</span> <span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="should_not_parse_config-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>should_not_parse_config</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_should_not_parse_config'>should_not_parse_config</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 181</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">181
+182
+183
+184</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_should_not_parse_config'>should_not_parse_config</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="should_parse_config-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>should_parse_config</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config'>should_parse_config</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 177</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">177
+178
+179
+180</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config'>should_parse_config</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="should_parse_config?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>should_parse_config?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 185</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='op'>!</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@parse_config</span><span class='rparen'>)</span>
+  <span class='ivar'>@parse_config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 185</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">185
+186
+187
+188
+189</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='ivar'>@parse_config</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='op'>!</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@parse_config</span><span class='rparen'>)</span>
+  <span class='ivar'>@parse_config</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="stop!-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>stop!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='symbol'>:stop_requested</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 133</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">133
+134
+135
+136</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_stop!'>stop!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run_status'>run_status</span> <span class='op'>=</span> <span class='symbol'>:stop_requested</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="stop_requested?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>stop_requested?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Indicates that Puppet::Application.stop! has been invoked and components
+should do what is necessary for a clean stop.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop_requested?'>stop_requested?</span>
+  <span class='symbol'>:stop_requested</span> <span class='op'>==</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 149</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">149
+150
+151
+152</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_stop_requested?'>stop_requested?</span>
+  <span class='symbol'>:stop_requested</span> <span class='op'>==</span> <span class='id identifier rubyid_run_status'>run_status</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="handlearg-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>handlearg</strong>(opt, arg) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 361</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handlearg'>handlearg</span><span class='lparen'>(</span><span class='id identifier rubyid_opt'>opt</span><span class='comma'>,</span> <span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+  <span class='comment'># rewrite --[no-]option to --no-option if that's what was given
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[no-\]</span><span class='regexp_end'>/</span></span> <span class='kw'>and</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span>
+    <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=</span> <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[no-\]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>no-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='comment'># otherwise remove the [no-] prefix to not confuse everybody
+</span>  <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=</span> <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[no-\]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:handle_unknown</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:handle_unknown</span><span class='comma'>,</span> <span class='id identifier rubyid_opt'>opt</span><span class='comma'>,</span> <span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+    <span class='comment'># Puppet.settings.handlearg doesn't handle direct true/false :-)
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>FalseClass</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>false</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>TrueClass</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_arg'>arg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_handlearg'>handlearg</span><span class='lparen'>(</span><span class='id identifier rubyid_opt'>opt</span><span class='comma'>,</span> <span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 361</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">361
+362</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def handlearg(opt, arg)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+rewrite --[no-]option to --no-option if that&#8217;s what was
+given
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">363
+364
+365
+366</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  <span class='kw'>if</span> <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[no-\]</span><span class='regexp_end'>/</span></span> <span class='kw'>and</span> <span class='op'>!</span><span class='id identifier rubyid_arg'>arg</span>
+    <span class='id identifier rubyid_opt'>opt</span> <span class='op'>=</span> <span class='id identifier rubyid_opt'>opt</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[no-\]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>no-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+otherwise remove the [no-] prefix to not confuse everybody
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">367
+368
+369</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  opt = opt.gsub(/\[no-\]/, '')
+  unless respond_to?(:handle_unknown) and send(:handle_unknown, opt, arg)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Puppet.settings.handlearg doesn&#8217;t handle direct true/false :-)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">370
+371
+372
+373
+374
+375
+376
+377
+378</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if arg.is_a?(FalseClass)
+      arg = &quot;false&quot;
+    elsif arg.is_a?(TrueClass)
+      arg = &quot;true&quot;
+    end
+    Puppet.settings.handlearg(opt, arg)
+  end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="help-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>help</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 388</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_help'>help</span>
+  <span class='kw'>if</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_usage?'>usage?</span>
+    <span class='comment'># RH:FIXME: My goodness, this is ugly.
+</span>    <span class='op'>::</span><span class='const'>RDoc</span><span class='period'>.</span><span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PuppetSourceFile</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='comment'>#:stopdoc: # Issue #4161
+</span>    <span class='kw'>def</span> <span class='lparen'>(</span><span class='op'>::</span><span class='const'>RDoc</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_caller'>caller</span>
+      <span class='id identifier rubyid_docfile'>docfile</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>grep -l 'Puppet::Application\\[:</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'>RDoc</span><span class='op'>::</span><span class='const'>PuppetSourceFile</span><span class='rbrace'>}</span><span class='tstring_content'>\\]' </span><span class='embexpr_beg'>#{</span><span class='const'>DOCPATTERN</span><span class='rbrace'>}</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+      <span class='kw'>super</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_docfile'>docfile</span><span class='rbrace'>}</span><span class='tstring_content'>:0</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='comment'>#:startdoc:
+</span>    <span class='op'>::</span><span class='const'>RDoc</span><span class='op'>::</span><span class='id identifier rubyid_usage'>usage</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_exit'>exit</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No help available unless you have RDoc::usage installed</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span>
+  <span class='kw'>end</span>
+<span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>ENOENT</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No help available for puppet </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_exit'>exit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 388</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">388
+389
+390</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def help
+  if Puppet.features.usage?</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+RH:FIXME: My goodness, this is ugly.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">391
+392</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='op'>::</span><span class='const'>RDoc</span><span class='period'>.</span><span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PuppetSourceFile</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+:stopdoc: # Issue #4161
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">393
+394
+395
+396
+397</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='kw'>def</span> <span class='lparen'>(</span><span class='op'>::</span><span class='const'>RDoc</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_caller'>caller</span>
+      <span class='id identifier rubyid_docfile'>docfile</span> <span class='op'>=</span> <span class='backtick'>`</span><span class='tstring_content'>grep -l 'Puppet::Application\\[:</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'>RDoc</span><span class='op'>::</span><span class='const'>PuppetSourceFile</span><span class='rbrace'>}</span><span class='tstring_content'>\\]' </span><span class='embexpr_beg'>#{</span><span class='const'>DOCPATTERN</span><span class='rbrace'>}</span><span class='tstring_end'>`</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+      <span class='kw'>super</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_docfile'>docfile</span><span class='rbrace'>}</span><span class='tstring_content'>:0</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+:startdoc:
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">398
+399
+400
+401
+402
+403
+404
+405
+406
+407</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    ::RDoc::usage &amp;&amp; exit
+  else
+    puts &quot;No help available unless you have RDoc::usage installed&quot;
+    exit
+  end
+rescue Errno::ENOENT
+  puts &quot;No help available for puppet #{name}&quot;
+  exit
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="main-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>main</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+308
+309
+310</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 308</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_main'>main</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No valid command or main</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 308</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">308
+309
+310
+311</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_main'>main</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No valid command or main</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>name</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+384
+385
+386</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 384</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.*::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 384</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">384
+385
+386
+387</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.*::</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_options-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>parse_options</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 330</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_options'>parse_options</span>
+  <span class='comment'># Create an option parser
+</span>  <span class='id identifier rubyid_option_parser'>option_parser</span> <span class='op'>=</span> <span class='const'>OptionParser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='rparen'>)</span>
+
+  <span class='comment'># Add all global options to it.
+</span>  <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_optparse_addargs'>optparse_addargs</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_option'>option</span><span class='op'>|</span>
+    <span class='id identifier rubyid_option_parser'>option_parser</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_option'>option</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+      <span class='id identifier rubyid_handlearg'>handlearg</span><span class='lparen'>(</span><span class='id identifier rubyid_option'>option</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Add options that are local to this application, which were
+</span>  <span class='comment'># created using the &quot;option()&quot; metaprogramming method.  If there
+</span>  <span class='comment'># are any conflicts, this application's options will be favored.
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_option_parser_commands'>option_parser_commands</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_fname'>fname</span><span class='op'>|</span>
+    <span class='id identifier rubyid_option_parser'>option_parser</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='comment'># Call the method that &quot;option()&quot; created.
+</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_fname'>fname</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># scan command line.
+</span>  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_option_parser'>option_parser</span><span class='period'>.</span><span class='id identifier rubyid_parse!'>parse!</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_command_line'>command_line</span><span class='period'>.</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>OptionParser</span><span class='op'>::</span><span class='const'>ParseError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+    <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_detail'>detail</span>
+    <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Try 'puppet </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_command_line'>command_line</span><span class='period'>.</span><span class='id identifier rubyid_subcommand_name'>subcommand_name</span><span class='rbrace'>}</span><span class='tstring_content'> --help'</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 330</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">330
+331</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def parse_options</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Create an option parser
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">332
+333
+334</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  <span class='id identifier rubyid_option_parser'>option_parser</span> <span class='op'>=</span> <span class='const'>OptionParser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='rparen'>)</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Add all global options to it.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">335
+336
+337
+338
+339
+340
+341</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_optparse_addargs'>optparse_addargs</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_option'>option</span><span class='op'>|</span>
+    <span class='id identifier rubyid_option_parser'>option_parser</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_option'>option</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span>
+      <span class='id identifier rubyid_handlearg'>handlearg</span><span class='lparen'>(</span><span class='id identifier rubyid_option'>option</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_arg'>arg</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Add options that are local to this application, which were created using
+the &#8220;option()&#8221; metaprogramming method.  If there are any
+conflicts, this application&#8217;s options will be favored.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">344
+345
+346</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  self.class.option_parser_commands.each do |options, fname|
+    option_parser.on(*options) do |value|</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Call the method that &#8220;option()&#8221; created.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">347
+348
+349
+350
+351</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">      self.send(fname, value)
+    end
+  end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+scan command line.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">352
+353
+354
+355
+356
+357
+358
+359
+360</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  begin
+    option_parser.parse!(self.command_line.args)
+  rescue OptionParser::ParseError =&gt; detail
+    $stderr.puts detail
+    $stderr.puts &quot;Try 'puppet #{command_line.subcommand_name} --help'&quot;
+    exit(1)
+  end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="preinit-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>preinit</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+override to execute code before running anything else
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_preinit'>preinit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 262</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">262
+263
+264</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_preinit'>preinit</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="run-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is the main application entry point
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302
+303
+304
+305
+306</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 300</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>initialize</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>               <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>preinit</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>       <span class='lbrace'>{</span> <span class='id identifier rubyid_preinit'>preinit</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>parse options</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>            <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>parse_options</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_parse_options'>parse_options</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>parse configuration file</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>prepare for execution</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>setup</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>         <span class='lbrace'>{</span> <span class='id identifier rubyid_setup'>setup</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>run</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>                      <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>run_command</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>   <span class='lbrace'>{</span> <span class='id identifier rubyid_run_command'>run_command</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 300</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">300
+301
+302
+303
+304
+305
+306
+307</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>initialize</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>               <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>preinit</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>       <span class='lbrace'>{</span> <span class='id identifier rubyid_preinit'>preinit</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>parse options</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>            <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>parse_options</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_parse_options'>parse_options</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>parse configuration file</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>prepare for execution</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>setup</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>         <span class='lbrace'>{</span> <span class='id identifier rubyid_setup'>setup</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_exit_on_fail'>exit_on_fail</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>run</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>                      <span class='lbrace'>{</span> <span class='id identifier rubyid_hook'>hook</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>run_command</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>   <span class='lbrace'>{</span> <span class='id identifier rubyid_run_command'>run_command</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="run_command-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run_command</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+312
+313
+314</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 312</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run_command'>run_command</span>
+  <span class='id identifier rubyid_main'>main</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 312</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">312
+313
+314
+315</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_run_command'>run_command</span>
+  <span class='id identifier rubyid_main'>main</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_run_mode-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>set_run_mode</strong>(mode) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+WARNING: This is a totally scary, frightening, and nasty internal API.  We
+strongly advise that you do not use this, and if you insist, we will
+politely allow you to keep both pieces of your broken code.
+</p>
+<p>
+We plan to provide a supported, long-term API to deliver this in a way that
+you can use.  Please make sure that you let us know if you do require this,
+and this message is still present in the code. --daniel 2011-02-03
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 281</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_run_mode'>set_run_mode</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span>
+  <span class='ivar'>@run_mode</span> <span class='op'>=</span> <span class='id identifier rubyid_mode'>mode</span>
+  <span class='gvar'>$puppet_application_mode</span> <span class='op'>=</span> <span class='ivar'>@run_mode</span>
+  <span class='gvar'>$puppet_application_name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+
+  <span class='kw'>if</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:settings</span>
+    <span class='comment'># This is to reduce the amount of confusion in rspec
+</span>    <span class='comment'># because it might have loaded defaults.rb before the globals were set
+</span>    <span class='comment'># and thus have the wrong defaults for the current application
+</span>    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:confdir</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span><span class='period'>.</span><span class='id identifier rubyid_conf_dir'>conf_dir</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:vardir</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span><span class='period'>.</span><span class='id identifier rubyid_var_dir'>var_dir</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_application_name'>application_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:logdir</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span><span class='period'>.</span><span class='id identifier rubyid_logopts'>logopts</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:rundir</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span><span class='period'>.</span><span class='id identifier rubyid_run_dir'>run_dir</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_set_value'>set_value</span><span class='lparen'>(</span><span class='symbol'>:run_mode</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_run_mode'>run_mode</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='symbol'>:mutable_defaults</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 281</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">281
+282
+283
+284
+285
+286
+287</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def set_run_mode(mode)
+  @run_mode = mode
+  $puppet_application_mode = @run_mode
+  $puppet_application_name = name
+
+  if Puppet.respond_to? :settings</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This is to reduce the amount of confusion in rspec because it might have
+loaded defaults.rb before the globals were set and thus have the wrong
+defaults for the current application
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">290
+291
+292
+293
+294
+295
+296
+297
+298</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    Puppet.settings.set_value(:confdir, Puppet.run_mode.conf_dir, :mutable_defaults)
+    Puppet.settings.set_value(:vardir, Puppet.run_mode.var_dir, :mutable_defaults)
+    Puppet.settings.set_value(:name, Puppet.application_name.to_s, :mutable_defaults)
+    Puppet.settings.set_value(:logdir, Puppet.run_mode.logopts, :mutable_defaults)
+    Puppet.settings.set_value(:rundir, Puppet.run_mode.run_dir, :mutable_defaults)
+    Puppet.settings.set_value(:run_mode, Puppet.run_mode.name.to_s, :mutable_defaults)
+  end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>setup</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 316</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setup'>setup</span>
+  <span class='comment'># Handle the logging settings
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:debug</span><span class='rbracket'>]</span> <span class='kw'>or</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:verbose</span><span class='rbracket'>]</span>
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_newdestination'>newdestination</span><span class='lparen'>(</span><span class='symbol'>:console</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:debug</span><span class='rbracket'>]</span>
+      <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='symbol'>:debug</span>
+    <span class='kw'>else</span>
+      <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='symbol'>:info</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_newdestination'>newdestination</span><span class='lparen'>(</span><span class='symbol'>:syslog</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:setdest</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 316</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">316
+317</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def setup</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Handle the logging settings
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">  if options[:debug] or options[:verbose]
+    Puppet::Util::Log.newdestination(:console)
+    if options[:debug]
+      Puppet::Util::Log.level = :debug
+    else
+      Puppet::Util::Log.level = :info
+    end
+  end
+
+  Puppet::Util::Log.newdestination(:syslog) unless options[:setdest]
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="should_parse_config?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>should_parse_config?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/application.rb', line 257</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">257
+258
+259
+260</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_should_parse_config?'>should_parse_config?</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:14:06 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
