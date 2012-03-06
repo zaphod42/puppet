@@ -1,0 +1,3328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Puppet::Util
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (U)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Puppet.html" title="Puppet (module)">Puppet</a></span></span>
+     &raquo; 
+    <span class="title">Util</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Puppet::Util
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1">POSIX</dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="DSL/Aspect.html" title="Puppet::DSL::Aspect (class)">DSL::Aspect</a></span>, <span class='object_link'><a href="DSL/Aspect.html" title="Puppet::DSL::Aspect (class)">DSL::Aspect</a></span>, <span class='object_link'><a href="Daemon.html" title="Puppet::Daemon (module)">Daemon</a></span>, <span class='object_link'><a href="Network/Client.html" title="Puppet::Network::Client (class)">Network::Client</a></span>, <span class='object_link'><a href="Network/Handler.html" title="Puppet::Network::Handler (class)">Network::Handler</a></span>, <span class='object_link'><a href="Network/XMLRPCClient.html" title="Puppet::Network::XMLRPCClient (class)">Network::XMLRPCClient</a></span>, <span class='object_link'><a href="Network/XMLRPCServer.html" title="Puppet::Network::XMLRPCServer (class)">Network::XMLRPCServer</a></span>, <span class='object_link'><a href="Node/Catalog/Compiler.html" title="Puppet::Node::Catalog::Compiler (class)">Node::Catalog::Compiler</a></span>, <span class='object_link'><a href="Node/Exec.html" title="Puppet::Node::Exec (class)">Node::Exec</a></span>, <span class='object_link'><a href="PGraph.html" title="Puppet::PGraph (class)">PGraph</a></span>, <span class='object_link'><a href="Parameter.html" title="Puppet::Parameter (class)">Parameter</a></span>, <span class='object_link'><a href="Parameter.html" title="Puppet::Parameter (class)">Parameter</a></span>, <span class='object_link'><a href="Parser/Compiler.html" title="Puppet::Parser::Compiler (class)">Parser::Compiler</a></span>, <span class='object_link'><a href="Parser/Interpreter.html" title="Puppet::Parser::Interpreter (class)">Parser::Interpreter</a></span>, <span class='object_link'><a href="Parser/Resource.html" title="Puppet::Parser::Resource (class)">Parser::Resource</a></span>, <span class='object_link'><a href="Parser/Resource/Param.html" title="Puppet::Parser::Resource::Param (class)">Parser::Resource::Param</a></span>, <span class='object_link'><a href="Parser/TemplateWrapper.html" title="Puppet::Parser::TemplateWrapper (class)">Parser::TemplateWrapper</a></span>, <span class='object_link'><a href="Provider.html" title="Puppet::Provider (class)">Provider</a></span>, <span class='object_link'><a href="Provider.html" title="Puppet::Provider (class)">Provider</a></span>, <span class='object_link'><a href="Provider/Confine.html" title="Puppet::Provider::Confine (class)">Provider::Confine</a></span>, <span class='object_link'><a href="Rails/Host.html" title="Puppet::Rails::Host (class)">Rails::Host</a></span>, <span class='object_link'><a href="Transaction.html" title="Puppet::Transaction (class)">Transaction</a></span>, <span class='object_link'><a href="Util/Autoload.html" title="Puppet::Util::Autoload (class)">Autoload</a></span>, <span class='object_link'><a href="Util/ClassGen.html" title="Puppet::Util::ClassGen (module)">ClassGen</a></span>, <span class='object_link'><a href="Util/ConfigStore.html" title="Puppet::Util::ConfigStore (class)">ConfigStore</a></span>, <span class='object_link'><a href="Util/Diff.html" title="Puppet::Util::Diff (module)">Diff</a></span>, <span class='object_link'><a href="Util/FactStore.html" title="Puppet::Util::FactStore (class)">FactStore</a></span>, <span class='object_link'><a href="Util/InstanceLoader.html" title="Puppet::Util::InstanceLoader (module)">InstanceLoader</a></span>, <span class='object_link'><a href="Util/ProviderFeatures/ProviderFeature.html" title="Puppet::Util::ProviderFeatures::ProviderFeature (class)">ProviderFeatures::ProviderFeature</a></span>, <span class='object_link'><a href="Util/Reference.html" title="Puppet::Util::Reference (class)">Reference</a></span>, <span class='object_link'><a href="Util/Storage.html" title="Puppet::Util::Storage (class)">Storage</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/util/fact_store.rb<span class="defines">,<br />
+  lib/puppet/util.rb,<br /> lib/puppet/util/config_store.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Created on 2007-05-02 Copyright Luke Kanies
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Util/Checksums.html" title="Puppet::Util::Checksums (module)">Checksums</a></span>, <span class='object_link'><a href="Util/ClassGen.html" title="Puppet::Util::ClassGen (module)">ClassGen</a></span>, <span class='object_link'><a href="Util/CollectionMerger.html" title="Puppet::Util::CollectionMerger (module)">CollectionMerger</a></span>, <span class='object_link'><a href="Util/ConstantInflector.html" title="Puppet::Util::ConstantInflector (module)">ConstantInflector</a></span>, <span class='object_link'><a href="Util/Diff.html" title="Puppet::Util::Diff (module)">Diff</a></span>, <span class='object_link'><a href="Util/Docs.html" title="Puppet::Util::Docs (module)">Docs</a></span>, <span class='object_link'><a href="Util/Errors.html" title="Puppet::Util::Errors (module)">Errors</a></span>, <span class='object_link'><a href="Util/Execution.html" title="Puppet::Util::Execution (module)">Execution</a></span>, <span class='object_link'><a href="Util/FileLocking.html" title="Puppet::Util::FileLocking (module)">FileLocking</a></span>, <span class='object_link'><a href="Util/Graph.html" title="Puppet::Util::Graph (module)">Graph</a></span>, <span class='object_link'><a href="Util/IniConfig.html" title="Puppet::Util::IniConfig (module)">IniConfig</a></span>, <span class='object_link'><a href="Util/InstanceLoader.html" title="Puppet::Util::InstanceLoader (module)">InstanceLoader</a></span>, <span class='object_link'><a href="Util/Ldap.html" title="Puppet::Util::Ldap (module)">Ldap</a></span>, <span class='object_link'><a href="Util/LogPaths.html" title="Puppet::Util::LogPaths (module)">LogPaths</a></span>, <span class='object_link'><a href="Util/Logging.html" title="Puppet::Util::Logging (module)">Logging</a></span>, <span class='object_link'><a href="Util/MethodHelper.html" title="Puppet::Util::MethodHelper (module)">MethodHelper</a></span>, <span class='object_link'><a href="Util/NagiosMaker.html" title="Puppet::Util::NagiosMaker (module)">NagiosMaker</a></span>, <span class='object_link'><a href="Util/Package.html" title="Puppet::Util::Package (module)">Package</a></span>, <span class='object_link'><a href="Util/ProviderFeatures.html" title="Puppet::Util::ProviderFeatures (module)">ProviderFeatures</a></span>, <span class='object_link'><a href="Util/RDoc.html" title="Puppet::Util::RDoc (module)">RDoc</a></span>, <span class='object_link'><a href="Util/ReferenceSerializer.html" title="Puppet::Util::ReferenceSerializer (module)">ReferenceSerializer</a></span>, <span class='object_link'><a href="Util/SELinux.html" title="Puppet::Util::SELinux (module)">SELinux</a></span>, <span class='object_link'><a href="Util/SUIDManager.html" title="Puppet::Util::SUIDManager (module)">SUIDManager</a></span>, <span class='object_link'><a href="Util/SubclassLoader.html" title="Puppet::Util::SubclassLoader (module)">SubclassLoader</a></span>, <span class='object_link'><a href="Util/Tagging.html" title="Puppet::Util::Tagging (module)">Tagging</a></span>, <span class='object_link'><a href="Util/URIHelper.html" title="Puppet::Util::URIHelper (module)">URIHelper</a></span>, <span class='object_link'><a href="Util/Warnings.html" title="Puppet::Util::Warnings (module)">Warnings</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Util/Autoload.html" title="Puppet::Util::Autoload (class)">Autoload</a></span>, <span class='object_link'><a href="Util/ConfigStore.html" title="Puppet::Util::ConfigStore (class)">ConfigStore</a></span>, <span class='object_link'><a href="Util/FactStore.html" title="Puppet::Util::FactStore (class)">FactStore</a></span>, <span class='object_link'><a href="Util/Feature.html" title="Puppet::Util::Feature (class)">Feature</a></span>, <span class='object_link'><a href="Util/FileType.html" title="Puppet::Util::FileType (class)">FileType</a></span>, <span class='object_link'><a href="Util/LoadedFile.html" title="Puppet::Util::LoadedFile (class)">LoadedFile</a></span>, <span class='object_link'><a href="Util/Metric.html" title="Puppet::Util::Metric (class)">Metric</a></span>, <span class='object_link'><a href="Util/Pidlock.html" title="Puppet::Util::Pidlock (class)">Pidlock</a></span>, <span class='object_link'><a href="Util/Reference.html" title="Puppet::Util::Reference (class)">Reference</a></span>, <span class='object_link'><a href="Util/ResourceTemplate.html" title="Puppet::Util::ResourceTemplate (class)">ResourceTemplate</a></span>, <span class='object_link'><a href="Util/Storage.html" title="Puppet::Util::Storage (class)">Storage</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="syncresources-classvariable" class="">@@syncresources =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+Create a hash to store the different sync objects.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span><span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#chuser-class_method" title="chuser (class method)">+ (Object) <strong>chuser</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Change the process to a different user.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#classproxy-class_method" title="classproxy (class method)">+ (Object) <strong>classproxy</strong>(klass, objmethod, *methods) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Proxy a bunch of methods to another object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logmethods-class_method" title="logmethods (class method)">+ (Object) <strong>logmethods</strong>(klass, useself = true) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create instance methods for each of the log levels.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy-class_method" title="proxy (class method)">+ (Object) <strong>proxy</strong>(klass, objmethod, *methods) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Proxy a bunch of methods to another object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#recmkdir-class_method" title="recmkdir (class method)">+ (Object) <strong>recmkdir</strong>(dir, mode = 0755) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+XXX this should all be done using puppet objects, not using normal mkdir.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sync-class_method" title="sync (class method)">+ (Object) <strong>sync</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return the sync object associated with a given resource.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#withumask-class_method" title="withumask (class method)">+ (Object) <strong>withumask</strong>(mask) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Execute a given chunk of code with a new umask.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#benchmark-instance_method" title="#benchmark (instance method)">- (Object) <strong>benchmark</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#binary-instance_method" title="#binary (instance method)">- (Object) <strong>binary</strong>(bin) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execfail-instance_method" title="#execfail (instance method)">- (Object) <strong>execfail</strong>(command, exception) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execpipe-instance_method" title="#execpipe (instance method)">- (Object) <strong>execpipe</strong>(command, failonfail = true) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Execute the provided command in a pipe, yielding the pipe object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong>(command, arguments = {:failonfail =&gt; true, :combine =&gt; true}) </a>
+    
+
+    
+      (also: #util_execute)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Execute the desired command, and return the status and output.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#memory-instance_method" title="#memory (instance method)">- (Object) <strong>memory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#secure_open-instance_method" title="#secure_open (instance method)">- (Object) <strong>secure_open</strong>(file, must_be_w, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#symbolize-instance_method" title="#symbolize (instance method)">- (Object) <strong>symbolize</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#symbolizehash-instance_method" title="#symbolizehash (instance method)">- (Object) <strong>symbolizehash</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#symbolizehash%21-instance_method" title="#symbolizehash! (instance method)">- (Object) <strong>symbolizehash!</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#thinmark-instance_method" title="#thinmark (instance method)">- (Object) <strong>thinmark</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Just benchmark, with no logging.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#threadlock-instance_method" title="#threadlock (instance method)">- (Object) <strong>threadlock</strong>(resource, type = Sync::EX) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create an exclusive lock.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="chuser-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>chuser</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Change the process to a different user
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_chuser'>chuser</span>
+    <span class='kw'>if</span> <span class='const'>Facter</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>operatingsystem</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Darwin</span><span class='tstring_end'>&quot;</span></span>
+        <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Ruby on darwin is broken; puppetmaster will not set its UID to 'puppet' and must run as root</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>return</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:group</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gid'>gid</span><span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_group'>group</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Error</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No such group %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:group</span><span class='rbracket'>]</span>
+        <span class='kw'>end</span>
+        <span class='kw'>unless</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_gid'>gid</span> <span class='op'>==</span> <span class='id identifier rubyid_group'>group</span>
+            <span class='kw'>begin</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_egid'>egid</span> <span class='op'>=</span> <span class='id identifier rubyid_group'>group</span> 
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_gid'>gid</span> <span class='op'>=</span> <span class='id identifier rubyid_group'>group</span> 
+            <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+                <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>could not change to group %s: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span>
+                    <span class='lbracket'>[</span><span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='comma'>,</span> <span class='id identifier rubyid_detail'>detail</span><span class='rbracket'>]</span>
+                <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>could not change to group %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+
+                <span class='comment'># Don't exit on failed group changes, since it's
+</span>                <span class='comment'># not fatal
+</span>                <span class='comment'>#exit(74)
+</span>            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_user'>user</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Error</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No such user %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span>
+        <span class='kw'>end</span>
+        <span class='kw'>unless</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span>
+            <span class='kw'>begin</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span> 
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_euid'>euid</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span> 
+            <span class='kw'>rescue</span>
+                <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>could not change to user %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_user'>user</span>
+                <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>74</span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 28</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def self.chuser
+    if Facter[&quot;operatingsystem&quot;].value == &quot;Darwin&quot;
+        $stderr.puts &quot;Ruby on darwin is broken; puppetmaster will not set its UID to 'puppet' and must run as root&quot;
+        return
+    end
+    if group = Puppet[:group]
+        group = self.gid(group)
+        unless group
+            raise Puppet::Error, &quot;No such group %s&quot; % Puppet[:group]
+        end
+        unless Puppet::Util::SUIDManager.gid == group
+            begin
+                Puppet::Util::SUIDManager.egid = group 
+                Puppet::Util::SUIDManager.gid = group 
+            rescue =&gt; detail
+                Puppet.warning &quot;could not change to group %s: %s&quot; %
+                    [group.inspect, detail]
+                $stderr.puts &quot;could not change to group %s&quot; % group.inspect
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Don&#8217;t exit on failed group changes, since it&#8217;s not fatal
+exit(74)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">            end
+        end
+    end
+
+    if user = Puppet[:user]
+        user = self.uid(user)
+        unless user
+            raise Puppet::Error, &quot;No such user %s&quot; % Puppet[:user]
+        end
+        unless Puppet::Util::SUIDManager.uid == user
+            begin
+                Puppet::Util::SUIDManager.uid = user 
+                Puppet::Util::SUIDManager.euid = user 
+            rescue
+                $stderr.puts &quot;could not change to user %s&quot; % user
+                exit(74)
+            end
+        end
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="classproxy-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>classproxy</strong>(klass, objmethod, *methods) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Proxy a bunch of methods to another object.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_classproxy'>classproxy</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_objmethod'>objmethod</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_classobj'>classobj</span> <span class='op'>=</span> <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_klass'>klass</span><span class='semicolon'>;</span> <span class='kw'>self</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+    <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
+        <span class='id identifier rubyid_classobj'>classobj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_objmethod'>objmethod</span><span class='rparen'>)</span>
+
+            <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 97</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_classproxy'>classproxy</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_objmethod'>objmethod</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_classobj'>classobj</span> <span class='op'>=</span> <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_klass'>klass</span><span class='semicolon'>;</span> <span class='kw'>self</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+    <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
+        <span class='id identifier rubyid_classobj'>classobj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_objmethod'>objmethod</span><span class='rparen'>)</span>
+
+            <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="logmethods-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>logmethods</strong>(klass, useself = true) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create instance methods for each of the log levels.  This allows the
+messages to be a little richer.  Most classes will be calling this method.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_logmethods'>logmethods</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_useself'>useself</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_eachlevel'>eachlevel</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_level'>level</span><span class='op'>|</span>
+        <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_useself'>useself</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+                    <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span>
+                    <span class='symbol'>:source</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='comma'>,</span>
+                    <span class='symbol'>:message</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span>
+                <span class='rparen'>)</span>
+            <span class='kw'>else</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+                    <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span>
+                    <span class='symbol'>:message</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span>
+                <span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 74</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_logmethods'>logmethods</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_useself'>useself</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_eachlevel'>eachlevel</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_level'>level</span><span class='op'>|</span>
+        <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_useself'>useself</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+                    <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span>
+                    <span class='symbol'>:source</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='comma'>,</span>
+                    <span class='symbol'>:message</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span>
+                <span class='rparen'>)</span>
+            <span class='kw'>else</span>
+                <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+                    <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span><span class='comma'>,</span>
+                    <span class='symbol'>:message</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span>
+                <span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>proxy</strong>(klass, objmethod, *methods) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Proxy a bunch of methods to another object.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_objmethod'>objmethod</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
+        <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_objmethod'>objmethod</span><span class='rparen'>)</span>
+
+            <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 109</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='comma'>,</span> <span class='id identifier rubyid_objmethod'>objmethod</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
+        <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+            <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_objmethod'>objmethod</span><span class='rparen'>)</span>
+
+            <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="recmkdir-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>recmkdir</strong>(dir, mode = 0755) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+XXX this should all be done using puppet objects, not using normal mkdir
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_recmkdir'>recmkdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span><span class='id identifier rubyid_mode'>mode</span> <span class='op'>=</span> <span class='int'>0755</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>=</span> <span class='id identifier rubyid_dir'>dir</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_tmp'>tmp</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>|</span>
+            <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_dir'>dir</span>
+            <span class='kw'>if</span> <span class='op'>!</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_mkdir'>mkdir</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span>
+            <span class='kw'>elsif</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='kw'>next</span>
+            <span class='kw'>else</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot create %s: basedir %s is a file</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span>
+                    <span class='lbracket'>[</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+            <span class='kw'>end</span>
+        <span class='rbrace'>}</span>
+        <span class='kw'>return</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 121</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_recmkdir'>recmkdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span><span class='id identifier rubyid_mode'>mode</span> <span class='op'>=</span> <span class='int'>0755</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>=</span> <span class='id identifier rubyid_dir'>dir</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_tmp'>tmp</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>|</span>
+            <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_dir'>dir</span>
+            <span class='kw'>if</span> <span class='op'>!</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_mkdir'>mkdir</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span>
+            <span class='kw'>elsif</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='kw'>next</span>
+            <span class='kw'>else</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot create %s: basedir %s is a file</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span>
+                    <span class='lbracket'>[</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+            <span class='kw'>end</span>
+        <span class='rbrace'>}</span>
+        <span class='kw'>return</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="sync-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sync</strong>(resource) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return the sync object associated with a given resource.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+    <span class='cvar'>@@syncresources</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Sync</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>return</span> <span class='cvar'>@@syncresources</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 22</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">22
+23
+24
+25
+26</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+    <span class='cvar'>@@syncresources</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Sync</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>return</span> <span class='cvar'>@@syncresources</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="withumask-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>withumask</strong>(mask) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute a given chunk of code with a new umask.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_withumask'>withumask</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_cur'>cur</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_umask'>umask</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+
+    <span class='kw'>begin</span>
+        <span class='kw'>yield</span>
+    <span class='kw'>ensure</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_umask'>umask</span><span class='lparen'>(</span><span class='id identifier rubyid_cur'>cur</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 143</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">143
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_withumask'>withumask</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_cur'>cur</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_umask'>umask</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+
+    <span class='kw'>begin</span>
+        <span class='kw'>yield</span>
+    <span class='kw'>ensure</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_umask'>umask</span><span class='lparen'>(</span><span class='id identifier rubyid_cur'>cur</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="benchmark-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>benchmark</strong>(*args) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_benchmark'>benchmark</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span>
+    <span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span>
+    <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='kw'>self</span>
+        <span class='kw'>else</span>
+            <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='const'>Puppet</span>
+        <span class='kw'>end</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_object'>object</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_level'>level</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Failed to provide level to :benchmark</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_level'>level</span> <span class='op'>==</span> <span class='symbol'>:none</span> <span class='kw'>or</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='id identifier rubyid_level'>level</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Benchmarked object does not respond to %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_level'>level</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Only benchmark if our log level is high enough
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_level'>level</span> <span class='op'>!=</span> <span class='symbol'>:none</span> <span class='kw'>and</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Log</span><span class='period'>.</span><span class='id identifier rubyid_sendlevel?'>sendlevel?</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id identifier rubyid_realtime'>realtime</span> <span class='lbrace'>{</span>
+            <span class='kw'>yield</span>
+        <span class='rbrace'>}</span>
+        <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_level'>level</span><span class='comma'>,</span> <span class='id identifier rubyid_msg'>msg</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> in %0.2f seconds</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_seconds'>seconds</span><span class='rparen'>)</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_seconds'>seconds</span>
+    <span class='kw'>else</span>
+        <span class='kw'>yield</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 153</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def benchmark(*args)
+    msg = args.pop
+    level = args.pop
+    object = nil
+
+    if args.empty?
+        if respond_to?(level)
+            object = self
+        else
+            object = Puppet
+        end
+    else
+        object = args.pop
+    end
+
+    unless level
+        raise Puppet::DevError, &quot;Failed to provide level to :benchmark&quot;
+    end
+
+    unless level == :none or object.respond_to? level
+        raise Puppet::DevError, &quot;Benchmarked object does not respond to %s&quot; % level
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Only benchmark if our log level is high enough
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if level != :none and Puppet::Util::Log.sendlevel?(level)
+        result = nil
+        seconds = Benchmark.realtime {
+            yield
+        }
+        object.send(level, msg + (&quot; in %0.2f seconds&quot; % seconds))
+        return seconds
+    else
+        yield
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="binary-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>binary</strong>(bin) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 189</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_binary'>binary</span><span class='lparen'>(</span><span class='id identifier rubyid_bin'>bin</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_bin'>bin</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/</span><span class='regexp_end'>/</span></span>
+        <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_file?'>file?</span> <span class='id identifier rubyid_bin'>bin</span> <span class='kw'>and</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_executable?'>executable?</span> <span class='id identifier rubyid_bin'>bin</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_bin'>bin</span>
+        <span class='kw'>else</span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='backtick'>%x{</span><span class='tstring_content'>which </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bin'>bin</span><span class='rbrace'>}</span><span class='tstring_content'> 2&gt;/dev/null</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_x'>x</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>else</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_x'>x</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 189</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_binary'>binary</span><span class='lparen'>(</span><span class='id identifier rubyid_bin'>bin</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_bin'>bin</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/</span><span class='regexp_end'>/</span></span>
+        <span class='kw'>if</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_file?'>file?</span> <span class='id identifier rubyid_bin'>bin</span> <span class='kw'>and</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_executable?'>executable?</span> <span class='id identifier rubyid_bin'>bin</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_bin'>bin</span>
+        <span class='kw'>else</span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='backtick'>%x{</span><span class='tstring_content'>which </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bin'>bin</span><span class='rbrace'>}</span><span class='tstring_content'> 2&gt;/dev/null</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_x'>x</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>else</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_x'>x</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="execfail-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>execfail</strong>(command, exception) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+228
+229
+230
+231
+232
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 228</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_execfail'>execfail</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_exception'>exception</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
+    <span class='kw'>rescue</span> <span class='const'>ExecutionFailure</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_exception'>exception</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 228</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">228
+229
+230
+231
+232
+233
+234
+235
+236</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_execfail'>execfail</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_exception'>exception</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
+    <span class='kw'>rescue</span> <span class='const'>ExecutionFailure</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_exception'>exception</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="execpipe-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>execpipe</strong>(command, failonfail = true) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute the provided command in a pipe, yielding the pipe object.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_execpipe'>execpipe</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_failonfail'>failonfail</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:debug</span>
+        <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_command'>command</span>
+    <span class='kw'>else</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_command'>command</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>| </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_command'>command</span><span class='rbrace'>}</span><span class='tstring_content'> 2&gt;&amp;1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pipe'>pipe</span><span class='op'>|</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_pipe'>pipe</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_failonfail'>failonfail</span>
+        <span class='kw'>unless</span> <span class='gvar'>$?</span> <span class='op'>==</span> <span class='int'>0</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ExecutionFailure</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 208</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_execpipe'>execpipe</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_failonfail'>failonfail</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:debug</span>
+        <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_command'>command</span>
+    <span class='kw'>else</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_command'>command</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>| </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_command'>command</span><span class='rbrace'>}</span><span class='tstring_content'> 2&gt;&amp;1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pipe'>pipe</span><span class='op'>|</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_pipe'>pipe</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_failonfail'>failonfail</span>
+        <span class='kw'>unless</span> <span class='gvar'>$?</span> <span class='op'>==</span> <span class='int'>0</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ExecutionFailure</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="execute-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>execute</strong>(command, arguments = {:failonfail =&gt; true, :combine =&gt; true}) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='util_execute-instance_method'>util_execute</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute the desired command, and return the status and output. def
+execute(command, failonfail = true, uid = nil, gid = nil) :combine sets
+whether or not to combine stdout/stderr in the output :stdinfile sets a
+file that can be used for stdin. Passing a string for stdin is not
+currently supported.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 242</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:failonfail</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:combine</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_command'>command</span> <span class='op'>=</span> <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbrace'>}</span>
+        <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+        <span class='comment'># We require an array here so we know where we're incorrectly
+</span>        <span class='comment'># using a string instead of an array.  Once everything is
+</span>        <span class='comment'># switched to an array, we might relax this requirement.
+</span>        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Must pass an array to execute()</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:debug</span>
+        <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_str'>str</span>
+    <span class='kw'>else</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Executing '%s'</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_str'>str</span>
+    <span class='kw'>end</span>
+    
+    <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_convert_xid'>convert_xid</span><span class='lparen'>(</span><span class='symbol'>:uid</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>SUIDManager</span><span class='period'>.</span><span class='id identifier rubyid_convert_xid'>convert_xid</span><span class='lparen'>(</span><span class='symbol'>:gid</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    
+    <span class='cvar'>@@os</span> <span class='op'>||=</span> <span class='const'>Facter</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='lparen'>(</span><span class='symbol'>:operatingsystem</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_child_pid'>child_pid</span><span class='comma'>,</span> <span class='id identifier rubyid_child_status'>child_status</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='comment'># There are problems with read blocking with badly behaved children
+</span>    <span class='comment'># read.partialread doesn't seem to capture either stdout or stderr
+</span>    <span class='comment'># We hack around this using a temporary file
+</span>
+    <span class='comment'># The idea here is to avoid IO#read whenever possible.
+</span>    <span class='id identifier rubyid_output_file'>output_file</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/dev/null</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_error_file'>error_file</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/dev/null</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>if</span> <span class='op'>!</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:squelch</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tempfile</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_output_file'>output_file</span> <span class='op'>=</span> <span class='const'>Tempfile</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>puppet</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:combine</span><span class='rbracket'>]</span>
+            <span class='id identifier rubyid_error_file'>error_file</span><span class='op'>=</span><span class='id identifier rubyid_output_file'>output_file</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_oldverb'>oldverb</span> <span class='op'>=</span> <span class='gvar'>$VERBOSE</span>
+    <span class='gvar'>$VERBOSE</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='id identifier rubyid_child_pid'>child_pid</span> <span class='op'>=</span> <span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_fork'>fork</span>
+    <span class='gvar'>$VERBOSE</span> <span class='op'>=</span> <span class='id identifier rubyid_oldverb'>oldverb</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_child_pid'>child_pid</span>
+        <span class='comment'># Parent process executes this
+</span>        <span class='id identifier rubyid_child_status'>child_status</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_waitpid2'>waitpid2</span><span class='lparen'>(</span><span class='id identifier rubyid_child_pid'>child_pid</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>&gt;&gt;</span> <span class='int'>8</span>
+    <span class='kw'>else</span>
+        <span class='comment'># Child process executes this
+</span>        <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_setsid'>setsid</span>
+        <span class='kw'>begin</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:stdinfile</span><span class='rbracket'>]</span>
+                <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:stdinfile</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+            <span class='kw'>else</span>
+                <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/dev/null</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+            <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_output_file'>output_file</span><span class='rparen'>)</span>
+            <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_reopen'>reopen</span><span class='lparen'>(</span><span class='id identifier rubyid_error_file'>error_file</span><span class='rparen'>)</span>
+
+            <span class='int'>3</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='int'>256</span><span class='rparen'>)</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_fd'>fd</span><span class='op'>|</span> <span class='const'>IO</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fd'>fd</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>rescue</span> <span class='kw'>nil</span><span class='rbrace'>}</span> 
+            <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span>
+                <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_egid'>egid</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span>
+                <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_gid'>gid</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:gid</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='cvar'>@@os</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Darwin</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>end</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span>
+                <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_euid'>euid</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span>
+                <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:uid</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='cvar'>@@os</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Darwin</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>end</span>
+            <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>LANG</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>LC_ALL</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>LC_MESSAGES</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>LANGUAGE</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+                <span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
+            <span class='kw'>else</span>
+                <span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+            <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+            <span class='id identifier rubyid_exit!'>exit!</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+        <span class='kw'>end</span> <span class='comment'># begin; rescue
+</span>    <span class='kw'>end</span> <span class='comment'># if child_pid
+</span> 	
+    <span class='comment'># read output in if required
+</span>    <span class='kw'>if</span> <span class='op'>!</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:squelch</span><span class='rbracket'>]</span>
+
+        <span class='comment'># Make sure the file's actually there.  This is
+</span>        <span class='comment'># basically a race condition, and is probably a horrible
+</span>        <span class='comment'># way to handle it, but, well, oh well.
+</span>        <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sleeping</span><span class='tstring_end'>&quot;</span></span>
+            <span class='id identifier rubyid_sleep'>sleep</span> <span class='float'>0.5</span>
+            <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+                <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sleeping 2</span><span class='tstring_end'>&quot;</span></span>
+                <span class='id identifier rubyid_sleep'>sleep</span> <span class='int'>1</span>
+                <span class='kw'>unless</span> <span class='const'>FileTest</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+                    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not get output</span><span class='tstring_end'>&quot;</span></span>
+                    <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+                <span class='kw'>end</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_output'>output</span>
+            <span class='comment'># We have to explicitly open here, so that it reopens
+</span>            <span class='comment'># after the child writes.
+</span>            <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span>
+
+            <span class='comment'># The 'true' causes the file to get unlinked right away.
+</span>            <span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='symbol'>:failonfail</span><span class='rbracket'>]</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_child_status'>child_status</span> <span class='op'>==</span> <span class='int'>0</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ExecutionFailure</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Execution of '%s' returned %s: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_child_status'>child_status</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span><span class='rbracket'>]</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 242</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">242
+243
+244
+245
+246
+247</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def execute(command, arguments = {:failonfail =&gt; true, :combine =&gt; true})
+    if command.is_a?(Array)
+        command = command.flatten.collect { |i| i.to_s }
+        str = command.join(&quot; &quot;)
+    else</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We require an array here so we know where we&#8217;re incorrectly using a
+string instead of an array.  Once everything is switched to an array, we
+might relax this requirement.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        raise ArgumentError, &quot;Must pass an array to execute()&quot;
+    end
+
+    if respond_to? :debug
+        debug &quot;Executing '%s'&quot; % str
+    else
+        Puppet.debug &quot;Executing '%s'&quot; % str
+    end
+    
+    if arguments[:uid]
+        arguments[:uid] = Puppet::Util::SUIDManager.convert_xid(:uid, arguments[:uid])
+    end
+    if arguments[:gid]
+        arguments[:gid] = Puppet::Util::SUIDManager.convert_xid(:gid, arguments[:gid])
+    end
+    
+    @@os ||= Facter.value(:operatingsystem)
+    output = nil
+    child_pid, child_status = nil</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+There are problems with read blocking with badly behaved children
+read.partialread doesn&#8217;t seem to capture either stdout or stderr We
+hack around this using a temporary file
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">272
+273</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+The idea here is to avoid IO#read whenever possible.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    output_file=&quot;/dev/null&quot;
+    error_file=&quot;/dev/null&quot;
+    if ! arguments[:squelch]
+        require &quot;tempfile&quot;
+        output_file = Tempfile.new(&quot;puppet&quot;)
+        if arguments[:combine]
+            error_file=output_file
+        end
+    end
+
+    oldverb = $VERBOSE
+    $VERBOSE = false
+    child_pid = Kernel.fork
+    $VERBOSE = oldverb
+    if child_pid</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Parent process executes this
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">290
+291
+292</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        child_status = (Process.waitpid2(child_pid)[1]).to_i &gt;&gt; 8
+    else</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Child process executes this
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        Process.setsid
+        begin
+            if arguments[:stdinfile]
+                $stdin.reopen(arguments[:stdinfile])
+            else
+                $stdin.reopen(&quot;/dev/null&quot;)
+            end
+            $stdout.reopen(output_file)
+            $stderr.reopen(error_file)
+
+            3.upto(256){|fd| IO::new(fd).close rescue nil} 
+            if arguments[:gid]
+                Process.egid = arguments[:gid]
+                Process.gid = arguments[:gid] unless @@os == &quot;Darwin&quot;
+            end
+            if arguments[:uid]
+                Process.euid = arguments[:uid]
+                Process.uid = arguments[:uid] unless @@os == &quot;Darwin&quot;
+            end
+            ENV['LANG'] = ENV['LC_ALL'] = ENV['LC_MESSAGES'] = ENV['LANGUAGE'] = 'C'
+            if command.is_a?(Array)
+                Kernel.exec(*command)
+            else
+                Kernel.exec(command)
+            end
+        rescue =&gt; detail
+            puts detail.to_s
+            exit!(1)
+        end # begin; rescue
+    end # if child_pid
+ 	</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+read output in if required
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">325
+326
+327</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if ! arguments[:squelch]
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Make sure the file&#8217;s actually there.  This is basically a race
+condition, and is probably a horrible way to handle it, but, well, oh well.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        unless FileTest.exists?(output_file.path)
+            Puppet.warning &quot;sleeping&quot;
+            sleep 0.5
+            unless FileTest.exists?(output_file.path)
+                Puppet.warning &quot;sleeping 2&quot;
+                sleep 1
+                unless FileTest.exists?(output_file.path)
+                    Puppet.warning &quot;Could not get output&quot;
+                    output = &quot;&quot;
+                end
+            end
+        end
+        unless output</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We have to explicitly open here, so that it reopens after the child writes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">345
+346
+347</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">            <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+The &#8216;true&#8217; causes the file to get unlinked right away.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">            output_file.close(true)
+        end
+    end
+
+    if arguments[:failonfail]
+        unless child_status == 0
+            raise ExecutionFailure, &quot;Execution of '%s' returned %s: %s&quot; % [str, child_status, output]
+        end
+    end
+
+    return output
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="memory-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>memory</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 375</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_memory'>memory</span>
+    <span class='kw'>unless</span> <span class='kw'>defined?</span> <span class='ivar'>@pmap</span>
+        <span class='id identifier rubyid_pmap'>pmap</span> <span class='op'>=</span> <span class='backtick'>%x{</span><span class='tstring_content'>which pmap 2&gt;/dev/null</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+        <span class='kw'>if</span> <span class='gvar'>$?</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_pmap'>pmap</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^no</span><span class='regexp_end'>/</span></span>
+            <span class='ivar'>@pmap</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='kw'>else</span>
+            <span class='ivar'>@pmap</span> <span class='op'>=</span> <span class='id identifier rubyid_pmap'>pmap</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@pmap</span>
+        <span class='kw'>return</span> <span class='backtick'>%x{</span><span class='tstring_content'>pmap </span><span class='embexpr_beg'>#{</span><span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span><span class='rbrace'>}</span><span class='tstring_content'>| grep total</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\s*total\s+</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>K$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='kw'>else</span>
+        <span class='int'>0</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 375</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_memory'>memory</span>
+    <span class='kw'>unless</span> <span class='kw'>defined?</span> <span class='ivar'>@pmap</span>
+        <span class='id identifier rubyid_pmap'>pmap</span> <span class='op'>=</span> <span class='backtick'>%x{</span><span class='tstring_content'>which pmap 2&gt;/dev/null</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+        <span class='kw'>if</span> <span class='gvar'>$?</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_pmap'>pmap</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^no</span><span class='regexp_end'>/</span></span>
+            <span class='ivar'>@pmap</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='kw'>else</span>
+            <span class='ivar'>@pmap</span> <span class='op'>=</span> <span class='id identifier rubyid_pmap'>pmap</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@pmap</span>
+        <span class='kw'>return</span> <span class='backtick'>%x{</span><span class='tstring_content'>pmap </span><span class='embexpr_beg'>#{</span><span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span><span class='rbrace'>}</span><span class='tstring_content'>| grep total</span><span class='tstring_end'>}</span></span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\s*total\s+</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>K$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='kw'>else</span>
+        <span class='int'>0</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="secure_open-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>secure_open</strong>(file, must_be_w, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DevError.html" title="Puppet::DevError (class)">Puppet::DevError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 433</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_secure_open'>secure_open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='id identifier rubyid_must_be_w'>must_be_w</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>secure_open only works with mode 'w'</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_must_be_w'>must_be_w</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>secure_open only requires a block</span><span class='tstring_end'>&quot;</span></span>    <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'> was a symlink to </span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readlink'>readlink</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_wait'>wait</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='float'>5.0</span> <span class='op'>:</span> <span class='float'>0.1</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_wait'>wait</span> <span class='comment'># give it a chance to reappear, just in case someone is actively trying something.
+</span>    <span class='kw'>end</span>
+    <span class='kw'>begin</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='const'>File</span><span class='op'>::</span><span class='const'>CREAT</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>EXCL</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>TRUNC</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>WRONLY</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EEXIST</span>
+        <span class='id identifier rubyid_desc'>desc</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>symlink to </span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readlink'>readlink</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Warning: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'> was apparently created by another process (as</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desc'>desc</span><span class='rbrace'>}</span><span class='tstring_content'>) as soon as it was deleted by this process.  Someone may be trying</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>to do something objectionable (such as tricking you into overwriting system</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>files if you are running as root).</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 433</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_secure_open'>secure_open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='id identifier rubyid_must_be_w'>must_be_w</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>secure_open only works with mode 'w'</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_must_be_w'>must_be_w</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>secure_open only requires a block</span><span class='tstring_end'>&quot;</span></span>    <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_warning'>warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'> was a symlink to </span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readlink'>readlink</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_wait'>wait</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='float'>5.0</span> <span class='op'>:</span> <span class='float'>0.1</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_wait'>wait</span> <span class='comment'># give it a chance to reappear, just in case someone is actively trying something.
+</span>    <span class='kw'>end</span>
+    <span class='kw'>begin</span>
+        <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='const'>File</span><span class='op'>::</span><span class='const'>CREAT</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>EXCL</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>TRUNC</span><span class='op'>|</span><span class='const'>File</span><span class='op'>::</span><span class='const'>WRONLY</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EEXIST</span>
+        <span class='id identifier rubyid_desc'>desc</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_symlink?'>symlink?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>symlink to </span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readlink'>readlink</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_stat'>stat</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ftype'>ftype</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Warning: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='rbrace'>}</span><span class='tstring_content'> was apparently created by another process (as</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_desc'>desc</span><span class='rbrace'>}</span><span class='tstring_content'>) as soon as it was deleted by this process.  Someone may be trying</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>to do something objectionable (such as tricking you into overwriting system</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>files if you are running as root).</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="symbolize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>symbolize</strong>(value) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+391
+392
+393
+394
+395
+396
+397</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 391</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:intern</span>
+        <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 391</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">391
+392
+393
+394
+395
+396
+397
+398</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:intern</span>
+        <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="symbolizehash-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>symbolizehash</strong>(hash) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 399</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_symbolizehash'>symbolizehash</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_newhash'>newhash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span>
+            <span class='id identifier rubyid_newhash'>newhash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+        <span class='kw'>else</span>
+            <span class='id identifier rubyid_newhash'>newhash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 399</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_symbolizehash'>symbolizehash</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_newhash'>newhash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span>
+            <span class='id identifier rubyid_newhash'>newhash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+        <span class='kw'>else</span>
+            <span class='id identifier rubyid_newhash'>newhash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="symbolizehash!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>symbolizehash!</strong>(hash) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 410</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_symbolizehash!'>symbolizehash!</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span>
+            <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+            <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 410</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_symbolizehash!'>symbolizehash!</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span>
+            <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_val'>val</span>
+            <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="thinmark-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>thinmark</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Just benchmark, with no logging.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+423
+424
+425
+426
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 423</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_thinmark'>thinmark</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id identifier rubyid_realtime'>realtime</span> <span class='lbrace'>{</span>
+        <span class='kw'>yield</span>
+    <span class='rbrace'>}</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_seconds'>seconds</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 423</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">423
+424
+425
+426
+427
+428
+429
+430</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_thinmark'>thinmark</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id identifier rubyid_realtime'>realtime</span> <span class='lbrace'>{</span>
+        <span class='kw'>yield</span>
+    <span class='rbrace'>}</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_seconds'>seconds</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="threadlock-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>threadlock</strong>(resource, type = Sync::EX) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create an exclusive lock.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+364
+365
+366
+367
+368</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 364</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_threadlock'>threadlock</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='const'>Sync</span><span class='op'>::</span><span class='const'>EX</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='kw'>do</span>
+        <span class='kw'>yield</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util.rb', line 364</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">364
+365
+366
+367
+368
+369</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_threadlock'>threadlock</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='const'>Sync</span><span class='op'>::</span><span class='const'>EX</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_sync'>sync</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='kw'>do</span>
+        <span class='kw'>yield</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:12:31 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

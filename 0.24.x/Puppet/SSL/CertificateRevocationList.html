@@ -1,0 +1,1001 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::SSL::CertificateRevocationList
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SSL.html" title="Puppet::SSL (module)">SSL</a></span></span>
+     &raquo; 
+    <span class="title">CertificateRevocationList</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::SSL::CertificateRevocationList
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Puppet::SSL::Base (class)">Base</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="Base.html" title="Puppet::SSL::Base (class)">Base</a></span></li>
+          
+            <li class="next">Puppet::SSL::CertificateRevocationList</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Indirector.html" title="Puppet::Indirector (module)">Indirector</a></span></dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/ssl/certificate_revocation_list.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Manage the CRL.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="CertificateRevocationList/Ca.html" title="Puppet::SSL::CertificateRevocationList::Ca (class)">Ca</a></span>, <span class='object_link'><a href="CertificateRevocationList/File.html" title="Puppet::SSL::CertificateRevocationList::File (class)">File</a></span>, <span class='object_link'><a href="CertificateRevocationList/Rest.html" title="Puppet::SSL::CertificateRevocationList::Rest (class)">Rest</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../Indirector.html" title="Puppet::Indirector (module)">Indirector</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Indirector.html#BadNameRegexp-constant" title="Puppet::Indirector::BadNameRegexp (constant)">Indirector::BadNameRegexp</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="Base.html" title="Puppet::SSL::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#SEPARATOR-constant" title="Puppet::SSL::Base::SEPARATOR (constant)">Base::SEPARATOR</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Puppet::SSL::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#content-instance_method" title="Puppet::SSL::Base#content (method)">#content</a></span>, <span class='object_link'><a href="Base.html#name-instance_method" title="Puppet::SSL::Base#name (method)">#name</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_s-class_method" title="from_s (class method)">+ (Object) <strong>from_s</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Convert a string into an instance.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#supported_formats-class_method" title="supported_formats (class method)">+ (Object) <strong>supported_formats</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Because of how the format handler class is included, this can&#8217;t be in
+the base class.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate-instance_method" title="#generate (instance method)">- (Object) <strong>generate</strong>(cert, cakey) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Knows how to create a CRL with our system defaults.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (CertificateRevocationList) <strong>initialize</strong>(fakename) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The name doesn&#8217;t actually matter; there&#8217;s only one CRL.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#revoke-instance_method" title="#revoke (instance method)">- (Object) <strong>revoke</strong>(serial, cakey, reason = OpenSSL::OCSP::REVOKED_STATUS_KEYCOMPROMISE) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Revoke the certificate with serial number SERIAL issued by this CA, then
+write the CRL back to disk.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Indirector.html" title="Puppet::Indirector (module)">Indirector</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Indirector.html#indirects-instance_method" title="Puppet::Indirector#indirects (method)">indirects</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Puppet::SSL::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#ca%3F-instance_method" title="Puppet::SSL::Base#ca? (method)">#ca?</a></span>, <span class='object_link'><a href="Base.html#from_multiple_s-class_method" title="Puppet::SSL::Base.from_multiple_s (method)">from_multiple_s</a></span>, <span class='object_link'><a href="Base.html#read-instance_method" title="Puppet::SSL::Base#read (method)">#read</a></span>, <span class='object_link'><a href="Base.html#to_multiple_s-class_method" title="Puppet::SSL::Base.to_multiple_s (method)">to_multiple_s</a></span>, <span class='object_link'><a href="Base.html#to_s-instance_method" title="Puppet::SSL::Base#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="Base.html#to_text-instance_method" title="Puppet::SSL::Base#to_text (method)">#to_text</a></span>, <span class='object_link'><a href="Base.html#wrapped_class-class_method" title="Puppet::SSL::Base.wrapped_class (method)">wrapped_class</a></span>, <span class='object_link'><a href="Base.html#wraps-class_method" title="Puppet::SSL::Base.wraps (method)">wraps</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::SSL::CertificateRevocationList (class)">CertificateRevocationList</a></span></tt>) <strong>initialize</strong>(fakename) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The name doesn&#8217;t actually matter; there&#8217;s only one CRL. We just
+need the name so our Indirector stuff all works more easily.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_fakename'>fakename</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crl</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 48</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">48
+49
+50
+51</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_fakename'>fakename</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crl</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="from_s-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>from_s</strong>(string) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Convert a string into an instance.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_s'>from_s</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_instance'>instance</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapped_class'>wrapped_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>foo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='comment'># The name doesn't matter
+</span>    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='id identifier rubyid_instance'>instance</span>
+    <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 12</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">12
+13
+14
+15
+16
+17
+18</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_s'>from_s</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_instance'>instance</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapped_class'>wrapped_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>foo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='comment'># The name doesn't matter
+</span>    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='id identifier rubyid_instance'>instance</span>
+    <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="supported_formats-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>supported_formats</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Because of how the format handler class is included, this can&#8217;t be in
+the base class.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_supported_formats'>supported_formats</span>
+    <span class='lbracket'>[</span><span class='symbol'>:s</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 21</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">21
+22
+23
+24</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_supported_formats'>supported_formats</span>
+    <span class='lbracket'>[</span><span class='symbol'>:s</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="generate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>generate</strong>(cert, cakey) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Knows how to create a CRL with our system defaults.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='comma'>,</span> <span class='id identifier rubyid_cakey'>cakey</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating a new certificate revocation list</span><span class='tstring_end'>&quot;</span></span>
+    <span class='ivar'>@content</span> <span class='op'>=</span> <span class='id identifier rubyid_wrapped_class'>wrapped_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_issuer'>issuer</span> <span class='op'>=</span> <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_subject'>subject</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='int'>1</span>
+
+    <span class='comment'># Init the CRL number.
+</span>    <span class='id identifier rubyid_crlNum'>crlNum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Integer</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_crlNum'>crlNum</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+
+    <span class='comment'># Set last/next update
+</span>    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_last_update'>last_update</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='comment'># Keep CRL valid for 5 years
+</span>    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_next_update'>next_update</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>5</span> <span class='op'>*</span> <span class='int'>365</span><span class='op'>*</span><span class='int'>24</span><span class='op'>*</span><span class='int'>60</span><span class='op'>*</span><span class='int'>60</span>
+
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_cakey'>cakey</span><span class='comma'>,</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
+
+    <span class='ivar'>@content</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 26</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">26
+27
+28
+29
+30
+31
+32</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def generate(cert, cakey)
+    Puppet.info &quot;Creating a new certificate revocation list&quot;
+    @content = wrapped_class.new
+    @content.issuer = cert.subject
+    @content.version = 1
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Init the CRL number.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">33
+34
+35
+36</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='id identifier rubyid_crlNum'>crlNum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Integer</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_crlNum'>crlNum</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Set last/next update
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">37
+38</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_last_update'>last_update</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Keep CRL valid for 5 years
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">39
+40
+41
+42
+43
+44
+45</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @content.next_update = Time.now + 5 * 365*24*60*60
+
+    @content.sign(cakey, OpenSSL::Digest::SHA1.new)
+
+    @content
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="revoke-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>revoke</strong>(serial, cakey, reason = OpenSSL::OCSP::REVOKED_STATUS_KEYCOMPROMISE) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Revoke the certificate with serial number SERIAL issued by this CA, then
+write the CRL back to disk. The REASON must be one of the
+OpenSSL::OCSP::REVOKED_* reasons
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_revoke'>revoke</span><span class='lparen'>(</span><span class='id identifier rubyid_serial'>serial</span><span class='comma'>,</span> <span class='id identifier rubyid_cakey'>cakey</span><span class='comma'>,</span> <span class='id identifier rubyid_reason'>reason</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>OCSP</span><span class='op'>::</span><span class='const'>REVOKED_STATUS_KEYCOMPROMISE</span><span class='rparen'>)</span>
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_notice'>notice</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Revoked certificate with serial %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_serial'>serial</span>
+    <span class='id identifier rubyid_time'>time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+
+    <span class='comment'># Add our revocation to the CRL.
+</span>    <span class='id identifier rubyid_revoked'>revoked</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Revoked</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span> <span class='op'>=</span> <span class='id identifier rubyid_serial'>serial</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_time'>time</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span>
+    <span class='id identifier rubyid_enum'>enum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Enumerated</span><span class='lparen'>(</span><span class='id identifier rubyid_reason'>reason</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CRLReason</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_enum'>enum</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_add_extension'>add_extension</span><span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_add_revoked'>add_revoked</span><span class='lparen'>(</span><span class='id identifier rubyid_revoked'>revoked</span><span class='rparen'>)</span>
+
+    <span class='comment'># Increment the crlNumber
+</span>    <span class='id identifier rubyid_e'>e</span> <span class='op'>=</span> <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_crlNum'>crlNum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Integer</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span> <span class='op'>?</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>+</span> <span class='int'>1</span> <span class='op'>:</span> <span class='int'>0</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>&lt;&lt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_crlNum'>crlNum</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='id identifier rubyid_ext'>ext</span>
+
+    <span class='comment'># Set last/next update
+</span>    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_last_update'>last_update</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span>
+    <span class='comment'># Keep CRL valid for 5 years
+</span>    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_next_update'>next_update</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span> <span class='op'>+</span> <span class='int'>5</span> <span class='op'>*</span> <span class='int'>365</span><span class='op'>*</span><span class='int'>24</span><span class='op'>*</span><span class='int'>60</span><span class='op'>*</span><span class='int'>60</span>
+
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_cakey'>cakey</span><span class='comma'>,</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_save'>save</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/certificate_revocation_list.rb', line 55</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">55
+56
+57
+58
+59</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def revoke(serial, cakey, reason = OpenSSL::OCSP::REVOKED_STATUS_KEYCOMPROMISE)
+    Puppet.notice &quot;Revoked certificate with serial %s&quot; % serial
+    time = Time.now
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Add our revocation to the CRL.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">60
+61
+62
+63
+64
+65
+66
+67
+68</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='id identifier rubyid_revoked'>revoked</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Revoked</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span> <span class='op'>=</span> <span class='id identifier rubyid_serial'>serial</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_time'>time</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span>
+    <span class='id identifier rubyid_enum'>enum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Enumerated</span><span class='lparen'>(</span><span class='id identifier rubyid_reason'>reason</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CRLReason</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_enum'>enum</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_revoked'>revoked</span><span class='period'>.</span><span class='id identifier rubyid_add_extension'>add_extension</span><span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_add_revoked'>add_revoked</span><span class='lparen'>(</span><span class='id identifier rubyid_revoked'>revoked</span><span class='rparen'>)</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Increment the crlNumber
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">69
+70
+71
+72
+73
+74
+75</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='id identifier rubyid_e'>e</span> <span class='op'>=</span> <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_crlNum'>crlNum</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>ASN1</span><span class='op'>::</span><span class='const'>Integer</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span> <span class='op'>?</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>+</span> <span class='int'>1</span> <span class='op'>:</span> <span class='int'>0</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ext'>ext</span> <span class='op'>&lt;&lt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Extension</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>crlNumber</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_crlNum'>crlNum</span><span class='rparen'>)</span>
+    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='id identifier rubyid_ext'>ext</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Set last/next update
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">76
+77</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_last_update'>last_update</span> <span class='op'>=</span> <span class='id identifier rubyid_time'>time</span></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Keep CRL valid for 5 years
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">78
+79
+80
+81
+82
+83
+84</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @content.next_update = time + 5 * 365*24*60*60
+
+    @content.sign(cakey, OpenSSL::Digest::SHA1.new)
+
+    save
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:11:34 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

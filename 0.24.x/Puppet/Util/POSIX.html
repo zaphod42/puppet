@@ -1,0 +1,1228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Puppet::Util::POSIX
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Util.html" title="Puppet::Util (module)">Util</a></span></span>
+     &raquo; 
+    <span class="title">POSIX</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Puppet::Util::POSIX
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../Util.html" title="Puppet::Util (module)">Puppet::Util</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/puppet/util/posix.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Utility methods for interacting with POSIX objects; mostly user and group
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_posix_field-instance_method" title="#get_posix_field (instance method)">- (Object) <strong>get_posix_field</strong>(space, field, id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve a field from a POSIX Etc object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gid-instance_method" title="#gid (instance method)">- (Object) <strong>gid</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get the GID of a given group, provided either a GID or a name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#idfield-instance_method" title="#idfield (instance method)">- (Object) <strong>idfield</strong>(space) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Determine what the field name is for users and groups.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#methodbyid-instance_method" title="#methodbyid (instance method)">- (Object) <strong>methodbyid</strong>(space) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Determine what the method is to get users and groups by id.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#methodbyname-instance_method" title="#methodbyname (instance method)">- (Object) <strong>methodbyname</strong>(space) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Determine what the method is to get users and groups by name.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_posix_field-instance_method" title="#search_posix_field (instance method)">- (Object) <strong>search_posix_field</strong>(type, field, id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A degenerate method of retrieving name/id mappings.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uid-instance_method" title="#uid (instance method)">- (Object) <strong>uid</strong>(user) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get the UID of a given user, whether a UID or name is provided.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="get_posix_field-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>get_posix_field</strong>(space, field, id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve a field from a POSIX Etc object.  The id can be either an integer
+or a name.  This only works for users and groups.  It&#8217;s also broken
+on some platforms, unfortunately, which is why we fall back to the other
+method search_posix_field in the gid and uid methods if a sanity check
+fails
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../DevError.html" title="Puppet::DevError (class)">Puppet::DevError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Did not get id from caller</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_id'>id</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>&gt;</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:maximum_uid</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tried to get %s field for silly id %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+        <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='id identifier rubyid_methodbyid'>methodbyid</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='id identifier rubyid_methodbyname'>methodbyname</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>begin</span>
+        <span class='kw'>return</span> <span class='const'>Etc</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>ArgumentError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+        <span class='comment'># ignore it; we couldn't find the object
+</span>        <span class='kw'>return</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 9</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def get_posix_field(space, field, id)
+    raise Puppet::DevError, &quot;Did not get id from caller&quot; unless id
+
+    if id.is_a?(Integer)
+        if id &gt; Puppet[:maximum_uid].to_i
+            Puppet.err &quot;Tried to get %s field for silly id %s&quot; % [field, id]
+            return nil
+        end
+        method = methodbyid(space)
+    else
+        method = methodbyname(space)
+    end
+
+    begin
+        return Etc.send(method, id).send(field)
+    rescue ArgumentError =&gt; detail</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+ignore it; we couldn&#8217;t find the object
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">26
+27
+28
+29</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        return nil
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="gid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>gid</strong>(group) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get the GID of a given group, provided either a GID or a name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gid'>gid</span><span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'>Integer</span><span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
+        <span class='comment'># pass
+</span>    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_group'>group</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:group</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_gid'>gid</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:group</span><span class='comma'>,</span> <span class='symbol'>:gid</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>=</span> <span class='id identifier rubyid_gid'>gid</span>
+    <span class='kw'>else</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_gid'>gid</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:group</span><span class='comma'>,</span> <span class='symbol'>:gid</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:group</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='id identifier rubyid_gid'>gid</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>!=</span> <span class='id identifier rubyid_group'>group</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_search_posix_field'>search_posix_field</span><span class='lparen'>(</span><span class='symbol'>:group</span><span class='comma'>,</span> <span class='symbol'>:gid</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_gid'>gid</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 92</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">92
+93
+94
+95
+96</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def gid(group)
+    begin
+        group = Integer(group)
+    rescue ArgumentError</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+pass
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    end
+    if group.is_a?(Integer)
+        return nil unless name = get_posix_field(:group, :name, group)
+        gid = get_posix_field(:group, :gid, name)
+        check_value = gid
+    else
+        return nil unless gid = get_posix_field(:group, :gid, group)
+        name = get_posix_field(:group, :name, gid)
+        check_value = name
+    end
+    if check_value != group
+        return search_posix_field(:group, :gid, group)
+    else
+        return gid
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="idfield-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>idfield</strong>(space) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Determine what the field name is for users and groups.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_idfield'>idfield</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:gid</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:uid</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 62</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_idfield'>idfield</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:gid</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:uid</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="methodbyid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>methodbyid</strong>(space) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Determine what the method is to get users and groups by id
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_methodbyid'>methodbyid</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getgrgid</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getpwuid</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 72</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_methodbyid'>methodbyid</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getgrgid</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getpwuid</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="methodbyname-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>methodbyname</strong>(space) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Determine what the method is to get users and groups by name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_methodbyname'>methodbyname</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getgrnam</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getpwnam</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 82</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_methodbyname'>methodbyname</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='period'>.</span><span class='id identifier rubyid_symbolize'>symbolize</span><span class='lparen'>(</span><span class='id identifier rubyid_space'>space</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:gr</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getgrnam</span>
+    <span class='kw'>when</span> <span class='symbol'>:pw</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='kw'>return</span> <span class='symbol'>:getpwnam</span>
+    <span class='kw'>else</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only handle users and groups</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_posix_field-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>search_posix_field</strong>(type, field, id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A degenerate method of retrieving name/id mappings.  The job of this method
+is to retrieve all objects of a certain type, search for a specific entry
+and then return a given field from that entry.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_search_posix_field'>search_posix_field</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_idmethod'>idmethod</span> <span class='op'>=</span> <span class='id identifier rubyid_idfield'>idfield</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_integer'>integer</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_integer'>integer</span> <span class='op'>=</span> <span class='kw'>true</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>&gt;</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:maximum_uid</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tried to get %s field for silly id %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span>
+            <span class='kw'>return</span> <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='const'>Etc</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_object'>object</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_integer'>integer</span> <span class='kw'>and</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_idmethod'>idmethod</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_id'>id</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+        <span class='kw'>elsif</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_id'>id</span>
+            <span class='kw'>return</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Apparently the group/passwd methods need to get reset; if we skip
+</span>    <span class='comment'># this call, then new users aren't found.
+</span>    <span class='kw'>case</span> <span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>when</span> <span class='symbol'>:passwd</span><span class='semicolon'>;</span> <span class='const'>Etc</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:endpwent</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='symbol'>:group</span><span class='semicolon'>;</span> <span class='const'>Etc</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:endgrent</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 33</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def search_posix_field(type, field, id)
+    idmethod = idfield(type)
+    integer = false
+    if id.is_a?(Integer)
+        integer = true
+        if id &gt; Puppet[:maximum_uid].to_i
+            Puppet.err &quot;Tried to get %s field for silly id %s&quot; % [field, id]
+            return nil
+        end
+    end
+
+    Etc.send(type) do |object|
+        if integer and object.send(idmethod) == id
+            return object.send(field)
+        elsif object.name == id
+            return object.send(field)
+        end
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Apparently the group/passwd methods need to get reset; if we skip this
+call, then new users aren&#8217;t found.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">54
+55
+56
+57
+58
+59
+60</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    case type
+    when :passwd; Etc.send(:endpwent)
+    when :group; Etc.send(:endgrent)
+    end
+    return nil
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="uid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uid</strong>(user) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get the UID of a given user, whether a UID or name is provided
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_uid'>uid</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>Integer</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
+        <span class='comment'># pass
+</span>    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:passwd</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:passwd</span><span class='comma'>,</span> <span class='symbol'>:uid</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>=</span> <span class='id identifier rubyid_uid'>uid</span>
+    <span class='kw'>else</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:passwd</span><span class='comma'>,</span> <span class='symbol'>:uid</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_get_posix_field'>get_posix_field</span><span class='lparen'>(</span><span class='symbol'>:passwd</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_check_value'>check_value</span> <span class='op'>!=</span> <span class='id identifier rubyid_user'>user</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_search_posix_field'>search_posix_field</span><span class='lparen'>(</span><span class='symbol'>:passwd</span><span class='comma'>,</span> <span class='symbol'>:uid</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_uid'>uid</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/util/posix.rb', line 115</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">115
+116
+117
+118
+119</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def uid(user)
+    begin
+        user = Integer(user)
+    rescue ArgumentError</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+pass
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    end
+    if user.is_a?(Integer)
+        return nil unless name = get_posix_field(:passwd, :name, user)
+        uid = get_posix_field(:passwd, :uid, name)
+        check_value = uid
+    else
+        return nil unless uid = get_posix_field(:passwd, :uid, user)
+        name = get_posix_field(:passwd, :name, uid)
+        check_value = name
+    end
+    if check_value != user
+        return search_posix_field(:passwd, :uid, user)
+    else
+        return uid
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:11:08 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

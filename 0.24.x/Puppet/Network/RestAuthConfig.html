@@ -1,0 +1,1094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Network::RestAuthConfig
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Network.html" title="Puppet::Network (module)">Network</a></span></span>
+     &raquo; 
+    <span class="title">RestAuthConfig</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Network::RestAuthConfig
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="AuthConfig.html" title="Puppet::Network::AuthConfig (class)">AuthConfig</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../Util/LoadedFile.html" title="Puppet::Util::LoadedFile (class)">Util::LoadedFile</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="AuthConfig.html" title="Puppet::Network::AuthConfig (class)">AuthConfig</a></span></li>
+          
+            <li class="next">Puppet::Network::RestAuthConfig</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/puppet/network/rest_authconfig.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DEFAULT_ACL-constant" class="">DEFAULT_ACL =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>~ ^\/catalog\/([^\/]+)$</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:find</span><span class='comma'>,</span> <span class='symbol'>:allow</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>$1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='comment'># this one will allow all file access, and thus delegate
+</span>    <span class='comment'># to fileserver.conf
+</span>    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/file</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/certificate_revocation_list/ca</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:find</span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/report</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:save</span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/certificate/ca</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:find</span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/certificate/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:find</span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span> <span class='symbol'>:acl</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/certificate_request</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:find</span><span class='comma'>,</span> <span class='symbol'>:save</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rights-instance_method" title="#rights (instance method)">- (Object) <strong>rights</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute rights.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Util/LoadedFile.html" title="Puppet::Util::LoadedFile (class)">Util::LoadedFile</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/LoadedFile.html#file-instance_method" title="Puppet::Util::LoadedFile#file (method)">#file</a></span>, <span class='object_link'><a href="../Util/LoadedFile.html#statted-instance_method" title="Puppet::Util::LoadedFile#statted (method)">#statted</a></span>, <span class='object_link'><a href="../Util/LoadedFile.html#tstamp%3D-instance_method" title="Puppet::Util::LoadedFile#tstamp= (method)">#tstamp</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#main-class_method" title="main (class method)">+ (Object) <strong>main</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed%3F-instance_method" title="#allowed? (instance method)">- (Boolean) <strong>allowed?</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+check wether this request is allowed in our ACL raise an
+Puppet::Network::AuthorizedError if the request is denied.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_uri-instance_method" title="#build_uri (instance method)">- (Object) <strong>build_uri</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (RestAuthConfig) <strong>initialize</strong>(file = nil, parsenow = true) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of RestAuthConfig.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#insert_default_acl-instance_method" title="#insert_default_acl (instance method)">- (Object) <strong>insert_default_acl</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+force regular ACLs to be present.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mk_acl-instance_method" title="#mk_acl (instance method)">- (Object) <strong>mk_acl</strong>(acl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">- (Object) <strong>parse</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AuthConfig.html" title="Puppet::Network::AuthConfig (class)">AuthConfig</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="AuthConfig.html#exists%3F-instance_method" title="Puppet::Network::AuthConfig#exists? (method)">#exists?</a></span>, <span class='object_link'><a href="AuthConfig.html#read-instance_method" title="Puppet::Network::AuthConfig#read (method)">#read</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Util/LoadedFile.html" title="Puppet::Util::LoadedFile (class)">Util::LoadedFile</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/LoadedFile.html#changed%3F-instance_method" title="Puppet::Util::LoadedFile#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="../Util/LoadedFile.html#stamp-instance_method" title="Puppet::Util::LoadedFile#stamp (method)">#stamp</a></span>, <span class='object_link'><a href="../Util/LoadedFile.html#to_s-instance_method" title="Puppet::Util::LoadedFile#to_s (method)">#to_s</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Network::RestAuthConfig (class)">RestAuthConfig</a></span></tt>) <strong>initialize</strong>(file = nil, parsenow = true) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of RestAuthConfig
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_parsenow'>parsenow</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span> <span class='op'>||</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:rest_authconfig</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_parsenow'>parsenow</span><span class='rparen'>)</span>
+
+    <span class='comment'># if we didn't read a file (ie it doesn't exist)
+</span>    <span class='comment'># make sure we can create some default rights
+</span>    <span class='ivar'>@rights</span> <span class='op'>||=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>Rights</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 44</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">44
+45
+46
+47</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def initialize(file = nil, parsenow = true)
+    super(file || Puppet[:rest_authconfig], parsenow)
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+if we didn&#8217;t read a file (ie it doesn&#8217;t exist) make sure we can
+create some default rights
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">49
+50
+51</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @rights ||= Puppet::Network::Rights.new
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="rights=-instance_method"></span>
+      <span id="rights-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="rights-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>rights</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute rights
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rights'>rights</span>
+  <span class='ivar'>@rights</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 6</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">6
+7
+8
+9</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_rights'>rights</span>
+  <span class='ivar'>@rights</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="main-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>main</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_main'>main</span>
+    <span class='id identifier rubyid_add_acl'>add_acl</span> <span class='op'>=</span> <span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>super</span>
+    <span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_insert_default_acl'>insert_default_acl</span> <span class='kw'>if</span> <span class='id identifier rubyid_add_acl'>add_acl</span> <span class='kw'>and</span> <span class='op'>!</span><span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span>
+    <span class='ivar'>@main</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 20</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">20
+21
+22
+23
+24
+25
+26</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_main'>main</span>
+    <span class='id identifier rubyid_add_acl'>add_acl</span> <span class='op'>=</span> <span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>super</span>
+    <span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_insert_default_acl'>insert_default_acl</span> <span class='kw'>if</span> <span class='id identifier rubyid_add_acl'>add_acl</span> <span class='kw'>and</span> <span class='op'>!</span><span class='ivar'>@main</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span>
+    <span class='ivar'>@main</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="allowed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>allowed?</strong>(request) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+check wether this request is allowed in our ACL raise an
+Puppet::Network::AuthorizedError if the request is denied.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allowed?'>allowed?</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+    <span class='comment'># we're splitting the request in part because
+</span>    <span class='comment'># fail_on_deny could as well be called in the XMLRPC context
+</span>    <span class='comment'># with a ClientRequest.
+</span>    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_fail_on_deny'>fail_on_deny</span><span class='lparen'>(</span><span class='id identifier rubyid_build_uri'>build_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span><span class='comma'>,</span>
+                            <span class='symbol'>:node</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_node'>node</span><span class='comma'>,</span>
+                            <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_ip'>ip</span><span class='comma'>,</span>
+                            <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span>
+                            <span class='symbol'>:environment</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_environment'>environment</span><span class='comma'>,</span>
+                            <span class='symbol'>:authenticated</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_authenticated'>authenticated</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 30</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">30
+31
+32
+33</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def allowed?(request)
+    read()
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+we&#8217;re splitting the request in part because fail_on_deny could as
+well be called in the XMLRPC context with a ClientRequest.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">36
+37
+38
+39
+40
+41
+42
+43</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @rights.fail_on_deny(build_uri(request),
+                            :node =&gt; request.node,
+                            :ip =&gt; request.ip,
+                            :method =&gt; request.method,
+                            :environment =&gt; request.environment,
+                            :authenticated =&gt; request.authenticated)
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="build_uri-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>build_uri</strong>(request) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_build_uri'>build_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_indirection_name'>indirection_name</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 85</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">85
+86
+87
+88</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_build_uri'>build_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_indirection_name'>indirection_name</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="insert_default_acl-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>insert_default_acl</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+force regular ACLs to be present
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_insert_default_acl'>insert_default_acl</span>
+    <span class='const'>DEFAULT_ACL</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_acl'>acl</span><span class='op'>|</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_rights'>rights</span><span class='lbracket'>[</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Inserting default '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>'(%s) acl because %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:authenticated</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>auth</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>non-auth</span><span class='tstring_end'>&quot;</span></span> <span class='comma'>,</span> <span class='lparen'>(</span> <span class='op'>!</span><span class='id identifier rubyid_exists?'>exists?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:rest_authconfig</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'> doesn't exist</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>none where found in '</span><span class='embexpr_beg'>#{</span><span class='ivar'>@file</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span>
+            <span class='id identifier rubyid_mk_acl'>mk_acl</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='comment'># queue an empty (ie deny all) right for every other path
+</span>    <span class='comment'># actually this is not strictly necessary as the rights system
+</span>    <span class='comment'># denies not explicitely allowed paths
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_rights'>rights</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_rights'>rights</span><span class='period'>.</span><span class='id identifier rubyid_newright'>newright</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_rights'>rights</span><span class='period'>.</span><span class='id identifier rubyid_restrict_authenticated'>restrict_authenticated</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:any</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 58</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">58
+59
+60
+61
+62
+63
+64
+65</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def insert_default_acl
+    DEFAULT_ACL.each do |acl|
+        unless rights[acl[:acl]]
+            Puppet.info &quot;Inserting default '#{acl[:acl]}'(%s) acl because %s&quot; % [acl[:authenticated] ? &quot;auth&quot; : &quot;non-auth&quot; , ( !exists? ? &quot;#{Puppet[:rest_authconfig]} doesn't exist&quot; : &quot;none where found in '#{@file}'&quot;)]
+            mk_acl(acl)
+        end
+    end</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+queue an empty (ie deny all) right for every other path actually this is
+not strictly necessary as the rights system denies not explicitely allowed
+paths
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">68
+69
+70
+71
+72
+73</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    unless rights[&quot;/&quot;]
+        rights.newright(&quot;/&quot;)
+        rights.restrict_authenticated(&quot;/&quot;, :any)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="mk_acl-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mk_acl</strong>(acl) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mk_acl'>mk_acl</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='rparen'>)</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_newright'>newright</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_allow'>allow</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:allow</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:method</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_method'>method</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_restrict_method'>restrict_method</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_restrict_authenticated'>restrict_authenticated</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:authenticated</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:authenticated</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 74</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_mk_acl'>mk_acl</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='rparen'>)</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_newright'>newright</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_allow'>allow</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:allow</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:method</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_method'>method</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_restrict_method'>restrict_method</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@rights</span><span class='period'>.</span><span class='id identifier rubyid_restrict_authenticated'>restrict_authenticated</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:acl</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:authenticated</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_acl'>acl</span><span class='lbracket'>[</span><span class='symbol'>:authenticated</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>parse</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_insert_default_acl'>insert_default_acl</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/network/rest_authconfig.rb', line 52</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">52
+53
+54
+55
+56</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_insert_default_acl'>insert_default_acl</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:11:29 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

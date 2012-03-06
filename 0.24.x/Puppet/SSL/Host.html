@@ -1,0 +1,2745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::SSL::Host
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (H)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SSL.html" title="Puppet::SSL (module)">SSL</a></span></span>
+     &raquo; 
+    <span class="title">Host</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::SSL::Host
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Puppet::SSL::Host</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Util/Cacher.html" title="Puppet::Util::Cacher (module)">Util::Cacher</a></span></dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/puppet/ssl/host.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+The class that manages all aspects of our SSL certificates &#8212; private
+keys, public keys, requests, etc.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="Key-constant" class="">Key =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+Yay, ruby&#8217;s strange constant lookups.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>Key</span></pre></dd>
+      
+        <dt id="Certificate-constant" class="">Certificate =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>Certificate</span></pre></dd>
+      
+        <dt id="CertificateRequest-constant" class="">CertificateRequest =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>CertificateRequest</span></pre></dd>
+      
+        <dt id="CertificateRevocationList-constant" class="">CertificateRevocationList =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>CertificateRevocationList</span></pre></dd>
+      
+        <dt id="CA_NAME-constant" class="">CA_NAME =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ca</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="CA_MODES-constant" class="">CA_MODES =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+    <span class='comment'># Our ca is local, so we use it as the ultimate source of information
+</span>    <span class='comment'># And we cache files locally.
+</span>    <span class='symbol'>:local</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:ca</span><span class='comma'>,</span> <span class='symbol'>:file</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='comment'># We're a remote CA client.
+</span>    <span class='symbol'>:remote</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:rest</span><span class='comma'>,</span> <span class='symbol'>:file</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='comment'># We are the CA, so we don't have read/write access to the normal certificates.
+</span>    <span class='symbol'>:only</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:ca</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='comment'># We have no CA, so we just look in the local file store.
+</span>    <span class='symbol'>:none</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca_location-class_method" title="ca_location (class method)">+ (Object) <strong>ca_location</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute ca_location.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca-instance_method" title="#ca (instance method)">- (Object) <strong>ca</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute ca.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#certificate-instance_method" title="#certificate (instance method)">- (Object) <strong>certificate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#certificate_request-instance_method" title="#certificate_request (instance method)">- (Object) <strong>certificate_request</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key-instance_method" title="#key (instance method)">- (Object) <strong>key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute name.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../Util/Cacher/Expirer.html" title="Puppet::Util::Cacher::Expirer (module)">Util::Cacher::Expirer</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/Cacher/Expirer.html#timestamp-instance_method" title="Puppet::Util::Cacher::Expirer#timestamp (method)">#timestamp</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca_name-class_method" title="ca_name (class method)">+ (Object) <strong>ca_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is the constant that people will use to mark that a given host is a
+certificate authority.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#configure_indirection-class_method" title="configure_indirection (class method)">+ (Object) <strong>configure_indirection</strong>(terminus, cache = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Configure how our various classes interact with their various terminuses.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy-class_method" title="destroy (class method)">+ (Object) <strong>destroy</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Remove all traces of a given host.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search-class_method" title="search (class method)">+ (Object) <strong>search</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Search for more than one host, optionally only specifying an interest in
+hosts with a given file type.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca%3F-instance_method" title="#ca? (instance method)">- (Boolean) <strong>ca?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Is this a ca host, meaning that all of its files go in the CA location?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#certificate_matches_key%3F-instance_method" title="#certificate_matches_key? (instance method)">- (Boolean) <strong>certificate_matches_key?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate-instance_method" title="#generate (instance method)">- (Object) <strong>generate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generate all necessary parts of our ssl host.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_certificate_request-instance_method" title="#generate_certificate_request (instance method)">- (Object) <strong>generate_certificate_request</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Our certificate request requires the key but that&#8217;s all.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_key-instance_method" title="#generate_key (instance method)">- (Object) <strong>generate_key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is the private key; we can create it from scratch with no inputs.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Host) <strong>initialize</strong>(name = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Host.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#public_key-instance_method" title="#public_key (instance method)">- (Object) <strong>public_key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Extract the public key from the private key.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ssl_store-instance_method" title="#ssl_store (instance method)">- (Object) <strong>ssl_store</strong>(purpose = OpenSSL::X509::PURPOSE_ANY) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create/return a store that uses our SSL info to validate connections.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#this_csr_is_for_the_current_host-instance_method" title="#this_csr_is_for_the_current_host (instance method)">- (Object) <strong>this_csr_is_for_the_current_host</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_for_cert-instance_method" title="#wait_for_cert (instance method)">- (Object) <strong>wait_for_cert</strong>(time) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Attempt to retrieve a cert, if we don&#8217;t already have one.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Util/Cacher.html" title="Puppet::Util::Cacher (module)">Util::Cacher</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/Cacher.html#included-class_method" title="Puppet::Util::Cacher.included (method)">included</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Util/Cacher/Expirer.html" title="Puppet::Util::Cacher::Expirer (module)">Util::Cacher::Expirer</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/Cacher/Expirer.html#dependent_data_expired%3F-instance_method" title="Puppet::Util::Cacher::Expirer#dependent_data_expired? (method)">#dependent_data_expired?</a></span>, <span class='object_link'><a href="../Util/Cacher/Expirer.html#expire-instance_method" title="Puppet::Util::Cacher::Expirer#expire (method)">#expire</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::SSL::Host (class)">Host</a></span></tt>) <strong>initialize</strong>(name = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Host
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:certname</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='ivar'>@key</span> <span class='op'>=</span> <span class='ivar'>@certificate</span> <span class='op'>=</span> <span class='ivar'>@certificate_request</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='ivar'>@ca</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_ca_name'>ca_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 205</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">205
+206
+207
+208
+209
+210</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:certname</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='ivar'>@key</span> <span class='op'>=</span> <span class='ivar'>@certificate</span> <span class='op'>=</span> <span class='ivar'>@certificate_request</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='ivar'>@ca</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_ca_name'>ca_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="ca_location=-class_method"></span>
+      <span id="ca_location-class_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="ca_location-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ca_location</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute ca_location
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca_location'>ca_location</span>
+  <span class='ivar'>@ca_location</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 41</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">41
+42
+43
+44</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_ca_location'>ca_location</span>
+  <span class='ivar'>@ca_location</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="ca=-instance_method"></span>
+      <span id="ca-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="ca-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ca</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute ca
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca'>ca</span>
+  <span class='ivar'>@ca</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 18</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">18
+19
+20
+21</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_ca'>ca</span>
+  <span class='ivar'>@ca</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="certificate=-instance_method"></span>
+      <span id="certificate-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="certificate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>certificate</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_certificate'>certificate</span>
+    <span class='kw'>unless</span> <span class='ivar'>@certificate</span>
+        <span class='id identifier rubyid_generate_key'>generate_key</span> <span class='kw'>unless</span> <span class='id identifier rubyid_key'>key</span>
+
+        <span class='comment'># get the CA cert first, since it's required for the normal cert
+</span>        <span class='comment'># to be of any use.
+</span>        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ca</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_ca?'>ca?</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='ivar'>@certificate</span> <span class='op'>=</span> <span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+
+        <span class='kw'>unless</span> <span class='id identifier rubyid_certificate_matches_key?'>certificate_matches_key?</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Error</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Retrieved certificate does not match private key; please remove certificate from server and regenerate it with the current key</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@certificate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 169</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">169
+170
+171
+172
+173</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def certificate
+    unless @certificate
+        generate_key unless key
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+get the CA cert first, since it&#8217;s required for the normal cert to be
+of any use.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        return nil unless Certificate.find(&quot;ca&quot;) unless ca?
+        return nil unless @certificate = Certificate.find(name)
+
+        unless certificate_matches_key?
+            raise Puppet::Error, &quot;Retrieved certificate does not match private key; please remove certificate from server and regenerate it with the current key&quot;
+        end
+    end
+    @certificate
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="certificate_request=-instance_method"></span>
+      <span id="certificate_request-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="certificate_request-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>certificate_request</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_certificate_request'>certificate_request</span>
+    <span class='ivar'>@certificate_request</span> <span class='op'>||=</span> <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 137</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">137
+138
+139
+140</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_certificate_request'>certificate_request</span>
+    <span class='ivar'>@certificate_request</span> <span class='op'>||=</span> <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="key=-instance_method"></span>
+      <span id="key-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="key-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>key</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span>
+    <span class='ivar'>@key</span> <span class='op'>||=</span> <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 119</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">119
+120
+121
+122</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span>
+    <span class='ivar'>@key</span> <span class='op'>||=</span> <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id=""></span>
+      <span id="name-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>name</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 17</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">17
+18
+19
+20</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="ca_name-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ca_name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is the constant that people will use to mark that a given host is a
+certificate authority.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ca_name'>ca_name</span>
+    <span class='const'>CA_NAME</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 36</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">36
+37
+38
+39</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ca_name'>ca_name</span>
+    <span class='const'>CA_NAME</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="configure_indirection-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>configure_indirection</strong>(terminus, cache = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Configure how our various classes interact with their various terminuses.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configure_indirection'>configure_indirection</span><span class='lparen'>(</span><span class='id identifier rubyid_terminus'>terminus</span><span class='comma'>,</span> <span class='id identifier rubyid_cache'>cache</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_terminus_class'>terminus_class</span> <span class='op'>=</span> <span class='id identifier rubyid_terminus'>terminus</span>
+    <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_terminus_class'>terminus_class</span> <span class='op'>=</span> <span class='id identifier rubyid_terminus'>terminus</span>
+    <span class='const'>CertificateRevocationList</span><span class='period'>.</span><span class='id identifier rubyid_terminus_class'>terminus_class</span> <span class='op'>=</span> <span class='id identifier rubyid_terminus'>terminus</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_cache'>cache</span>
+        <span class='comment'># This is weird; we don't actually cache our keys, we
+</span>        <span class='comment'># use what would otherwise be the cache as our normal
+</span>        <span class='comment'># terminus.
+</span>        <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_terminus_class'>terminus_class</span> <span class='op'>=</span> <span class='id identifier rubyid_cache'>cache</span>
+    <span class='kw'>else</span>
+        <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_terminus_class'>terminus_class</span> <span class='op'>=</span> <span class='id identifier rubyid_terminus'>terminus</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_cache'>cache</span>
+        <span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='id identifier rubyid_cache'>cache</span>
+        <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='id identifier rubyid_cache'>cache</span>
+        <span class='const'>CertificateRevocationList</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='id identifier rubyid_cache'>cache</span>
+    <span class='kw'>else</span>
+        <span class='comment'># Make sure we have no cache configured.  puppetmasterd
+</span>        <span class='comment'># switches the configurations around a bit, so it's important
+</span>        <span class='comment'># that we specify the configs for absolutely everything, every
+</span>        <span class='comment'># time.
+</span>        <span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='const'>CertificateRevocationList</span><span class='period'>.</span><span class='id identifier rubyid_cache_class'>cache_class</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 45</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">45
+46
+47
+48
+49
+50
+51</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def self.configure_indirection(terminus, cache = nil)
+    Certificate.terminus_class = terminus
+    CertificateRequest.terminus_class = terminus
+    CertificateRevocationList.terminus_class = terminus
+
+    if cache</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This is weird; we don&#8217;t actually cache our keys, we use what would
+otherwise be the cache as our normal terminus.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        Key.terminus_class = cache
+    else
+        Key.terminus_class = terminus
+    end
+
+    if cache
+        Certificate.cache_class = cache
+        CertificateRequest.cache_class = cache
+        CertificateRevocationList.cache_class = cache
+    else</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Make sure we have no cache configured.  puppetmasterd switches the
+configurations around a bit, so it&#8217;s important that we specify the
+configs for absolutely everything, every time.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">68
+69
+70
+71
+72
+73</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        Certificate.cache_class = nil
+        CertificateRequest.cache_class = nil
+        CertificateRevocationList.cache_class = nil
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="destroy-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>destroy</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Remove all traces of a given host
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='lbracket'>[</span><span class='const'>Key</span><span class='comma'>,</span> <span class='const'>Certificate</span><span class='comma'>,</span> <span class='const'>CertificateRequest</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_part'>part</span><span class='op'>|</span> <span class='id identifier rubyid_part'>part</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 96</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">96
+97
+98
+99</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='lbracket'>[</span><span class='const'>Key</span><span class='comma'>,</span> <span class='const'>Certificate</span><span class='comma'>,</span> <span class='const'>CertificateRequest</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_part'>part</span><span class='op'>|</span> <span class='id identifier rubyid_part'>part</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="search-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>search</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Search for more than one host, optionally only specifying an interest in
+hosts with a given file type. This just allows our non-indirected class to
+have one of indirection methods.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_classlist'>classlist</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:for</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='const'>Key</span><span class='comma'>,</span> <span class='const'>CertificateRequest</span><span class='comma'>,</span> <span class='const'>Certificate</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+
+    <span class='comment'># Collect the results from each class, flatten them, collect all of the names, make the name list unique,
+</span>    <span class='comment'># then create a Host instance for each one.
+</span>    <span class='id identifier rubyid_classlist'>classlist</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_klass'>klass</span><span class='op'>|</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+        <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 104</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">104
+105
+106
+107</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def self.search(options = {})
+    classlist = [options[:for] || [Key, CertificateRequest, Certificate]].flatten
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Collect the results from each class, flatten them, collect all of the
+names, make the name list unique, then create a Host instance for each one.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">109
+110
+111
+112
+113</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    classlist.collect { |klass| klass.search }.flatten.collect { |r| r.name }.uniq.collect do |name|
+        new(name)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="ca?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>ca?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Is this a ca host, meaning that all of its files go in the CA location?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca?'>ca?</span>
+    <span class='id identifier rubyid_ca'>ca</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 115</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">115
+116
+117
+118</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_ca?'>ca?</span>
+    <span class='id identifier rubyid_ca'>ca</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="certificate_matches_key?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>certificate_matches_key?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 185</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_certificate_matches_key?'>certificate_matches_key?</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_key'>key</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_certificate'>certificate</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_certificate'>certificate</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_check_private_key'>check_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 185</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">185
+186
+187
+188
+189
+190
+191</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_certificate_matches_key?'>certificate_matches_key?</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_key'>key</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_certificate'>certificate</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_certificate'>certificate</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_check_private_key'>check_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>generate</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generate all necessary parts of our ssl host.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 193</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
+    <span class='id identifier rubyid_generate_key'>generate_key</span> <span class='kw'>unless</span> <span class='id identifier rubyid_key'>key</span>
+    <span class='id identifier rubyid_generate_certificate_request'>generate_certificate_request</span> <span class='kw'>unless</span> <span class='id identifier rubyid_certificate_request'>certificate_request</span>
+
+    <span class='comment'># If we can get a CA instance, then we're a valid CA, and we
+</span>    <span class='comment'># should use it to sign our request; else, just try to read
+</span>    <span class='comment'># the cert.
+</span>    <span class='kw'>if</span> <span class='op'>!</span> <span class='id identifier rubyid_certificate'>certificate</span> <span class='kw'>and</span> <span class='id identifier rubyid_ca'>ca</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>CertificateAuthority</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
+        <span class='id identifier rubyid_ca'>ca</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 193</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">193
+194
+195
+196
+197</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def generate
+    generate_key unless key
+    generate_certificate_request unless certificate_request
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If we can get a CA instance, then we&#8217;re a valid CA, and we should use
+it to sign our request; else, just try to read the cert.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">200
+201
+202
+203
+204</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if ! certificate and ca = Puppet::SSL::CertificateAuthority.instance
+        ca.sign(self.name, true)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate_certificate_request-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>generate_certificate_request</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Our certificate request requires the key but that&#8217;s all.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 146</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_certificate_request'>generate_certificate_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_generate_key'>generate_key</span> <span class='kw'>unless</span> <span class='id identifier rubyid_key'>key</span>
+
+    <span class='comment'># If this is for the current machine...
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_this_csr_is_for_the_current_host'>this_csr_is_for_the_current_host</span>
+        <span class='comment'># ...add our configured dns-alt-names
+</span>        <span class='kw'>if</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:dns_alt_names</span><span class='rbracket'>]</span> <span class='kw'>and</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:dns_alt_names</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+            <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:dns_alt_names</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:dns_alt_names</span><span class='rbracket'>]</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='ivar'>@certificate_request</span> <span class='op'>=</span> <span class='const'>CertificateRequest</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='ivar'>@certificate_request</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='ivar'>@certificate_request</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='kw'>rescue</span>
+        <span class='ivar'>@certificate_request</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+
+    <span class='ivar'>@certificate_request</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 146</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">146
+147
+148
+149</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def generate_certificate_request(options = {})
+    generate_key unless key
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If this is for the current machine&#8230;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">150
+151</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if this_csr_is_for_the_current_host</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+&#8230;add our configured dns-alt-names
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        if Puppet[:dns_alt_names] and Puppet[:dns_alt_names] != ''
+            options[:dns_alt_names] ||= Puppet[:dns_alt_names]
+        end
+    end
+
+    @certificate_request = CertificateRequest.new(name)
+    @certificate_request.generate(key.content, options)
+    begin
+        @certificate_request.save
+    rescue
+        @certificate_request = nil
+        raise
+    end
+
+    @certificate_request
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate_key-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>generate_key</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is the private key; we can create it from scratch with no inputs.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_key'>generate_key</span>
+    <span class='ivar'>@key</span> <span class='op'>=</span> <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='ivar'>@key</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span>
+    <span class='kw'>begin</span>
+        <span class='ivar'>@key</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='kw'>rescue</span>
+        <span class='ivar'>@key</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+    <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 125</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_generate_key'>generate_key</span>
+    <span class='ivar'>@key</span> <span class='op'>=</span> <span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='ivar'>@key</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span>
+    <span class='kw'>begin</span>
+        <span class='ivar'>@key</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='kw'>rescue</span>
+        <span class='ivar'>@key</span> <span class='op'>=</span> <span class='kw'>nil</span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>end</span>
+    <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="public_key-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>public_key</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Extract the public key from the private key.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_public_key'>public_key</span>
+    <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_public_key'>public_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 212</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">212
+213
+214
+215</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_public_key'>public_key</span>
+    <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_public_key'>public_key</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="ssl_store-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>ssl_store</strong>(purpose = OpenSSL::X509::PURPOSE_ANY) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create/return a store that uses our SSL info to validate connections.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 218</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ssl_store'>ssl_store</span><span class='lparen'>(</span><span class='id identifier rubyid_purpose'>purpose</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>PURPOSE_ANY</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@ssl_store</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='ivar'>@ssl_store</span>
+        <span class='ivar'>@ssl_store</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Store</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+        <span class='ivar'>@ssl_store</span><span class='period'>.</span><span class='id identifier rubyid_purpose'>purpose</span> <span class='op'>=</span> <span class='id identifier rubyid_purpose'>purpose</span>
+
+        <span class='comment'># Use the file path here, because we don't want to cause
+</span>        <span class='comment'># a lookup in the middle of setting our ssl connection.
+</span>        <span class='ivar'>@ssl_store</span><span class='period'>.</span><span class='id identifier rubyid_add_file'>add_file</span><span class='lparen'>(</span><span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:localcacert</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+        <span class='comment'># If there's a CRL, add it to our store.
+</span>        <span class='kw'>if</span> <span class='id identifier rubyid_crl'>crl</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>CertificateRevocationList</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ca</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+            <span class='ivar'>@ssl_store</span><span class='period'>.</span><span class='id identifier rubyid_flags'>flags</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>V_FLAG_CRL_CHECK_ALL</span><span class='op'>|</span><span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>V_FLAG_CRL_CHECK</span> <span class='kw'>if</span> <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='lbracket'>[</span><span class='symbol'>:certificate_revocation</span><span class='rbracket'>]</span>
+            <span class='ivar'>@ssl_store</span><span class='period'>.</span><span class='id identifier rubyid_add_crl'>add_crl</span><span class='lparen'>(</span><span class='id identifier rubyid_crl'>crl</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+        <span class='kw'>return</span> <span class='ivar'>@ssl_store</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@ssl_store</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 218</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">218
+219
+220
+221
+222
+223</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def ssl_store(purpose = OpenSSL::X509::PURPOSE_ANY)
+    unless defined?(@ssl_store) and @ssl_store
+        @ssl_store = OpenSSL::X509::Store.new
+        @ssl_store.purpose = purpose
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Use the file path here, because we don&#8217;t want to cause a lookup in
+the middle of setting our ssl connection.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">225
+226
+227</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        <span class='ivar'>@ssl_store</span><span class='period'>.</span><span class='id identifier rubyid_add_file'>add_file</span><span class='lparen'>(</span><span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:localcacert</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If there&#8217;s a CRL, add it to our store.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">228
+229
+230
+231
+232
+233
+234
+235
+236</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        if crl = Puppet::SSL::CertificateRevocationList.find(&quot;ca&quot;)
+            @ssl_store.flags = OpenSSL::X509::V_FLAG_CRL_CHECK_ALL|OpenSSL::X509::V_FLAG_CRL_CHECK if Puppet.settings[:certificate_revocation]
+            @ssl_store.add_crl(crl.content)
+        end
+        return @ssl_store
+    end
+    @ssl_store
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="this_csr_is_for_the_current_host-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>this_csr_is_for_the_current_host</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_this_csr_is_for_the_current_host'>this_csr_is_for_the_current_host</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:certname</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 141</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">141
+142
+143
+144</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_this_csr_is_for_the_current_host'>this_csr_is_for_the_current_host</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:certname</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="wait_for_cert-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>wait_for_cert</strong>(time) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Attempt to retrieve a cert, if we don&#8217;t already have one.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 238</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_wait_for_cert'>wait_for_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+        <span class='id identifier rubyid_generate'>generate</span>
+        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+    <span class='kw'>rescue</span> <span class='const'>SystemExit</span><span class='comma'>,</span><span class='const'>NoMemoryError</span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not request certificate: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_time'>time</span> <span class='op'>&lt;</span> <span class='int'>1</span>
+            <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Exiting; failed to retrieve certificate and waitforcert is disabled</span><span class='tstring_end'>&quot;</span></span>
+            <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+            <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+        <span class='kw'>retry</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_time'>time</span> <span class='op'>&lt;</span> <span class='int'>1</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Exiting; no certificate found and waitforcert is disabled</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>while</span> <span class='kw'>true</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_time'>time</span>
+        <span class='kw'>begin</span>
+            <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_notice'>notice</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Did not receive certificate</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not request certificate: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/ssl/host.rb', line 238</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_wait_for_cert'>wait_for_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+        <span class='id identifier rubyid_generate'>generate</span>
+        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+    <span class='kw'>rescue</span> <span class='const'>SystemExit</span><span class='comma'>,</span><span class='const'>NoMemoryError</span>
+        <span class='id identifier rubyid_raise'>raise</span>
+    <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not request certificate: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_time'>time</span> <span class='op'>&lt;</span> <span class='int'>1</span>
+            <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Exiting; failed to retrieve certificate and waitforcert is disabled</span><span class='tstring_end'>&quot;</span></span>
+            <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+            <span class='id identifier rubyid_sleep'>sleep</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+        <span class='kw'>retry</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_time'>time</span> <span class='op'>&lt;</span> <span class='int'>1</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Exiting; no certificate found and waitforcert is disabled</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>while</span> <span class='kw'>true</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_time'>time</span>
+        <span class='kw'>begin</span>
+            <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_certificate'>certificate</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_notice'>notice</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Did not receive certificate</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+            <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not request certificate: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:11:05 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,4576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Puppet::Node::Catalog
+  
+    &mdash; Documentation by YARD 0.7.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/docco.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/docco.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Puppet.html" title="Puppet (module)">Puppet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Node.html" title="Puppet::Node (class)">Node</a></span></span>
+     &raquo; 
+    <span class="title">Catalog</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Puppet::Node::Catalog
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../PGraph.html" title="Puppet::PGraph (class)">PGraph</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">SimpleGraph</li>
+          
+            <li class="next"><span class='object_link'><a href="../PGraph.html" title="Puppet::PGraph (class)">PGraph</a></span></li>
+          
+            <li class="next">Puppet::Node::Catalog</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Indirector.html" title="Puppet::Indirector (module)">Indirector</a></span></dd>
+      
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="../Util/Tagging.html" title="Puppet::Util::Tagging (module)">Util::Tagging</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/puppet/node/catalog.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+This class models a node catalog.  It is the thing meant to be passed from
+server to client, and it contains all of the information in the catalog,
+including the resources and the relationships between them.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Catalog/Compiler.html" title="Puppet::Node::Catalog::Compiler (class)">Compiler</a></span>, <span class='object_link'><a href="Catalog/Yaml.html" title="Puppet::Node::Catalog::Yaml (class)">Yaml</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edgelist_class-instance_method" title="#edgelist_class (instance method)">- (Object) <strong>edgelist_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+We need the ability to set this externally, so we can yaml-dump the
+catalog.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extraction_format-instance_method" title="#extraction_format (instance method)">- (Object) <strong>extraction_format</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+How we should extract the catalog for sending to the client.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_cache-instance_method" title="#from_cache (instance method)">- (Object) <strong>from_cache</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether this catalog was retrieved from the cache, which affects whether it
+is written back out again.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#host_config-instance_method" title="#host_config (instance method)">- (Object) <strong>host_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether this is a host catalog, which behaves very differently.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#is_relationship_graph-instance_method" title="#is_relationship_graph (instance method)">- (Object) <strong>is_relationship_graph</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether this graph is another catalog&#8217;s relationship graph.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The host name this is a catalog for.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#retrieval_duration-instance_method" title="#retrieval_duration (instance method)">- (Object) <strong>retrieval_duration</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+How long this catalog took to retrieve.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#version-instance_method" title="#version (instance method)">- (Object) <strong>version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The catalog version.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_class-instance_method" title="#add_class (instance method)">- (Object) <strong>add_class</strong>(*classes) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Add classes to our class list.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_resource-instance_method" title="#add_resource (instance method)">- (Object) <strong>add_resource</strong>(*resources) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Add one or more resources to our graph and to our resource table.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#alias-instance_method" title="#alias (instance method)">- (Object) <strong>alias</strong>(resource, name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create an alias for a resource.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#apply-instance_method" title="#apply (instance method)">- (Object) <strong>apply</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Apply our catalog to the local host.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#applying%3F-instance_method" title="#applying? (instance method)">- (Boolean) <strong>applying?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Are we in the middle of applying the catalog?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#classes-instance_method" title="#classes (instance method)">- (Object) <strong>classes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear-instance_method" title="#clear (instance method)">- (Object) <strong>clear</strong>(remove_resources = true) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_implicit_resource-instance_method" title="#create_implicit_resource (instance method)">- (Object) <strong>create_implicit_resource</strong>(type, options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create an implicit resource, meaning that it will lose out to any
+explicitly defined resources.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_resource-instance_method" title="#create_resource (instance method)">- (Object) <strong>create_resource</strong>(type, options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a new resource and register it in the catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract-instance_method" title="#extract (instance method)">- (Object) <strong>extract</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Turn our catalog graph into whatever the client is expecting.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_to_transportable-instance_method" title="#extract_to_transportable (instance method)">- (Object) <strong>extract_to_transportable</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create the traditional TransBuckets and TransObjects from our catalog
+graph.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#finalize-instance_method" title="#finalize (instance method)">- (Object) <strong>finalize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Make sure all of our resources are &#8220;finished&#8221;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#host_config%3F-instance_method" title="#host_config? (instance method)">- (Boolean) <strong>host_config?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Catalog) <strong>initialize</strong>(name = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#make_default_resources-instance_method" title="#make_default_resources (instance method)">- (Object) <strong>make_default_resources</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Make the default objects necessary for function.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#relationship_graph-instance_method" title="#relationship_graph (instance method)">- (Object) <strong>relationship_graph</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create a graph of all of the relationships in our catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_resource-instance_method" title="#remove_resource (instance method)">- (Object) <strong>remove_resource</strong>(*resources) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Remove the resource from our catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resource-instance_method" title="#resource (instance method)">- (Object) <strong>resource</strong>(type, title = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Look a resource up by its reference (e.g., File[/etc/passwd]).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resources-instance_method" title="#resources (instance method)">- (Object) <strong>resources</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return an array of all resources.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_ral-instance_method" title="#to_ral (instance method)">- (Object) <strong>to_ral</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Convert our catalog into a RAL catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_transportable-instance_method" title="#to_transportable (instance method)">- (Object) <strong>to_transportable</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Turn our parser catalog into a transportable catalog.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_yaml_properties-instance_method" title="#to_yaml_properties (instance method)">- (Object) <strong>to_yaml_properties</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+LAK:NOTE We cannot yaml-dump the class in the edgelist_class, because
+classes cannot be dumped by default, nor does yaml-dumping # the
+edge-labels work at this point (I don&#8217;t know why).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_graph-instance_method" title="#write_graph (instance method)">- (Object) <strong>write_graph</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Produce the graph files if requested.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Indirector.html" title="Puppet::Indirector (module)">Indirector</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Indirector.html#indirects-instance_method" title="Puppet::Indirector#indirects (method)">indirects</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Util/Tagging.html" title="Puppet::Util::Tagging (module)">Util::Tagging</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util/Tagging.html#tag-instance_method" title="Puppet::Util::Tagging#tag (method)">#tag</a></span>, <span class='object_link'><a href="../Util/Tagging.html#tagged%3F-instance_method" title="Puppet::Util::Tagging#tagged? (method)">#tagged?</a></span>, <span class='object_link'><a href="../Util/Tagging.html#tags-instance_method" title="Puppet::Util::Tagging#tags (method)">#tags</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../PGraph.html" title="Puppet::PGraph (class)">PGraph</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PGraph.html#add_edge-instance_method" title="Puppet::PGraph#add_edge (method)">#add_edge</a></span>, <span class='object_link'><a href="../PGraph.html#add_vertex-instance_method" title="Puppet::PGraph#add_vertex (method)">#add_vertex</a></span>, <span class='object_link'><a href="../PGraph.html#dependencies-instance_method" title="Puppet::PGraph#dependencies (method)">#dependencies</a></span>, <span class='object_link'><a href="../PGraph.html#dependents-instance_method" title="Puppet::PGraph#dependents (method)">#dependents</a></span>, <span class='object_link'><a href="../PGraph.html#leaves-instance_method" title="Puppet::PGraph#leaves (method)">#leaves</a></span>, <span class='object_link'><a href="../PGraph.html#matching_edges-instance_method" title="Puppet::PGraph#matching_edges (method)">#matching_edges</a></span>, <span class='object_link'><a href="../PGraph.html#splice%21-instance_method" title="Puppet::PGraph#splice! (method)">#splice!</a></span>, <span class='object_link'><a href="../PGraph.html#tree_from_vertex-instance_method" title="Puppet::PGraph#tree_from_vertex (method)">#tree_from_vertex</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Util.html" title="Puppet::Util (module)">Util</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Util.html#benchmark-instance_method" title="Puppet::Util#benchmark (method)">#benchmark</a></span>, <span class='object_link'><a href="../Util.html#binary-instance_method" title="Puppet::Util#binary (method)">#binary</a></span>, <span class='object_link'><a href="../Util.html#chuser-class_method" title="Puppet::Util.chuser (method)">chuser</a></span>, <span class='object_link'><a href="../Util.html#classproxy-class_method" title="Puppet::Util.classproxy (method)">classproxy</a></span>, <span class='object_link'><a href="../Util.html#execfail-instance_method" title="Puppet::Util#execfail (method)">#execfail</a></span>, <span class='object_link'><a href="../Util.html#execpipe-instance_method" title="Puppet::Util#execpipe (method)">#execpipe</a></span>, <span class='object_link'><a href="../Util.html#execute-instance_method" title="Puppet::Util#execute (method)">#execute</a></span>, <span class='object_link'><a href="../Util.html#logmethods-class_method" title="Puppet::Util.logmethods (method)">logmethods</a></span>, <span class='object_link'><a href="../Util.html#memory-instance_method" title="Puppet::Util#memory (method)">#memory</a></span>, <span class='object_link'><a href="../Util.html#proxy-class_method" title="Puppet::Util.proxy (method)">proxy</a></span>, <span class='object_link'><a href="../Util.html#recmkdir-class_method" title="Puppet::Util.recmkdir (method)">recmkdir</a></span>, <span class='object_link'><a href="../Util.html#secure_open-instance_method" title="Puppet::Util#secure_open (method)">#secure_open</a></span>, <span class='object_link'><a href="../Util.html#symbolize-instance_method" title="Puppet::Util#symbolize (method)">#symbolize</a></span>, <span class='object_link'><a href="../Util.html#symbolizehash-instance_method" title="Puppet::Util#symbolizehash (method)">#symbolizehash</a></span>, <span class='object_link'><a href="../Util.html#symbolizehash%21-instance_method" title="Puppet::Util#symbolizehash! (method)">#symbolizehash!</a></span>, <span class='object_link'><a href="../Util.html#sync-class_method" title="Puppet::Util.sync (method)">sync</a></span>, <span class='object_link'><a href="../Util.html#thinmark-instance_method" title="Puppet::Util#thinmark (method)">#thinmark</a></span>, <span class='object_link'><a href="../Util.html#threadlock-instance_method" title="Puppet::Util#threadlock (method)">#threadlock</a></span>, <span class='object_link'><a href="../Util.html#withumask-class_method" title="Puppet::Util.withumask (method)">withumask</a></span></p>
+
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Puppet::Node::Catalog (class)">Catalog</a></span></tt>) <strong>initialize</strong>(name = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Catalog
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 290</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='ivar'>@extraction_format</span> <span class='op'>||=</span> <span class='symbol'>:transportable</span>
+    <span class='ivar'>@classes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@resource_table</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='ivar'>@transient_resources</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@applying</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='ivar'>@relationship_graph</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='ivar'>@aliases</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+        <span class='kw'>yield</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 290</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span> <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='ivar'>@extraction_format</span> <span class='op'>||=</span> <span class='symbol'>:transportable</span>
+    <span class='ivar'>@classes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@resource_table</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='ivar'>@transient_resources</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@applying</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='ivar'>@relationship_graph</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='ivar'>@aliases</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+        <span class='kw'>yield</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_finalize'>finalize</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="edgelist_class=-instance_method"></span>
+      <span id="edgelist_class-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="edgelist_class-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>edgelist_class</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+We need the ability to set this externally, so we can yaml-dump the
+catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edgelist_class'>edgelist_class</span>
+  <span class='ivar'>@edgelist_class</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 32</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">32
+33
+34
+35</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_edgelist_class'>edgelist_class</span>
+  <span class='ivar'>@edgelist_class</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="extraction_format=-instance_method"></span>
+      <span id="extraction_format-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="extraction_format-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>extraction_format</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+How we should extract the catalog for sending to the client.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extraction_format'>extraction_format</span>
+  <span class='ivar'>@extraction_format</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 28</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">28
+29
+30
+31</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_extraction_format'>extraction_format</span>
+  <span class='ivar'>@extraction_format</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="from_cache=-instance_method"></span>
+      <span id="from_cache-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="from_cache-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>from_cache</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether this catalog was retrieved from the cache, which affects whether it
+is written back out again.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_from_cache'>from_cache</span>
+  <span class='ivar'>@from_cache</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 48</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">48
+49
+50
+51</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_from_cache'>from_cache</span>
+  <span class='ivar'>@from_cache</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="host_config=-instance_method"></span>
+      <span id="host_config-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="host_config-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>host_config</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether this is a host catalog, which behaves very differently. In
+particular, reports are sent, graphs are made, and state is stored in the
+state database.  If this is set incorrectly, then you often end up in
+infinite loops, because catalogs are used to make things that the host
+catalog needs.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_host_config'>host_config</span>
+  <span class='ivar'>@host_config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 39</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">39
+40
+41
+42</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_host_config'>host_config</span>
+  <span class='ivar'>@host_config</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="is_relationship_graph=-instance_method"></span>
+      <span id="is_relationship_graph-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="is_relationship_graph-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>is_relationship_graph</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether this graph is another catalog&#8217;s relationship graph. We
+don&#8217;t want to accidentally create a relationship graph for another
+relationship graph.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span>
+  <span class='ivar'>@is_relationship_graph</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 44</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">44
+45
+46
+47</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span>
+  <span class='ivar'>@is_relationship_graph</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="name=-instance_method"></span>
+      <span id="name-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The host name this is a catalog for.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 18</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">18
+19
+20
+21</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="retrieval_duration=-instance_method"></span>
+      <span id="retrieval_duration-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="retrieval_duration-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>retrieval_duration</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+How long this catalog took to retrieve.  Used for reporting stats.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_retrieval_duration'>retrieval_duration</span>
+  <span class='ivar'>@retrieval_duration</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 25</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">25
+26
+27
+28</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_retrieval_duration'>retrieval_duration</span>
+  <span class='ivar'>@retrieval_duration</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      
+      <span id="version=-instance_method"></span>
+      <span id="version-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="version-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>version</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The catalog version.  Used for testing whether a catalog is up to date.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_version'>version</span>
+  <span class='ivar'>@version</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 22</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">22
+23
+24
+25</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_version'>version</span>
+  <span class='ivar'>@version</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_class-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>add_class</strong>(*classes) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Add classes to our class list.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_class'>add_class</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_classes'>classes</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_classes'>classes</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_klass'>klass</span><span class='op'>|</span>
+        <span class='ivar'>@classes</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_klass'>klass</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Add the class names as tags, too.
+</span>    <span class='id identifier rubyid_tag'>tag</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_classes'>classes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 51</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">51
+52
+53
+54
+55
+56</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def add_class(*classes)
+    classes.each do |klass|
+        @classes &lt;&lt; klass
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Add the class names as tags, too.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">57
+58
+59</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    tag(*classes)
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="add_resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>add_resource</strong>(*resources) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Add one or more resources to our graph and to our resource table.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_resources'>resources</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span>
+        <span class='kw'>unless</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:ref</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Can only add objects that respond to :ref</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+
+        <span class='id identifier rubyid_fail_unless_unique'>fail_unless_unique</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+
+        <span class='id identifier rubyid_ref'>ref</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span>
+
+        <span class='ivar'>@resource_table</span><span class='lbracket'>[</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span>
+
+        <span class='comment'># If the name and title differ, set up an alias
+</span>        <span class='comment'>#self.alias(resource, resource.name) if resource.respond_to?(:name) and resource.respond_to?(:title) and resource.name != resource.title
+</span>        <span class='kw'>if</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:title</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>!=</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span>
+            <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_alias'>alias</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_isomorphic?'>isomorphic?</span>
+        <span class='kw'>end</span>
+
+        <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_catalog'>catalog</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:catalog=</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='op'>!</span> <span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span>
+
+        <span class='id identifier rubyid_add_vertex'>add_vertex</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 61</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def add_resource(*resources)
+    resources.each do |resource|
+        unless resource.respond_to?(:ref)
+            raise ArgumentError, &quot;Can only add objects that respond to :ref&quot;
+        end
+
+        fail_unless_unique(resource)
+
+        ref = resource.ref
+
+        @resource_table[ref] = resource
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If the name and title differ, set up an alias self.alias(resource,
+resource.name) if resource.respond_to?(:name) and
+resource.respond_to?(:title) and resource.name != resource.title
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        if resource.respond_to?(:name) and resource.respond_to?(:title) and resource.name != resource.title
+            self.alias(resource, resource.name) if resource.isomorphic?
+        end
+
+        resource.catalog = self if resource.respond_to?(:catalog=) and ! is_relationship_graph
+
+        add_vertex(resource)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="alias-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>alias</strong>(resource, name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create an alias for a resource.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='kw'>alias</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='comment'>#set $1 
+</span>    <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(.+)\[</span><span class='regexp_end'>/</span></span>
+
+    <span class='id identifier rubyid_newref'>newref</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%s[%s]</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='backref'>$1</span> <span class='op'>||</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+
+    <span class='comment'># LAK:NOTE It's important that we directly compare the references,
+</span>    <span class='comment'># because sometimes an alias is created before the resource is
+</span>    <span class='comment'># added to the catalog, so comparing inside the below if block
+</span>    <span class='comment'># isn't sufficient.
+</span>    <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_newref'>newref</span> <span class='op'>==</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_existing'>existing</span> <span class='op'>=</span> <span class='ivar'>@resource_table</span><span class='lbracket'>[</span><span class='id identifier rubyid_newref'>newref</span><span class='rbracket'>]</span>
+        <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_existing'>existing</span> <span class='op'>==</span> <span class='id identifier rubyid_resource'>resource</span>
+        <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot alias %s to %s; resource %s already exists</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_newref'>newref</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@resource_table</span><span class='lbracket'>[</span><span class='id identifier rubyid_newref'>newref</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='ivar'>@aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_newref'>newref</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 86</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">86
+87</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def alias(resource, name)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+set $1
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">88
+89
+90
+91
+92</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(.+)\[</span><span class='regexp_end'>/</span></span>
+
+    <span class='id identifier rubyid_newref'>newref</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%s[%s]</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='backref'>$1</span> <span class='op'>||</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+LAK:NOTE It&#8217;s important that we directly compare the references,
+because sometimes an alias is created before the resource is added to the
+catalog, so comparing inside the below if block isn&#8217;t sufficient.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    return if newref == resource.ref
+    if existing = @resource_table[newref]
+        return if existing == resource
+        raise(ArgumentError, &quot;Cannot alias %s to %s; resource %s already exists&quot; % [resource.ref, name, newref])
+    end
+    @resource_table[newref] = resource
+    @aliases[resource.ref] &lt;&lt; newref
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="apply-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>apply</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Apply our catalog to the local host.  Valid options are:
+</p>
+<pre class="code ruby"><code>
+  :tags - set the tags that restrict what resources run
+      during the transaction
+  :ignoreschedules - tell the transaction to ignore schedules
+      when determining the resources to run</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_apply'>apply</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='ivar'>@applying</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Storage</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='kw'>if</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+    <span class='id identifier rubyid_transaction'>transaction</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Transaction</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_tags'>tags</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:tags</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:tags</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_ignoreschedules'>ignoreschedules</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ignoreschedules</span><span class='rbracket'>]</span>
+
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_addtimes'>addtimes</span> <span class='symbol'>:config_retrieval</span> <span class='op'>=&gt;</span> <span class='ivar'>@retrieval_duration</span>
+
+
+    <span class='kw'>begin</span>
+        <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_evaluate'>evaluate</span>
+    <span class='kw'>rescue</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Error</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not apply complete catalog: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_detail'>detail</span>
+    <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_detail'>detail</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span> <span class='kw'>if</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:trace</span><span class='rbracket'>]</span>
+        <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_err'>err</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Got an uncaught exception of type %s: %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_detail'>detail</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='comma'>,</span> <span class='id identifier rubyid_detail'>detail</span><span class='rbracket'>]</span>
+    <span class='kw'>ensure</span>
+        <span class='comment'># Don't try to store state unless we're a host config
+</span>        <span class='comment'># too recursive.
+</span>        <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Storage</span><span class='period'>.</span><span class='id identifier rubyid_store'>store</span> <span class='kw'>if</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>yield</span> <span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_send_report'>send_report</span> <span class='kw'>if</span> <span class='id identifier rubyid_host_config'>host_config</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:report</span><span class='rbracket'>]</span> <span class='kw'>or</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:summarize</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_transaction'>transaction</span>
+<span class='kw'>ensure</span>
+    <span class='ivar'>@applying</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='id identifier rubyid_cleanup'>cleanup</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_cleanup'>cleanup</span> <span class='kw'>if</span> <span class='kw'>defined?</span> <span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>and</span> <span class='id identifier rubyid_transaction'>transaction</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 111</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def apply(options = {})
+    @applying = true
+
+    Puppet::Util::Storage.load if host_config?
+    transaction = Puppet::Transaction.new(self)
+
+    transaction.tags = options[:tags] if options[:tags]
+    transaction.ignoreschedules = true if options[:ignoreschedules]
+
+    transaction.addtimes :config_retrieval =&gt; @retrieval_duration
+
+
+    begin
+        transaction.evaluate
+    rescue Puppet::Error =&gt; detail
+        Puppet.err &quot;Could not apply complete catalog: %s&quot; % detail
+    rescue =&gt; detail
+        puts detail.backtrace if Puppet[:trace]
+        Puppet.err &quot;Got an uncaught exception of type %s: %s&quot; % [detail.class, detail]
+    ensure</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Don&#8217;t try to store state unless we&#8217;re a host config too
+recursive.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        Puppet::Util::Storage.store if host_config?
+    end
+
+    yield transaction if block_given?
+    
+    transaction.send_report if host_config and (Puppet[:report] or Puppet[:summarize])
+
+    return transaction
+ensure
+    @applying = false
+    cleanup()
+    transaction.cleanup if defined? transaction and transaction
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="applying?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>applying?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Are we in the middle of applying the catalog?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_applying?'>applying?</span>
+    <span class='ivar'>@applying</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 148</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">148
+149
+150
+151</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_applying?'>applying?</span>
+    <span class='ivar'>@applying</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="classes-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>classes</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_classes'>classes</span>
+    <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 164</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">164
+165
+166
+167</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_classes'>classes</span>
+    <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="clear-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>clear</strong>(remove_resources = true) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 152</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='id identifier rubyid_remove_resources'>remove_resources</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='comment'># We have to do this so that the resources clean themselves up.
+</span>    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_remove'>remove</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id identifier rubyid_remove_resources'>remove_resources</span>
+    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+
+    <span class='kw'>if</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@relationship_graph</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='ivar'>@relationship_graph</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
+        <span class='ivar'>@relationship_graph</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 152</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">152
+153
+154</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def clear(remove_resources = true)
+    super()</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We have to do this so that the resources clean themselves up.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">155
+156
+157
+158
+159
+160
+161
+162
+163</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    @resource_table.values.each { |resource| resource.remove } if remove_resources
+    @resource_table.clear
+
+    if defined?(@relationship_graph) and @relationship_graph
+        @relationship_graph.clear(false)
+        @relationship_graph = nil
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_implicit_resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_implicit_resource</strong>(type, options) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create an implicit resource, meaning that it will lose out to any
+explicitly defined resources.  This method often returns nil.
+</p>
+<pre class="code ruby"><code>
+ <span class='const'>The</span> <span class='id identifier rubyid_quirk'>quirk</span> <span class='id identifier rubyid_of'>of</span> <span class='id identifier rubyid_this'>this</span> <span class='id identifier rubyid_method'>method</span> <span class='id identifier rubyid_is'>is</span> <span class='id identifier rubyid_that'>that</span> <span class='id identifier rubyid_it'>it</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>s not possible to create
+</span></span></code></pre>
+<p>
+an implicit resource before an explicit resource of the same name, because
+all explicit resources are created before any generate() methods are called
+on the individual resources.  Thus, this method can safely just check if an
+explicit resource already exists and toss this implicit resource if so.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_implicit_resource'>create_implicit_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:implicit</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:implicit</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># This will return nil if an equivalent explicit resource already exists.
+</span>    <span class='comment'># When resource classes no longer retain references to resource instances,
+</span>    <span class='comment'># this will need to be modified to catch that conflict and discard
+</span>    <span class='comment'># implicit resources.
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_resource'>resource</span> <span class='op'>=</span> <span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_implicit'>implicit</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+        <span class='kw'>return</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='kw'>else</span>
+        <span class='kw'>return</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 177</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">177
+178
+179
+180
+181
+182</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def create_implicit_resource(type, options)
+    unless options.include?(:implicit)
+        options[:implicit] = true
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This will return nil if an equivalent explicit resource already exists.
+When resource classes no longer retain references to resource instances,
+this will need to be modified to catch that conflict and discard implicit
+resources.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">186
+187
+188
+189
+190
+191
+192
+193
+194</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if resource = create_resource(type, options)
+        resource.implicit = true
+
+        return resource
+    else
+        return nil
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_resource</strong>(type, options) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a new resource and register it in the catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 196</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unknown resource type %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resource'>resource</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='ivar'>@transient_resources</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_resource'>resource</span> <span class='kw'>if</span> <span class='id identifier rubyid_applying?'>applying?</span>
+    <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='ivar'>@relationship_graph</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 196</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unknown resource type %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resource'>resource</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='ivar'>@transient_resources</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_resource'>resource</span> <span class='kw'>if</span> <span class='id identifier rubyid_applying?'>applying?</span>
+    <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='ivar'>@relationship_graph</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="extract-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>extract</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Turn our catalog graph into whatever the client is expecting.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 219</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract'>extract</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract_to_%s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_extraction_format'>extraction_format</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 219</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">219
+220
+221
+222</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_extract'>extract</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract_to_%s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_extraction_format'>extraction_format</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="extract_to_transportable-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>extract_to_transportable</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create the traditional TransBuckets and TransObjects from our catalog
+graph.  This will hopefully be deprecated soon.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 225</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_to_transportable'>extract_to_transportable</span>
+    <span class='id identifier rubyid_top'>top</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_current'>current</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_buckets'>buckets</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_main'>main</span> <span class='op'>=</span> <span class='id identifier rubyid_vertices'>vertices</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span> <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Class</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>and</span> <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span> <span class='op'>==</span> <span class='symbol'>:main</span> <span class='rbrace'>}</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not find 'main' class; cannot generate catalog</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Create a proc for examining edges, which we'll use to build our tree
+</span>    <span class='comment'># of TransBuckets and TransObjects.
+</span>    <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_walk'>walk</span><span class='lparen'>(</span><span class='id identifier rubyid_main'>main</span><span class='comma'>,</span> <span class='symbol'>:out</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_target'>target</span><span class='op'>|</span>
+        <span class='comment'># The sources are always non-builtins.
+</span>        <span class='kw'>unless</span> <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>=</span> <span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span>
+            <span class='kw'>if</span> <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>=</span> <span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_trans'>to_trans</span>
+                <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_tmp'>tmp</span>
+            <span class='kw'>else</span>
+                <span class='comment'># This is because virtual resources return nil.  If a virtual
+</span>                <span class='comment'># container resource contains realized resources, we still need to get
+</span>                <span class='comment'># to them.  So, we keep a reference to the last valid bucket
+</span>                <span class='comment'># we returned and use that if the container resource is virtual.
+</span>            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_tmp'>tmp</span> <span class='op'>||</span> <span class='id identifier rubyid_bucket'>bucket</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_child'>child</span> <span class='op'>=</span> <span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_to_trans'>to_trans</span>
+            <span class='kw'>unless</span> <span class='id identifier rubyid_bucket'>bucket</span>
+                <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No bucket created for %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_source'>source</span>
+            <span class='kw'>end</span>
+            <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_child'>child</span>
+
+            <span class='comment'># It's important that we keep a reference to any TransBuckets we've created, so
+</span>            <span class='comment'># we don't create multiple buckets for children.
+</span>            <span class='kw'>unless</span> <span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_builtin?'>builtin?</span>
+                <span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_child'>child</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Retrieve the bucket for the top-level scope and set the appropriate metadata.
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='id identifier rubyid_main'>main</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span>
+        <span class='comment'># This only happens when the catalog is entirely empty.
+</span>        <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_buckets'>buckets</span><span class='lbracket'>[</span><span class='id identifier rubyid_main'>main</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_main'>main</span><span class='period'>.</span><span class='id identifier rubyid_to_trans'>to_trans</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_classes'>classes</span> <span class='op'>=</span> <span class='id identifier rubyid_classes'>classes</span>
+
+    <span class='comment'># Clear the cache to encourage the GC
+</span>    <span class='id identifier rubyid_buckets'>buckets</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 225</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">225
+226
+227
+228
+229
+230
+231
+232
+233
+234</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def extract_to_transportable
+    top = nil
+    current = nil
+    buckets = {}
+
+    unless main = vertices.find { |res| res.type == &quot;Class&quot; and res.title == :main }
+        raise Puppet::DevError, &quot;Could not find 'main' class; cannot generate catalog&quot;
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a proc for examining edges, which we&#8217;ll use to build our tree
+of TransBuckets and TransObjects.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">236
+237
+238</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    bucket = nil
+    walk(main, :out) do |source, target|</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+The sources are always non-builtins.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">239
+240
+241
+242
+243</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        unless tmp = buckets[source.to_s]
+            if tmp = buckets[source.to_s] = source.to_trans
+                bucket = tmp
+            else</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This is because virtual resources return nil.  If a virtual container
+resource contains realized resources, we still need to get to them.  So, we
+keep a reference to the last valid bucket we returned and use that if the
+container resource is virtual.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">247
+248
+249
+250
+251
+252
+253
+254
+255
+256</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">            end
+        end
+        bucket = tmp || bucket
+        if child = target.to_trans
+            unless bucket
+                raise &quot;No bucket created for %s&quot; % source
+            end
+            bucket.push child
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+It&#8217;s important that we keep a reference to any TransBuckets
+we&#8217;ve created, so we don&#8217;t create multiple buckets for
+children.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">258
+259
+260
+261
+262
+263
+264</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">            unless target.builtin?
+                buckets[target.to_s] = child
+            end
+        end
+    end
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the bucket for the top-level scope and set the appropriate
+metadata.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">265
+266</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    unless result = buckets[main.to_s]</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+This only happens when the catalog is entirely empty.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">267
+268
+269
+270
+271
+272</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        result = buckets[main.to_s] = main.to_trans
+    end
+
+    result.classes = classes
+</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Clear the cache to encourage the GC
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">273
+274
+275
+276</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    buckets.clear
+    return result
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="finalize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>finalize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Make sure all of our resources are &#8220;finished&#8221;.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+278
+279
+280
+281
+282
+283
+284</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 278</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_finalize'>finalize</span>
+    <span class='id identifier rubyid_make_default_resources'>make_default_resources</span>
+
+    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span> <span class='rbrace'>}</span>
+    
+    <span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='symbol'>:resources</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 278</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">278
+279
+280
+281
+282
+283
+284
+285</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_finalize'>finalize</span>
+    <span class='id identifier rubyid_make_default_resources'>make_default_resources</span>
+
+    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span> <span class='rbrace'>}</span>
+    
+    <span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='symbol'>:resources</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="host_config?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>host_config?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+286
+287
+288</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 286</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+    <span class='id identifier rubyid_host_config'>host_config</span> <span class='op'>||</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 286</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">286
+287
+288
+289</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+    <span class='id identifier rubyid_host_config'>host_config</span> <span class='op'>||</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="make_default_resources-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>make_default_resources</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Make the default objects necessary for function.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 309</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_make_default_resources'>make_default_resources</span>
+    <span class='comment'># We have to add the resources to the catalog, or else they won't get cleaned up after
+</span>    <span class='comment'># the transaction.
+</span>
+    <span class='comment'># First create the default scheduling objects
+</span>    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='symbol'>:schedule</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_mkdefaultschedules'>mkdefaultschedules</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span> <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    
+    <span class='comment'># And filebuckets
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='symbol'>:filebucket</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_mkdefaultbucket'>mkdefaultbucket</span>
+        <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_bucket'>bucket</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 309</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">309
+310</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def make_default_resources</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We have to add the resources to the catalog, or else they won&#8217;t get
+cleaned up after the transaction.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">312
+313</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"></pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+First create the default scheduling objects
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">314
+315
+316</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='lparen'>(</span><span class='symbol'>:schedule</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_mkdefaultschedules'>mkdefaultschedules</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span> <span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    </pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+And filebuckets
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">317
+318
+319
+320
+321</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if bucket = Puppet::Type.type(:filebucket).mkdefaultbucket
+        add_resource(bucket)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="relationship_graph-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>relationship_graph</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create a graph of all of the relationships in our catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../DevError.html" title="Puppet::DevError (class)">Puppet::DevError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 323</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_relationship_graph'>relationship_graph</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>Puppet</span><span class='op'>::</span><span class='const'>DevError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tried get a relationship graph for a relationship graph</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span>
+
+    <span class='kw'>unless</span> <span class='kw'>defined?</span> <span class='ivar'>@relationship_graph</span> <span class='kw'>and</span> <span class='ivar'>@relationship_graph</span>
+        <span class='comment'># It's important that we assign the graph immediately, because
+</span>        <span class='comment'># the debug messages below use the relationships in the
+</span>        <span class='comment'># relationship graph to determine the path to the resources
+</span>        <span class='comment'># spitting out the messages.  If this is not set,
+</span>        <span class='comment'># then we get into an infinite loop.
+</span>        <span class='ivar'>@relationship_graph</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Node</span><span class='op'>::</span><span class='const'>Catalog</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_host_config'>host_config</span> <span class='op'>=</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span> <span class='op'>=</span> <span class='kw'>true</span>
+        
+        <span class='comment'># First create the dependency graph
+</span>        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vertices'>vertices</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vertex'>vertex</span><span class='op'>|</span>
+            <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_vertex'>add_vertex</span> <span class='id identifier rubyid_vertex'>vertex</span>
+            <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_builddepends'>builddepends</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edge'>edge</span><span class='op'>|</span>
+                <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_edge'>add_edge</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        
+        <span class='comment'># Lastly, add in any autorequires
+</span>        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_vertices'>vertices</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vertex'>vertex</span><span class='op'>|</span>
+            <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_autorequire'>autorequire</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edge'>edge</span><span class='op'>|</span>
+                <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_edge?'>edge?</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='rparen'>)</span> <span class='comment'># don't let automatic relationships conflict with manual ones.
+</span>                    <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_edge?'>edge?</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+                        <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Autorequiring %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rbracket'>]</span>
+                        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_edge'>add_edge</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+                    <span class='kw'>else</span>
+                        <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Skipping automatic relationship with %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span> <span class='op'>==</span> <span class='id identifier rubyid_vertex'>vertex</span> <span class='op'>?</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span> <span class='op'>:</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+                    <span class='kw'>end</span>
+                <span class='kw'>end</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='symbol'>:relationships</span><span class='rparen'>)</span>
+        
+        <span class='comment'># Then splice in the container information
+</span>        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_splice!'>splice!</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Type</span><span class='op'>::</span><span class='const'>Component</span><span class='rparen'>)</span>
+
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='symbol'>:expanded_relationships</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@relationship_graph</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 323</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">323
+324
+325
+326
+327</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def relationship_graph
+    raise(Puppet::DevError, &quot;Tried get a relationship graph for a relationship graph&quot;) if self.is_relationship_graph
+
+    unless defined? @relationship_graph and @relationship_graph</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+It&#8217;s important that we assign the graph immediately, because the
+debug messages below use the relationships in the relationship graph to
+determine the path to the resources spitting out the messages.  If this is
+not set, then we get into an infinite loop.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">332
+333
+334
+335
+336</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        <span class='ivar'>@relationship_graph</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>Node</span><span class='op'>::</span><span class='const'>Catalog</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_host_config'>host_config</span> <span class='op'>=</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_is_relationship_graph'>is_relationship_graph</span> <span class='op'>=</span> <span class='kw'>true</span>
+        </pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+First create the dependency graph
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">337
+338
+339
+340
+341
+342
+343
+344</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vertices'>vertices</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vertex'>vertex</span><span class='op'>|</span>
+            <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_vertex'>add_vertex</span> <span class='id identifier rubyid_vertex'>vertex</span>
+            <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_builddepends'>builddepends</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edge'>edge</span><span class='op'>|</span>
+                <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_edge'>add_edge</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        </pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Lastly, add in any autorequires
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_vertices'>vertices</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vertex'>vertex</span><span class='op'>|</span>
+            <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_autorequire'>autorequire</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_edge'>edge</span><span class='op'>|</span>
+                <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_edge?'>edge?</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='rparen'>)</span> <span class='comment'># don't let automatic relationships conflict with manual ones.
+</span>                    <span class='kw'>unless</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_edge?'>edge?</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='comma'>,</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+                        <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Autorequiring %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rbracket'>]</span>
+                        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_add_edge'>add_edge</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+                    <span class='kw'>else</span>
+                        <span class='id identifier rubyid_vertex'>vertex</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Skipping automatic relationship with %s</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span> <span class='op'>==</span> <span class='id identifier rubyid_vertex'>vertex</span> <span class='op'>?</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span> <span class='op'>:</span> <span class='id identifier rubyid_edge'>edge</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
+                    <span class='kw'>end</span>
+                <span class='kw'>end</span>
+            <span class='kw'>end</span>
+        <span class='kw'>end</span>
+        
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='symbol'>:relationships</span><span class='rparen'>)</span>
+        </pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Then splice in the container information
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">361
+362
+363
+364
+365
+366
+367</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        @relationship_graph.splice!(self, Puppet::Type::Component)
+
+        @relationship_graph.write_graph(:expanded_relationships)
+    end
+    @relationship_graph
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>remove_resource</strong>(*resources) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Remove the resource from our catalog.  Notice that we also call
+&#8216;remove&#8217; on the resource, at least until resource classes no
+longer maintain references to the resource instances.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 371</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_resource'>remove_resource</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_resources'>resources</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span>
+        <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
+        <span class='ivar'>@aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res_alias'>res_alias</span><span class='op'>|</span> <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_res_alias'>res_alias</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+        <span class='ivar'>@aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+        <span class='id identifier rubyid_remove_vertex!'>remove_vertex!</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_vertex?'>vertex?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_remove_vertex!'>remove_vertex!</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@relationship_graph</span> <span class='kw'>and</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_vertex?'>vertex?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_remove'>remove</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 371</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_remove_resource'>remove_resource</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_resources'>resources</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span>
+        <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
+        <span class='ivar'>@aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res_alias'>res_alias</span><span class='op'>|</span> <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_res_alias'>res_alias</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+        <span class='ivar'>@aliases</span><span class='lbracket'>[</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+        <span class='id identifier rubyid_remove_vertex!'>remove_vertex!</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_vertex?'>vertex?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_remove_vertex!'>remove_vertex!</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@relationship_graph</span> <span class='kw'>and</span> <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_vertex?'>vertex?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_remove'>remove</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>resource</strong>(type, title = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Look a resource up by its reference (e.g., File[/etc/passwd]).
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 383</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='comment'># Always create a resource reference, so that it always canonizes how we
+</span>    <span class='comment'># are referring to them.
+</span>    <span class='kw'>if</span> <span class='id identifier rubyid_title'>title</span>
+        <span class='id identifier rubyid_ref'>ref</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>ResourceReference</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='kw'>else</span>
+        <span class='comment'># If they didn't provide a title, then we expect the first
+</span>        <span class='comment'># argument to be of the form 'Class[name]', which our
+</span>        <span class='comment'># Reference class canonizes for us.
+</span>        <span class='id identifier rubyid_ref'>ref</span> <span class='op'>=</span> <span class='const'>Puppet</span><span class='op'>::</span><span class='const'>ResourceReference</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_resource'>resource</span> <span class='op'>=</span> <span class='ivar'>@resource_table</span><span class='lbracket'>[</span><span class='id identifier rubyid_ref'>ref</span><span class='rbracket'>]</span>
+        <span class='kw'>return</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='kw'>elsif</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='ivar'>@relationship_graph</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='ivar'>@relationship_graph</span>
+        <span class='ivar'>@relationship_graph</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_ref'>ref</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 383</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">383
+384</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def resource(type, title = nil)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+Always create a resource reference, so that it always canonizes how we are
+referring to them.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">386
+387
+388
+389</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    if title
+        ref = Puppet::ResourceReference.new(type, title).to_s
+    else</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+If they didn&#8217;t provide a title, then we expect the first argument to
+be of the form &#8216;Class[name]&#8217;, which our Reference class
+canonizes for us.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">392
+393
+394
+395
+396
+397
+398
+399
+400</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">        ref = Puppet::ResourceReference.new(nil, type).to_s
+    end
+    if resource = @resource_table[ref]
+        return resource
+    elsif defined?(@relationship_graph) and @relationship_graph
+        @relationship_graph.resource(ref)
+    end
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="resources-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>resources</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return an array of all resources.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+402
+403
+404</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 402</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resources'>resources</span>
+    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 402</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">402
+403
+404
+405</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_resources'>resources</span>
+    <span class='ivar'>@resource_table</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_ral-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_ral</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Convert our catalog into a RAL catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+407
+408
+409</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 407</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_ral'>to_ral</span>
+    <span class='id identifier rubyid_to_catalog'>to_catalog</span> <span class='symbol'>:to_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 407</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">407
+408
+409
+410</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_to_ral'>to_ral</span>
+    <span class='id identifier rubyid_to_catalog'>to_catalog</span> <span class='symbol'>:to_type</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_transportable-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_transportable</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Turn our parser catalog into a transportable catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+412
+413
+414</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 412</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_transportable'>to_transportable</span>
+    <span class='id identifier rubyid_to_catalog'>to_catalog</span> <span class='symbol'>:to_transobject</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 412</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">412
+413
+414
+415</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_to_transportable'>to_transportable</span>
+    <span class='id identifier rubyid_to_catalog'>to_catalog</span> <span class='symbol'>:to_transobject</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_yaml_properties-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_yaml_properties</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+LAK:NOTE We cannot yaml-dump the class in the edgelist_class, because
+classes cannot be dumped by default, nor does yaml-dumping # the
+edge-labels work at this point (I don&#8217;t know why).
+</p>
+<pre class="code ruby"><code>
+ Neither of these matters right now, but I suppose it could at some point.
+</code></pre>
+<p>
+We also have to have the vertex_dict dumped after the resource table,
+because yaml can&#8217;t seem to handle the output of yaml-dumping the
+vertex_dict.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439
+440
+441</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_yaml_properties'>to_yaml_properties</span>
+    <span class='id identifier rubyid_props'>props</span> <span class='op'>=</span> <span class='id identifier rubyid_instance_variables'>instance_variables</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='qwords_beg'>%w{</span><span class='tstring_content'>@edgelist_class</span><span class='words_sep'> </span><span class='tstring_content'>@edge_labels</span><span class='words_sep'> </span><span class='tstring_content'>@vertex_dict</span><span class='words_sep'>}</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_props'>props</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@vertex_dict</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_props'>props</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 437</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">437
+438
+439
+440
+441
+442</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file"><span class='kw'>def</span> <span class='id identifier rubyid_to_yaml_properties'>to_yaml_properties</span>
+    <span class='id identifier rubyid_props'>props</span> <span class='op'>=</span> <span class='id identifier rubyid_instance_variables'>instance_variables</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='qwords_beg'>%w{</span><span class='tstring_content'>@edgelist_class</span><span class='words_sep'> </span><span class='tstring_content'>@edge_labels</span><span class='words_sep'> </span><span class='tstring_content'>@vertex_dict</span><span class='words_sep'>}</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_props'>props</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@vertex_dict</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_props'>props</span>
+<span class='kw'>end</span></pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+      <div class="method_details ">
+  <p class="signature " id="write_graph-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>write_graph</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Produce the graph files if requested.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 417</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_graph'>write_graph</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='comment'># We only want to graph the main host catalog.
+</span>    <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_host_config?'>host_config?</span>
+    
+    <span class='kw'>return</span> <span class='kw'>unless</span> <span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:graph</span><span class='rbracket'>]</span>
+
+    <span class='const'>Puppet</span><span class='period'>.</span><span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='symbol'>:graphing</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>Puppet</span><span class='lbracket'>[</span><span class='symbol'>:graphdir</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%s.dot</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+        <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_to_dot'>to_dot</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div><table class="annotated_source_code">
+  <tr>
+    <td colspan="3" style="padding-left: 10px;">
+      <pre class="code"><span class="info file"># File 'lib/puppet/node/catalog.rb', line 417</span></pre>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="comment">
+        <span>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">417
+418</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">def write_graph(name)</pre>
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="comment">
+        <span><div class="docstring">
+  <div class="discussion">
+    <p>
+We only want to graph the main host catalog.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>  
+      </td>
+      <td class="line-numbers">
+        <pre class="lines" style="padding-right: 0px;">419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430</pre>
+      </td>
+      <td class="code">
+        <pre class="code"><span class="info file">    return unless host_config?
+    
+    return unless Puppet[:graph]
+
+    Puppet.settings.use(:graphing)
+
+    file = File.join(Puppet[:graphdir], &quot;%s.dot&quot; % name.to_s)
+    File.open(file, &quot;w&quot;) { |f|
+        f.puts to_dot(&quot;name&quot; =&gt; name.to_s.capitalize)
+    }
+end</pre>
+      </td>
+    </tr>
+  
+
+</table>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Mar  6 02:12:35 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
