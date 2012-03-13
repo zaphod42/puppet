@@ -44,10 +44,10 @@ describe Puppet::Configurer::PluginHandler do
     downloader = mock 'downloader'
 
     Puppet[:pluginsource] = "psource"
-    Puppet[:plugindest] = "pdest"
+    Puppet[:plugindest] = "/tmp/pdest"
     Puppet[:pluginsignore] = "pignore"
 
-    Puppet::Configurer::Downloader.expects(:new).with("plugin", "pdest", "psource", "pignore").returns downloader
+    Puppet::Configurer::Downloader.expects(:new).with("plugin", "/tmp/pdest", "psource", "pignore").returns downloader
 
     downloader.expects(:evaluate).returns []
 
