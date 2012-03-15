@@ -116,6 +116,7 @@ class Puppet::Util::Settings
   def clear_for_tests()
     @sync.synchronize do
       unsafe_clear(true, true)
+      @app_defaults_initialized = false
     end
   end
   private :clear_for_tests
