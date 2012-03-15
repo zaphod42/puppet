@@ -685,7 +685,9 @@ class Puppet::Util::Settings
 
     catalog = Puppet::Resource::Catalog.new("Settings")
 
-    @config.each.find_all { |key, value| value.is_a?(FileSetting) }.each do |key, file|
+    #@config.each.find_all { |key, value| value.is_a?(FileSetting) }.each do |key, file|
+    @config.keys.find_all { |key| @config[key].is_a?(FileSetting) }.each do |key|
+      file = @config[key]
       next unless (sections.nil? or sections.include?(file.section))
       next unless resource = file.to_resource
       next if catalog.resource(resource.ref)
