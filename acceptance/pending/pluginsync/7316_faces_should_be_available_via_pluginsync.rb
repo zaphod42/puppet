@@ -1,8 +1,8 @@
 test_name "the pluginsync functionality should sync app definitions, and they should be runnable afterwards"
 
 #
-# This test is intended to ensure that pluginsync syncs app and face definitions to the agents.
-# Further, the apps and faces should be runnable on the agent after the sync has occurred.
+# This test is intended to ensure that pluginsync syncs face definitions to the agents.
+# Further, the face should be runnable on the agent after the sync has occurred.
 #
 # (NOTE: When this test is passing, it should resolve both #7316 re: verifying that apps/faces can
 #  be run on the agent node after a plugin sync, and #6753 re: being able to run a face without
@@ -62,11 +62,10 @@ end
 # tests to be written using only a relative path to specify file locations, while still taking advantage
 # of automatic temp file cleanup at test completion.
 def test_file_exists?(host, file_rel_path)
-  # I don't think we can easily use "test -f" here, because our "execute" commands are all built around reading
-  # stdout as opposed to reading process exit codes
-  result = host.execute("ruby -e \"print File.exists?('#{get_test_file_path(host, file_rel_path)}')\"")
-  # get a boolean return value
-  result == "true"
+  host.execute("test -f \"#{get_test_file_path(host, file_rel_path)}\"",
+               :acceptable_exit_codes => [0, 1])  do |result|
+    return result.exit_code == 0
+  end
 end
 
 def tmpdir(host, basename)
@@ -126,25 +125,6 @@ app_output = "Hello from the #{app_name} %s"
 
 master_module_file_content = {}
 
-master_module_file_content["application"] = <<-HERE
-require 'puppet/application'
-
-class Puppet::Application::#{app_name.capitalize} < Puppet::Application
-
-  def help
-    <<-HELP
-
-puppet-#{app_name}(8) -- #{app_desc % "application"}
-========
-    HELP
-  end
-
-  def main()
-    puts("#{app_output % "application"}")
-  end
-end
-HERE
-
 
 master_module_file_content["face"] = <<-HERE
 Puppet::Face.define(:#{app_name}, '0.0.1') do
@@ -171,7 +151,7 @@ HERE
 # test.
 begin
 
-  modes = ["application", "face"]
+  modes = ["face"]
 
   modes.each do |mode|
 
