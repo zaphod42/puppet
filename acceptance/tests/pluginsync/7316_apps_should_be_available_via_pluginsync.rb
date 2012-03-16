@@ -167,7 +167,8 @@ begin
 
     step "start the master" do
       with_master_running_on(master,
-             "--modulepath=\"#{get_test_file_path(master, master_module_dir)}\"") do
+             "--modulepath=\"#{get_test_file_path(master, master_module_dir)}\" " +
+             "--autosign true") do
 
         # the module files shouldn't exist on the agent yet because they haven't been synced
         step "verify that the module files don't exist on the agent path" do

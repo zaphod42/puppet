@@ -62,11 +62,9 @@ end
 # tests to be written using only a relative path to specify file locations, while still taking advantage
 # of automatic temp file cleanup at test completion.
 def test_file_exists?(host, file_rel_path)
-  # I don't think we can easily use "test -f" here, because our "execute" commands are all built around reading
-  # stdout as opposed to reading process exit codes
-  result = host.execute("ruby -e \"print File.exists?('#{get_test_file_path(host, file_rel_path)}')\"")
-  # get a boolean return value
-  result == "true"
+  host.execute("test -f \"#{get_test_file_path(host, file_rel_path)}\"",
+               :acceptable_exit_codes => [0, 1])  do |result|
+    return result.exit_code == 0
 end
 
 def tmpdir(host, basename)
