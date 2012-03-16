@@ -394,12 +394,14 @@ describe Puppet::Util::Settings do
 
     it "should not ignore the report setting" do
       @settings.setdefaults :section, :report => { :default => "false", :desc => "a" }
-      @settings[:config] = "/my/file"
+      # This is needed in order to make sure we pass on windows
+      myfile = File.expand_path("/my/file")
+      @settings[:config] = myfile
       text = <<-CONF
         [puppetd]
           report=true
       CONF
-      FileTest.expects(:exist?).with("/my/file").returns(true)
+      FileTest.expects(:exist?).with(myfile).returns(true)
       @settings.expects(:read_file).returns(text)
       @settings.parse
       @settings[:report].should be_true
@@ -409,7 +411,7 @@ describe Puppet::Util::Settings do
       myfile = make_absolute("/my/file") # do not stub expand_path here, as this leads to a stack overflow, when mocha tries to use it
       @settings[:config] = myfile
 
-      FileTest.expects(:exist?).with("/my/file").returns(true)
+      FileTest.expects(:exist?).with(myfile).returns(true)
 
       File.expects(:read).with(myfile).returns "[main]"
 
