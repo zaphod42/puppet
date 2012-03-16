@@ -65,6 +65,7 @@ def test_file_exists?(host, file_rel_path)
   host.execute("test -f \"#{get_test_file_path(host, file_rel_path)}\"",
                :acceptable_exit_codes => [0, 1])  do |result|
     return result.exit_code == 0
+  end
 end
 
 def tmpdir(host, basename)
