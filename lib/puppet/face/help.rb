@@ -64,24 +64,41 @@ Puppet::Face.define(:help, '0.0.1') do
 
       return erb('global.erb').result(binding) if args.empty?
 
-      facename, actionname = args
-      if legacy_applications.include? facename then
+      subcommand, actionname = args
+      begin
+        application = Puppet::Application[subcommand]
+      rescue LoadError => detail
+        fail ArgumentError, <<-MSG
+  Could not load help for the appliction #{subcommand}.
+  Please check the error logs for more information.
+
+  Detail: "#{detail.message}"
+        MSG
+      end
+      if application.is_a? Puppet::Application::FaceBase then
+        return render_face_help(application.face, actionname)
+      else
         if actionname then
           raise ArgumentError, "Legacy subcommands don't take actions"
         end
-        return render_application_help(facename)
-      else
-        return render_face_help(facename, actionname, version)
+        return render_application_help(application)
       end
     end
   end
 
-  def render_application_help(applicationname)
-    return Puppet::Application[applicationname].help
+  def render_application_help(application)
+    return application.help
   end
 
-  def render_face_help(facename, actionname, version)
-    face, action = load_face_help(facename, actionname, version)
+  def render_face_help(face, actionname)
+    if actionname
+      action = face.get_action(actionname.to_sym)
+      if not action
+        fail ArgumentError, "Unable to load action #{actionname} from #{face}"
+      end
+    else
+      action = nil
+    end
     return template_for(face, action).result(binding)
   end
 
@@ -119,13 +136,6 @@ Detail: "#{detail.message}"
     erb = ERB.new(template.read, nil, '-')
     erb.filename = template.to_s
     return erb
-  end
-
-  # Return a list of applications that are not simply just stubs for Faces.
-  def legacy_applications
-    Puppet::Util::CommandLine.available_subcommands.reject do |appname|
-      (is_face_app?(appname)) or (exclude_from_docs?(appname))
-    end.sort
   end
 
   # Return a list of all applications (both legacy and Face applications), along with a summary

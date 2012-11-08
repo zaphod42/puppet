@@ -51,15 +51,13 @@ class Puppet::Application::FaceBase < Puppet::Application
     end
   end
 
-  def parse_options
-    # We need to parse enough of the command line out early, to identify what
-    # the action is, so that we can obtain the full set of options to parse.
-
-    # REVISIT: These should be configurable versions, through a global
-    # '--version' option, but we don't implement that yet... --daniel 2011-03-29
+  def initialize(command_line = nil)
+    super(command_line)
     @type = Puppet::Util::ConstantInflector.constant2file(self.class.name.to_s.sub(/.+:/, '')).to_sym
     @face = Puppet::Face[@type, :current]
+  end
 
+  def parse_options
     # Now, walk the command line and identify the action.  We skip over
     # arguments based on introspecting the action and all, and find the first
     # non-option word to use as the action.
@@ -68,11 +66,11 @@ class Puppet::Application::FaceBase < Puppet::Application
     until action_name or (index += 1) >= command_line.args.length do
       item = command_line.args[index]
       if item =~ /^-/ then
-        option = @face.options.find do |name|
+        option = face.options.find do |name|
           item =~ /^-+#{name.to_s.gsub(/[-_]/, '[-_]')}(?:[ =].*)?$/
         end
         if option then
-          option = @face.get_option(option)
+          option = face.get_option(option)
           # If we have an inline argument, just carry on.  We don't need to
           # care about optional vs mandatory in that case because we do a real
           # parse later, and that will totally take care of raising the error
@@ -99,13 +97,13 @@ class Puppet::Application::FaceBase < Puppet::Application
         # action object it represents; if this is an invalid action name that
         # will be nil, and handled later.
         action_name = item.to_sym
-        @action = Puppet::Face.find_action(@face.name, action_name)
+        @action = Puppet::Face.find_action(face.name, action_name)
         @face   = @action.face if @action
       end
     end
 
     if @action.nil?
-      if @action = @face.get_default_action() then
+      if @action = face.get_default_action() then
         @is_default_action = true
       else
         face   = @face.name
@@ -187,7 +185,7 @@ class Puppet::Application::FaceBase < Puppet::Application
 
     # Call the method associated with the provided action (e.g., 'find').
     unless @action
-      puts Puppet::Face[:help, :current].help(@face.name)
+      puts Puppet::Face[:help, :current].help(face.name)
       raise "#{face} does not respond to action #{arguments.first}"
     end
 
@@ -222,11 +220,11 @@ class Puppet::Application::FaceBase < Puppet::Application
     if (arity = @action.positional_arg_count) > 0
       unless (count = arguments.length) == arity then
         s = arity == 2 ? '' : 's'
-        raise ArgumentError, "puppet #{@face.name} #{@action.name} takes #{arity-1} argument#{s}, but you gave #{count-1}"
+        raise ArgumentError, "puppet #{face.name} #{@action.name} takes #{arity-1} argument#{s}, but you gave #{count-1}"
       end
     end
 
-    result = @face.send(@action.name, *arguments)
+    result = face.send(@action.name, *arguments)
     puts render(result, arguments) unless result.nil?
     status = true
 
@@ -242,7 +240,7 @@ class Puppet::Application::FaceBase < Puppet::Application
 
   rescue Exception => detail
     Puppet.log_exception(detail)
-    Puppet.err "Try 'puppet help #{@face.name} #{@action.name}' for usage"
+    Puppet.err "Try 'puppet help #{face.name} #{@action.name}' for usage"
 
   ensure
     exit status
