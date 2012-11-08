@@ -89,7 +89,6 @@ module Puppet
         paths.split(File::PATH_SEPARATOR).each do |path|
           Dir.glob(File.join(path, '*')).each do |module_path|
             module_library_path = File.join(module_path, 'lib')
-            puts "Adding #{module_library_path}"
             $LOAD_PATH << module_library_path
           end
         end
