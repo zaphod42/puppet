@@ -88,7 +88,7 @@ Puppet::Face.define(:help, '0.0.1') do
   def load_face_help(facename, actionname, version)
     begin
       face = Puppet::Face[facename.to_sym, version]
-    rescue Puppet::Error => detail
+    rescue LoadError => detail
       fail ArgumentError, <<-MSG
 Could not load help for the face #{facename}.
 Please check the error logs for more information.
@@ -141,7 +141,7 @@ Detail: "#{detail.message}"
         begin
           face = Puppet::Face[appname, :current]
           result << [appname, face.summary]
-        rescue Puppet::Error => detail
+        rescue LoadError => detail
           result << [ "! #{appname}", "! Subcommand unavailable due to error. Check error logs." ]
         end
       else

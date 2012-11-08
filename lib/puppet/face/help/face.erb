@@ -108,3 +108,13 @@ TERMINI: <%= face.class.terminus_classes(face.indirection.name).join(", ") %>
 
 <% end -%>
 See 'puppet man <%= face.name %>' or 'man puppet-<%= face.name %>' for full help.
+<%
+failed_actions = face.action_load_results.find_all do |result|
+  result[:status] == :failure
+end
+if not failed_actions.empty?
+  failed_actions.each do |failure|  -%>
+Error loading action from <%= failure[:file] %>
+<%= failure[:detail] %>
+<%  end
+end -%>

@@ -40,8 +40,6 @@ class Puppet::Interface
       if face.nil? then
         face = self.new(name, version)
         Puppet::Interface::FaceCollection.register(face)
-        # REVISIT: Shouldn't this be delayed until *after* we evaluate the
-        # current block, not done before? --daniel 2011-04-07
         face.load_actions
       end
 
@@ -82,7 +80,7 @@ class Puppet::Interface
 
 
   ########################################################################
-  attr_reader :name, :version, :loader
+  attr_reader :name, :version, :loader, :action_load_results
   private :loader
 
   def initialize(name, version, &block)
@@ -105,7 +103,20 @@ class Puppet::Interface
 
   # Try to find actions defined in other files.
   def load_actions
-    loader.loadall
+    paths = Puppet::Util::RubyGems::Source.new.directories + $LOAD_PATH
+    @action_load_results = paths.
+      collect { |path| File.join(path, 'puppet', 'face', @name.to_s) }.
+      select  { |path| File.directory?(path) }.
+      collect { |path| Dir.glob(File.join(path, '*.rb')) }.
+      flatten.
+      collect do |filename|
+        begin
+          require(filename)
+          { :status => :success, :file => filename }
+        rescue LoadError => detail
+          { :status => :failure, :file => filename, :detail => detail }
+        end
+      end
   end
 
   def to_s
