@@ -31,30 +31,6 @@ module Puppet
         File.join('puppet', 'application')
       end
 
-      def self.available_subcommands
-        # Eventually we probably want to replace this with a call to the
-        # autoloader.  however, at the moment the autoloader considers the
-        # module path when loading, and we don't want to allow apps / faces to
-        # load from there.  Once that is resolved, this should be replaced.
-        # --cprice 2012-03-06
-        #
-        # But we do want to load from rubygems --hightower
-        search_path = Puppet::Util::RubyGems::Source.new.directories + $LOAD_PATH
-        absolute_appdirs = search_path.uniq.collect do |x|
-          File.join(x,'puppet','application')
-        end.select{ |x| File.directory?(x) }
-        absolute_appdirs.inject([]) do |commands, dir|
-          commands + Dir[File.join(dir, '*.rb')].map{|fn| File.basename(fn, '.rb')}
-        end.uniq
-      end
-      # available_subcommands was previously an instance method, not a class
-      # method, and we have an unknown number of user-implemented applications
-      # that depend on that behaviour.  Forwarding allows us to preserve a
-      # backward compatible API. --daniel 2011-04-11
-      def available_subcommands
-        self.class.available_subcommands
-      end
-
       def require_application(application)
         require File.join(appdir, application)
       end

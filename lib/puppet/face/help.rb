@@ -143,8 +143,25 @@ Detail: "#{detail.message}"
   # @returns [Array] An Array of Arrays.  The outer array contains one entry per application; each
   #  element in the outer array is a pair whose first element is a String containing the application
   #  name, and whose second element is a String containing the summary for that application.
+  def available_subcommands
+    # Eventually we probably want to replace this with a call to the
+    # autoloader.  however, at the moment the autoloader considers the
+    # module path when loading, and we don't want to allow apps / faces to
+    # load from there.  Once that is resolved, this should be replaced.
+    # --cprice 2012-03-06
+    #
+    # But we do want to load from rubygems --hightower
+    search_path = Puppet::Util::RubyGems::Source.new.directories + $LOAD_PATH
+    absolute_appdirs = search_path.uniq.collect do |x|
+      File.join(x,'puppet','application')
+    end.select{ |x| File.directory?(x) }
+    absolute_appdirs.inject([]) do |commands, dir|
+      commands + Dir[File.join(dir, '*.rb')].map{|fn| File.basename(fn, '.rb')}
+    end.uniq
+  end
+
   def all_application_summaries()
-    Puppet::Util::CommandLine.available_subcommands.sort.inject([]) do |result, appname|
+    available_subcommands.sort.inject([]) do |result, appname|
       next result if exclude_from_docs?(appname)
 
       if (is_face_app?(appname))
