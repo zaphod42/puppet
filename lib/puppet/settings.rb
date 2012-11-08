@@ -290,6 +290,12 @@ class Puppet::Settings
     @config[param]
   end
 
+  def section(name)
+    section_name = name.to_sym
+    parent = (section_name == :master or section_name == :agent) ? :main : :user
+    @values[section_name] || @values[parent] || @values[:main]
+  end
+
   # Handle a command-line argument.
   def handlearg(opt, value = nil)
     @cache.clear
@@ -475,10 +481,10 @@ class Puppet::Settings
     # (e.g. load two configuration files) as a small part of #7749 but then
     # decided to reverse this decision in #15337 to return to a disjoint
     # configuration file model.
-    config_files = [which_configuration_file]
+    config_file = which_configuration_file
 
     @sync.synchronize do
-      unsafe_parse(config_files)
+      unsafe_parse(config_file)
     end
 
     call_hooks_deferred_to_application_initialization :ignore_interpolation_dependency_errors => true
@@ -519,34 +525,15 @@ class Puppet::Settings
   private :config_file_name
 
   # Unsafely parse the file -- this isn't thread-safe and causes plenty of problems if used directly.
-  def unsafe_parse(files)
-    raise Puppet::DevError unless files.length > 0
+  def unsafe_parse(file)
+    return unless FileTest.exist?(file)
 
-    # build up a single data structure that contains the values from all of the parsed files.
-    data = {}
-    files.each do |file|
-      next unless FileTest.exist?(file)
-      begin
-        file_data = parse_file(file)
-
-        # This is a little kludgy; basically we are merging a hash of hashes.  We can't use "merge" at the
-        # outermost level or we risking losing data from the hash we're merging into.
-        file_data.keys.each do |key|
-          if data.has_key?(key)
-            data[key].merge!(file_data[key])
-          else
-            data[key] = file_data[key]
-          end
-        end
-
-      rescue => detail
-        Puppet.log_exception(detail, "Could not parse #{file}: #{detail}")
-        return
-      end
+    begin
+      data = parse_file(file)
+    rescue => detail
+      Puppet.log_exception(detail, "Could not parse #{file}: #{detail}")
+      return
     end
-
-    # If we get here and don't have any data, we just return and don't muck with the current state of the world.
-    return if data.empty?
 
     # If we get here then we have some data, so we need to clear out any previous settings that may have come from
     #  config files.
@@ -554,10 +541,10 @@ class Puppet::Settings
 
     # And now we can repopulate with the values from our last parsing of the config files.
     metas = {}
-    data.each do |area, values|
-      metas[area] = values.delete(:_meta)
-      values.each do |key,value|
-        set_value(key, value, area, :dont_trigger_handles => true, :ignore_bad_settings => true )
+    data.each do |section, values|
+      metas[section] = values.delete(:_meta)
+      values.each do |key, value|
+        set_value(key, value, section, :dont_trigger_handles => true, :ignore_bad_settings => true )
       end
     end
 
@@ -698,6 +685,7 @@ class Puppet::Settings
   # Get a list of objects per section
   def sectionlist
     sectionlist = []
+    sections = {}
     self.each { |name, obj|
       section = obj.section || "puppet"
       sections[section] ||= []
@@ -726,7 +714,7 @@ class Puppet::Settings
     !@values[:cli][param].nil?
   end
 
-  def set_value(param, value, type, options = {})
+  def set_value(param, value, section, options = {})
     param = param.to_sym
 
     if !(setting = @config[param])
@@ -742,7 +730,7 @@ class Puppet::Settings
 
     @sync.synchronize do # yay, thread-safe
 
-      @values[type][param] = value
+      @values[section][param] = value
       @cache.clear
 
       clearused

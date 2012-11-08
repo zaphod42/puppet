@@ -10,7 +10,6 @@ if not defined? ::Bundler
 end
 
 require 'puppet'
-require "puppet/util/plugins"
 require "puppet/util/rubygems"
 
 module Puppet
@@ -23,7 +22,6 @@ module Puppet
         @stdin = stdin
 
         @subcommand_name, @args = subcommand_and_args(@zero, @argv, @stdin)
-        Puppet::Plugins.on_commandline_initialization(:command_line_object => self)
       end
 
       attr :subcommand_name
@@ -65,51 +63,31 @@ module Puppet
       # is basically where the bootstrapping process / lifecycle of an app
       # begins.
       def execute
-        # Build up our settings - we don't need that until after version check.
-        Puppet::Util.exit_on_fail("intialize global default settings") do
-          Puppet.settings.initialize_global_settings(args)
-        end
+        Puppet.settings.initialize_global_settings(args)
+        Puppet.settings.set_value(:confdir, Puppet.run_mode.conf_dir, :memory)
 
-        # OK, now that we've processed the command line options and the config
-        # files, we should be able to say that we definitively know where the
-        # libdir is... which means that we can now look for our available
-        # applications / subcommands / faces.
-
-        if subcommand_name and available_subcommands.include?(subcommand_name) then
-          require_application subcommand_name
-          # This will need to be cleaned up to do something that is not so
-          #  application-specific (i.e.. so that we can load faces).
-          #  Longer-term, use the autoloader.  See comments in
-          #  #available_subcommands method above.  --cprice 2012-03-06
-          app = Puppet::Application.find(subcommand_name).new(self)
-          Puppet::Plugins.on_application_initialization(:application_object => self)
-
-          app.run
-        elsif ! execute_external_subcommand then
-          unless subcommand_name.nil? then
+        if subcommand_name then
+          include_in_load_path Puppet.settings.value(:modulepath, subcommand_name.to_sym)
+          begin
+            require_application subcommand_name
+          rescue LoadError
             puts "Error: Unknown Puppet subcommand '#{subcommand_name}'"
           end
+          app = Puppet::Application.find(subcommand_name).new(self)
 
-          # If the user is just checking the version, print that and exit
-          if @argv.include? "--version" or @argv.include? "-V"
-            puts Puppet.version
-          else
-            puts "See 'puppet help' for help on available puppet subcommands"
-          end
+          app.run
+        elsif @argv.include? "--version" or @argv.include? "-V" then
+          puts Puppet.version
+        else
+          puts "See 'puppet help' for help on available puppet subcommands"
         end
-      end
-
-      def execute_external_subcommand
-        external_command = "puppet-#{subcommand_name}"
-
-        require 'puppet/util'
-        path_to_subcommand = Puppet::Util.which(external_command)
-        return false unless path_to_subcommand
-
-        exec(path_to_subcommand, *args)
       end
 
       private
+
+      def include_in_load_path(paths)
+        puts paths
+      end
 
       def subcommand_and_args(zero, argv, stdin)
         zero = File.basename(zero, '.rb')
