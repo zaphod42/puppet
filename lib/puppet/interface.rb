@@ -105,9 +105,7 @@ class Puppet::Interface
   def load_actions
     paths = Puppet::Util::RubyGems::Source.new.directories + $LOAD_PATH
     @action_load_results = paths.
-      collect { |path| File.join(path, 'puppet', 'face', @name.to_s) }.
-      select  { |path| File.directory?(path) }.
-      collect { |path| Dir.glob(File.join(path, '*.rb')) }.
+      collect { |path| Dir.glob(File.join(path, 'puppet', 'face', @name.to_s, '*.rb')) }.
       flatten.
       collect do |filename|
         begin
