@@ -220,14 +220,7 @@ class Application
     end
 
     def find(file_name)
-      # This should probably be using the autoloader, but due to concerns about the fact that
-      #  the autoloader currently considers the modulepath when looking for things to load,
-      #  we're delaying that for now.
-      begin
-        require ::File.join('puppet', 'application', file_name.to_s.downcase)
-      rescue LoadError => e
-        Puppet.log_and_raise(e, "Unable to find application '#{file_name}'.  #{e}")
-      end
+      require ::File.join('puppet', 'application', file_name.to_s.downcase)
 
       class_name = Puppet::Util::ConstantInflector.file2constant(file_name.to_s)
 

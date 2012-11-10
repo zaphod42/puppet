@@ -15,44 +15,30 @@ require "puppet/util/rubygems"
 module Puppet
   module Util
     class CommandLine
+      OPTION_OR_MANIFEST_FILE = /^-|\.pp$|\.rb$/
+
+      attr_reader :subcommand_name
+      attr_reader :args
 
       def initialize(zero = $0, argv = ARGV, stdin = STDIN)
-        @zero  = zero
-        @argv  = argv.dup
-        @stdin = stdin
-
-        @subcommand_name, @args = subcommand_and_args(@zero, @argv, @stdin)
+        @subcommand_name, @args = subcommand_and_args(argv)
       end
 
-      attr :subcommand_name
-      attr :args
-
-      def appdir
-        File.join('puppet', 'application')
-      end
-
-      def require_application(application)
-        require File.join(appdir, application)
-      end
-
-      # This is the main entry point for all puppet applications / faces; it
-      # is basically where the bootstrapping process / lifecycle of an app
-      # begins.
       def execute
         Puppet.settings.initialize_global_settings(args)
-        Puppet.settings.set_value(:confdir, Puppet.run_mode.conf_dir, :memory)
+        Puppet.settings[:confdir] = Puppet.run_mode.conf_dir
 
         if subcommand_name then
           include_in_load_path Puppet.settings.value(:modulepath, subcommand_name.to_sym)
           begin
-            require_application subcommand_name
+            Puppet::Application.
+              find(subcommand_name).
+              new(self).
+              run
           rescue LoadError
             puts "Error: Unknown Puppet subcommand '#{subcommand_name}'"
           end
-          app = Puppet::Application.find(subcommand_name).new(self)
-
-          app.run
-        elsif @argv.include? "--version" or @argv.include? "-V" then
+        elsif args.include? "--version" or args.include? "-V" then
           puts Puppet.version
         else
           puts "See 'puppet help' for help on available puppet subcommands"
@@ -62,32 +48,22 @@ module Puppet
       private
 
       def include_in_load_path(paths)
-        paths.split(File::PATH_SEPARATOR).each do |path|
-          Dir.glob(File.join(path, '*')).each do |module_path|
-            module_library_path = File.join(module_path, 'lib')
-            $LOAD_PATH << module_library_path
-          end
-        end
+        $LOAD_PATH.push(*library_directories_in(paths.split(File::PATH_SEPARATOR)))
       end
 
-      def subcommand_and_args(zero, argv, stdin)
-        zero = File.basename(zero, '.rb')
+      def library_directories_in(paths)
+        paths.
+          collect { |path| Dir.glob(File.join(path, '*', 'lib')) }.
+          flatten
+      end
 
-        if zero == 'puppet'
-          case argv.first
-            # if they didn't pass a command, or passed a help flag, we will
-            # fall back to showing a usage message.  we no longer default to
-            # 'apply'
-            when nil, "--help", "-h", /^-|\.pp$|\.rb$/
-              [nil, argv]
-            else
-              [argv.first, argv[1..-1]]
-          end
+      def subcommand_and_args(argv)
+        if argv.first =~ OPTION_OR_MANIFEST_FILE
+          [nil, argv]
         else
-          [zero, argv]
+          [argv.first, argv[1..-1]]
         end
       end
-
     end
   end
 end
