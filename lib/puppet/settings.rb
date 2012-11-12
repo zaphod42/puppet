@@ -119,14 +119,11 @@ class Puppet::Settings
     #  :cli values; otherwise, it may be just a config file reparse,
     #  and we want to retain this cli values.
     @used = [] if clear_cli
-
-    @cache.clear
   end
   private :unsafe_clear
 
   # This is mostly just used for testing.
   def clearused
-    @cache.clear
     @used = []
   end
 
@@ -288,8 +285,6 @@ class Puppet::Settings
 
   # Handle a command-line argument.
   def handlearg(opt, value = nil)
-    @cache.clear
-
     if value.is_a?(FalseClass)
       value = "false"
     elsif value.is_a?(TrueClass)
@@ -340,9 +335,6 @@ class Puppet::Settings
 
     # Keep track of set values.
     @values = Hash.new { |hash, key| hash[key] = {} }
-
-    # And keep a per-environment cache
-    @cache = Hash.new { |hash, key| hash[key] = {} }
 
     # The list of sections we've used.
     @used = []
@@ -719,7 +711,6 @@ class Puppet::Settings
     @sync.synchronize do # yay, thread-safe
 
       @values[section][param] = value
-      @cache.clear
 
       clearused
 
@@ -922,26 +913,13 @@ Generated on #{Time.now}.
     param = param.to_sym
     environment &&= environment.to_sym
 
-    setting = @config[param]
-
     # Short circuit to nil for undefined parameters.
     return nil unless @config.include?(param)
 
-    # Yay, recursion.
-    #self.reparse unless [:config, :filetimeout].include?(param)
-
-    # Check the cache first.  It needs to be a per-environment
-    # cache so that we don't spread values from one env
-    # to another.
-    if cached = @cache[environment||"none"][param]
-      return cached
-    end
-
     val = uninterpolated_value(param, environment)
 
-    return val if bypass_interpolation
-    if param == :code
-      # if we interpolate code, all hell breaks loose.
+    # if we interpolate code, all hell breaks loose.
+    if param == :code || bypass_interpolation
       return val
     end
 
@@ -954,10 +932,12 @@ Generated on #{Time.now}.
       raise InterpolationError, "Error converting value for param '#{param}': #{err}", err.backtrace
     end
 
-    val = setting.munge(val) if setting.respond_to?(:munge)
-    # And cache it
-    @cache[environment||"none"][param] = val
-    val
+    setting = @config[param]
+    if setting.respond_to?(:munge)
+      setting.munge(val)
+    else
+      val
+    end
   end
 
   # Open a file with the appropriate user, group, and mode
