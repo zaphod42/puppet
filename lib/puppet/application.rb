@@ -3,7 +3,6 @@ require 'optparse'
 require 'puppet'
 require 'puppet/error'
 require 'puppet/util/instrumentation'
-require 'puppet/util/plugins'
 require 'puppet/util/constant_inflector'
 require 'puppet/util/command_line'
 
@@ -305,23 +304,17 @@ class Application
 
   # This is the main application entry point
   def run
-
-    # I don't really like the names of these lifecycle phases.  It would be nice to change them to some more meaningful
-    # names, and make deprecated aliases.  Also, Daniel suggests that we can probably get rid of this "plugin_hook"
-    # pattern, but we need to check with PE and the community first.  --cprice 2012-03-16
-    #
-
     exit_on_fail("get application-specific default settings") do
-      plugin_hook('initialize_app_defaults') { initialize_app_defaults }
+      initialize_app_defaults
     end
 
     Puppet::Util::Instrumentation.init
 
-    exit_on_fail("initialize")                                   { plugin_hook('preinit')       { preinit } }
-    exit_on_fail("parse application options")                    { plugin_hook('parse_options') { parse_options } }
-    exit_on_fail("prepare for execution")                        { plugin_hook('setup')         { setup } }
-    exit_on_fail("configure routes from #{Puppet[:route_file]}") { configure_indirector_routes }
-    exit_on_fail("run")                                          { plugin_hook('run_command')   { run_command } }
+    exit_on_fail("initialize", &method(:preinit))
+    exit_on_fail("parse application options", &method(:parse_options))
+    exit_on_fail("prepare for execution", &method(:setup))
+    exit_on_fail("configure routes from #{Puppet[:route_file]}", &method(:configure_indirector_routes))
+    exit_on_fail("run", &method(:run_command))
   end
 
   def main
@@ -408,15 +401,5 @@ class Application
   def help
     "No help available for puppet #{name}"
   end
-
-
-
-  def plugin_hook(step,&block)
-    Puppet::Plugins.send("before_application_#{step}",:application_object => self)
-    x = yield
-    Puppet::Plugins.send("after_application_#{step}",:application_object => self, :return_value => x)
-    x
-  end
-  private :plugin_hook
 end
 end
