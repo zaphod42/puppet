@@ -147,16 +147,7 @@ class Puppet::Indirector::Indirection
 
   # Specify the terminus class to use.
   def terminus_class=(klass)
-    validate_terminus_class(klass)
     @terminus_class = klass
-  end
-
-  # This is used by terminus_class= and cache=.
-  def validate_terminus_class(terminus_class)
-    raise ArgumentError, "Invalid terminus name #{terminus_class.inspect}" unless terminus_class and terminus_class.to_s != ""
-    unless Puppet::Indirector::Terminus.terminus_class(self.name, terminus_class)
-      raise ArgumentError, "Could not find terminus #{terminus_class} for indirection #{self.name}"
-    end
   end
 
   # Expire a cached object, if one is cached.  Note that we don't actually

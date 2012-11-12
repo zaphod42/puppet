@@ -120,8 +120,6 @@ class Puppet::Settings
     #  and we want to retain this cli values.
     @used = [] if clear_cli
 
-    @app_defaults_initialized = false if clear_application_defaults
-
     @cache.clear
   end
   private :unsafe_clear
@@ -201,13 +199,7 @@ class Puppet::Settings
     [opt, val]
   end
 
-
-  def app_defaults_initialized?
-    @app_defaults_initialized
-  end
-
   def initialize_app_defaults(app_defaults)
-    raise Puppet::DevError, "Attempting to initialize application default settings more than once!" if app_defaults_initialized?
     REQUIRED_APP_SETTINGS.each do |key|
       raise SettingsError, "missing required app default setting '#{key}'" unless app_defaults.has_key?(key)
     end
@@ -220,8 +212,6 @@ class Puppet::Settings
       end
     end
     call_hooks_deferred_to_application_initialization
-
-    @app_defaults_initialized = true
   end
 
   def call_hooks_deferred_to_application_initialization(options = {})
@@ -451,9 +441,7 @@ class Puppet::Settings
   # @param mode [String|Symbol] the name of the mode to have in effect
   # @api private
   def preferred_run_mode=(mode)
-    mode = mode.to_s.downcase.intern
-    raise ValidationError, "Invalid run mode '#{mode}'" unless [:master, :agent, :user].include?(mode)
-    @preferred_run_mode_name = mode
+    @preferred_run_mode_name = mode.to_s.downcase.intern
   end
 
   # Return all of the parameters associated with a given section.
@@ -1131,7 +1119,6 @@ Generated on #{Time.now}.
     @sync.synchronize do
       unsafe_clear(true, true)
       @global_defaults_initialized = false
-      @app_defaults_initialized = false
     end
   end
   private :clear_everything_for_tests

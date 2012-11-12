@@ -10,7 +10,7 @@ if not defined? ::Bundler
 end
 
 require 'puppet'
-require "puppet/util/rubygems"
+require 'puppet/util/rubygems'
 
 module Puppet
   module Util
@@ -20,15 +20,19 @@ module Puppet
       attr_reader :subcommand_name
       attr_reader :args
 
+      ##
+      # @api public
+      # @param [String] unused
+      # @param [Array<String>] the arguments to the executable
+      # @param [IO] unused
       def initialize(zero = $0, argv = ARGV, stdin = STDIN)
         @subcommand_name, @args = subcommand_and_args(argv)
       end
 
       def execute
-        Puppet.settings.initialize_global_settings(args)
-        Puppet.settings[:confdir] = Puppet.run_mode.conf_dir
-
         if subcommand_name then
+          Puppet.initialize_settings(subcommand_name.to_sym, args)
+
           include_in_load_path Puppet.settings.value(:modulepath, subcommand_name.to_sym)
           begin
             Puppet::Application.

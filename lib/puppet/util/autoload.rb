@@ -2,6 +2,7 @@ require 'pathname'
 require 'puppet/util/rubygems'
 require 'puppet/util/warnings'
 require 'puppet/util/methodhelper'
+require 'puppet/node/environment'
 
 # Autoload paths, either based on names or all at once.
 class Puppet::Util::Autoload
@@ -109,12 +110,6 @@ class Puppet::Util::Autoload
     end
 
     def module_directories(env=nil)
-      # We have to require this late in the process because otherwise we might
-      # have load order issues. Since require is much slower than defined?, we
-      # can skip that - and save some 2,155 invocations of require in my real
-      # world testing. --daniel 2012-07-10
-      require 'puppet/node/environment' unless defined?(Puppet::Node::Environment)
-
       real_env = Puppet::Node::Environment.new(env)
 
       # We're using a per-thread cache of module directories so that we don't
@@ -122,47 +117,15 @@ class Puppet::Util::Autoload
       # at the beginning of compilation and at the end of an agent run.
       Thread.current[:env_module_directories] ||= {}
 
-
-      # This is a little bit of a hack.  Basically, the autoloader is being
-      # called indirectly during application bootstrapping when we do things
-      # such as check "features".  However, during bootstrapping, we haven't
-      # yet parsed all of the command line parameters nor the config files,
-      # and thus we don't yet know with certainty what the module path is.
-      # This should be irrelevant during bootstrapping, because anything that
-      # we are attempting to load during bootstrapping should be something
-      # that we ship with puppet, and thus the module path is irrelevant.
-      #
-      # In the long term, I think the way that we want to handle this is to
-      # have the autoloader ignore the module path in all cases where it is
-      # not specifically requested (e.g., by a constructor param or
-      # something)... because there are very few cases where we should
-      # actually be loading code from the module path.  However, until that
-      # happens, we at least need a way to prevent the autoloader from
-      # attempting to access the module path before it is initialized.  For
-      # now we are accomplishing that by calling the
-      # "app_defaults_initialized?" method on the main puppet Settings object.
-      # --cprice 2012-03-16
-      if Puppet.settings.app_defaults_initialized?
-        # if the app defaults have been initialized then it should be safe to access the module path setting.
-        Thread.current[:env_module_directories][real_env] ||= real_env.modulepath.collect do |dir|
-          Dir.entries(dir).reject { |f| f =~ /^\./ }.collect { |f| File.join(dir, f) }
-        end.flatten.collect { |d| File.join(d, "lib") }.find_all do |d|
-          FileTest.directory?(d)
-        end
-      else
-        # if we get here, the app defaults have not been initialized, so we basically use an empty module path.
-        []
+      Thread.current[:env_module_directories][real_env] ||= real_env.modulepath.collect do |dir|
+        Dir.entries(dir).reject { |f| f =~ /^\./ }.collect { |f| File.join(dir, f) }
+      end.flatten.collect { |d| File.join(d, "lib") }.find_all do |d|
+        FileTest.directory?(d)
       end
     end
 
     def libdirs()
-      # See the comments in #module_directories above.  Basically, we need to be careful not to try to access the
-      # libdir before we know for sure that all of the settings have been initialized (e.g., during bootstrapping).
-      if (Puppet.settings.app_defaults_initialized?)
-        Puppet[:libdir].split(File::PATH_SEPARATOR)
-      else
-        []
-      end
+      Puppet[:libdir].split(File::PATH_SEPARATOR)
     end
 
     def gem_directories

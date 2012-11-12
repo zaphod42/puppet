@@ -102,7 +102,7 @@ class Puppet::Node::Environment
 
   # Cache the modulepath, so that we aren't searching through
   # all known directories all the time.
-  cached_attr(:modulepath, Puppet[:filetimeout]) do
+  def modulepath
     dirs = self[:modulepath].split(File::PATH_SEPARATOR)
     dirs = ENV["PUPPETLIB"].split(File::PATH_SEPARATOR) + dirs if ENV["PUPPETLIB"]
     validate_dirs(dirs)
@@ -111,7 +111,7 @@ class Puppet::Node::Environment
   # Return all modules from this environment, in the order they appear
   # in the modulepath
   # Cache the list, because it can be expensive to create.
-  cached_attr(:modules, Puppet[:filetimeout]) do
+  def modules
     module_references = []
     seen_modules = {}
     modulepath.each do |path|
