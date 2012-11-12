@@ -1,7 +1,11 @@
 require 'optparse'
+
+require 'puppet'
+require 'puppet/error'
+require 'puppet/util/instrumentation'
 require 'puppet/util/plugins'
 require 'puppet/util/constant_inflector'
-require 'puppet/error'
+require 'puppet/util/command_line'
 
 # This class handles all the aspects of a Puppet application/executable
 # * setting up options
@@ -280,20 +284,6 @@ class Application
 
   attr_reader :options, :command_line
 
-  # Every app responds to --version
-  # See also `lib/puppet/util/command_line.rb` for some special case early
-  # handling of this.
-  option("--version", "-V") do |arg|
-    puts "#{Puppet.version}"
-    exit
-  end
-
-  # Every app responds to --help
-  option("--help", "-h") do |v|
-    puts help
-    exit
-  end
-
   def app_defaults()
     Puppet::Settings.app_defaults_for_run_mode(self.class.run_mode).merge(
         :name => name
@@ -309,11 +299,8 @@ class Application
   end
 
   def initialize(command_line = nil)
-
-    require 'puppet/util/command_line'
     @command_line = command_line || Puppet::Util::CommandLine.new
     @options = {}
-
   end
 
   # This is the main application entry point
@@ -328,8 +315,6 @@ class Application
       plugin_hook('initialize_app_defaults') { initialize_app_defaults }
     end
 
-    require 'puppet'
-    require 'puppet/util/instrumentation'
     Puppet::Util::Instrumentation.init
 
     exit_on_fail("initialize")                                   { plugin_hook('preinit')       { preinit } }

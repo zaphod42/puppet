@@ -30,7 +30,9 @@ module Puppet
       end
 
       def execute
-        if subcommand_name then
+        if args.include? "--version" or args.include? "-V" then
+          puts Puppet.version
+        elsif subcommand_name then
           Puppet.initialize_settings(subcommand_name.to_sym, args)
 
           include_in_load_path Puppet.settings.value(:modulepath, subcommand_name.to_sym)
@@ -42,8 +44,6 @@ module Puppet
           rescue LoadError
             puts "Error: Unknown Puppet subcommand '#{subcommand_name}'"
           end
-        elsif args.include? "--version" or args.include? "-V" then
-          puts Puppet.version
         else
           puts "See 'puppet help' for help on available puppet subcommands"
         end
