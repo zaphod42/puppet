@@ -226,22 +226,22 @@ class Puppet::Settings
 
   # Do variable interpolation on the value.
   def convert(value, environment = nil)
-    return nil if value.nil?
-    return value unless value.is_a? String
-    newval = value.gsub(/\$(\w+)|\$\{(\w+)\}/) do |value|
-      varname = $2 || $1
-      if varname == "environment" and environment
-        environment
-      elsif varname == "run_mode"
-        preferred_run_mode
-      elsif pval = self.value(varname, environment)
-        pval
-      else
-        raise InterpolationError, "Could not find value for #{value}"
+    if value.is_a? String
+      value.gsub(/\$(\w+)|\$\{(\w+)\}/) do |value|
+        varname = $2 || $1
+        if varname == "environment" and environment
+          environment
+        elsif varname == "run_mode"
+          preferred_run_mode
+        elsif pval = self.value(varname, environment)
+          pval
+        else
+          raise InterpolationError, "Could not find value for #{value}"
+        end
       end
+    else
+      value
     end
-
-    newval
   end
 
   # Return a value's description.
