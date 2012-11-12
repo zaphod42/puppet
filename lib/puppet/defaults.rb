@@ -32,7 +32,7 @@ module Puppet
 
   define_settings(:main,
     :logdir => {
-        :default  => nil,
+        :default  => "$vardir/log",
         :type     => :directory,
         :mode     => 0750,
         :owner    => "service",
@@ -68,7 +68,7 @@ module Puppet
           might result in spurious service restarts)."
     },
     :rundir => {
-      :default  => nil,
+      :default  => "$vardir/run",
       :type     => :directory,
       :mode     => 01777,
       :desc     => "Where Puppet PID files are kept."

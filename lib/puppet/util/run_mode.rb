@@ -30,14 +30,6 @@ module Puppet
         name == :user
       end
 
-      def run_dir
-        "$vardir/run"
-      end
-
-      def log_dir
-        "$vardir/log"
-      end
-
       private
 
       ##

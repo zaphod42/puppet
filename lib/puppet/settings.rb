@@ -24,7 +24,7 @@ class Puppet::Settings
   attr_reader :timer
 
   # These are the settings that every app is required to specify; there are reasonable defaults defined in application.rb.
-  REQUIRED_APP_SETTINGS = [:logdir, :confdir, :vardir]
+  REQUIRED_APP_SETTINGS = [:confdir, :vardir]
 
   # This method is intended for puppet internal use only; it is a convenience method that
   # returns reasonable application default settings values for a given run_mode.
@@ -34,8 +34,6 @@ class Puppet::Settings
         :run_mode => run_mode.name,
         :confdir  => run_mode.conf_dir,
         :vardir   => run_mode.var_dir,
-        :rundir   => run_mode.run_dir,
-        :logdir   => run_mode.log_dir,
     }
   end
 
@@ -117,7 +115,7 @@ class Puppet::Settings
     # 2) Parse the puppet config file(s).
 
     parse_global_options(args)
-    parse_config_files
+    parse_config_file
 
     @global_defaults_initialized = true
   end
@@ -428,25 +426,14 @@ class Puppet::Settings
   end
 
   # Parse the configuration file.  Just provides thread safety.
-  def parse_config_files
-    # we are able to support multiple config files; the "main" config file will
-    # be the one located in /etc/puppet (or overridden $confdir)... but we can
-    # also look for a config file in the user's home directory.  We only load
-    # one configuration file in order to present a simple and consistent
-    # configuration model to the end user.  It should also be noted we decided
-    # to merge in the user puppet.conf with the system puppet.conf for a time
-    # (e.g. load two configuration files) as a small part of #7749 but then
-    # decided to reverse this decision in #15337 to return to a disjoint
-    # configuration file model.
-    config_file = which_configuration_file
-
+  def parse_config_file
     @sync.synchronize do
-      unsafe_parse(config_file)
+      unsafe_parse(which_configuration_file)
     end
 
     call_hooks_deferred_to_application_initialization :ignore_interpolation_dependency_errors => true
   end
-  private :parse_config_files
+  private :parse_config_file
 
   def main_config_file
     if explicit_config_file?
@@ -574,7 +561,7 @@ class Puppet::Settings
     if files
       if filename = any_files_changed?
         Puppet.notice "Config file #{filename} changed; triggering re-parse of all config files."
-        parse_config_files
+        parse_config_file
         reuse
       end
     end
