@@ -367,13 +367,24 @@ module Puppet
     Puppet.define_settings(
     :main,
 
-    # We have to downcase the fqdn, because the current ssl stuff (as oppsed to in master) doesn't have good facilities for
-    # manipulating naming.
+    :domain => {
+      :default    => lambda { Facter["domain"].value || "" },
+      :desc       => "The domain of this system.",
+    },
+
+    :hostname => {
+      :default    => lambda { Facter["hostname"].value || "" },
+      :desc       => "The hostname of this system.",
+    },
+
     :certname => {
-      :default => Puppet::Settings.default_certname.downcase, :desc => "The name to use when handling certificates.  Defaults
+      :default => lambda { "#{Puppet[:hostname]}.#{Puppet[:domain]}".gsub(/\.$/, '').downcase },
+      :desc => "The name to use when handling certificates.  Defaults
       to the fully qualified domain name.",
       :call_hook => :on_define_and_write, # Call our hook with the default value, so we're always downcased
-      :hook => proc { |value| raise(ArgumentError, "Certificate names must be lower case; see #1168") unless value == value.downcase }},
+      :hook => proc { |value| raise(ArgumentError, "Certificate names must be lower case; see #1168") unless value == value.downcase }
+    },
+
     :certdnsnames => {
       :default => '',
       :hook    => proc do |value|
@@ -700,7 +711,7 @@ EOT
     define_settings(:application,
       :config_file_name => {
           :type     => :string,
-          :default  => Puppet::Settings.default_config_file_name,
+          :default  => "puppet.conf",
           :desc     => "The name of the puppet config file.",
       },
       :config => {
@@ -979,7 +990,7 @@ EOT
       :desc       => "Whether the server will search for SRV records in DNS for the current domain.",
     },
     :srv_domain => {
-      :default    => "#{Puppet::Settings.domain_fact}",
+      :default    => "$domain",
       :desc       => "The domain which will be queried to find the SRV records of servers to use.",
     },
     :ignoreschedules => {

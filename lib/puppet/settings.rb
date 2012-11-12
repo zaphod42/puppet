@@ -39,29 +39,6 @@ class Puppet::Settings
     }
   end
 
-  def self.default_certname()
-    hostname = hostname_fact
-    domain = domain_fact
-    if domain and domain != ""
-      fqdn = [hostname, domain].join(".")
-    else
-      fqdn = hostname
-    end
-    fqdn.gsub(/\.$/, '')
-  end
-
-  def self.hostname_fact()
-    Facter["hostname"].value
-  end
-
-  def self.domain_fact()
-    Facter["domain"].value
-  end
-
-  def self.default_config_file_name
-    "puppet.conf"
-  end
-
   # Retrieve a config value
   def [](param)
     value(param)
@@ -475,34 +452,15 @@ class Puppet::Settings
     if explicit_config_file?
       return self[:config]
     else
-      return File.join(Puppet::Util::RunMode[:master].conf_dir, config_file_name)
+      return File.join(Puppet::Util::RunMode[:master].conf_dir, self[:config_file_name])
     end
   end
   private :main_config_file
 
   def user_config_file
-    return File.join(Puppet::Util::RunMode[:user].conf_dir, config_file_name)
+    return File.join(Puppet::Util::RunMode[:user].conf_dir, self[:config_file_name])
   end
   private :user_config_file
-
-  # This method is here to get around some life-cycle issues.  We need to be
-  # able to determine the config file name before the settings / defaults are
-  # fully loaded.  However, we also need to respect any overrides of this value
-  # that the user may have specified on the command line.
-  #
-  # The easiest way to do this is to attempt to read the setting, and if we
-  # catch an error (meaning that it hasn't been set yet), we'll fall back to
-  # the default value.
-  def config_file_name
-    begin
-      return self[:config_file_name] if self[:config_file_name]
-    rescue SettingsError => err
-      # This just means that the setting wasn't explicitly set on the command line, so we will ignore it and
-      #  fall through to the default name.
-    end
-    return self.class.default_config_file_name
-  end
-  private :config_file_name
 
   # Unsafely parse the file -- this isn't thread-safe and causes plenty of problems if used directly.
   def unsafe_parse(file)
@@ -891,6 +849,10 @@ Generated on #{Time.now}.
 
     # If we didn't get a value, use the default
     val = @config[param].default if val.nil?
+
+    if val.respond_to?(:call)
+      val = val.call
+    end
 
     val
   end
