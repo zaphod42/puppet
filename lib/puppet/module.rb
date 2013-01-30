@@ -1,6 +1,5 @@
 require 'puppet/util/logging'
 require 'semver'
-require 'puppet/module_tool/applications'
 
 # Support for modules
 class Puppet::Module
@@ -178,15 +177,6 @@ class Puppet::Module
 
   def required_by
     environment.module_requirements[self.forge_name] || {}
-  end
-
-  def has_local_changes?
-    changes = Puppet::ModuleTool::Applications::Checksummer.run(path)
-    !changes.empty?
-  end
-
-  def local_changes
-    Puppet::ModuleTool::Applications::Checksummer.run(path)
   end
 
   # Identify and mark unmet dependencies.  A dependency will be marked unmet
