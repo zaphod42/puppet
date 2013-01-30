@@ -3,7 +3,6 @@ require 'puppet/util/warnings'
 require 'puppet/util/errors'
 require 'puppet/util/inline_docs'
 require 'puppet/parser/ast/leaf'
-require 'puppet/dsl'
 
 class Puppet::Resource::Type
   Puppet::ResourceType = self
@@ -27,7 +26,7 @@ class Puppet::Resource::Type
   }
   RESOURCE_EXTERNAL_NAMES_TO_KINDS = RESOURCE_KINDS_TO_EXTERNAL_NAMES.invert
 
-  attr_accessor :file, :line, :doc, :code, :ruby_code, :parent, :resource_type_collection
+  attr_accessor :file, :line, :doc, :code, :parent, :resource_type_collection
   attr_reader :namespace, :arguments, :behaves_like, :module_name
 
   # This should probably be renamed to 'kind' eventually, in accordance with the changes
@@ -134,8 +133,6 @@ class Puppet::Resource::Type
     resource.add_edge_to_stage
 
     code.safeevaluate(scope) if code
-
-    evaluate_ruby_code(resource, scope) if ruby_code
   end
 
   def initialize(type, name, options = {})
@@ -359,10 +356,6 @@ class Puppet::Resource::Type
     return unless klass = parent_type(resource.scope) and parent_resource = resource.scope.compiler.catalog.resource(:class, klass.name) || resource.scope.compiler.catalog.resource(:node, klass.name)
     parent_resource.evaluate unless parent_resource.evaluated?
     parent_scope(resource.scope, klass)
-  end
-
-  def evaluate_ruby_code(resource, scope)
-    Puppet::DSL::ResourceAPI.new(resource, scope, ruby_code).evaluate
   end
 
   # Split an fq name into a namespace and name
