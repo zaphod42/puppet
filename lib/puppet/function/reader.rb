@@ -1,12 +1,12 @@
 require 'puppet/function/binder'
+
 module Puppet::Function
   # @api private
   class Reader
     def evaluate(code, context)
-      bindings = Puppet::Function::Bindings.new
-      binder = Puppet::Function::Binder.new(bindings, context)
+      binder = Puppet::Function::Binder.new()
       binder.send(:eval, code)
-      bindings
+      binder.bindings(context)
     end
   end
 end

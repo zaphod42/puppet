@@ -9,13 +9,13 @@ describe Puppet::Function::Reader do
   let(:no_context) { nil }
 
   it "evaluates an input for a function binding" do
-    bindings = reader.evaluate(StringIO.new("bind(:a) { || 'bound' }"), no_context)
+    bindings = reader.evaluate("bind(:a) { || 'bound' }", no_context)
 
     bindings.invoke(:a).should == 'bound'
   end
 
   it "binds everything declared" do
-    bindings = reader.evaluate(StringIO.new("bind(:a) { }; bind(:b) { }"), no_context)
+    bindings = reader.evaluate("bind(:a) { }; bind(:b) { }", no_context)
 
     bindings.bound?(:a).should == true
     bindings.bound?(:b).should == true
@@ -23,13 +23,13 @@ describe Puppet::Function::Reader do
   end
 
   it "binds an object with a 'call' method" do
-    bindings = reader.evaluate(StringIO.new("bind(:add1, 1.method(:+))"), no_context)
+    bindings = reader.evaluate("bind(:add1, 1.method(:+))", no_context)
 
     bindings.invoke(:add1, 2).should == 3
   end
 
   it "binds all public instance methods of a class" do
-    bindings = reader.evaluate(StringIO.new(<<-BINDINGS), no_context)
+    bindings = reader.evaluate(<<-BINDINGS, no_context)
     class MyClass
       def initialize(context) end
 
@@ -50,7 +50,7 @@ describe Puppet::Function::Reader do
   end
 
   it "binds instance methods all on the same instance" do
-    bindings = reader.evaluate(StringIO.new(<<-BINDINGS), no_context)
+    bindings = reader.evaluate(<<-BINDINGS, no_context)
     class MyClass
       def initialize(context) end
 
@@ -74,7 +74,7 @@ describe Puppet::Function::Reader do
   it "binds instance methods along with the context" do
     context = { :something => "dummy context" }
 
-    bindings = reader.evaluate(StringIO.new(<<-BINDINGS), context)
+    bindings = reader.evaluate(<<-BINDINGS, context)
     class MyClass
       def initialize(context)
         @context = context

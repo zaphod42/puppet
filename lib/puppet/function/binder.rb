@@ -1,42 +1,50 @@
 module Puppet::Function
   # @api private
   class Binder
-    def initialize(bindings, context)
-      @bindings = bindings
-      @context = context
+    def initialize
+      @binders = []
+      @context = nil
     end
 
     def bind(name_or_class, object = nil, &block)
-      if block
-        bind_callable(name_or_class, block)
-      elsif object
-        bind_callable(name_or_class, object)
-      else
-        bind_class(name_or_class)
-      end
+      binder = if block
+                 bind_callable(name_or_class, block)
+               elsif object
+                 bind_callable(name_or_class, object)
+               else
+                 bind_class(name_or_class)
+               end
+      @binders << binder
+    end
+
+    def bindings(context = nil)
+      Bindings.new(@binders.collect do |binder|
+        binder.call(context)
+      end.flatten)
     end
 
   private
 
     def bind_callable(name, callable)
-      @bindings.add(BoundFunction.new(name, callable))
+      Proc.new { |context| [BoundFunction.new(name, callable)] }
     end
 
     def bind_class(implementation)
-      instance = implementation.new(@context)
-      instance.methods.each do |method_name|
-        bind_callable(method_name, instance.method(method_name))
+      Proc.new do |context|
+        instance = implementation.new(context)
+        instance.methods.collect do |method_name|
+          BoundFunction.new(method_name, instance.method(method_name))
+        end.flatten
       end
     end
 
     # @api public
     class Bindings
-      def initialize
+      def initialize(bindings)
         @bindings = {}
-      end
-
-      def add(binding)
-        @bindings[binding.name] = binding
+        bindings.each do |binding|
+          @bindings[binding.name] = binding
+        end
       end
 
       def invoke(name, *args)
