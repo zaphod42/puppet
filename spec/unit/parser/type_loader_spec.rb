@@ -146,23 +146,6 @@ describe Puppet::Parser::TypeLoader do
       @loader.environment.known_resource_types.hostclass("two::d").should be_instance_of(Puppet::Resource::Type)
     end
 
-    it "should load all ruby manifests from all modules in the specified environment" do
-      Puppet.expects(:deprecation_warning).at_least(1)
-
-      @module1 = mk_module(@modulebase1, "one")
-      @module2 = mk_module(@modulebase2, "two")
-
-      mk_manifests(@modulebase1, @module1, "ruby", %w{a b})
-      mk_manifests(@modulebase2, @module2, "ruby", %w{c d})
-
-      @loader.import_all
-
-      @loader.environment.known_resource_types.hostclass("one::a").should be_instance_of(Puppet::Resource::Type)
-      @loader.environment.known_resource_types.hostclass("one::b").should be_instance_of(Puppet::Resource::Type)
-      @loader.environment.known_resource_types.hostclass("two::c").should be_instance_of(Puppet::Resource::Type)
-      @loader.environment.known_resource_types.hostclass("two::d").should be_instance_of(Puppet::Resource::Type)
-    end
-
     it "should not load manifests from duplicate modules later in the module path" do
       @module1 = mk_module(@modulebase1, "one")
 

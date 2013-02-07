@@ -1,7 +1,6 @@
 #! /usr/bin/env ruby
 require 'spec_helper'
 
-require 'puppet/face'
 require 'puppet/util/command_line'
 
 describe Puppet::Util::CommandLine do

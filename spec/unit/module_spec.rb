@@ -2,7 +2,6 @@
 require 'spec_helper'
 require 'puppet_spec/files'
 require 'puppet_spec/modules'
-require 'puppet/module_tool/checksums'
 
 describe Puppet::Module do
   include PuppetSpec::Files
@@ -588,33 +587,6 @@ describe Puppet::Module do
         @module.dependencies[0]['version_requirement'].should == "0.0.1"
         @module.dependencies[1]['version_requirement'].should == "0.1.0"
       end
-    end
-  end
-
-  it "should be able to tell if there are local changes" do
-    pending("porting to Windows", :if => Puppet.features.microsoft_windows?) do
-      modpath = tmpdir('modpath')
-      foo_checksum = 'acbd18db4cc2f85cedef654fccc4a4d8'
-      checksummed_module = PuppetSpec::Modules.create(
-        'changed',
-        modpath,
-        :metadata => {
-          :checksums => {
-            "foo" => foo_checksum,
-          }
-        }
-      )
-
-      foo_path = Pathname.new(File.join(checksummed_module.path, 'foo'))
-
-      IO.binwrite(foo_path, 'notfoo')
-      Puppet::ModuleTool::Checksums.new(foo_path).checksum(foo_path).should_not == foo_checksum
-      checksummed_module.has_local_changes?.should be_true
-
-      IO.binwrite(foo_path, 'foo')
-
-      Puppet::ModuleTool::Checksums.new(foo_path).checksum(foo_path).should == foo_checksum
-      checksummed_module.has_local_changes?.should be_false
     end
   end
 
