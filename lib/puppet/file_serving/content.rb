@@ -1,6 +1,7 @@
 require 'puppet/indirector'
 require 'puppet/file_serving'
 require 'puppet/file_serving/base'
+require 'digest/sha2'
 
 # A class that handles retrieving file contents.
 # It only reads the file when its content is specifically
@@ -37,6 +38,14 @@ class Puppet::FileServing::Content < Puppet::FileServing::Base
       @content = IO.binread(full_path)
     end
     @content
+  end
+
+  def digest
+    Digest::SHA256.file(full_path).hexdigest
+  end
+
+  def write_to(destination)
+    IO.copy_stream(full_path, destination)
   end
 
   def to_raw
