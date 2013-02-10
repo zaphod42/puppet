@@ -1,11 +1,15 @@
 require 'puppet/application'
 require 'puppet/configurer'
+require 'puppet/file_serving'
+require 'puppet/file_serving/content'
+require 'tmpdir'
 
 class Puppet::Application::Apply < Puppet::Application
 
   option("--debug","-d")
   option("--verbose","-v")
   option("--detailed-exitcodes")
+  option("--catalog CATALOG", '-c')
 
   option("--logdest LOGDEST", "-l") do |arg|
     begin
@@ -20,24 +24,23 @@ class Puppet::Application::Apply < Puppet::Application
     ''
   end
 
-  def app_defaults
-    super.merge({
-      :default_file_terminus => :file_server,
-    })
-  end
-
   def run_command
     apply
   end
 
   def apply
-    if options[:catalog] == "-"
-      text = $stdin.read
-    else
-      text = ::File.read(options[:catalog])
+    Dir.mktmpdir do |dir|
+      system('tar', '-xzf', options[:catalog], '-C', dir)
+      catalog = read_catalog(File.join(dir, 'catalog.json'))
+      index = PSON.parse(File.read(File.join(dir, 'index.json')))
+
+      Puppet::FileServing::Content.indirection.terminus_class = :bundled
+      Puppet::FileServing::Metadata.indirection.terminus_class = :bundled
+      Puppet::Indirector::FileContent::Bundled.location(index, File.join(dir, 'data'))
+      Puppet::Indirector::FileMetadata::Bundled.location(index)
+
+      apply_catalog(catalog)
     end
-    catalog = read_catalog(text)
-    apply_catalog(catalog)
   end
 
   def setup
@@ -64,9 +67,9 @@ class Puppet::Application::Apply < Puppet::Application
 
   private
 
-  def read_catalog(text)
+  def read_catalog(location)
     begin
-      catalog = Puppet::Resource::Catalog.convert_from(Puppet::Resource::Catalog.default_format,text)
+      catalog = Puppet::Resource::Catalog.convert_from(Puppet::Resource::Catalog.default_format, File.read(location))
       catalog = Puppet::Resource::Catalog.pson_create(catalog) unless catalog.is_a?(Puppet::Resource::Catalog)
     rescue => detail
       raise Puppet::Error, "Could not deserialize catalog from pson: #{detail}"

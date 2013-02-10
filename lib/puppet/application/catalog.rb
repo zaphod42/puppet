@@ -72,11 +72,12 @@ class Puppet::Application::Catalog < Puppet::Application
       sources = file_resources.collect { |resource| resource[:source] }
 
       source_data = sources.collect do |source|
+        metadata = Puppet::FileServing::Metadata.indirection.find(source, :environment => catalog.environment)
         file = Puppet::FileServing::Content.indirection.find(source, :environment => catalog.environment)
         if file.nil?
           raise "Unable to fetch contents of #{source}"
         end
-        { :source => source, :file => file }
+        { :source => source, :file => file, :metadata => metadata }
       end
 
       Dir.mktmpdir do |dir|
@@ -91,7 +92,19 @@ class Puppet::Application::Catalog < Puppet::Application
         source_data.each do |data|
           digest = data[:file].digest
           File.open(File.join(data_dir, digest), 'wb') do |file|
-            index[data[:source]] = digest
+            metadata = data[:metadata]
+            index[data[:source]] = {
+              :content => digest,
+              :metadata => {
+                :owner => metadata.owner,
+                :group => metadata.group,
+                :mode => metadata.mode,
+                :ftype => metadata.ftype,
+                :checksum => { :type => 'md5',
+                               :value => metadata.checksum.gsub(/\{.*\}/, '') },
+                :source => data[:source]
+              }
+            }
             data[:file].write_to(file)
           end
         end
