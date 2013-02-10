@@ -5,17 +5,15 @@ class Puppet::Indirector::FileContent::Bundled < Puppet::Indirector::Code
   desc "Retrieve file contents from a bundle."
 
   def self.location(index, data_dir)
-    @index = index
-    @data_dir = data_dir
+    @@index = index
+    @@data_dir = data_dir
   end
 
   def find(request)
-    Puppet.notice("Searching for #{request.uri}")
-    name = @@index[request.uri]
-    Puppet.notice("#{request.uri} indexed as #{name}")
-    return nil if name.nil?
+    index_entry = @@index[request.uri]
+    return nil if index_entry.nil?
 
-    file = File.join(@@data_dir, name)
+    file = File.join(@@data_dir, index_entry["content"])
     return nil if not FileTest.exists?(file)
     instance = model.new(file)
     instance

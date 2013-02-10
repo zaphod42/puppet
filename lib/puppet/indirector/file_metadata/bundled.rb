@@ -10,11 +10,9 @@ class Puppet::Indirector::FileMetadata::Bundled < Puppet::Indirector::Code
   end
 
   def find(request)
-    Puppet.notice("Searching for metadata for #{request.uri}")
     data = @@index[request.uri]
     return nil if data.nil?
 
-    Puppet.notice("#{request.uri} metadata indexed as #{data}")
     metadata = data["metadata"]
 
     instance = model.new("/" + request.key,
