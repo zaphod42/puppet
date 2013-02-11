@@ -10,6 +10,7 @@ class Puppet::Application::Apply < Puppet::Application
   option("--verbose","-v")
   option("--detailed-exitcodes")
   option("--catalog CATALOG", '-c')
+  option("--verify")
 
   option("--logdest LOGDEST", "-l") do |arg|
     begin
@@ -29,10 +30,11 @@ class Puppet::Application::Apply < Puppet::Application
   end
 
   def apply
+    catalog_archive = File.expand_path(options[:catalog])
     Dir.mktmpdir do |dir|
-      system('tar', '-xzf', options[:catalog], '-C', dir)
+      Dir.chdir(dir)
       catalog = read_catalog(File.join(dir, 'catalog.json'))
-      index = PSON.parse(File.read(File.join(dir, 'index.json')))
+      index = PSON.parse(File.read(File.join(dir, 'META-INF', 'index')))
 
       Puppet::FileServing::Content.indirection.terminus_class = :bundled
       Puppet::FileServing::Metadata.indirection.terminus_class = :bundled
@@ -41,6 +43,10 @@ class Puppet::Application::Apply < Puppet::Application
 
       apply_catalog(catalog)
     end
+  end
+
+  def is_valid(archive)
+    !system('jarsigner', '-verify', catalog_archive)
   end
 
   def setup

@@ -109,11 +109,14 @@ class Puppet::Application::Catalog < Puppet::Application
           end
         end
 
-        File.open(File.join(dir, 'index.json'), 'w') do |file|
+        meta_dir = File.join(dir, 'META-INF')
+        Dir.mkdir(meta_dir)
+
+        File.open(File.join(meta_dir, 'index'), 'w') do |file|
           file.write(index.to_pson)
         end
 
-        system("tar", "-czf", options[:output], "-C", dir, ".")
+        system("jar", "cf", options[:output], "-C", dir, ".")
       end
     rescue => detail
       Puppet.log_exception(detail)
