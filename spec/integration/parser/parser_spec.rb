@@ -209,6 +209,7 @@ describe "Puppet::Parser::Parser" do
           false :{ }
         }
         SOURCE
+@parser.parse(source)
         expect { @parser.parse(source) }.to raise_error(/A 'case' statement does not produce a value at line 1:6/)
       end
 
