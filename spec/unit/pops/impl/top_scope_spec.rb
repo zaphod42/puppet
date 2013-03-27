@@ -1,19 +1,17 @@
 require 'spec_helper'
 require 'puppet/pops/impl/top_scope'
 
-#BaseScope = Puppet::Pops::Impl::BaseScope
 TopScope = Puppet::Pops::Impl::TopScope
 
 # TODO: These tests only test the difference from BaseScope, could test the API
 describe Puppet::Pops::Impl::TopScope do
-
   describe "An instance of TopScope" do
     # smoke test
     # Assumptions made that BaseScope is tested
     it "should be a BaseScope" do
       scope = TopScope.new
       scope.is_a?(TopScope).should == true
-      scope.kind_of?(BaseScope).should == true
+      scope.kind_of?(Puppet::Pops::Impl::BaseScope).should == true
     end
 
     it "should respond to all API methods" do
