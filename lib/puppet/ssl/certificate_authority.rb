@@ -1,6 +1,7 @@
 require 'monitor'
 require 'puppet/ssl/host'
 require 'puppet/ssl/certificate_request'
+require 'puppet/ssl/certificate_signer'
 require 'puppet/util'
 
 # The class that knows how to sign certificates.  It creates
@@ -232,6 +233,8 @@ class Puppet::SSL::CertificateAuthority
 
     if cert = Puppet::SSL::Certificate.indirection.find(name)
       serial = cert.content.serial
+    elsif name =~ /^0x[0-9A-Fa-f]+$/
+      serial = name.hex
     elsif ! serial = inventory.serial(name)
       raise ArgumentError, "Could not find a serial number for #{name}"
     end
@@ -275,7 +278,9 @@ class Puppet::SSL::CertificateAuthority
     cert = Puppet::SSL::Certificate.new(hostname)
     cert.content = Puppet::SSL::CertificateFactory.
       build(cert_type, csr, issuer, next_serial)
-    cert.content.sign(host.key.content, OpenSSL::Digest::SHA256.new)
+
+    signer = Puppet::SSL::CertificateSigner.new
+    signer.sign(cert.content, host.key.content)
 
     Puppet.notice "Signed certificate request for #{hostname}"
 
@@ -321,6 +326,10 @@ class Puppet::SSL::CertificateAuthority
     # is what we expect where we expect it.
     if csr.content.subject.to_s.include? '*'
       raise CertificateSigningError.new(hostname), "CSR subject contains a wildcard, which is not allowed: #{csr.content.subject.to_s}"
+    end
+
+    unless csr.content.verify(csr.content.public_key)
+      raise CertificateSigningError.new(hostname), "CSR contains a public key that does not correspond to the signing key"
     end
 
     unless csr.subject_alt_names.empty?

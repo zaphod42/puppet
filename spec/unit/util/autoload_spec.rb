@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 
 require 'puppet/util/autoload'
@@ -55,8 +55,9 @@ describe Puppet::Util::Autoload do
 
     it "should include the module directories, the Puppet libdir, and all of the Ruby load directories" do
       Puppet[:libdir] = %w{/libdir1 /lib/dir/two /third/lib/dir}.join(File::PATH_SEPARATOR)
-      @autoload.class.expects(:module_directories).returns %w{/one /two}
-      @autoload.class.search_directories.should == %w{/one /two} + Puppet[:libdir].split(File::PATH_SEPARATOR) + $LOAD_PATH
+      @autoload.class.expects(:gem_directories).returns %w{/one /two}
+      @autoload.class.expects(:module_directories).returns %w{/three /four}
+      @autoload.class.search_directories.should == %w{/one /two /three /four} + Puppet[:libdir].split(File::PATH_SEPARATOR) + $LOAD_PATH
     end
   end
 
@@ -259,6 +260,12 @@ describe Puppet::Util::Autoload do
       it "should convert c:\ to c:/" do
         Puppet::Util::Autoload.cleanpath('c:\\').should == 'c:/'
       end
+    end
+  end
+
+  describe "#expand" do
+    it "should expand relative to the autoloader's prefix" do
+      @autoload.expand('bar').should == 'tmp/bar'
     end
   end
 end

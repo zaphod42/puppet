@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/property'
 
@@ -8,7 +8,12 @@ describe Puppet::Property do
   let :subclass do
     # We need a completely fresh subclass every time, because we modify both
     # class and instance level things inside the tests.
-    subclass = Class.new(Puppet::Property) do @name = :foo end
+    subclass = Class.new(Puppet::Property) do
+      class << self
+        attr_accessor :name
+      end
+      @name = :foo
+    end
     subclass.initvars
     subclass
   end
@@ -133,6 +138,17 @@ describe Puppet::Property do
     it "should provide its path as the source description" do
       property.stubs(:path).returns "/my/param"
       property.event.source_description.should == "/my/param"
+    end
+
+    it "should have the 'invalidate_refreshes' value set if set on a value" do
+      property.stubs(:event_name).returns :my_event
+      property.stubs(:should).returns "foo"
+      foo = mock()
+      foo.expects(:invalidate_refreshes).returns(true)
+      collection = mock()
+      collection.expects(:match?).with("foo").returns(foo)
+      property.class.stubs(:value_collection).returns(collection)
+      property.event.invalidate_refreshes.should be_true
     end
   end
 
@@ -359,6 +375,21 @@ describe Puppet::Property do
     it "should catch exceptions and raise Puppet::Error" do
       subclass.newvalue(:foo) { raise "eh" }
       lambda { property.set(:foo) }.should raise_error(Puppet::Error)
+    end
+
+    it "fails when the provider does not handle the attribute" do
+      subclass.name = "unknown"
+      lambda { property.set(:a_value) }.should raise_error(Puppet::Error)
+    end
+
+    it "propogates the errors about missing methods from the provider" do
+      provider = resource.provider
+      def provider.bad_method=(value)
+        value.this_method_does_not_exist
+      end
+
+      subclass.name = :bad_method
+      lambda { property.set(:a_value) }.should raise_error(NoMethodError, /this_method_does_not_exist/)
     end
 
     describe "that was defined without a block" do

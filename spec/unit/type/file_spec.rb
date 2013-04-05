@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 
 describe Puppet::Type.type(:file) do
@@ -134,23 +134,23 @@ describe Puppet::Type.type(:file) do
       file[:recurse].should be_false
     end
 
-    [true, "true", 10, "inf", "remote"].each do |value|
+    [true, "true", "inf", "remote"].each do |value|
       it "should consider #{value} to enable recursion" do
         file[:recurse] = value
         file[:recurse].should be_true
       end
     end
 
-    [false, "false", 0].each do |value|
+    it "should not allow numbers" do
+      expect { file[:recurse] = 10 }.to raise_error(
+        Puppet::Error, /Parameter recurse failed on File\[[^\]]+\]: Invalid recurse value 10/)
+    end
+
+    [false, "false"].each do |value|
       it "should consider #{value} to disable recursion" do
         file[:recurse] = value
         file[:recurse].should be_false
       end
-    end
-
-    it "should warn if recurse is specified as a number" do
-      Puppet.expects(:deprecation_warning).with("Setting recursion depth with the recurse parameter is now deprecated, please use recurselimit")
-      file[:recurse] = 3
     end
   end
 
@@ -188,43 +188,9 @@ describe Puppet::Type.type(:file) do
     end
   end
 
-  describe "#[]" do
-    it "should raise an exception" do
-      expect do
-        described_class['anything']
-      end.to raise_error("Global resource access is deprecated")
-    end
-  end
-
   describe ".instances" do
     it "should return an empty array" do
       described_class.instances.should == []
-    end
-  end
-
-  describe "#asuser" do
-    before :each do
-      # Mocha won't let me just stub SUIDManager.asuser to yield and return,
-      # but it will do exactly that if we're not root.
-      Puppet.features.stubs(:root?).returns false
-    end
-
-    it "should return the desired owner if they can write to the parent directory" do
-      file[:owner] = 1001
-      FileTest.stubs(:writable?).with(File.dirname file[:path]).returns true
-
-      file.asuser.should == 1001
-    end
-
-    it "should return nil if the desired owner can't write to the parent directory" do
-      file[:owner] = 1001
-      FileTest.stubs(:writable?).with(File.dirname file[:path]).returns false
-
-      file.asuser.should == nil
-    end
-
-    it "should return nil if not managing owner" do
-      file.asuser.should == nil
     end
   end
 
@@ -293,48 +259,6 @@ describe Puppet::Type.type(:file) do
 
     it "should return nil if not managing owner" do
       file.asuser.should == nil
-    end
-  end
-
-  describe "#bucket" do
-    it "should return nil if backup is off" do
-      file[:backup] = false
-      file.bucket.should == nil
-    end
-
-    it "should return nil if using a file extension for backup" do
-      file[:backup] = '.backup'
-
-      file.bucket.should == nil
-    end
-
-    it "should return the default filebucket if using the 'puppet' filebucket" do
-      file[:backup] = 'puppet'
-      bucket = stub('bucket')
-      file.stubs(:default_bucket).returns bucket
-
-      file.bucket.should == bucket
-    end
-
-    it "should fail if using a remote filebucket and no catalog exists" do
-      file.catalog = nil
-      file[:backup] = 'my_bucket'
-
-      expect { file.bucket }.to raise_error(Puppet::Error, "Can not find filebucket for backups without a catalog")
-    end
-
-    it "should fail if the specified filebucket isn't in the catalog" do
-      file[:backup] = 'my_bucket'
-
-      expect { file.bucket }.to raise_error(Puppet::Error, "Could not find filebucket my_bucket specified in backup")
-    end
-
-    it "should use the specified filebucket if it is in the catalog" do
-      file[:backup] = 'my_bucket'
-      filebucket = Puppet::Type.type(:filebucket).new(:name => 'my_bucket')
-      catalog.add_resource(filebucket)
-
-      file.bucket.should == filebucket.bucket
     end
   end
 
@@ -932,20 +856,39 @@ describe Puppet::Type.type(:file) do
 
   describe "#remove_existing" do
     it "should do nothing if the file doesn't exist" do
-      file.remove_existing(:file).should == nil
+      file.remove_existing(:file).should == false
     end
 
     it "should fail if it can't backup the file" do
-      file.stubs(:stat).returns stub('stat')
+      file.stubs(:stat).returns stub('stat', :ftype => 'file')
       file.stubs(:perform_backup).returns false
 
       expect { file.remove_existing(:file) }.to raise_error(Puppet::Error, /Could not back up; will not replace/)
     end
 
+    describe "backing up directories" do
+      it "should not backup directories if force is false" do
+        file[:force] = false
+        file.stubs(:stat).returns stub('stat', :ftype => 'directory')
+        file.expects(:perform_backup).never
+        file.remove_existing(:file).should == false
+      end
+
+      it "should backup directories if force is true" do
+        file[:force] = true
+        FileUtils.expects(:rmtree).with(file[:path])
+
+        file.stubs(:stat).returns stub('stat', :ftype => 'directory')
+        file.expects(:perform_backup).once.returns(true)
+
+        file.remove_existing(:file).should == true
+      end
+    end
+
     it "should not do anything if the file is already the right type and not a link" do
       file.stubs(:stat).returns stub('stat', :ftype => 'file')
 
-      file.remove_existing(:file).should == nil
+      file.remove_existing(:file).should == false
     end
 
     it "should not remove directories and should not invalidate the stat unless force is set" do

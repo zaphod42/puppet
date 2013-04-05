@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/configurer'
 
@@ -94,9 +94,20 @@ describe Puppet::Configurer do
       @agent.run
     end
 
-    it "should download plugins" do
+    it "downloads plugins when told" do
       @agent.expects(:download_plugins)
-      @agent.run
+      @agent.run(:pluginsync => true)
+    end
+
+    it "does not download plugins when told" do
+      @agent.expects(:download_plugins).never
+      @agent.run(:pluginsync => false)
+    end
+
+    it "should carry on when it can't fetch it's node definition" do
+      error = Net::HTTPError.new(400, 'dummy server communication error')
+      Puppet::Node.indirection.expects(:find).raises(error)
+      @agent.run.should == 0
     end
 
     it "should initialize a transaction report if one is not provided" do
@@ -331,6 +342,14 @@ describe Puppet::Configurer do
       @agent.run
 
       @agent.environment.should == "second_env"
+    end
+
+    it "should clear the thread local caches" do
+      Thread.current[:env_module_directories] = false
+
+      @agent.run
+
+      Thread.current[:env_module_directories].should == nil
     end
 
     describe "when not using a REST terminus for catalogs" do

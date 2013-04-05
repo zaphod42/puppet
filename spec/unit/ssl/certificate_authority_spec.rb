@@ -1,4 +1,5 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
+# encoding: ASCII-8BIT
 require 'spec_helper'
 
 require 'puppet/ssl/certificate_authority'
@@ -243,8 +244,9 @@ describe Puppet::SSL::CertificateAuthority do
       # Stub out the factory
       Puppet::SSL::CertificateFactory.stubs(:build).returns "my real cert"
 
-      @request_content = stub "request content stub", :subject => OpenSSL::X509::Name.new([['CN', @name]])
+      @request_content = stub "request content stub", :subject => OpenSSL::X509::Name.new([['CN', @name]]), :public_key => stub('public_key')
       @request = stub 'request', :name => @name, :request_extensions => [], :subject_alt_names => [], :content => @request_content
+      @request_content.stubs(:verify).returns(true)
 
       # And the inventory
       @inventory = stub 'inventory', :add => nil
@@ -331,7 +333,7 @@ describe Puppet::SSL::CertificateAuthority do
 
         expect do
           @ca.sign(@name, false, @request)
-        end.should_not raise_error(Puppet::SSL::CertificateAuthority::CertificateSigningError)
+        end.not_to raise_error(Puppet::SSL::CertificateAuthority::CertificateSigningError)
       end
 
       it "should save the resulting certificate" do
@@ -903,6 +905,30 @@ describe Puppet::SSL::CertificateAuthority do
 
         @ca.crl.expects(:revoke).with { |serial, key| serial == 16 }
         @ca.revoke('host')
+      end
+
+      context "revocation by serial number (#16798)" do
+        it "revokes when given a lower case hexadecimal formatted string" do
+          @ca.crl.expects(:revoke).with { |serial, key| serial == 15 }
+          Puppet::SSL::Certificate.indirection.expects(:find).with("0xf").returns nil
+
+          @ca.revoke('0xf')
+        end
+
+        it "revokes when given an upper case hexadecimal formatted string" do
+          @ca.crl.expects(:revoke).with { |serial, key| serial == 15 }
+          Puppet::SSL::Certificate.indirection.expects(:find).with("0xF").returns nil
+
+          @ca.revoke('0xF')
+        end
+
+        it "handles very large serial numbers" do
+          bighex = '0x4000000000000000000000000000000000000000'
+          @ca.crl.expects(:revoke).with { |serial, key| serial == 2**(159-1) }
+          Puppet::SSL::Certificate.indirection.expects(:find).with(bighex).returns nil
+
+          @ca.revoke(bighex)
+        end
       end
     end
 

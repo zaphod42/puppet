@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/daemon'
 require 'puppet/agent'
@@ -20,7 +20,8 @@ describe Puppet::Daemon, :unless => Puppet.features.microsoft_windows? do
   include PuppetSpec::Files
 
   before do
-    @agent = Puppet::Agent.new(TestClient.new)
+    # Forking agent not needed here
+    @agent = Puppet::Agent.new(TestClient.new, false)
     @daemon = Puppet::Daemon.new
     @daemon.stubs(:close_streams).returns nil
   end
@@ -202,7 +203,7 @@ describe Puppet::Daemon, :unless => Puppet.features.microsoft_windows? do
 
     it "should run the agent if one is available and it is not running" do
       @agent.expects(:running?).returns false
-      @agent.expects :run
+      @agent.expects(:run).with({:splay => false})
 
       @daemon.agent = @agent
 

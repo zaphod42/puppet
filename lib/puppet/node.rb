@@ -18,9 +18,8 @@ class Puppet::Node
 
   attr_accessor :name, :classes, :source, :ipaddress, :parameters
   attr_reader :time, :facts
-  #
-  # Load json before trying to register.
-  Puppet.features.pson? and ::PSON.register_document_type('Node',self)
+
+  ::PSON.register_document_type('Node',self)
 
   def self.from_pson(pson)
     raise ArgumentError, "No name provided in pson data" unless name = pson['name']
@@ -99,7 +98,7 @@ class Puppet::Node
       @parameters[name] = value unless @parameters.include?(name)
     end
 
-    @parameters["environment"] ||= self.environment.name.to_s if self.environment
+    @parameters["environment"] ||= self.environment.name.to_s
   end
 
   # Calculate the list of names we might use for looking

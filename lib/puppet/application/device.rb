@@ -11,6 +11,7 @@ class Puppet::Application::Device < Puppet::Application
   def app_defaults
     super.merge({
       :catalog_terminus => :rest,
+      :catalog_cache_terminus => :json,
       :node_terminus => :rest,
       :facts_terminus => :network_device,
     })
@@ -63,7 +64,7 @@ class Puppet::Application::Device < Puppet::Application
   end
 
     def help
-      <<-HELP
+      <<-'HELP'
 
 puppet-device(8) -- Manage remote network devices
 ========
@@ -194,7 +195,7 @@ Licensed under the Apache 2.0 License
 
         require 'puppet/configurer'
         configurer = Puppet::Configurer.new
-        report = configurer.run(:network_device => true)
+        report = configurer.run(:network_device => true, :pluginsync => Puppet[:pluginsync])
       rescue => detail
         Puppet.log_exception(detail)
       ensure
@@ -236,6 +237,8 @@ Licensed under the Apache 2.0 License
 
     Puppet::Transaction::Report.indirection.terminus_class = :rest
 
-    Puppet::Resource::Catalog.indirection.cache_class = :yaml
+    if Puppet[:catalog_cache_terminus]
+      Puppet::Resource::Catalog.indirection.cache_class = Puppet[:catalog_cache_terminus].intern
+    end
   end
 end

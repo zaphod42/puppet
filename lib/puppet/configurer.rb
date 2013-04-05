@@ -3,13 +3,11 @@ require 'sync'
 require 'timeout'
 require 'puppet/network/http_pool'
 require 'puppet/util'
-require 'puppet/util/config_timeout'
 
 class Puppet::Configurer
   require 'puppet/configurer/fact_handler'
   require 'puppet/configurer/plugin_handler'
 
-  extend Puppet::Util::ConfigTimeout
   include Puppet::Configurer::FactHandler
   include Puppet::Configurer::PluginHandler
 
@@ -90,7 +88,7 @@ class Puppet::Configurer
   end
 
   def get_facts(options)
-    download_plugins unless options[:skip_plugin_download]
+    download_plugins if options[:pluginsync]
 
     if Puppet::Resource::Catalog.indirection.terminus_class == :rest
       # This is a bit complicated.  We need the serialized and escaped facts,
@@ -142,12 +140,18 @@ class Puppet::Configurer
         fact_options = get_facts(options)
       end
 
-      if node = Puppet::Node.indirection.find(Puppet[:node_name_value], :environment => @environment, :ignore_cache => true)
-        if node.environment.to_s != @environment
-          Puppet.warning "Local environment: \"#{@environment}\" doesn't match server specified node environment \"#{node.environment}\", switching agent to \"#{node.environment}\"."
-          @environment = node.environment.to_s
-          fact_options = nil
+      begin
+        if node = Puppet::Node.indirection.find(Puppet[:node_name_value],
+            :environment => @environment, :ignore_cache => true)
+          if node.environment.to_s != @environment
+            Puppet.warning "Local environment: \"#{@environment}\" doesn't match server specified node environment \"#{node.environment}\", switching agent to \"#{node.environment}\"."
+            @environment = node.environment.to_s
+            fact_options = nil
+          end
         end
+      rescue Puppet::Error, Net::HTTPError => detail
+        Puppet.warning("Unable to fetch my node definition, but the agent run will continue:")
+        Puppet.warning(detail)
       end
 
       fact_options = get_facts(options) unless fact_options
@@ -181,8 +185,9 @@ class Puppet::Configurer
       execute_postrun_command or return nil
     end
   ensure
-    # Make sure we forget the retained module_directories of any autoload
-    # we might have used.
+    # Between Puppet runs we need to forget the cached values.  This lets us
+    # pick up on new functions installed by gems or new modules being added
+    # without the daemon being restarted.
     Thread.current[:env_module_directories] = nil
 
     Puppet::Util::Log.close(report)

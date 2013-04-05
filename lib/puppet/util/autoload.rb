@@ -1,3 +1,5 @@
+require 'pathname'
+require 'puppet/util/rubygems'
 require 'puppet/util/warnings'
 require 'puppet/util/methodhelper'
 
@@ -13,11 +15,8 @@ class Puppet::Util::Autoload
     attr_accessor :loaded
     private :autoloaders, :loaded
 
-    # List all loaded files.
-    def list_loaded
-      loaded.keys.sort { |a,b| a[0] <=> b[0] }.collect do |path, hash|
-        "#{path}: #{hash[:file]}"
-      end
+    def gem_source
+      @gem_source ||= Puppet::Util::RubyGems::Source.new
     end
 
     # Has a given path been loaded?  This is used for testing whether a
@@ -159,8 +158,12 @@ class Puppet::Util::Autoload
       end
     end
 
+    def gem_directories
+      gem_source.directories
+    end
+
     def search_directories(env=nil)
-      [module_directories(env), libdirs(), $LOAD_PATH].flatten
+      [gem_directories, module_directories(env), libdirs(), $LOAD_PATH].flatten
     end
 
     # Normalize a path. This converts ALT_SEPARATOR to SEPARATOR on Windows
@@ -195,7 +198,7 @@ class Puppet::Util::Autoload
   end
 
   def load(name, env=nil)
-    self.class.load_file(File.join(@path, name.to_s), env)
+    self.class.load_file(expand(name), env)
   end
 
   # Load all instances that we can.  This uses require, rather than load,
@@ -205,14 +208,18 @@ class Puppet::Util::Autoload
   end
 
   def loaded?(name)
-    self.class.loaded?(File.join(@path, name.to_s))
+    self.class.loaded?(expand(name))
   end
 
   def changed?(name)
-    self.class.changed?(File.join(@path, name.to_s))
+    self.class.changed?(expand(name))
   end
 
   def files_to_load
     self.class.files_to_load(@path)
+  end
+
+  def expand(name)
+    ::File.join(@path, name.to_s)
   end
 end

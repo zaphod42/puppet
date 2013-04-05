@@ -38,6 +38,11 @@ class Puppet::Parser::Parser
     ast AST::ASTArray, :children => [arg]
   end
 
+  # Create an AST block containing a single element
+  def block(arg)
+    ast AST::BlockExpression, :children => [arg]
+  end
+
   # Create an AST object, and automatically add the file and line information if
   # available.
   def ast(klass, hash = {})
@@ -146,9 +151,10 @@ class Puppet::Parser::Parser
       rescue Puppet::ParseError => except
         except.line ||= @lexer.line
         except.file ||= @lexer.file
+        except.pos ||= @lexer.pos
         raise except
       rescue => except
-        raise Puppet::ParseError.new(except.message, @lexer.file, @lexer.line, except)
+        raise Puppet::ParseError.new(except.message, @lexer.file, @lexer.line, nil, except)
       end
     end
     # Store the results as the top-level class.
@@ -158,12 +164,14 @@ class Puppet::Parser::Parser
   end
 
   def parse_ruby_file
+    Puppet.deprecation_warning("Use of the Ruby DSL is deprecated.")
+
     # Execute the contents of the file inside its own "main" object so
     # that it can call methods in the resource type API.
     main_object = Puppet::DSL::ResourceTypeAPI.new
     main_object.instance_eval(File.read(self.file))
 
     # Then extract any types that were created.
-    Puppet::Parser::AST::ASTArray.new :children => main_object.instance_eval { @__created_ast_objects__ }
+    Puppet::Parser::AST::BlockExpression.new :children => main_object.instance_eval { @__created_ast_objects__ }
   end
 end

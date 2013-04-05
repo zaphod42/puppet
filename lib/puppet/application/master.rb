@@ -29,7 +29,7 @@ class Puppet::Application::Master < Puppet::Application
   end
 
   def help
-    <<-HELP
+    <<-'HELP'
 
 puppet-master(8) -- The puppet master daemon
 ========
@@ -120,18 +120,27 @@ Luke Kanies
 
 COPYRIGHT
 ---------
-Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
+Copyright (c) 2012 Puppet Labs, LLC Licensed under the Apache 2.0 License
 
     HELP
   end
 
-  def app_defaults()
-    super.merge :facts_terminus => 'yaml'
+  # Sets up the 'node_cache_terminus' default to use the Write Only Yaml terminus :write_only_yaml.
+  # If this is not wanted, the setting ´node_cache_terminus´ should be set to nil.
+  # @see Puppet::Node::WriteOnlyYaml
+  # @see #setup_node_cache
+  # @see puppet issue 16753
+  #
+  def app_defaults
+    super.merge({
+      :node_cache_terminus => :write_only_yaml,
+      :facts_terminus => 'yaml'
+    })
   end
 
   def preinit
     Signal.trap(:INT) do
-      $stderr.puts "Cancelling startup"
+      $stderr.puts "Canceling startup"
       exit(0)
     end
 
@@ -151,13 +160,12 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
 
   def compile
     Puppet::Util::Log.newdestination :console
-    raise ArgumentError, "Cannot render compiled catalogs without pson support" unless Puppet.features.pson?
     begin
       unless catalog = Puppet::Resource::Catalog.indirection.find(options[:node])
         raise "Could not compile catalog for #{options[:node]}"
       end
 
-      jj catalog.to_resource
+      puts PSON::pretty_generate(catalog.to_resource, :allow_nan => true, :max_nesting => false)
     rescue => detail
       $stderr.puts detail
       exit(30)
@@ -186,7 +194,7 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
 
     unless options[:rack]
       require 'puppet/network/server'
-      @daemon.server = Puppet::Network::Server.new()
+      @daemon.server = Puppet::Network::Server.new(Puppet[:bindaddress], Puppet[:masterport])
       @daemon.daemonize if Puppet[:daemonize]
     else
       require 'puppet/network/http/rack'
@@ -241,6 +249,16 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
     end
   end
 
+  # Sets up a special node cache "write only yaml" that collects and stores node data in yaml
+  # but never finds or reads anything (this since a real cache causes stale data to be served
+  # in circumstances when the cache can not be cleared).
+  # @see puppet issue 16753
+  # @see Puppet::Node::WriteOnlyYaml
+  # @return [void]
+  def setup_node_cache
+    Puppet::Node.indirection.cache_class = Puppet[:node_cache_terminus]
+  end
+
   def setup
     raise Puppet::Error.new("Puppet master is not supported on Microsoft Windows") if Puppet.features.microsoft_windows?
 
@@ -251,6 +269,8 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
     Puppet.settings.use :main, :master, :ssl, :metrics
 
     setup_terminuses
+
+    setup_node_cache
 
     setup_ssl
   end

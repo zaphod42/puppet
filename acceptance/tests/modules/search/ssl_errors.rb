@@ -7,13 +7,13 @@ step "Search against a website where the certificate is not signed by a public a
 with_master_running_on(master) do
   on master, puppet("module search yup --module_repository=https://#{master}:8140"), :acceptable_exit_codes => [1] do
     assert_match <<-STDOUT, stdout
-Searching https://#{master}:8140 ...
+\e[mNotice: Searching https://#{master}:8140 ...\e[0m
 STDOUT
     assert_match <<-STDERR.chomp, stderr
-Error: Unable to verify the SSL certificate at https://#{master}:8140
-  This could be because the certificate is invalid or that the CA bundle
-  installed with your version of OpenSSL is not available, not valid or
-  not up to date.
+Error: Could not connect via HTTPS to https://#{master}:8140
+  Unable to verify the SSL certificate
+    The certificate may not be signed by a valid CA
+    The CA bundle included with OpenSSL may not be valid or up to date
 STDERR
 end
 

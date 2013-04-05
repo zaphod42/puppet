@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/application/face_base'
 require 'tmpdir'
@@ -12,6 +12,10 @@ describe Puppet::Application::FaceBase do
     app.command_line.stubs(:subcommand_name).returns('subcommand')
     Puppet::Util::Log.stubs(:newdestination)
     app
+  end
+
+  after :each do
+    app.class.clear_everything_for_tests
   end
 
   describe "#find_global_settings_argument" do
@@ -54,9 +58,10 @@ describe Puppet::Application::FaceBase do
 
     it "should stop if the first thing found is not an action" do
       app.command_line.stubs(:args).returns %w{banana count_args}
+
       expect { app.run }.to exit_with 1
-      @logs.first.should_not be_nil
-      @logs.first.message.should =~ /has no 'banana' action/
+
+      @logs.map(&:message).should == ["'basetest' has no 'banana' action.  See `puppet help basetest`."]
     end
 
     it "should use the default action if not given any arguments" do
@@ -153,6 +158,22 @@ describe Puppet::Application::FaceBase do
       app.command_line.stubs(:args).returns %w{--mandatory=bar --bar foo}
       expect { app.preinit; app.parse_options }.
         to raise_error OptionParser::InvalidOption, /invalid option: --bar/
+    end
+
+    it "does not skip when a puppet global setting is given as one item" do
+      app.command_line.stubs(:args).returns %w{--confdir=/tmp/puppet foo}
+      app.preinit
+      app.parse_options
+      app.action.name.should == :foo
+      app.options.should == {}
+    end
+
+    it "does not skip when a puppet global setting is given as two items" do
+      app.command_line.stubs(:args).returns %w{--confdir /tmp/puppet foo}
+      app.preinit
+      app.parse_options
+      app.action.name.should == :foo
+      app.options.should == {}
     end
 
     { "boolean options before" => %w{--trace foo},
@@ -269,8 +290,8 @@ describe Puppet::Application::FaceBase do
 
   describe "#render" do
     before :each do
-      app.face      = Puppet::Face[:basetest, '0.0.1']
-      app.action    = app.face.get_action(:foo)
+      app.face      = Puppet::Interface.new('basetest', '0.0.1')
+      app.action    = Puppet::Interface::Action.new(app.face, :foo)
     end
 
     context "default rendering" do

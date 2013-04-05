@@ -1,4 +1,6 @@
 # The majority of Puppet's configuration settings are set in this file.
+
+
 module Puppet
 
   ############################################################################################
@@ -27,20 +29,6 @@ module Puppet
         :default  => nil,
         :desc     => "The name of the application, if we are running as one.  The\n" +
             "default is essentially $0 without the path or `.rb`.",
-    },
-
-    ## This setting needs to go away.  As a first step, we could just make it a first-class property of the Settings
-    ##  class, instead of treating it as a normal setting.  There are places where the Settings class tries to use
-    ##  the value of run_mode to help in resolving other values, and that is no good for nobody.  It would cause
-    ##  infinite recursion and stack overflows without some chicanery... so, it needs to be cleaned up.
-    ##
-    ## As a longer term goal I think we should be looking into getting rid of run_mode altogether, but that is going
-    ##  to be a larger undertaking, as it is being branched on in a lot of places in the current code.
-    ##
-    ## --cprice 2012-03-16
-    :run_mode => {
-        :default  => nil,
-        :desc     => "The effective 'run mode' of the application: master, agent, or user.",
     }
   )
 
@@ -141,7 +129,7 @@ module Puppet
           ENV["PATH"] = "" if ENV["PATH"].nil?
           ENV["PATH"] = value unless value == "none"
           paths = ENV["PATH"].split(File::PATH_SEPARATOR)
-          %w{/usr/sbin /sbin}.each do |path|
+          Puppet::Util::Platform.default_paths.each do |path|
             ENV["PATH"] += File::PATH_SEPARATOR + path unless paths.include?(path)
           end
           value
@@ -168,12 +156,6 @@ module Puppet
         :desc     => "If true, allows the parser to continue without requiring\n" +
             "all files referenced with `import` statements to exist. This setting was primarily\n" +
             "designed for use with commit hooks for parse-checking.",
-    },
-    :authconfig => {
-        :default  => "$confdir/namespaceauth.conf",
-        :desc     => "The configuration file that defines the rights to the different\n" +
-            "namespaces and methods.  This can be used as a coarse-grained\n" +
-            "authorization system for both `puppet agent` and `puppet master`.",
     },
     :environment => {
         :default  => "production",
@@ -225,10 +207,19 @@ module Puppet
       :desc       => "The YAML file containing indirector route configuration.",
     },
     :node_terminus => {
+      :type       => :terminus,
       :default    => "plain",
       :desc       => "Where to find information about nodes.",
     },
+    :node_cache_terminus => {
+      :type       => :terminus,
+      :default    => nil,
+      :desc       => "How to store cached nodes. 
+      Valid values are (none), 'json', 'yaml' or write only yaml ('write_only_yaml').
+      The master application defaults to 'write_only_yaml', all others to none.",
+    },
     :data_binding_terminus => {
+      :type    => :terminus,
       :default => "hiera",
       :desc    => "Where to retrive information about data.",
     },
@@ -238,26 +229,36 @@ module Puppet
       :type    => :file,
     },
     :catalog_terminus => {
+      :type       => :terminus,
       :default    => "compiler",
       :desc       => "Where to get node catalogs.  This is useful to change if, for instance,
       you'd like to pre-compile catalogs and store them in memcached or some other easily-accessed store.",
     },
+    :catalog_cache_terminus => {
+      :type       => :terminus,
+      :default    => nil,
+      :desc       => "How to store cached catalogs. Valid values are 'json' and 'yaml'. The agent application defaults to 'json'."
+    },
     :facts_terminus => {
       :default => 'facter',
       :desc => "The node facts terminus.",
+      :call_hook => :on_initialize_and_write,
       :hook => proc do |value|
         require 'puppet/node/facts'
         # Cache to YAML if we're uploading facts away
         if %w[rest inventory_service].include? value.to_s
+          Puppet.info "configuring the YAML fact cache because a remote terminus is active"
           Puppet::Node::Facts.indirection.cache_class = :yaml
         end
       end
     },
     :inventory_terminus => {
+      :type       => :terminus,
       :default    => "$facts_terminus",
       :desc       => "Should usually be the same as the facts terminus",
     },
     :default_file_terminus => {
+      :type       => :terminus,
       :default    => "rest",
       :desc       => "The default source for files if no server is given in a
       uri, e.g. puppet:///file. The default of `rest` causes the file to be
@@ -281,10 +282,11 @@ module Puppet
       :desc       => "The HTTP proxy port to use for outgoing connections",
     },
     :filetimeout => {
-      :default    => 15,
-      :desc       => "The minimum time to wait (in seconds) between checking for updates in
+      :default    => "15s",
+      :type       => :duration,
+      :desc       => "The minimum time to wait between checking for updates in
       configuration files.  This timeout determines how quickly Puppet checks whether
-      a file (such as manifests or templates) has changed on disk.",
+      a file (such as manifests or templates) has changed on disk. Can be specified as a duration.",
     },
     :queue_type => {
       :default    => "stomp",
@@ -303,7 +305,7 @@ module Puppet
         :default  => false,
         :type     => :boolean,
         :desc     => "Whether to use a queueing system to provide asynchronous database integration.
-      Requires that `puppet queue` be running and that 'PSON' support for ruby be installed.",
+      Requires that `puppet queue` be running.",
         :hook     => proc do |value|
           if value
             # This reconfigures the terminii for Node, Facts, and Catalog
@@ -311,6 +313,7 @@ module Puppet
 
             # But then we modify the configuration
             Puppet::Resource::Catalog.indirection.cache_class = :queue
+            Puppet.settings[:catalog_cache_terminus] = :queue
           else
             raise "Cannot disable asynchronous storeconfigs in a running process"
           end
@@ -565,6 +568,12 @@ EOT
         :type     => :boolean,
         :desc     => "Whether certificate revocation should be supported by downloading a Certificate Revocation List (CRL)
             to all clients.  If enabled, CA chaining will almost definitely not work.",
+    },
+    :certificate_expire_warning => {
+      :default  => "60d",
+      :type     => :duration,
+      :desc     => "The window of time leading up to a certificate's expiration that a notification
+        will be logged. This applies to CA, master, and agent certificates. Can be specified as a duration."
     }
   )
 
@@ -613,11 +622,6 @@ EOT
       :mode => 0664,
 
       :desc => "The certificate revocation list (CRL) for the CA. Will be used if present but otherwise ignored.",
-      :hook => proc do |value|
-        if value == 'false'
-          Puppet.deprecation_warning "Setting the :cacrl to 'false' is deprecated; Puppet will just ignore the crl if yours is missing"
-        end
-      end
     },
     :caprivatedir => {
       :default => "$cadir/private",
@@ -672,23 +676,11 @@ EOT
       :desc       => "Whether to allow a new certificate
       request to overwrite an existing certificate.",
     },
-    :ca_days => {
-      :default    => "",
-      :desc       => "How long a certificate should be valid, in days.
-      This setting is deprecated; use `ca_ttl` instead",
-    },
     :ca_ttl => {
       :default    => "5y",
-      :desc       => "The default TTL for new certificates; valid values
-      must be an integer, optionally followed by one of the units
-      'y' (years of 365 days), 'd' (days), 'h' (hours), or
-      's' (seconds). The unit defaults to seconds. If this setting
-      is set, ca_days is ignored. Examples are '3600' (one hour)
-      and '1825d', which is the same as '5y' (5 years) ",
-    },
-    :ca_md => {
-      :default    => "md5",
-      :desc       => "The type of hash used in certificates.",
+      :type       => :duration,
+      :desc       => "The default TTL for new certificates. If this setting is set, ca_days is ignored.
+      Can be specified as a duration."
     },
     :req_bits => {
       :default    => 4096,
@@ -724,21 +716,14 @@ EOT
       :pidfile => {
           :type => :file,
           :default  => "$rundir/${run_mode}.pid",
-          :desc     => "The pid file",
+          :desc     => "The file containing the PID of a running process.  " <<
+                       "This file is intended to be used by service management " <<
+                       "frameworks and monitoring systems to determine if a " <<
+                       "puppet process is still in the process table.",
       },
       :bindaddress => {
-        :default    => "",
-        :desc       => "The address a listening server should bind to.  Mongrel servers
-        default to 127.0.0.1 and WEBrick defaults to 0.0.0.0.",
-      },
-      :servertype => {
-        :default => "webrick", :desc => "The type of server to use.  Currently supported
-        options are webrick and mongrel.  If you use mongrel, you will need
-        a proxy in front of the process or processes, since Mongrel cannot
-        speak SSL.",
-
-        :call_hook => :on_define_and_write, # Call our hook with the default value, so we always get the correct bind address set.
-        :hook => proc { |value|  value == "webrick" ? Puppet.settings[:bindaddress] = "0.0.0.0" : Puppet.settings[:bindaddress] = "127.0.0.1" if Puppet.settings[:bindaddress] == "" }
+        :default    => "0.0.0.0",
+        :desc       => "The address a listening server should bind to.",
       }
   )
 
@@ -826,17 +811,15 @@ EOT
     },
     :ssl_client_header => {
       :default    => "HTTP_X_CLIENT_DN",
-      :desc       => "The header containing an authenticated
-      client's SSL DN.  Only used with Mongrel.  This header must be set by the proxy
-      to the authenticated client's SSL DN (e.g., `/CN=puppet.puppetlabs.com`).
-      See http://projects.puppetlabs.com/projects/puppet/wiki/Using_Mongrel for more information.",
+      :desc       => "The header containing an authenticated client's SSL DN.
+      This header must be set by the proxy to the authenticated client's SSL
+      DN (e.g., `/CN=puppet.puppetlabs.com`).",
     },
     :ssl_client_verify_header => {
       :default    => "HTTP_X_CLIENT_VERIFY",
-      :desc       => "The header containing the status
-      message of the client verification. Only used with Mongrel.  This header must be set by the proxy
-      to 'SUCCESS' if the client successfully authenticated, and anything else otherwise.
-      See http://projects.puppetlabs.com/projects/puppet/wiki/Using_Mongrel for more information.",
+      :desc       => "The header containing the status message of the client
+      verification. This header must be set by the proxy to 'SUCCESS' if the
+      client successfully authenticated, and anything else otherwise.",
     },
     # To make sure this directory is created before we try to use it on the server, we need
     # it to be in the server section (#1138).
@@ -899,8 +882,9 @@ EOT
     },
     :rrdinterval => {
       :default  => "$runinterval",
+      :type     => :duration,
       :desc     => "How often RRD should expect data.
-            This should match how often the hosts report back to the server.",
+            This should match how often the hosts report back to the server. Can be specified as a duration.",
     }
   )
 
@@ -1019,11 +1003,12 @@ EOT
       :desc       => "Whether puppet agent should be run in noop mode.",
     },
     :runinterval => {
-      :default  => 1800, # 30 minutes
+      :default  => "30m",
+      :type     => :duration,
       :desc     => "How often puppet agent applies the client configuration; in seconds.
           Note that a runinterval of 0 means \"run continuously\" rather than
           \"never run.\" If you want puppet agent to never run, you should start
-          it with the `--no-client` option.",
+          it with the `--no-client` option. Can be specified as a duration.",
     },
     :listen => {
       :default    => false,
@@ -1064,10 +1049,11 @@ EOT
       can be guaranteed to support this format, but it will be used for all
       classes that support it.",
     },
-    :agent_pidfile => {
-      :default    => "$statedir/agent.pid",
-    :type         => :file,
-      :desc       => "A lock file to indicate that a puppet agent run is currently in progress.  File contains the pid of the running process.",
+    :agent_catalog_run_lockfile => {
+      :default    => "$statedir/agent_catalog_run.lock",
+      :type       => :string, # (#2888) Ensure this file is not added to the settings catalog.
+      :desc       => "A lock file to indicate that a puppet agent catalog run is currently in progress.  " +
+                     "The file contains the pid of the process that holds the lock on the catalog run.",
     },
     :agent_disabled_lockfile => {
         :default    => "$statedir/agent_disabled.lock",
@@ -1097,21 +1083,22 @@ EOT
       fact be stale even if the timestamps are up to date - if the facts
       change or if the server changes.",
     },
-    :downcasefacts => {
-      :default    => false,
-      :type       => :boolean,
-      :desc       => "Whether facts should be made all lowercase when sent to the server.",
-    },
     :dynamicfacts => {
       :default    => "memorysize,memoryfree,swapsize,swapfree",
-      :desc       => "Facts that are dynamic; these facts will be ignored when deciding whether
+      :desc       => "(Deprecated) Facts that are dynamic; these facts will be ignored when deciding whether
       changed facts should result in a recompile.  Multiple facts should be
       comma-separated.",
+      :hook => proc { |value|
+        if value
+          Puppet.deprecation_warning "The dynamicfacts setting is deprecated and will be ignored."
+        end
+      }
     },
     :splaylimit => {
       :default    => "$runinterval",
+      :type       => :duration,
       :desc       => "The maximum time to delay before runs.  Defaults to being the same as the
-      run interval.",
+      run interval. Can be specified as a duration.",
     },
     :splay => {
       :default    => false,
@@ -1126,18 +1113,11 @@ EOT
       :desc     => "Where FileBucket files are stored locally."
     },
     :configtimeout => {
-      :default  => 120,
+      :default  => "2m",
+      :type     => :duration,
       :desc     => "How long the client should wait for the configuration to be retrieved
       before considering it a failure.  This can help reduce flapping if too
-      many clients contact the server at one time.",
-    },
-    :reportserver => {
-      :default => "$server",
-      :call_hook => :on_write_only,
-      :desc => "(Deprecated for 'report_server') The server to which to send transaction reports.",
-      :hook => proc do |value|
-        Puppet.settings[:report_server] = value if value
-      end
+      many clients contact the server at one time. Can be specified as a duration.",
     },
     :report_server => {
       :default  => "$server",
@@ -1163,7 +1143,7 @@ EOT
     :lastrunfile =>  {
       :default  => "$statedir/last_run_summary.yaml",
       :type     => :file,
-      :mode     => 0640,
+      :mode     => 0644,
       :desc     => "Where puppet agent stores the last run report summary in yaml format."
     },
     :lastrunreport =>  {
@@ -1195,10 +1175,12 @@ EOT
       compression, but if it supports it, this setting might reduce performance on high-speed LANs.",
     },
     :waitforcert => {
-        :default  => 120, # 2 minutes
-        :desc     => "The time interval, specified in seconds, 'puppet agent' should connect to the server
-            and ask it to sign a certificate request. This is useful for the initial setup of a
-            puppet client. You can turn off waiting for certificates by specifying a time of 0.",
+      :default  => "2m",
+      :type     => :duration,
+      :desc     => "The time interval 'puppet agent' should connect to the server
+      and ask it to sign a certificate request. This is useful for the initial setup of a
+      puppet client. You can turn off waiting for certificates by specifying a time of 0.
+      Can be specified as a duration.",
     }
   )
 
@@ -1216,7 +1198,7 @@ EOT
 
   # Plugin information.
 
-    define_settings(
+  define_settings(
     :main,
     :plugindest => {
       :type       => :directory,
@@ -1398,12 +1380,6 @@ EOT
 
         define_settings(
         :ldap,
-    :ldapnodes => {
-      :default  => false,
-      :type     => :boolean,
-      :desc     => "Whether to search for node configurations in LDAP.  See
-      http://projects.puppetlabs.com/projects/puppet/wiki/LDAP_Nodes for more information.",
-    },
     :ldapssl => {
       :default  => false,
       :type   => :boolean,
@@ -1420,11 +1396,11 @@ EOT
     },
     :ldapserver => {
       :default  => "ldap",
-      :desc     => "The LDAP server.  Only used if `ldapnodes` is enabled.",
+      :desc     => "The LDAP server.  Only used if `node_terminus` is set to `ldap`.",
     },
     :ldapport => {
       :default  => 389,
-      :desc     => "The LDAP port.  Only used if `ldapnodes` is enabled.",
+      :desc     => "The LDAP port.  Only used if `node_terminus` is set to `ldap`.",
     },
 
     :ldapstring => {
@@ -1489,16 +1465,18 @@ You can adjust the backend using the storeconfigs_backend setting.",
         require 'puppet/node'
         require 'puppet/node/facts'
         if value
-          Puppet.settings[:async_storeconfigs] or
+          if not Puppet.settings[:async_storeconfigs]
             Puppet::Resource::Catalog.indirection.cache_class = :store_configs
+            Puppet.settings[:catalog_cache_terminus] = :store_configs
+          end
           Puppet::Node::Facts.indirection.cache_class = :store_configs
-          Puppet::Node.indirection.cache_class = :store_configs
 
           Puppet::Resource.indirection.terminus_class = :store_configs
         end
       end
     },
     :storeconfigs_backend => {
+      :type => :terminus,
       :default => "active_record",
       :desc => "Configure the backend terminus used for StoreConfigs.
 By default, this uses the ActiveRecord store, which directly talks to the
@@ -1506,25 +1484,66 @@ database from within the Puppet Master process."
     }
   )
 
-  # This doesn't actually work right now.
-
-    define_settings(
-    :parser,
-
-    :lexical => {
-      :default  => false,
-      :type     => :boolean,
-      :desc     => "Whether to use lexical scoping (vs. dynamic).",
-    },
+  define_settings(:parser,
     :templatedir => {
         :default  => "$vardir/templates",
         :type     => :directory,
         :desc     => "Where Puppet looks for template files.  Can be a list of colon-separated
       directories.",
+    },
+
+    :allow_variables_with_dashes => {
+      :default => false,
+      :desc    => <<-'EOT'
+Permit hyphens (`-`) in variable names and issue deprecation warnings about
+them. This setting **should always be `false`;** setting it to `true`
+will cause subtle and wide-ranging bugs. It will be removed in a future version.
+
+Hyphenated variables caused major problems in the language, but were allowed
+between Puppet 2.7.3 and 2.7.14. If you used them during this window, we
+apologize for the inconvenience --- you can temporarily set this to `true`
+in order to upgrade, and can rename your variables at your leisure. Please
+revert it to `false` after you have renamed all affected variables.
+EOT
+    },
+    :parser => {
+      :default => "current",
+      :desc => <<-'EOT'
+Selects the parser to use for parsing puppet manifests (in puppet DSL language/'.pp' files).
+Available choices are 'current' (the default), and 'future'.
+
+The 'curent' parser means that the released version of the parser should be used.
+
+The 'future' parser is a "time travel to the future" allowing early exposure to new language features.
+What these fatures are will vary from release to release and they may be invididually configurable.
+
+Available Since Puppet 3.2. 
+EOT
+    },
+   :max_errors => {
+     :default => 10,
+     :desc => <<-'EOT'
+Sets the max number of logged/displayed parser validation errors in case multiple errors have been detected.
+A value of 0 is the same as value 1. The count is per manifest.
+EOT
+   },
+   :max_warnings => {
+     :default => 10,
+     :desc => <<-'EOT'
+Sets the max number of logged/displayed parser validation warnings in case multiple errors have been detected.
+A value of 0 is the same as value 1. The count is per manifest.
+EOT
+     },
+  :max_deprecations => {
+    :default => 10,
+    :desc => <<-'EOT'
+Sets the max number of logged/displayed parser validation deprecation warnings in case multiple errors have been detected.
+A value of 0 is the same as value 1. The count is per manifest.
+EOT
     }
+
   )
-  define_settings(
-    :puppetdoc,
+  define_settings(:puppetdoc,
     :document_all => {
         :default  => false,
         :type     => :boolean,

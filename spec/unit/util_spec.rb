@@ -492,4 +492,38 @@ describe Puppet::Util do
       File.read(target.path).should == "hello, world\n"
     end
   end
+
+  describe "#pretty_backtrace" do
+    it "should include lines that don't match the standard backtrace pattern" do
+      line = "non-standard line\n"
+      trace = caller[0..2] + [line] + caller[3..-1]
+      Puppet::Util.pretty_backtrace(trace).should =~ /#{line}/
+    end
+
+    it "should include function names" do
+      Puppet::Util.pretty_backtrace.should =~ /:in `\w+'/
+    end
+
+    it "should work with Windows paths" do
+      Puppet::Util.pretty_backtrace(["C:/work/puppet/c.rb:12:in `foo'\n"]).
+        should == "C:/work/puppet/c.rb:12:in `foo'"
+    end
+  end
+
+  describe "#execute" do
+    let(:command) { 'mycommand' }
+
+    it "should pass arguments through" do
+      arguments = 'myarg'
+      Puppet::Util::Execution.expects(:execute).with(command, arguments)
+
+      subject.execute(command, arguments)
+    end
+
+    it "should not supply default arguments" do
+      Puppet::Util::Execution.expects(:execute).with(command)
+
+      subject.execute(command)
+    end
+  end
 end

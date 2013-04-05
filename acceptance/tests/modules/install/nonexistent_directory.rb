@@ -1,9 +1,9 @@
-begin test_name "puppet module install (nonexistent directory)"
+test_name "puppet module install (nonexistent directory)"
 
 step 'Setup'
-require 'resolv'; ip = Resolv.getaddress('forge-dev.puppetlabs.lan')
-apply_manifest_on master, "host { 'forge.puppetlabs.com': ip => '#{ip}' }"
-apply_manifest_on master, "file { ['/etc/puppet/modules', '/usr/share/puppet/modules']: ensure => directory, recurse => true, purge => true, force => true }"
+
+stub_forge_on(master)
+
 apply_manifest_on master, <<-PP
 file {
   [
@@ -12,14 +12,18 @@ file {
   ]: ensure => absent, recurse => true, force => true;
 }
 PP
+teardown do
+  on master, "rm -rf /etc/puppet/modules"
+  on master, "rm -rf /tmp/modules"
+end
 
 step "Try to install a module to a non-existent directory"
 on master, puppet("module install pmtacceptance-nginx --target-dir /tmp/modules") do
   assert_output <<-OUTPUT
-    Preparing to install into /tmp/modules ...
-    Created target directory /tmp/modules
-    Downloading from https://forge.puppetlabs.com ...
-    Installing -- do not interrupt ...
+    \e[mNotice: Preparing to install into /tmp/modules ...\e[0m
+    \e[mNotice: Created target directory /tmp/modules\e[0m
+    \e[mNotice: Downloading from https://forge.puppetlabs.com ...\e[0m
+    \e[mNotice: Installing -- do not interrupt ...\e[0m
     /tmp/modules
     └── pmtacceptance-nginx (\e[0;36mv0.0.1\e[0m)
   OUTPUT
@@ -29,18 +33,13 @@ on master, '[ -d /tmp/modules/nginx ]'
 step "Try to install a module to a non-existent implicit directory"
 on master, puppet("module install pmtacceptance-nginx") do
   assert_output <<-OUTPUT
-    Preparing to install into /etc/puppet/modules ...
-    Created target directory /etc/puppet/modules
-    Downloading from https://forge.puppetlabs.com ...
-    Installing -- do not interrupt ...
+    \e[mNotice: Preparing to install into /etc/puppet/modules ...\e[0m
+    \e[mNotice: Created target directory /etc/puppet/modules\e[0m
+    \e[mNotice: Downloading from https://forge.puppetlabs.com ...\e[0m
+    \e[mNotice: Installing -- do not interrupt ...\e[0m
     /etc/puppet/modules
     └── pmtacceptance-nginx (\e[0;36mv0.0.1\e[0m)
   OUTPUT
 end
-on master, '[ -d /etc/puppet/modules/nginx ]'
 
-ensure step "Teardown"
-apply_manifest_on master, "host { 'forge.puppetlabs.com': ensure => absent }"
-apply_manifest_on master, "file { '/etc/puppet/modules': ensure => directory }"
-apply_manifest_on master, "file { '/etc/puppet/modules': recurse => true, purge => true, force => true }"
-end
+on master, '[ -d /etc/puppet/modules/nginx ]'

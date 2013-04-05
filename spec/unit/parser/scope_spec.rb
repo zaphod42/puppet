@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet_spec/compiler'
 
@@ -83,23 +83,35 @@ describe Puppet::Parser::Scope do
     Puppet::Parser::Scope.ancestors.should include(Puppet::Resource::TypeCollectionHelper)
   end
 
-  describe "when missing methods are called" do
-    before :each do
-      @env      = Puppet::Node::Environment.new('testing')
-      @compiler = Puppet::Parser::Compiler.new(Puppet::Node.new('foo', :environment => @env))
-      @scope    = Puppet::Parser::Scope.new(@compiler)
+  describe "when custom functions are called" do
+    let(:env) { Puppet::Node::Environment.new('testing') }
+    let(:compiler) { Puppet::Parser::Compiler.new(Puppet::Node.new('foo', :environment => env)) }
+    let(:scope) { Puppet::Parser::Scope.new(compiler) }
+
+    it "calls methods prefixed with function_ as custom functions" do
+      scope.function_sprintf(["%b", 123]).should == "1111011"
     end
 
-    it "should load and call the method if it looks like a function and it exists" do
-      @scope.function_sprintf(["%b", 123]).should == "1111011"
+    it "raises an error when arguments are not passed in an Array" do
+      expect do
+        scope.function_sprintf("%b", 123)
+      end.to raise_error ArgumentError, /custom functions must be called with a single array that contains the arguments/
     end
 
-    it "should raise NoMethodError if the method doesn't look like a function" do
-      expect { @scope.sprintf(["%b", 123]) }.to raise_error(NoMethodError)
+    it "raises an error on subsequent calls when arguments are not passed in an Array" do
+      scope.function_sprintf(["first call"])
+
+      expect do
+        scope.function_sprintf("%b", 123)
+      end.to raise_error ArgumentError, /custom functions must be called with a single array that contains the arguments/
     end
 
-    it "should raise NoMethodError if the method looks like a function but doesn't exist" do
-      expect { @scope.function_fake_bs(['cows']) }.to raise_error(NoMethodError)
+    it "raises NoMethodError when the not prefixed" do
+      expect { scope.sprintf(["%b", 123]) }.to raise_error(NoMethodError)
+    end
+
+    it "raises NoMethodError when prefixed with function_ but it doesn't exist" do
+      expect { scope.function_fake_bs(['cows']) }.to raise_error(NoMethodError)
     end
   end
 
@@ -127,6 +139,11 @@ describe Puppet::Parser::Scope do
     it "should support :lookupvar and :setvar for backward compatibility" do
       @scope.setvar("var", "yep")
       @scope.lookupvar("var").should == "yep"
+    end
+
+    it "should fail if invoked with a non-string name" do
+      expect { @scope[:foo] }.to raise_error Puppet::DevError
+      expect { @scope[:foo] = 12 }.to raise_error Puppet::DevError
     end
 
     it "should return nil for unset variables" do
@@ -475,6 +492,27 @@ describe Puppet::Parser::Scope do
           @scope["1"].should == :value2
         end
       end
+    end
+  end
+
+  context "when using ephemeral as local scope" do
+    it "should store all variables in local scope" do
+      @scope.new_ephemeral true
+      @scope.setvar("apple", :fruit)
+      @scope["apple"].should == :fruit
+    end
+
+    it "should remove all local scope variables on unset" do
+      @scope.new_ephemeral true
+      @scope.setvar("apple", :fruit)
+      @scope["apple"].should == :fruit
+      @scope.unset_ephemeral_var
+      @scope["apple"].should == nil
+    end
+    it "should be created from a hash" do
+      @scope.ephemeral_from({ "apple" => :fruit, "strawberry" => :berry})
+      @scope["apple"].should == :fruit
+      @scope["strawberry"].should == :berry
     end
   end
 

@@ -9,6 +9,10 @@ require 'puppet/settings/file_setting'
 require 'puppet/settings/directory_setting'
 require 'puppet/settings/path_setting'
 require 'puppet/settings/boolean_setting'
+require 'puppet/settings/terminus_setting'
+require 'puppet/settings/duration_setting'
+require 'puppet/settings/config_file'
+require 'puppet/settings/value_translator'
 
 # The class for handling configuration files.
 class Puppet::Settings
@@ -20,13 +24,11 @@ class Puppet::Settings
   attr_accessor :files
   attr_reader :timer
 
-  READ_ONLY_SETTINGS = [:run_mode]
-
   # These are the settings that every app is required to specify; there are reasonable defaults defined in application.rb.
-  REQUIRED_APP_SETTINGS = [:run_mode, :logdir, :confdir, :vardir]
+  REQUIRED_APP_SETTINGS = [:logdir, :confdir, :vardir]
 
   # This method is intended for puppet internal use only; it is a convenience method that
-  #  returns reasonable application default settings values for a given run_mode.
+  # returns reasonable application default settings values for a given run_mode.
   def self.app_defaults_for_run_mode(run_mode)
     {
         :name     => run_mode.to_s,
@@ -37,8 +39,8 @@ class Puppet::Settings
         :logdir   => run_mode.log_dir,
     }
   end
-  
-  def self.default_certname() 
+
+  def self.default_certname()
     hostname = hostname_fact
     domain = domain_fact
     if domain and domain != ""
@@ -46,36 +48,48 @@ class Puppet::Settings
     else
       fqdn = hostname
     end
-    fqdn.gsub(/\.$/, '')
-  end 
+    fqdn.to_s.gsub(/\.$/, '')
+  end
 
   def self.hostname_fact()
-    Facter["hostname"].value 
-  end 
+    Facter["hostname"].value
+  end
 
   def self.domain_fact()
     Facter["domain"].value
-  end 
-
-
-  def self.default_global_config_dir
-    Puppet.features.microsoft_windows? ? File.join(Dir::COMMON_APPDATA, "PuppetLabs", "puppet", "etc") : "/etc/puppet"
-  end
-
-  def self.default_user_config_dir
-    File.expand_path("~/.puppet")
-  end
-
-  def self.default_global_var_dir
-    Puppet.features.microsoft_windows? ? File.join(Dir::COMMON_APPDATA, "PuppetLabs", "puppet", "var") : "/var/lib/puppet"
-  end
-
-  def self.default_user_var_dir
-    File.expand_path("~/.puppet/var")
   end
 
   def self.default_config_file_name
     "puppet.conf"
+  end
+
+  # Create a new collection of config settings.
+  def initialize
+    @config = {}
+    @shortnames = {}
+
+    @created = []
+    @searchpath = nil
+
+    # Mutex-like thing to protect @values
+    @sync = Sync.new
+
+    # Keep track of set values.
+    @values = Hash.new { |hash, key| hash[key] = {} }
+
+    # Hold parsed metadata until run_mode is known
+    @metas = {}
+
+    # And keep a per-environment cache
+    @cache = Hash.new { |hash, key| hash[key] = {} }
+
+    # The list of sections we've used.
+    @used = []
+
+    @hooks_to_call_on_application_initialization = []
+
+    @translate = Puppet::Settings::ValueTranslator.new
+    @config_file_parser = Puppet::Settings::ConfigFile.new(@translate)
   end
 
   # Retrieve a config value
@@ -156,22 +170,11 @@ class Puppet::Settings
     raise Puppet::DevError, "Attempting to initialize global default settings more than once!" if global_defaults_initialized?
 
     # The first two phases of the lifecycle of a puppet application are:
-    #  1) To parse the command line options and handle any of them that are registered, defined "global" puppet
-    #     settings (mostly from defaults.rb).)
-    #  2) To parse the puppet config file(s).
-    #
-    # These 2 steps are being handled explicitly here.  If there ever arises a situation where they need to be
-    # triggered from outside of this class, without triggering the rest of the lifecycle--we might want to move them
-    # out into a separate method that we call from here.  However, this seems to be sufficient for now.
-    #  --cprice 2012-03-16
+    # 1) Parse the command line options and handle any of them that are
+    #    registered, defined "global" puppet settings (mostly from defaults.rb).
+    # 2) Parse the puppet config file(s).
 
-    # Here's step 1.
     parse_global_options(args)
-
-    # Here's step 2.  NOTE: this is a change in behavior where we are now parsing the config file on every run;
-    # before, there were several apps that specifically registered themselves as not requiring anything from
-    # the config file.  The fact that we're always parsing it now might be a small performance hit, but it was
-    # necessary in order to make sure that we can resolve the libdir before we look for the available applications.
     parse_config_files
 
     @global_defaults_initialized = true
@@ -196,25 +199,23 @@ class Puppet::Settings
       end
     end
 
+    option_parser.on('--run_mode',
+                     "The effective 'run mode' of the application: master, agent, or user.",
+                     :REQUIRED) do |arg|
+      Puppet.settings.preferred_run_mode = arg
+    end
+
     option_parser.parse(args)
 
+    # remove run_mode options from the arguments so that later parses don't think
+    # it is an unknown option.
+    while option_index = args.index('--run_mode') do
+      args.delete_at option_index
+      args.delete_at option_index
+    end
+    args.reject! { |arg| arg.start_with? '--run_mode=' }
   end
   private :parse_global_options
-
-
-  ## Private utility method; this is the callback that the OptionParser will use when it finds
-  ## an option that was defined in Puppet.settings.  All that this method does is a little bit
-  ## of clanup to get the option into the exact format that Puppet.settings expects it to be in,
-  ## and then passes it along to Puppet.settings.
-  ##
-  ## @param [String] opt the command-line option that was matched
-  ## @param [String, TrueClass, FalseClass] the value for the setting (as determined by the OptionParser)
-  #def handlearg(opt, val)
-  #  opt, val = self.class.clean_opt(opt, val)
-  #  Puppet.settings.handlearg(opt, val)
-  #end
-  #private :handlearg
-
 
   # A utility method (public, is used by application.rb and perhaps elsewhere) that munges a command-line
   # option string into the format that Puppet.settings expects.  (This mostly has to deal with handling the
@@ -238,14 +239,18 @@ class Puppet::Settings
   end
 
   def initialize_app_defaults(app_defaults)
-    raise Puppet::DevError, "Attempting to initialize application default settings more than once!" if app_defaults_initialized?
     REQUIRED_APP_SETTINGS.each do |key|
       raise SettingsError, "missing required app default setting '#{key}'" unless app_defaults.has_key?(key)
     end
 
     app_defaults.each do |key, value|
-      set_value(key, value, :application_defaults)
+      if key == :run_mode
+        self.preferred_run_mode = value
+      else
+        set_value(key, value, :application_defaults)
+      end
     end
+    apply_metadata
     call_hooks_deferred_to_application_initialization
 
     @app_defaults_initialized = true
@@ -272,6 +277,8 @@ class Puppet::Settings
       varname = $2 || $1
       if varname == "environment" and environment
         environment
+      elsif varname == "run_mode"
+        preferred_run_mode
       elsif pval = self.value(varname, environment)
         pval
       else
@@ -325,7 +332,7 @@ class Puppet::Settings
       value = "true"
     end
 
-    value &&= munge_value(value)
+    value &&= @translate[value]
     str = opt.sub(/^--/,'')
 
     bool = true
@@ -354,29 +361,6 @@ class Puppet::Settings
   def shortinclude?(short)
     short = short.intern if name.is_a? String
     @shortnames.include?(short)
-  end
-
-  # Create a new collection of config settings.
-  def initialize
-    @config = {}
-    @shortnames = {}
-
-    @created = []
-    @searchpath = nil
-
-    # Mutex-like thing to protect @values
-    @sync = Sync.new
-
-    # Keep track of set values.
-    @values = Hash.new { |hash, key| hash[key] = {} }
-
-    # And keep a per-environment cache
-    @cache = Hash.new { |hash, key| hash[key] = {} }
-
-    # The list of sections we've used.
-    @used = []
-
-    @hooks_to_call_on_application_initialization = []
   end
 
   # Prints the contents of a config file with the available config settings, or it
@@ -456,18 +440,22 @@ class Puppet::Settings
     end
   end
 
-  # Figure out the section name for the run_mode.
-  def run_mode
-    @run_mode || :user
+  # The currently configured run mode that is preferred for constructing the application configuration.
+  def preferred_run_mode
+    @preferred_run_mode_name || :user
   end
 
   # PRIVATE!  This only exists because we need a hook to validate the run mode when it's being set, and
   #  it should never, ever, ever, ever be called from outside of this file.
-  def run_mode=(mode)
+  # This method is also called when --run_mode MODE is used on the command line to set the default
+  #
+  # @param mode [String|Symbol] the name of the mode to have in effect
+  # @api private
+  def preferred_run_mode=(mode)
+    mode = mode.to_s.downcase.intern
     raise ValidationError, "Invalid run mode '#{mode}'" unless [:master, :agent, :user].include?(mode)
-    @run_mode = mode
+    @preferred_run_mode_name = mode
   end
-  private :run_mode=
 
   # Return all of the parameters associated with a given section.
   def params(section = nil)
@@ -485,64 +473,36 @@ class Puppet::Settings
 
   # Parse the configuration file.  Just provides thread safety.
   def parse_config_files
-    # we are now supporting multiple config files; the "main" config file will be the one located in
-    # /etc/puppet (or overridden $confdir)... but we will also look for a config file in the user's home
-    # directory.  This was introduced in an effort to provide maximum backwards compatibility while
-    # de-coupling the process of locating the config file from the "run mode" of the application.
-    files = [main_config_file]
-    files << user_config_file unless Puppet.features.root?
-
     @sync.synchronize do
-      unsafe_parse(files)
+      unsafe_parse(which_configuration_file)
     end
 
-    # talking with cprice, Settings.parse will not be the final location for this. He's working on ticket
-    # that, as a side effect, will create a more appropriate place for this. At that time, this will be
-    # moved to the new location. --jeffweiss 24 apr 2012
     call_hooks_deferred_to_application_initialization :ignore_interpolation_dependency_errors => true
   end
   private :parse_config_files
 
   def main_config_file
-    # the algorithm here is basically this:
-    #  * use the explicit config file location if one has been specified; this
-    #    can be affected by modifications to either the "confdir" or "config"
-    #    settings (most likely via CLI arguments).
-    #  * if no explicit config location has been specified, we fall back to
-    #    the default.
-    #
-    # The easiest way to determine whether an explicit one has been specified
-    #  is to simply attempt to evaluate the value of ":config".  This will
-    #  obviously be successful if they've passed an explicit value for :config,
-    #  but it will also result in successful interpolation if they've only
-    #  passed an explicit value for :confdir.
-    #
-    # If they've specified neither, then the interpolation will fail and we'll
-    #  get an exception.
-    #
-    begin
-      return self[:config] if self[:config]
-    rescue InterpolationError => err
-      # This means we failed to interpolate, which means that they didn't
-      #  explicitly specify either :config or :confdir... so we'll fall out to
-      #  the default value.
+    if explicit_config_file?
+      return self[:config]
+    else
+      return File.join(Puppet::Util::RunMode[:master].conf_dir, config_file_name)
     end
-    # return the default value.
-    return File.join(self.class.default_global_config_dir, config_file_name)
   end
   private :main_config_file
 
   def user_config_file
-    return File.join(self.class.default_user_config_dir, config_file_name)
+    return File.join(Puppet::Util::RunMode[:user].conf_dir, config_file_name)
   end
   private :user_config_file
 
-  # This method is here to get around some life-cycle issues.  We need to be able to determine the config file name
-  # before the settings / defaults are fully loaded.  However, we also need to respect any overrides of this value
+  # This method is here to get around some life-cycle issues.  We need to be
+  # able to determine the config file name before the settings / defaults are
+  # fully loaded.  However, we also need to respect any overrides of this value
   # that the user may have specified on the command line.
   #
-  # The easiest way to do this is to attempt to read the setting, and if we catch an error (meaning that it hasn't been
-  #  set yet), we'll fall back to the default value.
+  # The easiest way to do this is to attempt to read the setting, and if we
+  # catch an error (meaning that it hasn't been set yet), we'll fall back to
+  # the default value.
   def config_file_name
     begin
       return self[:config_file_name] if self[:config_file_name]
@@ -555,13 +515,10 @@ class Puppet::Settings
   private :config_file_name
 
   # Unsafely parse the file -- this isn't thread-safe and causes plenty of problems if used directly.
-  def unsafe_parse(files)
-    raise Puppet::DevError unless files.length > 0
-
+  def unsafe_parse(file)
     # build up a single data structure that contains the values from all of the parsed files.
     data = {}
-    files.each do |file|
-      next unless FileTest.exist?(file)
+    if FileTest.exist?(file)
       begin
         file_data = parse_file(file)
 
@@ -574,7 +531,6 @@ class Puppet::Settings
             data[key] = file_data[key]
           end
         end
-
       rescue => detail
         Puppet.log_exception(detail, "Could not parse #{file}: #{detail}")
         return
@@ -589,9 +545,8 @@ class Puppet::Settings
     unsafe_clear(false, false)
 
     # And now we can repopulate with the values from our last parsing of the config files.
-    metas = {}
     data.each do |area, values|
-      metas[area] = values.delete(:_meta)
+      @metas[area] = values.delete(:_meta)
       values.each do |key,value|
         set_value(key, value, area, :dont_trigger_handles => true, :ignore_bad_settings => true )
       end
@@ -619,19 +574,24 @@ class Puppet::Settings
       end
     end
 
+    # Take a best guess at metadata based on uninitialized run_mode
+    apply_metadata
+  end
+  private :unsafe_parse
+
+  def apply_metadata
     # We have to do it in the reverse of the search path,
     # because multiple sections could set the same value
     # and I'm too lazy to only set the metadata once.
     searchpath.reverse.each do |source|
-      source = run_mode if source == :run_mode
+      source = preferred_run_mode if source == :run_mode
       source = @name if (@name && source == :name)
-      if meta = metas[source]
+      if meta = @metas[source]
         set_metadata(meta)
       end
     end
   end
-  private :unsafe_parse
-
+  private :apply_metadata
 
   # Create a new setting.  The value is passed in because it's used to determine
   # what kind of setting we're creating, but the value itself might be either
@@ -649,6 +609,8 @@ class Puppet::Settings
           :directory  => DirectorySetting,
           :path       => PathSetting,
           :boolean    => BooleanSetting,
+          :terminus   => TerminusSetting,
+          :duration   => DurationSetting,
       } [type]
         raise ArgumentError, "Invalid setting type '#{type}'"
       end
@@ -745,11 +707,25 @@ class Puppet::Settings
   def service_user_available?
     return @service_user_available if defined?(@service_user_available)
 
-    return @service_user_available = false unless user_name = self[:user]
+    if self[:user]
+      user = Puppet::Type.type(:user).new :name => self[:user], :audit => :ensure
 
-    user = Puppet::Type.type(:user).new :name => self[:user], :audit => :ensure
+      @service_user_available = user.exists?
+    else
+      @service_user_available = false
+    end
+  end
 
-    @service_user_available = user.exists?
+  def service_group_available?
+    return @service_group_available if defined?(@service_group_available)
+
+    if self[:group]
+      group = Puppet::Type.type(:group).new :name => self[:group], :audit => :ensure
+
+      @service_group_available = group.exists?
+    else
+      @service_group_available = false
+    end
   end
 
   # Allow later inspection to determine if the setting was set on the
@@ -763,7 +739,7 @@ class Puppet::Settings
   def set_value(param, value, type, options = {})
     param = param.to_sym
 
-    unless setting = @config[param]
+    if !(setting = @config[param])
       if options[:ignore_bad_settings]
         return
       else
@@ -773,10 +749,6 @@ class Puppet::Settings
     end
 
     setting.handle(value) if setting.has_hook? and not options[:dont_trigger_handles]
-    if read_only_settings.include? param and type != :application_defaults
-      raise ArgumentError,
-        "You're attempting to set configuration parameter $#{param}, which is read-only."
-    end
 
     @sync.synchronize do # yay, thread-safe
 
@@ -792,19 +764,6 @@ class Puppet::Settings
       # order issues.
       Puppet::Node::Environment.clear if defined?(Puppet::Node) and defined?(Puppet::Node::Environment)
     end
-
-    # This is a hack.  The run_mode should probably not be a "normal" setting, because the places
-    #  it is used tend to create lifecycle issues and cause other weird problems.  In some places
-    #  we need for it to have a default value, in other places it may be preferable to be able to
-    #  determine that it has not yet been set.  There used to be a global variable that some
-    #  code paths would access; as a first step towards cleaning it up, I've gotten rid of the global
-    #  variable and am instead using an instance variable in this class, but that means that if
-    #  someone modifies the value of the setting at a later point during execution, then the
-    #  instance variable needs to be updated as well... so that's what we're doing here.
-    #
-    #  This code should be removed if we get a chance to remove run_mode from the defined settings.
-    #  --cprice 2012-03-19
-    self.run_mode = value if param == :run_mode
 
     value
   end
@@ -909,17 +868,17 @@ These parameters affect the required permissions of any files specified after
 their specification.  Puppet will sometimes use these parameters to check its
 own configured state, so they can be used to make Puppet a bit more self-managing.
 
+The file format supports octothorpe-commented lines, but not partial-line comments.
+
 Generated on #{Time.now}.
 
 }.gsub(/^/, "# ")
 
 #         Add a section heading that matches our name.
-if @config.include?(:run_mode)
-  str += "[#{self[:run_mode]}]\n"
-    end
+    str += "[#{preferred_run_mode}]\n"
     eachsection do |section|
       persection(section) do |obj|
-        str += obj.to_config + "\n" unless read_only_settings.include? obj.name or obj.name == :genconfig
+        str += obj.to_config + "\n" unless obj.name == :genconfig
       end
     end
 
@@ -1103,11 +1062,6 @@ if @config.include?(:run_mode)
 
   private
 
-  # This is just here to simplify testing.  This method can be stubbed easily.  Constants can't.
-  def read_only_settings()
-    READ_ONLY_SETTINGS
-  end
-
   def get_config_file_default(default)
     obj = nil
     unless obj = @config[default]
@@ -1144,7 +1098,7 @@ if @config.include?(:run_mode)
     searchpath(environment).each do |source|
 
       # Modify the source as necessary.
-      source = self.run_mode if source == :run_mode
+      source = self.preferred_run_mode if source == :run_mode
       yield source
     end
   end
@@ -1155,98 +1109,9 @@ if @config.include?(:run_mode)
     @config.values.find_all { |setting| setting.has_hook? }
   end
 
-  # Extract extra setting information for files.
-  def extract_fileinfo(string)
-    result = {}
-    value = string.sub(/\{\s*([^}]+)\s*\}/) do
-      params = $1
-      params.split(/\s*,\s*/).each do |str|
-        if str =~ /^\s*(\w+)\s*=\s*([\w\d]+)\s*$/
-          param, value = $1.intern, $2
-          result[param] = value
-          raise ArgumentError, "Invalid file option '#{param}'" unless [:owner, :mode, :group].include?(param)
-
-          if param == :mode and value !~ /^\d+$/
-            raise ArgumentError, "File modes must be numbers"
-          end
-        else
-          raise ArgumentError, "Could not parse '#{string}'"
-        end
-      end
-      ''
-    end
-    result[:value] = value.sub(/\s*$/, '')
-    result
-  end
-
-  # Convert arguments into booleans, integers, or whatever.
-  def munge_value(value)
-    # Handle different data types correctly
-    return case value
-      when /^false$/i; false
-      when /^true$/i; true
-      when /^\d+$/i; Integer(value)
-      when true; true
-      when false; false
-      else
-        value.gsub(/^["']|["']$/,'').sub(/\s+$/, '')
-    end
-  end
-
   # This method just turns a file in to a hash of hashes.
   def parse_file(file)
-    text = read_file(file)
-
-    result = Hash.new { |names, name|
-      names[name] = {}
-    }
-
-    count = 0
-
-    # Default to 'main' for the section.
-    section = :main
-    result[section][:_meta] = {}
-    text.split(/\n/).each do |line|
-      count += 1
-      case line
-      when /^\s*\[(\w+)\]\s*$/
-        section = $1.intern # Section names
-        #disallow application_defaults in config file
-        if section == :application_defaults
-          raise Puppet::Error, "Illegal section 'application_defaults' in config file #{file} at line #{line}"
-        end
-        # Add a meta section
-        result[section][:_meta] ||= {}
-      when /^\s*#/; next # Skip comments
-      when /^\s*$/; next # Skip blanks
-      when /^\s*(\w+)\s*=\s*(.*?)\s*$/ # settings
-        var = $1.intern
-
-        # We don't want to munge modes, because they're specified in octal, so we'll
-        # just leave them as a String, since Puppet handles that case correctly.
-        if var == :mode
-          value = $2
-        else
-          value = munge_value($2)
-        end
-
-        # Check to see if this is a file argument and it has extra options
-        begin
-          if value.is_a?(String) and options = extract_fileinfo(value)
-            value = options[:value]
-            options.delete(:value)
-            result[section][:_meta][var] = options
-          end
-          result[section][var] = value
-        rescue Puppet::Error => detail
-          raise ParseError.new(detail.message, file, line, detail)
-        end
-      else
-        raise ParseError.new("Could not match line #{line}", file, line)
-      end
-    end
-
-    result
+    @config_file_parser.parse_file(file, read_file(file))
   end
 
   # Read the file in.
@@ -1264,7 +1129,9 @@ if @config.include?(:run_mode)
   def set_metadata(meta)
     meta.each do |var, values|
       values.each do |param, value|
-        @config[var].send(param.to_s + "=", value)
+        @sync.synchronize do # yay, thread-safe
+          @config[var].send(param.to_s + "=", value)
+        end
       end
     end
   end
@@ -1280,5 +1147,49 @@ if @config.include?(:run_mode)
     end
   end
   private :clear_everything_for_tests
+
+  ##
+  # (#15337) All of the logic to determine the configuration file to use
+  #   should be centralized into this method.  The simplified approach is:
+  #
+  # 1. If there is an explicit configuration file, use that.  (--confdir or
+  #    --config)
+  # 2. If we're running as a root process, use the system puppet.conf
+  #    (usually /etc/puppet/puppet.conf)
+  # 3. Otherwise, use the user puppet.conf (usually ~/.puppet/puppet.conf)
+  #
+  # @todo this code duplicates {Puppet::Util::RunMode#which_dir} as described
+  #   in {http://projects.puppetlabs.com/issues/16637 #16637}
+  def which_configuration_file
+    if explicit_config_file? or Puppet.features.root? then
+      return main_config_file
+    else
+      return user_config_file
+    end
+  end
+
+  def explicit_config_file?
+    # Figure out if the user has provided an explicit configuration file.  If
+    # so, return the path to the file, if not return nil.
+    #
+    # The easiest way to determine whether an explicit one has been specified
+    #  is to simply attempt to evaluate the value of ":config".  This will
+    #  obviously be successful if they've passed an explicit value for :config,
+    #  but it will also result in successful interpolation if they've only
+    #  passed an explicit value for :confdir.
+    #
+    # If they've specified neither, then the interpolation will fail and we'll
+    #  get an exception.
+    #
+    begin
+      return true if self[:config]
+    rescue InterpolationError => err
+      # This means we failed to interpolate, which means that they didn't
+      #  explicitly specify either :config or :confdir... so we'll fall out to
+      #  the default value.
+      return false
+    end
+  end
+  private :explicit_config_file?
 
 end

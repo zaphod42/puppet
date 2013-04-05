@@ -1,7 +1,10 @@
 require 'optparse'
+require 'puppet/util/command_line'
 require 'puppet/util/plugins'
 require 'puppet/util/constant_inflector'
 require 'puppet/error'
+
+module Puppet
 
 # This class handles all the aspects of a Puppet application/executable
 # * setting up options
@@ -116,13 +119,14 @@ require 'puppet/error'
 #          process_member(member)
 #      end
 #  end
-module Puppet
 class Application
   require 'puppet/util'
   include Puppet::Util
 
   DOCPATTERN = ::File.expand_path(::File.dirname(__FILE__) + "/util/command_line/*" )
+  CommandLineArgs = Struct.new(:subcommand_name, :args)
 
+  @loader = Puppet::Util::Autoload.new(self, 'puppet/application')
 
   class << self
     include Puppet::Util
@@ -219,17 +223,32 @@ class Application
       @option_parser_commands
     end
 
-    def find(file_name)
-      # This should probably be using the autoloader, but due to concerns about the fact that
-      #  the autoloader currently considers the modulepath when looking for things to load,
-      #  we're delaying that for now.
+    # @return [Array<String>] the names of available applications
+    # @api public
+    def available_application_names
+      @loader.files_to_load.map do |fn|
+        ::File.basename(fn, '.rb')
+      end.uniq
+    end
+
+    # Finds the class for a given application and loads the class. This does
+    # not create an instance of the application, it only gets a handle to the
+    # class. The code for the application is expected to live in a ruby file
+    # `puppet/application/#{name}.rb` that is available on the `$LOAD_PATH`.
+    #
+    # @param application_name [String] the name of the application to find (eg. "apply").
+    # @return [Class] the Class instance of the application that was found.
+    # @raise [Puppet::Error] if the application class was not found.
+    # @raise [LoadError] if there was a problem loading the application file.
+    # @api public
+    def find(application_name)
       begin
-        require ::File.join('puppet', 'application', file_name.to_s.downcase)
+        require @loader.expand(application_name.to_s.downcase)
       rescue LoadError => e
-        Puppet.log_and_raise(e, "Unable to find application '#{file_name}'.  #{e}")
+        Puppet.log_and_raise(e, "Unable to find application '#{application_name}'. #{e}")
       end
 
-      class_name = Puppet::Util::ConstantInflector.file2constant(file_name.to_s)
+      class_name = Puppet::Util::ConstantInflector.file2constant(application_name.to_s)
 
       clazz = try_load_class(class_name)
 
@@ -239,7 +258,7 @@ class Application
       ####  and then get rid of this stanza in a subsequent release.
       ################################################################
       if (clazz.nil?)
-        class_name = file_name.capitalize
+        class_name = application_name.capitalize
         clazz = try_load_class(class_name)
       end
       ################################################################
@@ -247,7 +266,7 @@ class Application
       ################################################################
 
       if clazz.nil?
-        raise Puppet::Error.new("Unable to load application class '#{class_name}' from file 'puppet/application/#{file_name}.rb'")
+        raise Puppet::Error.new("Unable to load application class '#{class_name}' from file 'puppet/application/#{application_name}.rb'")
       end
 
       return clazz
@@ -265,19 +284,23 @@ class Application
       find(name).new
     end
 
-    #
-    # I think that it would be nice to look into changing this into two methods (getter/setter); however,
-    #  it sounds like this is a desirable feature of our ruby DSL. --cprice 2012-03-06
-    #
-
     # Sets or gets the run_mode name. Sets the run_mode name if a mode_name is
     # passed. Otherwise, gets the run_mode or a default run_mode
     #
     def run_mode( mode_name = nil)
+      if mode_name
+        Puppet.settings.preferred_run_mode = mode_name
+      end
+
       return @run_mode if @run_mode and not mode_name
 
       require 'puppet/util/run_mode'
-      @run_mode = Puppet::Util::RunMode[ mode_name || :user ]
+      @run_mode = Puppet::Util::RunMode[ mode_name || Puppet.settings.preferred_run_mode ]
+    end
+
+    # This is for testing only
+    def clear_everything_for_tests
+      @run_mode = @banner = @run_status = @option_parser_commands = nil
     end
   end
 
@@ -311,15 +334,14 @@ class Application
   def preinit
   end
 
-  def initialize(command_line = nil)
-
-    require 'puppet/util/command_line'
-    @command_line = command_line || Puppet::Util::CommandLine.new
+  def initialize(command_line = Puppet::Util::CommandLine.new)
+    @command_line = CommandLineArgs.new(command_line.subcommand_name, command_line.args.dup)
     @options = {}
-
   end
 
-  # This is the main application entry point
+  # Execute the application.
+  # @api public
+  # @return [void]
   def run
 
     # I don't really like the names of these lifecycle phases.  It would be nice to change them to some more meaningful
@@ -354,8 +376,8 @@ class Application
     setup_logs
   end
 
-  def setup_logs
-    if options[:debug] or options[:verbose]
+  def setup_logs(is_daemon = false)
+    if options[:debug] or options[:verbose] or is_daemon
       Puppet::Util::Log.newdestination(:console)
       if options[:debug]
         Puppet::Util::Log.level = :debug
@@ -408,8 +430,6 @@ class Application
     # respond with context-sensitive help if we want to. --daniel 2011-04-12
     option_parser.parse!(self.command_line.args)
   end
-
-
 
   def handlearg(opt, val)
     opt, val = Puppet::Settings.clean_opt(opt, val)

@@ -41,6 +41,21 @@ end
   end
 }
 
+if defined?(YAML::ENGINE) and YAML::ENGINE.yamler == 'psych'
+  def Psych.safely_load(str)
+    result = Psych.parse(str)
+    if invalid_node = result.find { |node| node.tag =~ /!map:(.*)/ || node.tag =~ /!ruby\/hash:(.*)/ }
+      raise ArgumentError, "Illegal YAML mapping found with tag #{invalid_node.tag}; please use !ruby/object:#{$1} instead"
+    else
+      result.to_ruby
+    end
+  end
+else
+  def YAML.safely_load(str)
+    self.load(str)
+  end
+end
+
 def YAML.dump(*args)
   ZAML.dump(*args)
 end
@@ -81,6 +96,14 @@ if RUBY_VERSION == '1.8.1' || RUBY_VERSION == '1.8.2'
   }
 end
 
+class Fixnum
+  # Returns the int itself. This method is intended for compatibility to
+  # character constant in Ruby 1.9.  1.8.5 is missing it; add it.
+  def ord
+    self
+  end unless method_defined? 'ord'
+end
+
 class Array
   # Ruby < 1.8.7 doesn't have this method but we use it in tests
   def combination(num)
@@ -103,6 +126,25 @@ class Array
 
     slice(n, length - n) or []
   end unless method_defined? :drop
+  
+  # Array does not have a to_hash method and Hash uses this instead of checking with "respond_to?" if an
+  # array can convert itself or not. (This is a bad thing in Hash). When Array is extended with a method_missing,
+  # (like when using the RGen package 0.6.1 where meta methods are available on arrays), this trips up the
+  # Hash implementation.
+  # This patch simply does what the regular to_hash does, and it is accompanied by a respond_to? method that
+  # returns false for :to_hash.
+  # This is really ugly, and should be removed when the implementation in lib/rgen/array_extension.rb is
+  # fixed to handle to_hash correctly.
+  def to_hash
+    raise NoMethodError.new
+  end
+  
+  # @see #to_hash   
+  def respond_to? m
+    return false if m == :to_hash
+    super
+  end
+
 end
 
 
@@ -301,4 +343,102 @@ if RUBY_VERSION == '1.8.5'
     alias move mv
     module_function :move
   end
+end
+
+# Ruby 1.8.6 doesn't have it either
+# From https://github.com/puppetlabs/hiera/pull/47/files:
+# In ruby 1.8.5 Dir does not have mktmpdir defined, so this monkey patches
+# Dir to include the 1.8.7 definition of that method if it isn't already defined.
+# Method definition borrowed from ruby-1.8.7-p357/lib/ruby/1.8/tmpdir.rb
+unless Dir.respond_to?(:mktmpdir)
+  def Dir.mktmpdir(prefix_suffix=nil, tmpdir=nil)
+    case prefix_suffix
+    when nil
+      prefix = "d"
+      suffix = ""
+    when String
+      prefix = prefix_suffix
+      suffix = ""
+    when Array
+      prefix = prefix_suffix[0]
+      suffix = prefix_suffix[1]
+    else
+      raise ArgumentError, "unexpected prefix_suffix: #{prefix_suffix.inspect}"
+    end
+    tmpdir ||= Dir.tmpdir
+    t = Time.now.strftime("%Y%m%d")
+    n = nil
+    begin
+      path = "#{tmpdir}/#{prefix}#{t}-#{$$}-#{rand(0x100000000).to_s(36)}"
+      path << "-#{n}" if n
+      path << suffix
+      Dir.mkdir(path, 0700)
+    rescue Errno::EEXIST
+      n ||= 0
+      n += 1
+      retry
+    end
+
+    if block_given?
+      begin
+        yield path
+      ensure
+        FileUtils.remove_entry_secure path
+      end
+    else
+      path
+    end
+  end
+end
+
+# (#19151) Reject all SSLv2 ciphers and handshakes
+require 'openssl'
+class OpenSSL::SSL::SSLContext
+  if DEFAULT_PARAMS[:options]
+    DEFAULT_PARAMS[:options] |= OpenSSL::SSL::OP_NO_SSLv2
+  else
+    DEFAULT_PARAMS[:options] = OpenSSL::SSL::OP_NO_SSLv2
+  end
+  DEFAULT_PARAMS[:ciphers] << ':!SSLv2'
+
+  alias __original_initialize initialize
+  private :__original_initialize
+
+  def initialize(*args)
+    __original_initialize(*args)
+    params = {
+      :options => DEFAULT_PARAMS[:options],
+      :ciphers => DEFAULT_PARAMS[:ciphers],
+    }
+    set_params(params)
+  end
+end
+
+require 'puppet/util/platform'
+if Puppet::Util::Platform.windows?
+  require 'puppet/util/windows'
+  require 'openssl'
+
+  class OpenSSL::X509::Store
+    alias __original_set_default_paths set_default_paths
+    def set_default_paths
+      # This can be removed once openssl integrates with windows
+      # cert store, see http://rt.openssl.org/Ticket/Display.html?id=2158
+      Puppet::Util::Windows::RootCerts.instance.each do |x509|
+        add_cert(x509)
+      end
+
+      __original_set_default_paths
+    end
+  end
+end
+
+# Old puppet clients may make large GET requests, lets be reasonably tolerant
+# in our default WEBrick server.
+require 'webrick'
+if defined?(WEBrick::HTTPRequest::MAX_URI_LENGTH) and WEBrick::HTTPRequest::MAX_URI_LENGTH < 8192
+  # Silence ruby warning: already initialized constant MAX_URI_LENGTH
+  v, $VERBOSE = $VERBOSE, nil
+  WEBrick::HTTPRequest.const_set("MAX_URI_LENGTH", 8192)
+  $VERBOSE = v
 end

@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 #
 # Unit testing for the Windows service Provider
 #
@@ -111,6 +111,25 @@ describe Puppet::Type.type(:service).provider(:windows), :if => Puppet.features.
 
         provider.status.should == :running
       end
+    end
+  end
+
+  describe "#restart" do
+    it "should use the supplied restart command if specified" do
+      resource[:restart] = 'c:/bin/foo'
+
+      provider.expects(:execute).never
+      provider.expects(:execute).with(['c:/bin/foo'], :failonfail => true, :override_locale => false, :squelch => true)
+
+      provider.restart
+    end
+
+    it "should restart the service" do
+      seq = sequence("restarting")
+      provider.expects(:stop).in_sequence(seq)
+      provider.expects(:start).in_sequence(seq)
+
+      provider.restart
     end
   end
 

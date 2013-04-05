@@ -27,6 +27,13 @@ module Puppet::Test
   #  other features such as "around_test", but we didn't see a compelling
   #  reason to deal with that right now.
   class TestHelper
+    # Call this method once, as early as possible, such as before loading tests
+    # that call Puppet.
+    # @return nil
+    def self.initialize()
+      initialize_settings_before_each
+    end
+
     # Call this method once, when beginning a test run--prior to running
     #  any individual tests.
     # @return nil
@@ -74,6 +81,9 @@ module Puppet::Test
 
       initialize_settings_before_each()
 
+      Puppet::Node::Environment.clear
+      Puppet::Parser::Functions.reset
+
       Puppet.clear_deprecation_warnings
     end
 
@@ -82,7 +92,6 @@ module Puppet::Test
     def self.after_each_test()
       Puppet.settings.send(:clear_everything_for_tests)
 
-      Puppet::Node::Environment.clear
       Puppet::Util::Storage.clear
       Puppet::Util::ExecutionStub.reset
 
@@ -132,7 +141,6 @@ module Puppet::Test
 
     def self.app_defaults_for_tests()
       {
-          :run_mode   => :user,
           :logdir     => "/dev/null",
           :confdir    => "/dev/null",
           :vardir     => "/dev/null",
@@ -143,10 +151,9 @@ module Puppet::Test
     private_class_method :app_defaults_for_tests
 
     def self.initialize_settings_before_each()
+      Puppet.settings.preferred_run_mode = "user"
       # Initialize "app defaults" settings to a good set of test values
-      app_defaults_for_tests.each do |key, value|
-        Puppet.settings.set_value(key, value, :application_defaults)
-      end
+      Puppet.settings.initialize_app_defaults(app_defaults_for_tests)
 
       # Avoid opening ports to the outside world
       Puppet.settings[:bindaddress] = "127.0.0.1"

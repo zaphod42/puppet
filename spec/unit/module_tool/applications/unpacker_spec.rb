@@ -2,14 +2,16 @@ require 'spec_helper'
 require 'puppet/module_tool/applications'
 require 'puppet_spec/modules'
 
-describe Puppet::ModuleTool::Applications::Unpacker, :fails_on_windows => true do
+describe Puppet::ModuleTool::Applications::Unpacker do
   include PuppetSpec::Files
 
   let(:target) { tmpdir("unpacker") }
 
   context "initialization" do
     it "should support filename and basic options" do
-      Puppet::ModuleTool::Applications::Unpacker.new("myusername-mytarball-1.0.0.tar.gz", :target_dir => target)
+      pending("porting to Windows", :if => Puppet.features.microsoft_windows?) do
+        Puppet::ModuleTool::Applications::Unpacker.new("myusername-mytarball-1.0.0.tar.gz", :target_dir => target)
+      end
     end
 
     it "should raise ArgumentError when filename is invalid" do
@@ -22,12 +24,14 @@ describe Puppet::ModuleTool::Applications::Unpacker, :fails_on_windows => true d
     let(:filename) { tmpdir("module") + "/myusername-mytarball-1.0.0.tar.gz" }
     let(:build_dir) { Pathname.new(tmpdir("build_dir")) }
     let(:unpacker) do
-      Puppet::ModuleTool::Applications::Unpacker.new(filename, :target_dir => target)
+      pending("porting to Windows", :if => Puppet.features.microsoft_windows?) do
+        Puppet::ModuleTool::Applications::Unpacker.new(filename, :target_dir => target)
+      end
     end
 
     before :each do
       # Mock redhat for most test cases
-      Facter.stubs(:value).with("operatingsystem").returns("Redhat")
+      Facter.stubs(:value).with("osfamily").returns("Redhat")
       build_dir.stubs(:mkpath => nil, :rmtree => nil, :children => [])
       unpacker.stubs(:build_dir).at_least_once.returns(build_dir)
       FileUtils.stubs(:mv)
@@ -35,14 +39,16 @@ describe Puppet::ModuleTool::Applications::Unpacker, :fails_on_windows => true d
 
     context "on linux" do
       it "should attempt to untar file to temporary location using system tar" do
-        Puppet::Util::Execution.expects(:execute).with("tar xzf #{filename} -C #{build_dir}").returns(true)
-        unpacker.run
+        pending("porting to Windows", :if => Puppet.features.microsoft_windows?) do
+          Puppet::Util::Execution.expects(:execute).with("tar xzf #{filename} -C #{build_dir}").returns(true)
+          unpacker.run
+        end
       end
     end
 
     context "on solaris" do
       before :each do
-        Facter.expects(:value).with("operatingsystem").returns("Solaris")
+        Facter.expects(:value).with("osfamily").returns("Solaris")
       end
 
       it "should attempt to untar file to temporary location using gnu tar" do

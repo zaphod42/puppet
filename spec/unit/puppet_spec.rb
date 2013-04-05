@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet'
 require 'puppet_spec/files'
@@ -8,10 +8,6 @@ describe Puppet do
   include PuppetSpec::Files
 
   context "#version" do
-    it "should be a valid version number" do
-      Puppet.version.should =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
-    end
-
     it "should be valid semver" do
       SemVer.should be_valid Puppet.version
     end

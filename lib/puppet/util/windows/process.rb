@@ -1,9 +1,12 @@
 require 'puppet/util/windows'
+require 'windows/process'
+require 'windows/handle'
+require 'windows/synchronize'
 
 module Puppet::Util::Windows::Process
-  extend Windows::Process
-  extend Windows::Handle
-  extend Windows::Synchronize
+  extend ::Windows::Process
+  extend ::Windows::Handle
+  extend ::Windows::Synchronize
 
   def execute(command, arguments, stdin, stdout, stderr)
     Process.create( :command_line => command, :startup_info => {:stdin => stdin, :stdout => stdout, :stderr => stderr}, :close_handles => false )

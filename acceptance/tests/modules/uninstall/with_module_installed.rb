@@ -1,4 +1,4 @@
-begin test_name "puppet module uninstall (with module installed)"
+test_name "puppet module uninstall (with module installed)"
 
 step "Setup"
 apply_manifest_on master, <<-PP
@@ -18,17 +18,16 @@ file {
     }';
 }
 PP
+teardown do
+  on master, "rm -rf /etc/puppet/modules"
+end
 on master, '[ -d /etc/puppet/modules/crakorn ]'
 
 step "Uninstall the module jimmy-crakorn"
 on master, puppet('module uninstall jimmy-crakorn') do
   assert_output <<-OUTPUT
-    Preparing to uninstall 'jimmy-crakorn' ...
+    \e[mNotice: Preparing to uninstall 'jimmy-crakorn' ...\e[0m
     Removed 'jimmy-crakorn' (\e[0;36mv0.4.0\e[0m) from /etc/puppet/modules
   OUTPUT
 end
 on master, '[ ! -d /etc/puppet/modules/crakorn ]'
-
-ensure step "Teardown"
-apply_manifest_on master, "file { ['/etc/puppet/modules', '/usr/share/puppet/modules']: ensure => directory, recurse => true, purge => true, force => true }"
-end

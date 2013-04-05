@@ -137,6 +137,10 @@ module Puppet
         normal log level (usually `notice`), but if the command fails
         (meaning its return code does not match the specified code) then
         any output is logged at the `err` log level."
+
+      validate do |command|
+        raise ArgumentError, "Command must be a String, got value of class #{command.class}" unless command.is_a? String
+      end
     end
 
     newparam(:path) do
@@ -180,10 +184,11 @@ module Puppet
     end
 
     newparam(:logoutput) do
-      desc "Whether to log output.  Defaults to logging output at the
-        loglevel for the `exec` resource. Use *on_failure* to only
-        log the output when the command reports an error.  Values are
-        **true**, *false*, *on_failure*, and any legal log level."
+      desc "Whether to log command output in addition to logging the
+        exit code.  Defaults to `on_failure`, which only logs the output
+        when the command has an exit code that does not match any value
+        specified by the `returns` attribute.  In addition to the values
+        below, you may set this attribute to any legal log level."
 
       defaultto :on_failure
 
@@ -220,8 +225,8 @@ module Puppet
     newparam(:timeout) do
       desc "The maximum time the command should take.  If the command takes
         longer than the timeout, the command is considered to have failed
-        and will be stopped.  Use 0 to disable the timeout.
-        The time is specified in seconds."
+        and will be stopped. The timeout is specified in seconds. The default
+        timeout is 300 seconds and you can set it to 0 to disable the timeout."
 
       munge do |value|
         value = value.shift if value.is_a?(Array)
@@ -276,7 +281,7 @@ module Puppet
 
 
     newcheck(:refreshonly) do
-      desc <<-EOT
+      desc <<-'EOT'
         The command should only be run as a
         refresh mechanism for when a dependent object is changed.  It only
         makes sense to use this option when this command depends on some
@@ -313,10 +318,12 @@ module Puppet
     end
 
     newcheck(:creates, :parent => Puppet::Parameter::Path) do
-      desc <<-EOT
-        A file that this command creates.  If this
-        parameter is provided, then the command will only be run
-        if the specified file does not exist.
+      desc <<-'EOT'
+        A file to look for before running the command. The command will
+        only run if the file **doesn't exist.**
+
+        This parameter doesn't cause Puppet to create a file; it is only
+        useful if **the command itself** creates a file.
 
             exec { "tar -xf /Volumes/nfs02/important.tar":
               cwd     => "/var/tmp",
@@ -324,8 +331,11 @@ module Puppet
               path    => ["/usr/bin", "/usr/sbin"]
             }
 
-        In this example, if `/var/tmp/myfile` is ever deleted, the exec
-        will bring it back by re-extracting the tarball.
+        In this example, `myfile` is assumed to be a file inside
+        `important.tar`. If it is ever deleted, the exec will bring it
+        back by re-extracting the tarball. If `important.tar` does **not**
+        actually contain `myfile`, the exec will keep running every time
+        Puppet runs.
       EOT
 
       accept_arrays
@@ -338,7 +348,7 @@ module Puppet
     end
 
     newcheck(:unless) do
-      desc <<-EOT
+      desc <<-'EOT'
         If this parameter is set, then this `exec` will run unless
         the command returns 0.  For example:
 
@@ -380,7 +390,7 @@ module Puppet
     end
 
     newcheck(:onlyif) do
-      desc <<-EOT
+      desc <<-'EOT'
         If this parameter is set, then this `exec` will only run if
         the command returns 0.  For example:
 

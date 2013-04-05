@@ -185,6 +185,13 @@ module Util
     end
   end
 
+  # Resolve a path for an executable to the absolute path. This tries to behave
+  # in the same manner as the unix `which` command and uses the `PATH`
+  # environment variable.
+  #
+  # @api public
+  # @param bin [String] the name of the executable to find.
+  # @return [String] the absolute path to the found executable.
   def which(bin)
     if absolute_path?(bin)
       return bin if FileTest.file? bin and FileTest.executable? bin
@@ -232,10 +239,6 @@ module Util
   AbsolutePathWindows = %r!^(?:(?:[A-Z]:#{slash})|(?:#{slash}#{slash}#{label}#{slash}#{label})|(?:#{slash}#{slash}\?#{slash}#{label}))!io
   AbsolutePathPosix   = %r!^/!
   def absolute_path?(path, platform=nil)
-    # Due to weird load order issues, I was unable to remove this require.
-    # This is fixed in Telly so it can be removed there.
-    require 'puppet' unless defined?(Puppet)
-
     # Ruby only sets File::ALT_SEPARATOR on Windows and the Ruby standard
     # library uses that to test what platform it's on.  Normally in Puppet we
     # would use Puppet.features.microsoft_windows?, but this method needs to
@@ -363,30 +366,17 @@ module Util
   # will recognize as links to the line numbers in the trace)
   def self.pretty_backtrace(backtrace = caller(1))
     backtrace.collect do |line|
-      file_path, line_num = line.split(":")
-      file_path = expand_symlinks(File.expand_path(file_path))
-
-      file_path + ":" + line_num
-    end .join("\n")
-
-  end
-
-  # utility method that takes a path as input, checks each component of the path to see if it is a symlink, and expands
-  # it if it is.  returns the expanded path.
-  def self.expand_symlinks(file_path)
-    file_path.split("/").inject do |full_path, next_dir|
-      next_path = full_path + "/" + next_dir
-      if File.symlink?(next_path) then
-        link = File.readlink(next_path)
-        next_path =
-            case link
-              when /^\// then link
-              else
-                File.expand_path(full_path + "/" + link)
-            end
+      _, path, rest = /^(.*):(\d+.*)$/.match(line).to_a
+      # If the path doesn't exist - like in one test, and like could happen in
+      # the world - we should just tolerate it and carry on. --daniel 2012-09-05
+      # Also, if we don't match, just include the whole line.
+      if path
+        path = Pathname(path).realpath rescue path
+        "#{path}:#{rest}"
+      else
+        line
       end
-      next_path
-    end
+    end.join("\n")
   end
 
   # Replace a file, securely.  This takes a block, and passes it the file
@@ -491,7 +481,7 @@ module Util
         retry
       end
     else
-      File.rename(tempfile.path, file)
+      File.rename(tempfile.path, file.to_s)
     end
 
     # Ideally, we would now fsync the directory as well, but Ruby doesn't
@@ -506,6 +496,7 @@ module Util
   # Executes a block of code, wrapped with some special exception handling.  Causes the ruby interpreter to
   #  exit if the block throws an exception.
   #
+  # @api public
   # @param [String] message a message to log if the block fails
   # @param [Integer] code the exit code that the ruby interpreter should return if the block fails
   # @yield
@@ -547,9 +538,10 @@ module Util
   end
   module_function :execfail
 
-  def execute(command, arguments = {})
+  def execute(*args)
     Puppet.deprecation_warning("Puppet::Util.execute is deprecated; please use Puppet::Util::Execution.execute")
-    Puppet::Util::Execution.execute(command, arguments)
+
+    Puppet::Util::Execution.execute(*args)
   end
   module_function :execute
 

@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/resource'
 
@@ -302,21 +302,21 @@ describe Puppet::Resource do
         Puppet::Resource::Type.new(:definition, "default_param", :arguments => {"a" => Puppet::Parser::AST::String.new(:value => "a_default_value")})
       )
       resource = Puppet::Parser::Resource.new("default_param", "name", :scope => Puppet::Parser::Scope.new(Puppet::Parser::Compiler.new(Puppet::Node.new("foo"))))
-      resource.set_default_parameters(@scope).should == [:a]
+      resource.set_default_parameters(@scope).should == ["a"]
     end
 
     describe "when the resource type is :hostclass" do
-      let(:environmnet_name) { "testing env" }
+      let(:environment_name) { "testing env" }
       let(:fact_values) { { :a => 1 } }
       let(:port) { Puppet::Parser::AST::String.new(:value => '80') }
       let(:apache) { Puppet::Resource::Type.new(:hostclass, 'apache', :arguments => { 'port' => port }) }
 
       before do
-        environment = Puppet::Node::Environment.new(environmnet_name)
+        environment = Puppet::Node::Environment.new(environment_name)
         environment.known_resource_types.add(apache)
 
         @scope.stubs(:host).returns('host')
-        @scope.stubs(:environment).returns(Puppet::Node::Environment.new(environmnet_name))
+        @scope.stubs(:environment).returns(Puppet::Node::Environment.new(environment_name))
         @scope.stubs(:facts).returns(Puppet::Node::Facts.new("facts", fact_values))
       end
 
@@ -327,19 +327,23 @@ describe Puppet::Resource do
 
         it "should query the data_binding terminus using a namespaced key" do
           Puppet::DataBinding.indirection.expects(:find).with(
-            'apache::port', :host => 'host', :environment => environmnet_name, :facts => fact_values)
+            'apache::port', all_of(has_key(:environment), has_key(:variables)))
           resource.set_default_parameters(@scope)
         end
 
         it "should use the value from the data_binding terminus" do
           Puppet::DataBinding.indirection.expects(:find).returns('443')
-          resource.set_default_parameters(@scope).should == [:port]
+
+          resource.set_default_parameters(@scope)
+
           resource[:port].should == '443'
         end
 
         it "should use the default value if the data_binding terminus returns nil" do
           Puppet::DataBinding.indirection.expects(:find).returns(nil)
-          resource.set_default_parameters(@scope).should == [:port]
+
+          resource.set_default_parameters(@scope)
+
           resource[:port].should == '80'
         end
       end
@@ -643,7 +647,7 @@ type: File
     end
   end
 
-  describe "when converting to pson", :if => Puppet.features.pson? do
+  describe "when converting to pson" do
     def pson_output_should
       @resource.class.expects(:pson_create).with { |hash| yield hash }
     end
@@ -722,7 +726,7 @@ type: File
     end
   end
 
-  describe "when converting from pson", :if => Puppet.features.pson? do
+  describe "when converting from pson" do
     def pson_result_should
       Puppet::Resource.expects(:new).with { |hash| yield hash }
     end
@@ -831,6 +835,79 @@ type: File
       )
       res = Puppet::Resource.new("file", "/my/file", :parameters => {:owner => 'root', :content => 'hello'})
       res.uniqueness_key.should == [ nil, 'root', '/my/file']
+    end
+  end
+
+  describe '#parse_title' do
+    describe 'with a composite namevar' do
+      before do
+        Puppet::Type.newtype(:composite) do
+
+          newparam(:name)
+          newparam(:value)
+
+          # Configure two title patterns to match a title that is either
+          # separated with a colon or exclamation point. The first capture
+          # will be used for the :name param, and the second capture will be
+          # used for the :value param.
+          def self.title_patterns
+            identity = lambda {|x| x }
+            reverse  = lambda {|x| x.reverse }
+            [
+              [
+                /^(.*?):(.*?)$/,
+                [
+                  [:name, identity],
+                  [:value, identity],
+                ]
+              ],
+              [
+                /^(.*?)!(.*?)$/,
+                [
+                  [:name, reverse],
+                  [:value, reverse],
+                ]
+              ],
+            ]
+          end
+        end
+      end
+
+      describe "with no matching title patterns" do
+        subject { Puppet::Resource.new(:composite, 'unmatching title')}
+
+        it "should raise an exception if no title patterns match" do
+          expect do
+            subject.to_hash
+          end.to raise_error(Puppet::Error, /No set of title patterns matched/)
+        end
+      end
+
+      describe "with a matching title pattern" do
+        subject { Puppet::Resource.new(:composite, 'matching:title') }
+
+        it "should not raise an exception if there was a match" do
+          expect do
+            subject.to_hash
+          end.to_not raise_error
+        end
+
+        it "should set the resource parameters from the parsed title values" do
+          h = subject.to_hash
+          h[:name].should == 'matching'
+          h[:value].should == 'title'
+        end
+      end
+
+      describe "and multiple title patterns" do
+        subject { Puppet::Resource.new(:composite, 'matching!title') }
+
+        it "should use the first title pattern that matches" do
+          h = subject.to_hash
+          h[:name].should == 'gnihctam'
+          h[:value].should == 'eltit'
+        end
+      end
     end
   end
 

@@ -12,7 +12,7 @@ module Puppet
     include Puppet::Util::Diff
 
     attr_accessor :source, :local
-    desc <<-EOT
+    desc <<-'EOT'
       A source file, which will be copied into place on the local system.
       Values can be URIs pointing to remote files, or fully qualified paths to
       files available on the local system (including files on NFS shares or
@@ -101,7 +101,7 @@ module Puppet
       return @content if @content
       raise Puppet::DevError, "No source for content was stored with the metadata" unless metadata.source
 
-      unless tmp = Puppet::FileServing::Content.indirection.find(metadata.source, :environment => resource.catalog.environment)
+      unless tmp = Puppet::FileServing::Content.indirection.find(metadata.source, :environment => resource.catalog.environment, :links => resource[:links])
         fail "Could not find any content at %s" % metadata.source
       end
       @content = tmp.content
@@ -154,7 +154,7 @@ module Puppet
       return nil unless value
       value.each do |source|
         begin
-          if data = Puppet::FileServing::Metadata.indirection.find(source, :environment => resource.catalog.environment)
+          if data = Puppet::FileServing::Metadata.indirection.find(source, :environment => resource.catalog.environment, :links => resource[:links])
             @metadata = data
             @metadata.source = source
             break

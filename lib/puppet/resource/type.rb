@@ -1,8 +1,9 @@
-require 'puppet/parser/parser'
+require 'puppet/parser'
 require 'puppet/util/warnings'
 require 'puppet/util/errors'
 require 'puppet/util/inline_docs'
 require 'puppet/parser/ast/leaf'
+require 'puppet/parser/ast/block_expression'
 require 'puppet/dsl'
 
 class Puppet::Resource::Type
@@ -190,14 +191,15 @@ class Puppet::Resource::Type
       return
     end
 
-    array_class = Puppet::Parser::AST::ASTArray
-    self.code = array_class.new(:children => [self.code]) unless self.code.is_a?(array_class)
-
-    if other.code.is_a?(array_class)
-      code.children += other.code.children
-    else
-      code.children << other.code
-    end
+    self.code = Puppet::Parser::AST::BlockExpression.new(:children => [self.code, other.code])
+#    array_class = Puppet::Parser::AST::ASTArray
+#    self.code = array_class.new(:children => [self.code]) unless self.code.is_a?(array_class)
+#
+#    if other.code.is_a?(array_class)
+#      code.children += other.code.children
+#    else
+#      code.children << other.code
+#    end
   end
 
   # Make an instance of the resource type, and place it in the catalog
@@ -316,7 +318,7 @@ class Puppet::Resource::Type
 
     # Evaluate the default parameters, now that all other variables are set
     default_params = resource.set_default_parameters(scope)
-    default_params.each { |param| scope[param.to_s] = resource[param] }
+    default_params.each { |param| scope[param] = resource[param] }
 
     # This has to come after the above parameters so that default values
     # can use their values

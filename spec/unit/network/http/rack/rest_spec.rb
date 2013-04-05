@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 require 'puppet/network/http/rack' if Puppet.features.rack?
 require 'puppet/network/http/rack/rest'
@@ -57,6 +57,26 @@ describe "Puppet::Network::HTTP::RackREST", :if => Puppet.features.rack? do
         @handler.body(req).should == "mybody"
       end
 
+      it "should return the an OpenSSL::X509::Certificate instance as the client_cert" do
+        cert = stub 'cert'
+        req = mk_req('/foo/bar', 'SSL_CLIENT_CERT' => 'certificate in pem format')
+        OpenSSL::X509::Certificate.expects(:new).with('certificate in pem format').returns(cert)
+        @handler.client_cert(req).should == cert
+      end
+
+      it "returns nil when SSL_CLIENT_CERT is empty" do
+        cert = stub 'cert'
+        req = mk_req('/foo/bar', 'SSL_CLIENT_CERT' => '')
+        OpenSSL::X509::Certificate.expects(:new).never
+        @handler.client_cert(req).should be_nil
+      end
+
+      it "(#16769) does not raise error 'header too long'" do
+        cert = stub 'cert'
+        req = mk_req('/foo/bar', 'SSL_CLIENT_CERT' => '')
+        lambda { @handler.client_cert(req) }.should_not raise_error
+      end
+
       it "should set the response's content-type header when setting the content type" do
         @header = mock 'header'
         @response.expects(:header).returns @header
@@ -90,6 +110,23 @@ describe "Puppet::Network::HTTP::RackREST", :if => Puppet.features.rack? do
 
           @handler.set_response(@response, @file, 200)
         end
+      end
+
+      it "should ensure the body has been read on success" do
+        req = mk_req('/production/report/foo', :method => 'PUT')
+        req.body.expects(:read).at_least_once
+
+        Puppet::Transaction::Report.stubs(:save)
+
+        @handler.process(req, @response)
+      end
+
+      it "should ensure the body has been partially read on failure" do
+        req = mk_req('/production/report/foo')
+        req.body.expects(:read).with(1)
+        req.stubs(:check_authorization).raises(Exception)
+
+        @handler.process(req, @response)
       end
     end
 

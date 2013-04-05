@@ -1,12 +1,14 @@
 # Manage file modes.  This state should support different formats
 # for specification (e.g., u+rwx, or -0011), but for now only supports
 # specifying the full mode.
+
+
 module Puppet
   Puppet::Type.type(:file).newproperty(:mode) do
     require 'puppet/util/symbolic_file_mode'
     include Puppet::Util::SymbolicFileMode
 
-    desc <<-EOT
+    desc <<-'EOT'
       The desired permissions mode for the file, in symbolic or numeric
       notation. Puppet uses traditional Unix permission schemes and translates
       them to equivalent permissions for systems which represent permissions
@@ -142,7 +144,13 @@ module Puppet
     end
 
     def is_to_s(currentvalue)
-      currentvalue.rjust(4, "0")
+      if currentvalue == :absent
+        # This can occur during audits---if a file is transitioning from
+        # present to absent the mode will have a value of `:absent`.
+        super
+      else
+        currentvalue.rjust(4, "0")
+      end
     end
   end
 end

@@ -20,7 +20,7 @@ Puppet::Type.newtype(:augeas) do
   feature :need_to_run?, "If the command should run"
   feature :execute_changes, "Actually make the changes"
 
-  @doc = <<-EOT
+  @doc = <<-'EOT'
     Apply a change or an array of changes to the filesystem
     using the augeas tool.
 
@@ -114,6 +114,10 @@ Puppet::Type.newtype(:augeas) do
 
     `clear <PATH>`
     : Sets the node at `PATH` to `NULL`, creating it if needed
+
+
+    `clearm <PATH> <SUB>`
+    : Sets multiple nodes (matching `SUB` relative to `PATH`) to `NULL`
 
 
     `ins <LABEL> (before|after) <PATH>`

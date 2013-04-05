@@ -1,15 +1,14 @@
-begin test_name 'puppet module search should do substring matches on description'
+test_name 'puppet module search should do substring matches on description'
 
-step 'Stub forge.puppetlabs.com'
-require 'resolv'; ip = Resolv.getaddress('forge-dev.puppetlabs.lan')
-apply_manifest_on master, "host { 'forge.puppetlabs.com': ip => '#{ip}' }"
+step 'Setup'
+stub_forge_on(master)
 
 step 'Search for a module by description'
 on master, puppet("module search dummy") do
   assert_equal '', stderr
   # FIXME: The Forge does not presently match against description.
 #   assert_equal <<-STDOUT, stdout
-# Searching https://forge.puppetlabs.com ...
+# \e[mNotice: Searching https://forge.puppetlabs.com ...\e[0m
 # NAME                  DESCRIPTION                  AUTHOR          KEYWORDS
 # pmtacceptance-nginx   This is a dummy nginx mo...  @pmtacceptance  nginx
 # pmtacceptance-thin    This is a dummy thin mod...  @pmtacceptance  ruby thin
@@ -21,8 +20,4 @@ on master, puppet("module search dummy") do
 # pmtacceptance-php     This is a dummy php modu...  @pmtacceptance  apache php
 # pmtacceptance-geordi  This is a module that do...  @pmtacceptance  star trek
 # STDOUT
-end
-
-ensure step 'Unstub forge.puppetlabs.com'
-apply_manifest_on master, "host { 'forge.puppetlabs.com': ensure => absent }"
 end

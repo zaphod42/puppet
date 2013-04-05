@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 
 require 'puppet/application/queue'
@@ -8,7 +8,7 @@ describe Puppet::Application::Queue, :unless => Puppet.features.microsoft_window
   before :each do
     @queue = Puppet::Application[:queue]
     @queue.stubs(:puts)
-    @daemon = stub_everything 'daemon', :daemonize => nil
+    @daemon = stub_everything 'daemon'
     Puppet::Util::Log.stubs(:newdestination)
 
     Puppet::Resource::Catalog.indirection.stubs(:terminus_class=)
@@ -66,6 +66,7 @@ describe Puppet::Application::Queue, :unless => Puppet.features.microsoft_window
 
   describe "during setup" do
     before :each do
+      @queue.preinit
       @queue.options.stubs(:[])
       @queue.daemon.stubs(:daemonize)
       Puppet.stubs(:info)
@@ -79,6 +80,11 @@ describe Puppet::Application::Queue, :unless => Puppet.features.microsoft_window
     it "should fail if the stomp feature is missing" do
       Puppet.features.expects(:stomp?).returns false
       lambda { @queue.setup }.should raise_error(ArgumentError)
+    end
+
+    it "should issue a warning that queue is deprecated" do
+      Puppet.expects(:warning).with() { |msg| msg =~ /queue is deprecated/ }
+      @queue.setup
     end
 
     it "should print puppet config if asked to in Puppet config" do

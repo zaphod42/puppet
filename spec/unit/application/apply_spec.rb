@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 
 require 'puppet/application/apply'
@@ -20,7 +20,7 @@ describe Puppet::Application::Apply do
     Puppet::Node.indirection.cache_class = nil
   end
 
-  [:debug,:loadclasses,:verbose,:use_nodes,:detailed_exitcodes,:catalog].each do |option|
+  [:debug,:loadclasses,:verbose,:use_nodes,:detailed_exitcodes,:catalog, :write_catalog_summary].each do |option|
     it "should declare handle_#{option} method" do
       @apply.should respond_to("handle_#{option}".to_sym)
     end
@@ -48,17 +48,6 @@ describe Puppet::Application::Apply do
       @apply.options.expects(:[]=).with(:logset,true)
 
       @apply.handle_logdest("console")
-    end
-
-    it "should deprecate --apply" do
-      Puppet.expects(:deprecation_warning).with do |arg|
-        arg.match(/--apply is deprecated/)
-      end
-
-      command_line = Puppet::Util::CommandLine.new('puppet', ['apply', '--apply', 'catalog.json'])
-      apply = Puppet::Application::Apply.new(command_line)
-      apply.stubs(:run_command)
-      apply.run
     end
   end
 
@@ -113,12 +102,8 @@ describe Puppet::Application::Apply do
       @apply.setup
     end
 
-    it "should set pluginsource with no hostname" do
-      @apply.app_defaults[:pluginsource].should == 'puppet:///plugins'
-    end
-
     it "should set default_file_terminus to `file_server` to be local" do
-      @apply.app_defaults[:default_file_terminus].should == 'file_server'
+      @apply.app_defaults[:default_file_terminus].should == :file_server
     end
   end
 
@@ -223,7 +208,7 @@ describe Puppet::Application::Apply do
       it "should raise an error if we can't find the node" do
         Puppet::Node.indirection.expects(:find).returns(nil)
 
-        lambda { @apply.main }.should raise_error
+        lambda { @apply.main }.should raise_error(RuntimeError, /Could not find node/)
       end
 
       it "should load custom classes if loadclasses" do
@@ -252,6 +237,21 @@ describe Puppet::Application::Apply do
 
       it "should finalize the catalog" do
         @catalog.expects(:finalize)
+
+        expect { @apply.main }.to exit_with 0
+      end
+
+      it "should not save the classes or resource file by default" do
+        @catalog.expects(:write_class_file).never
+        @catalog.expects(:write_resource_file).never
+        expect { @apply.main }.to exit_with 0
+      end
+
+      it "should save the classes and resources files when requested" do
+        @apply.options[:write_catalog_summary] = true
+
+        @catalog.expects(:write_class_file).once
+        @catalog.expects(:write_resource_file).once
 
         expect { @apply.main }.to exit_with 0
       end
@@ -401,7 +401,7 @@ describe Puppet::Application::Apply do
         configurer = stub 'configurer'
         Puppet::Configurer.expects(:new).returns configurer
         configurer.expects(:run).
-          with(:catalog => "mycatalog", :skip_plugin_download => true)
+          with(:catalog => "mycatalog", :pluginsync => false)
 
         @apply.apply
       end
@@ -412,7 +412,7 @@ describe Puppet::Application::Apply do
     it "should call the configurer with the catalog" do
       catalog = "I am a catalog"
       Puppet::Configurer.any_instance.expects(:run).
-        with(:catalog => catalog, :skip_plugin_download => true)
+        with(:catalog => catalog, :pluginsync => false)
       @apply.send(:apply_catalog, catalog)
     end
   end

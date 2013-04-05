@@ -1,6 +1,7 @@
 require 'puppet/util'
 require 'puppet/util/cacher'
 require 'monitor'
+require 'puppet/parser/parser_factory'
 
 # Just define it, so this class has fewer load dependencies.
 class Puppet::Node
@@ -57,6 +58,7 @@ class Puppet::Node::Environment
 
   def self.clear
     @seen.clear
+    Thread.current[:environment] = nil
   end
 
   attr_reader :name
@@ -85,6 +87,17 @@ class Puppet::Node::Environment
       end
       @known_resource_types
     }
+  end
+
+  # Yields each modules' plugin directory.
+  #
+  # @yield [String] Yields the plugin directory from each module to the block.
+  # @api public
+  def each_plugin_directory(&block)
+    modules.map(&:plugin_directory).each do |lib|
+      lib = Puppet::Util::Autoload.cleanpath(lib)
+      yield lib if File.directory?(lib)
+    end
   end
 
   def module(name)
@@ -205,7 +218,8 @@ class Puppet::Node::Environment
 
   def perform_initial_import
     return empty_parse_result if Puppet.settings[:ignoreimport]
-    parser = Puppet::Parser::Parser.new(self)
+#    parser = Puppet::Parser::Parser.new(self)
+    parser = Puppet::Parser::ParserFactory.parser(self)
     if code = Puppet.settings.uninterpolated_value(:code, name.to_s) and code != ""
       parser.string = code
     else

@@ -1,4 +1,5 @@
 require 'puppet/util/docs'
+require 'puppet/util/profiler'
 require 'puppet/util/methodhelper'
 require 'puppet/indirector/envelope'
 require 'puppet/indirector/request'
@@ -72,7 +73,7 @@ class Puppet::Indirector::Indirection
 
   # Default to the runinterval for the ttl.
   def ttl
-    @ttl ||= Puppet[:runinterval].to_i
+    @ttl ||= Puppet[:runinterval]
   end
 
   # Calculate the expiration date for a returned instance.
@@ -133,7 +134,7 @@ class Puppet::Indirector::Indirection
   def terminus_class
     unless @terminus_class
       if setting = self.terminus_setting
-        self.terminus_class = Puppet.settings[setting].to_sym
+        self.terminus_class = Puppet.settings[setting]
       else
         raise Puppet::DevError, "No terminus class nor terminus setting was provided for indirection #{self.name}"
       end
@@ -183,22 +184,32 @@ class Puppet::Indirector::Indirection
     request = request(:find, key, nil, options)
     terminus = prepare(request)
 
-    if result = find_in_cache(request)
-      return result
-    end
+    result = find_in_cache(request)
+    if not result.nil?
+      result
+    elsif request.ignore_terminus?
+      nil
+    else
+      # Otherwise, return the result from the terminus, caching if
+      # appropriate.
+      result = terminus.find(request)
+      if not result.nil?
+        result.expiration ||= self.expiration if result.respond_to?(:expiration)
+        if cache? and request.use_cache?
+          Puppet.info "Caching #{self.name} for #{request.key}"
+          cache.save request(:save, key, result, options)
+        end
 
-    # Otherwise, return the result from the terminus, caching if appropriate.
-    if ! request.ignore_terminus? and result = terminus.find(request)
-      result.expiration ||= self.expiration if result.respond_to?(:expiration)
-      if cache? and request.use_cache?
-        Puppet.info "Caching #{self.name} for #{request.key}"
-        cache.save request(:save, nil, result, options)
+        filtered = result
+        if terminus.respond_to?(:filter)
+          Puppet::Util::Profiler.profile("Filtered result for #{self.name} #{request.key}") do
+            filtered = terminus.filter(result)
+          end
+        end
+
+        filtered
       end
-
-      return terminus.respond_to?(:filter) ? terminus.filter(result) : result
     end
-
-    nil
   end
 
   # Search for an instance in the appropriate terminus, and return a
@@ -303,6 +314,7 @@ class Puppet::Indirector::Indirection
 
     dest_terminus = terminus(terminus_name)
     check_authorization(request, dest_terminus)
+    dest_terminus.validate(request)
 
     dest_terminus
   end

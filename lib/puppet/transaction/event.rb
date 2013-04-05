@@ -9,7 +9,7 @@ class Puppet::Transaction::Event
   include Puppet::Util::Tagging
   include Puppet::Util::Logging
 
-  ATTRIBUTES = [:name, :resource, :property, :previous_value, :desired_value, :historical_value, :status, :message, :file, :line, :source_description, :audited]
+  ATTRIBUTES = [:name, :resource, :property, :previous_value, :desired_value, :historical_value, :status, :message, :file, :line, :source_description, :audited, :invalidate_refreshes]
   YAML_ATTRIBUTES = %w{@audited @property @previous_value @desired_value @historical_value @message @name @status @time}.map(&:to_sym)
   attr_accessor *ATTRIBUTES
   attr_writer :tags
@@ -29,15 +29,8 @@ class Puppet::Transaction::Event
   end
 
   def resource=(res)
-    begin
-      # In Ruby 1.8 looking up a symbol on a string gives nil; in 1.9 it will
-      # raise a TypeError, which we then catch.  This should work on both
-      # versions, for all that it is a bit naff. --daniel 2012-03-11
-      if res.respond_to?(:[]) and level = res[:loglevel]
-        @default_log_level = level
-      end
-    rescue TypeError => e
-      raise unless e.to_s == "can't convert Symbol into Integer"
+    if res.respond_to?(:[]) and level = res[:loglevel]
+      @default_log_level = level
     end
     @resource = res.to_s
   end

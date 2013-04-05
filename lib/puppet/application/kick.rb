@@ -9,6 +9,7 @@ class Puppet::Application::Kick < Puppet::Application
   option("--debug","-d")
   option("--ping","-P")
   option("--test")
+  option("--ignoreschedules")
 
   option("--host HOST") do |arg|
     @hosts << arg
@@ -36,7 +37,7 @@ class Puppet::Application::Kick < Puppet::Application
   end
 
   def help
-    <<-HELP
+    <<-'HELP'
 
 puppet-kick(8) -- Remotely control puppet agent
 ========
@@ -143,6 +144,9 @@ with '--genconfig'.
   How parallel to make the connections. Parallelization is provided by
   forking for each client to which to connect. The default is 1, meaning
   serial execution.
+
+* --puppetport:
+  Use the specified TCP port to connect to agents. Defaults to 8139.
 
 * --tag:
   Specify a tag for selecting the objects to apply. Does not work with
@@ -298,7 +302,9 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
   end
 
   def setup
+    super()
     raise Puppet::Error.new("Puppet kick is not supported on Microsoft Windows") if Puppet.features.microsoft_windows?
+    Puppet.warning "Puppet kick is deprecated. See http://links.puppetlabs.com/puppet-kick-deprecation"
 
     if options[:debug]
       Puppet::Util::Log.level = :debug
@@ -306,7 +312,7 @@ Copyright (c) 2011 Puppet Labs, LLC Licensed under the Apache 2.0 License
       Puppet::Util::Log.level = :info
     end
 
-    if Puppet[:node_terminus] == "ldap" and (options[:all] or @classes)
+    if Puppet[:node_terminus] == :ldap and (options[:all] or @classes)
       if options[:all]
         @hosts = Puppet::Node.indirection.search("whatever", :fqdn => options[:fqdn]).collect { |node| node.name }
         puts "all: #{@hosts.join(", ")}"

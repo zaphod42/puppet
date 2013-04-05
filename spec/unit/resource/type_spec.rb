@@ -1,4 +1,4 @@
-#! /usr/bin/env ruby -S rspec
+#! /usr/bin/env ruby
 require 'spec_helper'
 
 require 'puppet/resource/type'
@@ -149,24 +149,6 @@ describe Puppet::Resource::Type do
       it "should match names insensitive to case" do
         Puppet::Resource::Type.new(:node, "fOo").match("foO").should be_true
       end
-    end
-
-    it "should return the name converted to a string when the name is not a regex" do
-      pending "Need to define LoadedCode behaviour first"
-      name = Puppet::Parser::AST::HostName.new(:value => "foo")
-      Puppet::Resource::Type.new(:node, name).name.should == "foo"
-    end
-
-    it "should return the name converted to a string when the name is a regex" do
-      pending "Need to define LoadedCode behaviour first"
-      name = Puppet::Parser::AST::HostName.new(:value => /regex/)
-      Puppet::Resource::Type.new(:node, name).name.should == /regex/.to_s
-    end
-
-    it "should mark any created scopes as a node scope" do
-      pending "Need to define LoadedCode behaviour first"
-      name = Puppet::Parser::AST::HostName.new(:value => /regex/)
-      Puppet::Resource::Type.new(:node, name).name.should == /regex/.to_s
     end
   end
 
@@ -733,13 +715,13 @@ describe Puppet::Resource::Type do
       dest.doc.should == "foonessyayness"
     end
 
-    it "should turn its code into an ASTArray if necessary" do
+    it "should turn its code into a BlockExpression if necessary" do
       dest = Puppet::Resource::Type.new(:hostclass, "bar", :code => code("foo"))
       source = Puppet::Resource::Type.new(:hostclass, "foo", :code => code("bar"))
 
       dest.merge(source)
 
-      dest.code.should be_instance_of(Puppet::Parser::AST::ASTArray)
+      dest.code.should be_instance_of(Puppet::Parser::AST::BlockExpression)
     end
 
     it "should set the other class's code as its code if it has none" do
@@ -760,7 +742,7 @@ describe Puppet::Resource::Type do
 
       dest.merge(source)
 
-      dest.code.children.collect { |l| l.value }.should == %w{dest source}
+      dest.code.children.collect { |l| l[0].value }.should == %w{dest source}
     end
   end
 end
