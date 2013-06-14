@@ -6,7 +6,7 @@ with_master_running_on(master, "--certname #{master} --verbose") do
     next if host['roles'].include? 'master'
 
     step "Agents: Run agent --test first time to gen CSR"
-    on host, puppet_agent("--test"), :acceptable_exit_codes => [1]
+    on host, puppet_agent("--test --server #{master}"), :acceptable_exit_codes => [1]
   end
 
   # Sign all waiting certs

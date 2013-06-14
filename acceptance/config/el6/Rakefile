@@ -13,7 +13,7 @@ CLEAN.include('*.repo', '*.tar', '*.rpm')
 
 file "pl-puppet-build.repo" do |task|
   sha = ENV['SHA']
-  fetch("http://builds.puppetlabs.lan/puppet/#{sha}/repo_configs/rpm/pl-puppet-#{sha}-el-6-i386-products.repo",
+  fetch("http://builds.puppetlabs.lan/puppet/#{sha}/repo_configs/rpm/pl-puppet-#{sha}-el-6-x86_64-devel.repo",
         task.name)
 end
 

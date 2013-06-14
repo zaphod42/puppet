@@ -1,9 +1,8 @@
 HOSTS:
-  master:
+  'dhcp70.platform.backline.puppetlabs.net':
     roles:
       - master
       - agent
     platform: el-6-i386
-    ip: 192.168.13.141
 CONFIG:
   filecount: 12
