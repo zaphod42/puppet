@@ -39,6 +39,11 @@ class Puppet::Pops::Types::TypeCalculator
     @t = Puppet::Pops::Types::PObjectType.new()
   end
 
+  # Convenience method to get a data type for comparisons
+  def data
+    @data_t
+  end
+
   # Answers 'can a t2 be assigned to a t'
   # @api public
   #
