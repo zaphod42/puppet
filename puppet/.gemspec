@@ -11,26 +11,33 @@
 # repository](https://github.com/puppetlabs/packaging) for information on how
 # to build the Puppet gem package.
 
+begin
+  require 'puppet/version'
+rescue LoadError
+  $LOAD_PATH.unshift(File.expand_path("../lib", __FILE__))
+  require 'puppet/version'
+end
+
 Gem::Specification.new do |s|
-  s.name = "puppet-test"
-  version = '3.3.0'
+  s.name = "puppet"
+  version = Puppet.version
   mdata = version.match(/(\d+\.\d+\.\d+)/)
   s.version = mdata ? mdata[1] : version
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Puppet Labs"]
   s.date = "2012-08-17"
-  s.description = "Test utilities for puppet components"
+  s.description = "Puppet, an automated configuration management tool"
   s.email = "puppet@puppetlabs.com"
+  s.executables = ["puppet"]
+  s.files = ["bin/puppet"]
   s.homepage = "http://puppetlabs.com"
+  s.rdoc_options = ["--title", "Puppet - Configuration Management", "--main", "README", "--line-numbers"]
   s.require_paths = ["lib"]
   s.rubyforge_project = "puppet"
   s.rubygems_version = "1.8.24"
-  s.summary = "Test utilities for puppet components"
+  s.summary = "Puppet, an automated configuration management tool"
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
-
-    s.add_dependency('puppet')
-  end
+  s.add_dependency(%q<facter>, ["~> 1.5"])
+  s.add_dependency(%q<hiera>, ["~> 1.0"])
 end

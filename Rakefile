@@ -67,6 +67,15 @@ task :spec do
   sh %{rspec -fd spec}
 end
 
+Dir.glob('puppet*') do |component|
+  namespace component do
+    task :spec do
+      ENV["LOG_SPEC_ORDER"] = "true"
+      sh %{cd #{component} && rspec -r yarjuf -f JUnit -o result.xml -fd spec}
+    end
+  end
+end
+
 namespace "ci" do
   task :spec do
     ENV["LOG_SPEC_ORDER"] = "true"
