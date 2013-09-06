@@ -12,7 +12,7 @@
 # to build the Puppet gem package.
 
 Gem::Specification.new do |s|
-  s.name = "puppet-compiler"
+  s.name = "puppet-cli"
   version = '3.3.0'
   mdata = version.match(/(\d+\.\d+\.\d+)/)
   s.version = mdata ? mdata[1] : version
@@ -20,13 +20,13 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Puppet Labs"]
   s.date = "2012-08-17"
-  s.description = "The classical Puppet Manifest Compiler"
+  s.description = "Library for creating puppet command line applications"
   s.email = "puppet@puppetlabs.com"
   s.executables = []
   s.files = []
   s.homepage = "http://puppetlabs.com"
   s.require_paths = ["lib"]
-  s.rubyforge_project = "puppet-compiler"
+  s.rubyforge_project = "puppet-cli"
   s.rubygems_version = "1.8.24"
   s.summary = s.description
 

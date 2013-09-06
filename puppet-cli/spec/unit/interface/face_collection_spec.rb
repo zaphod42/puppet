@@ -183,11 +183,11 @@ describe Puppet::Interface::FaceCollection do
 
   context "faulty faces" do
     before :each do
-      $:.unshift "#{PuppetSpec::FIXTURE_DIR}/faulty_face"
+      $:.unshift "spec/fixtures/faulty_face"
     end
 
     after :each do
-      $:.delete_if {|x| x == "#{PuppetSpec::FIXTURE_DIR}/faulty_face"}
+      $:.delete_if {|x| x == "spec/fixtures/faulty_face"}
     end
 
     it "should not die if a face has a syntax error" do
