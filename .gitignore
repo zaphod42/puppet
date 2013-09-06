@@ -12,6 +12,7 @@ test.pp
 # to work around that.  Which we don't want committed, so we can ignore it here.
 /.rvmrc
 .bundle/
+bundle/
 ext/packaging/
 pkg/
 Gemfile.lock
