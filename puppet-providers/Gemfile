@@ -7,8 +7,8 @@ platforms :ruby do
   gem 'redcarpet', '~> 2.0', :group => :development
 end
 
-gem "puppet", :path => "..", :require => false
-gem "puppet-test", :path => '../puppet-test', :require => false
+gem "puppet", :path => File.expand_path("../puppet"), :require => false
+gem "puppet-test", :path => File.expand_path('../puppet-test'), :require => false
 gem "rake", :require => false
 
 group(:development, :test) do

@@ -18,11 +18,11 @@ platforms :ruby do
   gem "racc", "~> 1.4", :group => :development
 end
 
-gem "puppet", :path => '.', :require => false
-gem "puppet-providers", :path => '../puppet-providers', :require => false
-gem "puppet-compiler", :path => '../puppet-compiler', :require => false
-gem "puppet-cli", :path => '../puppet-cli', :require => false
-gem "puppet-test", :path => '../puppet-test', :require => false
+gem "puppet", :path => File.expand_path('.'), :require => false
+gem "puppet-providers", :path => File.expand_path('../puppet-providers'), :require => false
+gem "puppet-compiler", :path => File.expand_path('../puppet-compiler'), :require => false
+gem "puppet-cli", :path => File.expand_path('../puppet-cli'), :require => false
+gem "puppet-test", :path => File.expand_path('../puppet-test'), :require => false
 gem "facter", *location_for(ENV['FACTER_LOCATION'] || '~> 1.6')
 gem "hiera", *location_for(ENV['HIERA_LOCATION'] || '~> 1.0')
 gem "rake", :require => false

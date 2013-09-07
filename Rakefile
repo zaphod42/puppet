@@ -1,10 +1,6 @@
 # Rakefile for Puppet -*- ruby -*-
 RAKE_ROOT = File.dirname(__FILE__)
 
-# We need access to the Puppet.version method
-$LOAD_PATH.unshift(File.expand_path("lib"))
-require 'puppet/version'
-
 $LOAD_PATH << File.join(RAKE_ROOT, 'tasks')
 
 begin
@@ -71,7 +67,8 @@ Dir.glob('puppet*') do |component|
   namespace component do
     task :spec do
       ENV["LOG_SPEC_ORDER"] = "true"
-      sh %{cd #{component} && rspec -r yarjuf -f JUnit -o result.xml -fd spec}
+      ENV["BUNDLE_GEMFILE"] = nil
+      sh %{cd #{component} && bundle install && bundle exec rspec -r yarjuf -f JUnit -o result.xml -fd spec}
     end
   end
 end
