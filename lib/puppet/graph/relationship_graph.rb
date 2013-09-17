@@ -59,7 +59,7 @@ class Puppet::Graph::RelationshipGraph < Puppet::Graph::SimpleGraph
   def enqueue_roots
     vertices.each do |v|
       @blockers[v] = direct_dependencies_of(v).length
-      enqueue(v) if @blockers[v] == 0
+      enqueue("Root", v) if @blockers[v] == 0
     end
   end
 
@@ -79,15 +79,16 @@ class Puppet::Graph::RelationshipGraph < Puppet::Graph::SimpleGraph
     @blockers.clear
   end
 
-  def enqueue(*resources)
+  def enqueue(unblocker, *resources)
     resources.each do |resource|
       @ready[@prioritizer.priority_of(resource)] = resource
+      Puppet.debug("Added #{resource} to ready queue. Unblocked by #{unblocker}")
     end
   end
 
   def finish(resource)
     direct_dependents_of(resource).each do |v|
-      enqueue(v) if unblock(v)
+      enqueue(resource, v) if unblock(v)
     end
     @done[resource] = true
   end
@@ -122,9 +123,11 @@ class Puppet::Graph::RelationshipGraph < Puppet::Graph::SimpleGraph
         deferred_resources << resource
       end
 
+      Puppet.debug("Processed #{resource}. Ready state: [#{@ready.collect { |key, value| value.to_s }.join(', ')}]")
+
       if @ready.empty? and deferred_resources.any?
         if made_progress
-          enqueue(*deferred_resources)
+          enqueue("Deferal", *deferred_resources)
         else
           deferred_resources.each do |resource|
             overly_deferred_resource_handler.call(resource)
