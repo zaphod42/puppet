@@ -79,10 +79,14 @@ class Puppet::Graph::RelationshipGraph < Puppet::Graph::SimpleGraph
     @blockers.clear
   end
 
+  def simplify(resource)
+    resource.class.name.to_s
+  end
+
   def enqueue(unblocker, *resources)
     resources.each do |resource|
       @ready[@prioritizer.priority_of(resource)] = resource
-      Puppet.debug("Added #{resource} to ready queue. Unblocked by #{unblocker}")
+      Puppet.debug("Added #{simplify(resource)} to ready queue. Unblocked by #{simplify(unblocker)}")
     end
   end
 
@@ -123,7 +127,7 @@ class Puppet::Graph::RelationshipGraph < Puppet::Graph::SimpleGraph
         deferred_resources << resource
       end
 
-      Puppet.debug("Processed #{resource}. Ready state: [#{@ready.collect { |key, value| value.to_s }.join(', ')}]")
+      Puppet.debug("Processed #{simplify(resource)}. Ready state: [#{@ready.collect { |key, value| simplify(value) }.join(', ')}]")
 
       if @ready.empty? and deferred_resources.any?
         if made_progress
