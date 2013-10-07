@@ -28,52 +28,42 @@ class Puppet::Transaction::ResourceHarness
     Puppet::Util::Storage.cache(resource)[name] = value
   end
 
-  def perform_changes(resource)
-    current_values = resource.retrieve_resource.to_hash
+  def perform_changes(batch)
+    batch.each do |resource|
+      current_values = resource.retrieve_resource.to_hash
 
-    cache(resource, :checked, Time.now)
+      cache(resource, :checked, Time.now)
 
-    return [] if ! allow_changes?(resource)
+      return [] if ! allow_changes?(resource)
 
-    historical_values = Puppet::Util::Storage.cache(resource).dup
-    desired_values = {}
-    resource.properties.each do |property|
-      desired_values[property.name] = property.should
-    end
-    audited_params = (resource[:audit] || []).map { |p| p.to_sym }
-    synced_params = []
+      historical_values = Puppet::Util::Storage.cache(resource).dup
+      desired_values = {}
+      resource.properties.each do |property|
+        desired_values[property.name] = property.should
+      end
+      audited_params = (resource[:audit] || []).map { |p| p.to_sym }
+      synced_params = []
 
-    # Record the current state in state.yml.
-    audited_params.each do |param|
-      cache(resource, param, current_values[param])
-    end
-
-    # Update the machine state & create logs/events
-    events = []
-    ensure_param = resource.parameter(:ensure)
-    if desired_values[:ensure] && !ensure_param.safe_insync?(current_values[:ensure])
-      events << apply_parameter(ensure_param, current_values[:ensure], audited_params.include?(:ensure), historical_values[:ensure])
-      synced_params << :ensure
-    elsif current_values[:ensure] != :absent
-      work_order = resource.properties # Note: only the resource knows what order to apply changes in
-      work_order.each do |param|
-        if desired_values[param.name] && !param.safe_insync?(current_values[param.name])
-          events << apply_parameter(param, current_values[param.name], audited_params.include?(param.name), historical_values[param.name])
-          synced_params << param.name
-        end
+      # Record the current state in state.yml.
+      audited_params.each do |param|
+        cache(resource, param, current_values[param])
       end
     end
 
-    # Add more events to capture audit results
-    audited_params.each do |param_name|
-      if historical_values.include?(param_name)
-        if historical_values[param_name] != current_values[param_name] && !synced_params.include?(param_name)
-          event = create_change_event(resource.parameter(param_name), current_values[param_name], true, historical_values[param_name])
-          event.send_log
-          events << event
+    resource.provider.class.execute(batch)
+
+    batch.each do |resource|
+      # Add more events to capture audit results
+      audited_params.each do |param_name|
+        if historical_values.include?(param_name)
+          if historical_values[param_name] != current_values[param_name] && !synced_params.include?(param_name)
+            event = create_change_event(resource.parameter(param_name), current_values[param_name], true, historical_values[param_name])
+            event.send_log
+            events << event
+          end
+        else
+          resource.property(param_name).notice "audit change: newly-recorded value #{current_values[param_name]}"
         end
-      else
-        resource.property(param_name).notice "audit change: newly-recorded value #{current_values[param_name]}"
       end
     end
 
@@ -131,11 +121,11 @@ class Puppet::Transaction::ResourceHarness
     event.send_log
   end
 
-  def evaluate(resource)
-    status = Puppet::Resource::Status.new(resource)
+  def evaluate(batch)
+    status = Puppet::Resource::BatchStatus.new(batch)
 
     begin
-      perform_changes(resource).each do |event|
+      perform_changes(batch).each do |event|
         status << event
       end
 
