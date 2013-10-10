@@ -61,6 +61,8 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
     Puppet::Util::Profiler.profile("Setup server facts for compiling") do
       set_server_facts
     end
+    # TODO: 19514, this is were a call should be made to pick up trusted facts
+    #
   end
 
   # Is our compiler part of a network, or are we just local?
@@ -72,6 +74,8 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
 
   # Add any extra data necessary to the node.
   def add_node_data(node)
+    # TODO: 19514, this is too simplistic - node must know about trusted data
+    #
     # Merge in our server-side facts, so they can be used during compilation.
     node.merge(@server_facts)
   end
