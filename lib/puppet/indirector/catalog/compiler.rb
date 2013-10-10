@@ -12,6 +12,8 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
   attr_accessor :code
 
   def extract_facts_from_request(request)
+    require 'debugger'; debugger
+
     return unless text_facts = request.options[:facts]
     unless format = request.options[:facts_format]
       raise ArgumentError, "Facts but no fact format provided for #{request.key}"
@@ -42,6 +44,12 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
 
     node = node_from_request(request)
 
+    # TODO: 19514, this is were a call should be made to pick up trusted facts
+    # Store trusted certname
+    # request.node is the clientcert
+
+    node.trusted_data = (trusted_hash_from_request(request))
+
     if catalog = compile(node)
       return catalog
     else
@@ -50,6 +58,7 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
       return nil
     end
   end
+
 
   # filter-out a catalog to remove exported resources
   def filter(catalog)
@@ -61,8 +70,6 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
     Puppet::Util::Profiler.profile("Setup server facts for compiling") do
       set_server_facts
     end
-    # TODO: 19514, this is were a call should be made to pick up trusted facts
-    #
   end
 
   # Is our compiler part of a network, or are we just local?
@@ -71,6 +78,36 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
   end
 
   private
+
+  # Produces a deeply frozen hash with trusted information
+  # The key :authenticated is always present in the result with one of the values
+  # :remote, :local, false, where :remote is authenticated via cert, :local is trusted by virtue
+  # of running on the same machine (not a remove request), and false is an unauthenticated remot request.
+  # When the trusted hash value for :authenticated == false, there is no other values set in the hash.
+  #
+  def trusted_hash_from_request(request)
+    if request.remote?
+      if request.authenticated?
+        trust_authenticated = 'remote'.freeze
+        client_cert = request.node
+      else
+        trust_authenticated = false
+        client_cert = nil
+      end
+    else
+      trust_authenticated = 'local'.freeze
+      # TODO: Is this correct, always trust local data by picking up the set parameter?
+      # (i.e. If you can run a puppet apply you can also fake the data - but you also have access to all source,
+      # so not setting it :local and a clientcert may just make it difficult to use)
+      client_cert = request.options[:use_node].parameters['clientcert']
+    end
+
+    trusted_hash = { 'authenticated' => trust_authenticated }
+    if trust_authenticated
+      trusted_hash['clientcert'] = client_cert
+    end
+    trusted_hash.freeze
+  end
 
   # Add any extra data necessary to the node.
   def add_node_data(node)

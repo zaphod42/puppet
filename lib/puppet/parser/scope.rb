@@ -479,7 +479,7 @@ class Puppet::Parser::Scope
 
     # Check for reserved variable names
     unless options[:privileged]
-      if %w{facts trusted}.include(name)
+      if %w{facts trusted}.include?(name)
         # TODO: 19514 Warning or Error?
         raise Puppet::ParseError, "Attempt to assign to a reserved variable name: '#{name}'"
       end
