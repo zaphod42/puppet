@@ -488,8 +488,7 @@ class Puppet::Parser::Compiler
     # These might be nil.
     catalog.client_version = node.parameters["clientversion"]
     catalog.server_version = node.parameters["serverversion"]
-    trusted_data = node.trusted_data || {:authenticated => false }
-    @topscope.setvar('trusted', trusted_data, :privileged => true)
+    @topscope.set_trusted(node.trusted_data)
   end
 
   def create_settings_scope

@@ -477,12 +477,8 @@ class Puppet::Parser::Scope
       raise Puppet::ParseError, "Scope variable name #{name.inspect} is a #{name.class}, not a string"
     end
 
-    # Check for reserved variable names
-    unless options[:privileged]
-      if %w{facts trusted}.include?(name)
-        # TODO: 19514 Warning or Error?
-        raise Puppet::ParseError, "Attempt to assign to a reserved variable name: '#{name}'"
-      end
+    if Puppet[:hashed_node_data] && !options[:privileged] && "trusted" == name
+      raise Puppet::ParseError, "Assignment to a reserved variable name: '#{name}'"
     end
 
     table = effective_symtable options[:ephemeral]
@@ -503,11 +499,6 @@ class Puppet::Parser::Scope
       table[name] = value
     end
     table[name]
-  end
-
-  def set_facts(hash)
-    deep_freeze(hash)
-    set_var('facts', hash, :privileged => true)
   end
 
   def set_trusted(hash)
@@ -533,6 +524,7 @@ class Puppet::Parser::Scope
       raise Puppet::Error, "Unsupported data type: '#{object.class}"
     end
   end
+  private :deep_freeze
 
   # Return the effective "table" for setting variables.
   # This method returns the first ephemeral "table" that acts as a local scope, or this

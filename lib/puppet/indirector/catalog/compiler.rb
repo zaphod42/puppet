@@ -86,27 +86,18 @@ class Puppet::Resource::Catalog::Compiler < Puppet::Indirector::Code
   # When the trusted hash value for :authenticated == false, there is no other values set in the hash.
   #
   def trusted_hash_from_request(request)
-    if request.remote?
-      if request.authenticated?
-        trust_authenticated = 'remote'.freeze
-        client_cert = request.node
-      else
-        trust_authenticated = false
-        client_cert = nil
-      end
+    if request.remote? && request.authenticated?
+      trust_authenticated = 'remote'
+      client_cert = request.node
+    elsif request.remote? && !request.authenticated?
+      trust_authenticated = false
+      client_cert = nil
     else
-      trust_authenticated = 'local'.freeze
-      # TODO: Is this correct, always trust local data by picking up the set parameter?
-      # (i.e. If you can run a puppet apply you can also fake the data - but you also have access to all source,
-      # so not setting it :local and a clientcert may just make it difficult to use)
+      trust_authenticated = 'local'
       client_cert = request.options[:use_node].parameters['clientcert']
     end
 
-    trusted_hash = { 'authenticated' => trust_authenticated }
-    if trust_authenticated
-      trusted_hash['clientcert'] = client_cert
-    end
-    trusted_hash.freeze
+    { 'authenticated' => trust_authenticated, 'clientcert' => client_cert }
   end
 
   # Add any extra data necessary to the node.
