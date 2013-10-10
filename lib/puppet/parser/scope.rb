@@ -116,6 +116,9 @@ class Puppet::Parser::Scope
     compiler.node.name
   end
 
+  # TODO: 19514 - this is smelly; who uses this? functions? templates?
+  # What about trusted facts ? Should untrusted facts be removed from facts?
+  #
   def facts
     compiler.node.facts
   end
@@ -474,6 +477,14 @@ class Puppet::Parser::Scope
       raise Puppet::ParseError, "Scope variable name #{name.inspect} is a #{name.class}, not a string"
     end
 
+    # Check for reserved variable names
+    unless options[:privileged]
+      if %w{facts trusted}.include(name)
+        # TODO: 19514 Warning or Error?
+        raise Puppet::ParseError, "Attempt to assign to a reserved variable name: '#{name}'"
+      end
+    end
+
     table = effective_symtable options[:ephemeral]
     if table.bound?(name)
       if options[:append]
@@ -492,6 +503,35 @@ class Puppet::Parser::Scope
       table[name] = value
     end
     table[name]
+  end
+
+  def set_facts(hash)
+    deep_freeze(hash)
+    set_var('facts', hash, :privileged => true)
+  end
+
+  def set_trusted(hash)
+    deep_freeze(hash)
+    set_var('trusted', hash, :privileged => true)
+  end
+
+  # Deeply freezes the given object. The object and its content must be of the types:
+  # Array, Hash, Numeric, Boolean, Symbol, Regexp, NilClass, or String. All other types raises an Error.
+  # (i.e. if they are assignable to Puppet::Pops::Types::Data type).
+  #
+  def deep_freeze(object)
+    case object
+    when Array
+      object.each {|elem| deep_freeze(elem) }
+    when Hash
+      object.each {|k, v| deep_freeze(k); deep_freeze(v) }
+    when Numeric, Boolean, Symbol, NilClass, Regexp
+      # do nothing, they are immutable
+    when String
+      object.freeze
+    else
+      raise Puppet::Error, "Unsupported data type: '#{object.class}"
+    end
   end
 
   # Return the effective "table" for setting variables.

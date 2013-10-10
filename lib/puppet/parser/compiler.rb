@@ -479,10 +479,12 @@ class Puppet::Parser::Compiler
 
   # Set the node's parameters into the top-scope as variables.
   def set_node_parameters
+    # TODO 19514 THIS IS WHERE NODE PARAMS BECOME TOP SCOPE FACTS
+    # This should also process trusted facts and set them as a hash
+    #
     node.parameters.each do |param, value|
       @topscope[param.to_s] = value
     end
-
     # These might be nil.
     catalog.client_version = node.parameters["clientversion"]
     catalog.server_version = node.parameters["serverversion"]
