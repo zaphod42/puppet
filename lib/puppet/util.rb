@@ -176,11 +176,11 @@ module Util
   # @api public
   # @param bin [String] the name of the executable to find.
   # @return [String] the absolute path to the found executable.
-  def which(bin)
+  def which(bin, other_paths = [])
     if absolute_path?(bin)
       return bin if FileTest.file? bin and FileTest.executable? bin
     else
-      ENV['PATH'].split(File::PATH_SEPARATOR).each do |dir|
+      (other_paths + ENV['PATH'].split(File::PATH_SEPARATOR)).each do |dir|
         begin
           dest = File.expand_path(File.join(dir, bin))
         rescue ArgumentError => e

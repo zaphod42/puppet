@@ -99,6 +99,10 @@ class Puppet::Module
     end
   end
 
+  def binaries
+    subpath('bin')
+  end
+
   def license_file
     return @license_file if defined?(@license_file)
 

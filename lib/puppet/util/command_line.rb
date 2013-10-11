@@ -88,7 +88,8 @@ module Puppet
 
       # @api private
       def external_subcommand
-        Puppet::Util.which("puppet-#{subcommand_name}")
+        Puppet::Util.which("puppet-#{subcommand_name}",
+                           Puppet::Node::Environment.new.modules.collect(&:binaries))
       end
 
       private
