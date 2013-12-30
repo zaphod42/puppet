@@ -1198,7 +1198,7 @@ describe Puppet::Type.type(:file) do
 
           file.write :NOTUSED
 
-          expect(File.stat(file[:path]).mode & 0777).to eq(0644)
+          (File.stat(file[:path]).mode & 0777).should == 0644
         end
       end
 
@@ -1211,7 +1211,7 @@ describe Puppet::Type.type(:file) do
             file.write :NOTUSED
           end
 
-          expect(File.stat(file[:path]).mode & 0777).to eq(0644)
+          (File.stat(file[:path]).mode & 0777).should == 0644
         end
       end
     end
