@@ -143,10 +143,7 @@ class Puppet::Settings::FileSetting < Puppet::Settings::StringSetting
         # wouldn't need to call the munge method manually, since
         # 'should' gets set by the provider and it should be able to
         # provide the data in the appropriate format.
-        mode = self.mode
-        mode = mode.to_i(8) if mode.is_a?(String)
-        mode = mode.to_s(8)
-        resource[:mode] = mode
+        resource[:mode] = numeric_mode.to_s(8)
       end
 
       # REMIND fails on Windows because chown/chgrp functionality not supported yet
@@ -212,8 +209,17 @@ private
     Puppet::Util::SUIDManager.asuser(*chown) do
       # Update the umask to make non-executable files
       Puppet::Util.withumask(File.umask ^ 0111) do
-        yield mode ? mode.to_i : 0640
+        yield mode ? numeric_mode : 0640
       end
+    end
+  end
+
+  def numeric_mode
+    stored_mode = self.mode
+    if stored_mode.is_a?(String)
+      stored_mode.to_i(8)
+    else
+      stored_mode
     end
   end
 end
