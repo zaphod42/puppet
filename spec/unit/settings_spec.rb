@@ -1037,19 +1037,18 @@ describe Puppet::Settings do
       end
 
       context "on the command line" do
-        def assert_command_line_deprecation(setting, is_deprecated = true)
-          if is_deprecated
-            Puppet.expects(:deprecation_warning).with(regexp_matches(/#{setting}.*is deprecated/))
-          else
-            Puppet.expects(:deprecation_warning).never
-          end
+        def assert_command_line_deprecation(setting, message)
+          Puppet.expects(:deprecation_warning).with(message)
 
           args = ["--#{setting}", "/some/value"]
           Puppet.settings.send(:parse_global_options, args)
         end
 
         def assert_command_line_not_deprecated(setting)
-          assert_command_line_deprecation(setting, false)
+          Puppet.expects(:deprecation_warning).never
+
+          args = ["--#{setting}", "/some/value"]
+          Puppet.settings.send(:parse_global_options, args)
         end
 
         it "does not warn when manifest is set on command line" do
@@ -1065,11 +1064,11 @@ describe Puppet::Settings do
         end
 
         it "warns when manifestdir is set on command line" do
-          assert_command_line_deprecation('manifestdir')
+          assert_command_line_deprecation('manifestdir', "Setting 'manifestdir' is deprecated; please use the new directory environments.")
         end
 
         it "warns when templatedir is set on command line" do
-          assert_command_line_deprecation('templatedir')
+          assert_command_line_deprecation('templatedir', "Setting 'templatedir' is deprecated; please use templates in modules.")
         end
       end
 
@@ -1093,10 +1092,12 @@ describe Puppet::Settings do
         end
 
         it "warns when attempt to access a 'manifestdir' setting" do
+          Puppet.expects(:deprecation_warning).with(regexp_matches(/Setting 'manifestdir' is deprecated/))
           assert_accessing_setting_is_deprecated('manifestdir')
         end
 
         it "warns when attempt to access a 'templatedir' setting" do
+          Puppet.expects(:deprecation_warning).with(regexp_matches(/Setting 'templatedir' is deprecated/))
           assert_accessing_setting_is_deprecated('templatedir')
         end
 
