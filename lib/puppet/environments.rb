@@ -162,6 +162,7 @@ module Puppet::Environments
   class Combined
     def initialize(*loaders)
       @loaders = loaders
+      @legacy = Puppet::Environments::Legacy.new
     end
 
     # @!macro loader_search_paths
@@ -177,11 +178,12 @@ module Puppet::Environments
     # @!macro loader_get
     def get(name)
       @loaders.each do |loader|
-        if env = loader.get(name)
+        env = loader.get(name)
+        if env && !env.modulepath.empty?
           return env
         end
       end
-      nil
+      @legacy.get(name)
     end
   end
 end

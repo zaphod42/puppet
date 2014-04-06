@@ -177,8 +177,8 @@ module Puppet
     environments = settings[:environmentpath]
     modulepath = Puppet::Node::Environment.split_path(settings[:basemodulepath])
 
-    loaders = Puppet::Environments::Directories.from_path(environments, modulepath)
-    loaders << Puppet::Environments::Legacy.new
+    loaders = [Puppet::Environments::Legacy.new()]
+    loaders += Puppet::Environments::Directories.from_path(environments, modulepath)
 
     {
       :environments => Puppet::Environments::Combined.new(*loaders)
