@@ -184,10 +184,10 @@ module Puppet
       loaders = Puppet::Environments::Directories.from_path(environments, modulepath)
       # in case the configured environment (used for the default sometimes)
       # doesn't exist
-      loaders << Puppet::Environments::StaticPrivate.new(
-        Puppet::Node::Environment.create(Puppet[:environment].to_sym,
-                                         [],
-                                         Puppet::Node::Environment::NO_MANIFEST))
+      #loaders << Puppet::Environments::StaticPrivate.new(
+      #  Puppet::Node::Environment.create(Puppet[:environment].to_sym,
+      #                                   [],
+      #                                   Puppet::Node::Environment::NO_MANIFEST))
     end
 
     {
