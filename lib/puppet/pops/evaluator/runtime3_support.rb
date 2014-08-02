@@ -368,16 +368,18 @@ module Puppet::Pops::Evaluator::Runtime3Support
 
     # The defaults must be looked up in the scope where the resource was created (not in the given
     # scope where the lookup takes place.
-    resource_scope = resource.scope
-    if val.nil? && resource_scope && defaults = resource_scope.lookupdefaults(resource.type)
-      # NOTE: 3x resource keeps defaults as hash using symbol for name as key to Parameter which (again) holds
-      # name and value.
-      # NOTE: meta parameters that are unset ends up here, and there are no defaults for those encoded
-      # in the defaults, they may receive hardcoded defaults later (e.g. 'tag').
-      param = defaults[parameter_name.to_sym]
-      # Some parameters (meta parameters like 'tag') does not return a param from which the value can be obtained
-      # at all times. Instead, they return a nil param until a value has been set.
-      val = param.nil? ? nil : param.value
+    if resource.respond_to?(:scope)
+      resource_scope = resource.scope
+      if val.nil? && resource_scope && defaults = resource_scope.lookupdefaults(resource.type)
+        # NOTE: 3x resource keeps defaults as hash using symbol for name as key to Parameter which (again) holds
+        # name and value.
+        # NOTE: meta parameters that are unset ends up here, and there are no defaults for those encoded
+        # in the defaults, they may receive hardcoded defaults later (e.g. 'tag').
+        param = defaults[parameter_name.to_sym]
+        # Some parameters (meta parameters like 'tag') does not return a param from which the value can be obtained
+        # at all times. Instead, they return a nil param until a value has been set.
+        val = param.nil? ? nil : param.value
+      end
     end
     val
   end
